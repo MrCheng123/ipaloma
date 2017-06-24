@@ -1,0 +1,1340 @@
+//20170213.1545
+//通用样式
+html,body{
+    width:100%;
+    height:100%;
+//  background: red;
+}
+*{
+padding:0;
+}
+.fr{
+    float:right;
+}
+.fl{
+    float:left;
+}
+.cl{//清除浮动
+    overflow: hidden;
+}
+.dib{
+    display: inline-block;
+    vertical-align: top;
+}
+.por{
+    position: relative;
+}
+.poa{
+    position:absolute;
+}
+.ver{
+    vertical-align: bottom;
+}
+.hi{
+    display: none;
+}
+.initialHi{//用于js中，仅仅用于复制html中dom结构，不让加载ajax返回数据时显示这些dom结构，在success的最后溢出此类名
+    display: none;
+}
+.vis{
+    visibility:hidden
+}
+.iScrollIndicator{
+    background:rgba(255, 173, 51, 0.3)!important;
+}
+.iScrollVerticalScrollbar{
+    width:8px!important;
+}
+//非通用样式
+header{
+    background: #4e9fee;
+    width: 900px;   
+    height:46px;
+    position:relative;
+    cursor:pointer;
+    display: none;
+}
+header img:nth-of-type(1){
+    margin-left:36px;
+    width: 34px;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+}
+header span{
+    line-height: 46px;
+    position: absolute;    
+    left:80px;
+    color:white;
+}
+header img:nth-of-type(2){
+    position: absolute;
+    right: 36px;
+    top:50%;
+    transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    -moz-transform:translateY(-50%);
+    -webkit-transform:translateY(-50%);
+    -o-transform:translateY(-50%);
+    cursor:pointer;
+}
+.Bwrap{
+    width:1280px;
+//  background:black;
+//  height:2999px;
+}
+
+//整体的上面****************************************
+.BwrapUp{
+    box-sizing: border-box;
+    width:1280px;
+    padding:26px 140px;
+//  background:greenyellow;
+}
+.Bzige_List{
+    //暂时不清理浮动，稍后注意。
+//  background:red;
+    margin-bottom: 17px;//为了调整为26px;
+    height:42px;//设置此高度，一方面是为了清浮动，一方面是为了左侧不影响下文的布局，右侧又可以进入下文一部分。
+}
+//资格审查结果
+.Bzige img{
+    width:22px; //20微调为22
+    vertical-align:middle;
+    display: inline-block;
+    margin-top: 2px;//用于微调居中。
+//  background: green;
+}
+.Bzige span{
+    font-family: "微软雅黑";
+    font-size:20px;
+    margin-left: 10px;
+    color:#3fbe00;
+    vertical-align:middle;
+    display: inline-block;
+//  background: gray;
+}
+//列表
+.Blist{
+//  display: table;
+}
+//列表
+    //收藏列表
+.Bcollect{  
+    vertical-align: middle;
+    width:138px;
+    height:30px;
+    border-radius:2px;
+    background:#ffad33;
+    color:white;
+    text-align: center;
+}
+.Bcollect img{
+    width:16px;
+    vertical-align: middle;
+}
+.Bcollect span{
+    font-family: "微软雅黑";
+    font-size: 16px;
+    height:30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+//列表
+//  //返回列表
+.returnToList{
+    width:145px;
+    cursor:pointer;
+}
+.returnToList p{
+    vertical-align: middle;
+    width:143px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    font-family: "微软雅黑";
+    font-size: 16px;  
+    color: #4e9fee;
+    border:1px solid #4e9fee;
+    margin-bottom:10px;
+//  float:left;
+}
+//大标题
+//备注：因为符合资格和不符合资格的，大小标题位置不同，所以把其放入一个标签，在html里同时写在2个位置，通过显示隐藏来实现。
+.BbigTitle p{
+    color:#333333;
+    font-family: "微软雅黑";
+    font-size:20px;
+    font-weight: bold;
+//  width:120px;
+    height:18px;
+    line-height: 18px;
+//  background:blue;
+    margin-right:10px;
+}
+.BbigTitle span{
+    color:#ffffff;
+    font-family: "宋体";
+    font-size:12px;
+//  font-weight: bold;
+//  width:120px;
+    height:18px;
+    line-height: 18px;
+    background:#74c587;
+    padding: 3px 5px;
+//  text-align: center;  
+    position:relative;
+}
+.BbigTitle span:before{
+    content: '\25e2';
+    position: absolute;
+    left: -9px;
+    top: 3px;
+    color: #74c587;
+}
+
+.BsmallTitle{
+    margin:10px auto;
+    font-weight:bold;
+    font-size:16px;
+    color:#666;  
+    margin-bottom: 20px;
+    margin-top: 13px;
+}
+//图文
+.BtuwenTu{
+//  width:322px;
+//  height:182px;
+    margin-right:10px;
+}
+.BtuwenTu img{
+    width:322px;
+    height:182px;
+}
+.BtuwenWenP1{
+    //谷歌相差8像素，火狐相差5像素，为啥。
+    width:660px;//1280-140*2-10=1000-10-322=668px;
+    font-family:"微软雅黑";
+    font-size:14px;
+    line-height: 22px;
+    color:#888888;
+    word-break: break-all;
+//  max-height: 60px;
+//  background: yellow;
+}
+p.ellipsis-text {
+    max-height: 132px;
+}            
+a.less {
+    display: none;
+}
+.BtuwenWenS1,.BtuwenWenS2{
+    font-family: arial;
+    font-size:14px;
+    color:#333;
+}
+.BtuwenWenS1{
+    font-weight: bold;
+}
+.readMore{
+    color:red;
+}
+.readMoreZ{
+    font-family:"微软雅黑";
+    font-size:14px;
+    line-height: 22px;
+    color:#ff0000;
+}
+.readMoreS{
+    font-family:"微软雅黑";
+    font-size:14px;
+    line-height: 22px;
+    color:#3fbe00;
+}
+.BtuwenWenP2{
+    margin-top:20px;//要求是25，考虑到上门的行高，所以这里目测20合适。
+    margin-bottom:10px ;
+}
+.BtuwenWenP3{
+    //无
+}
+//补贴类型A
+.BsubsidyA{
+//  width:1000px;//来自下面图片尺寸
+//  height:148px;//来自下面图片尺寸
+    position:relative;
+    margin-top:-30px;
+}
+.BsubsidyA img{
+    width:1000px;//来自最上面.BwrapUp的1280-140*2
+    height:148px;//来自等比例缩放   
+}
+.BsubsidyA p{
+    position:absolute;
+}
+.BsubsidyAP1 span,.BsubsidyAP2 span,.BsubsidyAP3,.BsubsidyAP4{
+    font-family: "微软雅黑";
+    font-size:30px;
+    color:#fff;
+    font-style:italic;
+}
+.BsubsidyAP1{   
+    left:205px;
+    top:64px;
+}
+.BsubsidyAP2{    
+    left:275px;
+    top:105px;   
+}
+.BsubsidyAP3{
+    left: 611px;
+    top: 82px;
+//  background: blue;
+    width: 63px;
+    text-align: center;
+}
+.BsubsidyAP4{    
+    left: 804px;
+    top: 82px;
+    width: 100px;
+//  background: blue;
+    text-align: center;
+}
+//补贴类型B
+.BsubsidyB{
+    width:1000px;//来自最上面.BwrapUp的1280-140*2
+    height:100px;//来自等比例缩放
+    position:relative;
+    margin-top: 20px;
+}
+.BsubsidyB img{
+    width:1000px;
+    height:100px;
+}
+.BsubsidyB p,.BsubsidyB span{
+    position:absolute;
+}
+.BsubsidyB p{
+    font-family: "arial black";
+    font-size:30px;
+    color:#fff;
+    font-style:italic;
+}
+.BsubsidyB span{
+    font-family: arial;
+    font-weight: bold;
+    font-size:24px;
+    color:#fff;   
+    width: 23px;
+    height: 35px;
+//  background: blue;
+    text-align: center;
+    line-height: 35px; 
+}
+.BsubsidyBP1{   
+    width: 119px;
+//  background: blue;
+    left: 198px;
+    top: 37px;
+    text-align: center;
+}
+.BsubsidyBP2{   
+    width: 104px;
+//  background: blue;
+    left: 481px;
+    text-align: center;
+    top: 37px; 
+}
+.BsubsidyBS1{
+    left: 738px;
+    top: 48px;
+}
+.BsubsidyBS2{
+    left: 764px;
+    top: 48px;
+}
+.BsubsidyBS3{
+    left: 790px;
+    top: 48px;
+}
+.BsubsidyBS4{
+    left: 829px;
+    top: 48px;
+}
+.BsubsidyBS5{
+    left: 856px;
+    top: 48px;
+}
+.BsubsidyBS6{
+    left: 887px;
+    top: 48px;
+}
+.BsubsidyBS7{
+    left: 913px;
+    top: 48px;
+}
+.BsubsidyBS8{
+    left: 943px;
+    top: 48px;
+}
+.BsubsidyBS9{
+    left: 969px;
+    top: 48px;
+}
+//活动补贴说明
+$heightbt:(222px);//该高度可变，右侧按钮，是展开收起作用，展开收起对应不同高度。所以，这里后期会是auto。或者由js控制的高度。
+.Bbtsm{//活动补贴说明整体
+    box-sizing: border-box;
+    width:1000px;
+//  height:$heightbt;//0210格外注意
+//  min-height: 222px;
+    border:1px solid transparent;
+//  background:green;
+    margin-top:10px;
+//  overflow: hidden;
+}
+//活动补贴说明
+    //左边箭头
+.BbtsmL{
+    box-sizing: border-box;
+//  height:222px;
+    width:66px;
+//  background: blue;
+    margin-top:3%;//$heightbt/8;百分比依据.Bbtsm
+    display: table-cell;
+}
+.BbtsmL img{
+    width:63px;//直接看图的尺寸
+    height:66px;//直接看图的尺寸
+}
+//活动补贴说明
+    //右边
+.BbtsmR{
+    width:923px;
+//  height:100%;//不改变量，因为100%比变量好用！好用在，如果js中高度变化了，这里就不用变，而用变量，js中还需设置此高度。//0210格外注意
+//  background:yellow;
+    border-radius: 5px;
+//  box-sizing: border-box;
+//  border:1px solid #FFAD33;
+    display: table-cell;
+}
+.BbtsmRleft{//左边"活动补贴说明字样"
+    box-sizing: border-box;
+//  padding-top:5%;
+    height:100%;//不改变量，原因同上。//0210格外注意
+    width:37px;
+    background:#FFAD33;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    color: #fff;
+//  text-align: center;
+    font-size: 16px;
+//  line-height: $heightbt;    
+    position:relative;
+}
+.BbtsmRleft div{    
+//  display: inline-block;   
+    width:37px;
+//  background:red;
+//  height:120px;
+    font-family: "微软雅黑";
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+    line-height: 20px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);    
+}
+.BbtsmRright{
+    margin-left: -8px;//消除换行解析
+    padding:0px 10px;
+    box-sizing: border-box;
+//  height:100%;////不改变量，原因同上。
+    width:886px;//924-37px;
+//  background:deepskyblue;
+//  overflow: hidden;
+    border:1px solid #FFAD33;//后加，所以导致
+}
+//
+.BbtsmRright12{
+    width:801px;
+//  height:100%;//为了让BbtsmRright12的高度由其内元素撑开，所以这里注释掉
+    display: table-cell;
+}
+.BbtsmRright1{//会员参与时间
+//  background:red;
+    height:30px;
+    width:801px;
+}
+.BbtsmRright1 p{//会员参与时间:
+    font-family: "微软雅黑";
+    font-weight:bold;
+    font-size: 14px;
+    color:#ffad33;
+    line-height:30px;
+    height:100%;
+    vertical-align:middle;
+}
+.BbtsmRright1 span{
+    font-family: arial;    
+    font-size: 14px;
+    color:#444;
+    line-height:30px;
+    height:100%;
+    vertical-align:middle;
+    text-indent: 10px;
+}
+.BbtsmRright2{
+//  background:black;
+    width:801px;
+//  height:$heightbt;//为了让BbtsmRright12的高度由其内元素撑开，所以这里注释掉
+}
+.BbtsmRright2Content{
+    width:867-66px;    
+    overflow: hidden;
+//  background: red;
+//  height:100%;
+}
+.maxHeight180{
+    max-height: 180px;
+}
+
+.BbtsmRright3{  
+    margin-left:-8px;//处理换行解析
+    width:62px;//因为BbtsmRright加border导致这里变66为64
+    box-sizing: border-box;
+    padding-left:10px;
+    padding-right:10px;
+    height:100%;//其实就是222px
+//  background: brown;
+//  line-height: $heightbt+10*2px;//注意其是怪异盒模型，所以这里是如此设
+//  vertical-align: middle;
+    position:relative;
+    display: table-cell;
+}
+.BbtsmRright3 img{
+    width:46px;
+    cursor:pointer;
+    position: absolute;
+    left:57%;//因为BbtsmRright加border导致这里变50为57
+    top:50%;
+     transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%); 
+}
+//图中量的做margin为13px,因为之前已经设置了是10px，所以懒得改了，回头给ui说一声。
+
+$width:(801px-10*2)/3;//一行3个的尺寸是，
+//$width:(801px-10*1)/2;//一行2个的尺寸是，
+//$width:(801px-10*0)/1;//一行1个的尺寸是，
+//不同的格数加不同的类名
+.btsm{
+    width:$width;
+    box-sizing: border-box;
+    border:1px solid #ffad33;
+    border-radius:0 30px 0 0;
+//  max-height: 180px;
+//  height:180px;//为了让BbtsmRright12的高度由其内元素撑开，所以这里注释掉
+    margin-bottom: 10px;
+//  background:darkkhaki;
+    margin-left:10-8px;//考虑换行解析的8像素
+}
+.btsm1{
+    margin-left:0px;//第一个不需要左margin
+}
+.btsmP1{
+    width:90px;
+    height:25px;
+    color:#fff;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+    background:#ffad33;     
+}
+.btsmD1IscrollCon{
+    height:144px;//不设高度
+    width:100%;
+    overflow: hidden;
+    position:relative;    
+}
+.btsmD1{
+    width:100%;
+//  line-height: ;
+    font-family: "微软雅黑";
+    font-size:14px;
+    color:#333;
+    line-height: 24px;//目测    
+//  height:144px;//不设高度
+    padding:3px 15px 4px 15px;//后期加上
+//  padding-left: 3px 9px 4px 8px;//0206修改
+//  padding-top: 9px;
+    box-sizing: border-box;
+//  word-break: break-all;
+//  background:red;
+}
+//整体的下面****************************************
+$widhtBwrapDown:1000px;
+.BwrapDown{//参与活动条件&nbsp:&nbsp
+    box-sizing: content-box;
+    width:$widhtBwrapDown;
+//  height:999px;//随时处理
+    padding:0 $widhtBwrapDown*0.14;//140px
+    padding-bottom: 50px;
+    background:#f5f5f5;
+}
+.Bjoincondtion{
+    width:100%;
+    height:100%;
+//  background:cyan;
+}
+.BDcyhd{//参与活动条件
+    font-family:"微软雅黑";
+    font-size:16px;
+    color:#4e9fee;   
+    height:$widhtBwrapDown*0.06;//60px;
+    line-height: $widhtBwrapDown*0.06;//60px;;
+}
+.BDcyhdCity{//活动地区
+    //样式看子标签   
+//  padding-top:100px;
+//  background: purple;//去
+    width:100%;
+    position:relative;//因为没有需要横向对齐的元素，所以这里就直接设置相对定位也不会影响别人的布局。//用于展开收起的定位
+}
+.BDcyhdCityXianzhi{
+//  padding-top:100px;
+//  background:cyan;//去
+    width: 798px;
+    overflow:hidden;
+    max-height: 144px;    
+}
+.BDcyhdCityP,.BDcyhdRequireP,.BDcyhdQualifiedP{
+    width:$widhtBwrapDown*0.096;//96px;
+    height:$widhtBwrapDown*0.024;//24px;
+    color:#fff;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: $widhtBwrapDown*0.025;//25px;
+    text-align: center;
+    background:#ffad33;      
+    margin-right: 20px;
+}
+//.BDcyhdCityD{
+//  max-height: 140px;
+//}
+//超惠活动要求，会员参与资格的最外层标签距上面20像素
+.BDcyhdRequire,.BDcyhdQualified{
+    margin-top: 20px;
+}
+.BDcyhdCity img,.BDcyhdRequire img,.BDcyhdQualified img{//活动地区下img
+    width:$widhtBwrapDown*0.018;//18px;//来自图片尺寸
+    height: 18px; 
+    vertical-align:middle;
+    margin-right:5px;//暂时全部设置为5
+//  background: darkgoldenrod;
+}
+.BDcyhdCityDs{
+//  position:relative;//用于展开收起的定位
+//  background:red;
+}
+//.BDcyhdCityDsSheng{
+//  vertical-align: middle;
+//}
+.BDcyhdCityDsSheng .BDcyhdCityDsP,.BDcyhdCityDsShi .BDcyhdCityDsP{//同时有2个类名的标签,省市区
+    margin-left: -8+5px;//img本身有5像素的右margin
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color:#333;
+    line-height: 24px;
+//  vertical-align: middle;
+//  height:24px;
+//  background: darkgoldenrod;
+    width:770px;//来自于不影响整体布局的测试
+}
+.BDcyhdCityDsqv .BDcyhdCityDsP{
+    margin-left: -8+5px;//img本身有5像素的右margin
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color:#333;
+    line-height: 24px;
+//  vertical-align: middle;
+//  height:24px;
+//  background: red;
+    width:730px;//来自于不影响整体布局的测试 
+}
+.BDcyhdCityDsqv.BDcyhdCityDsP{
+//  text-indent: 72px;
+//  background:green;
+}
+.BDcyhdCityDsPq.dib{//给区设置缩进3个字符，后期考虑4个字的省，那就应该是14*4=56px
+//  text-indent:42px;
+    margin-left: 68px;
+//  background:blue;
+}
+.BDcyhdCityDsMore{//偏移量待定
+    width:77px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: blue;
+    line-height: 24px;
+    text-decoration: underline;
+}
+//超惠活动要求
+.BDcyhdRequireD{
+    width:876px;
+//  background:black;
+}
+.BDcyhdRequireDP{
+    width:413px;
+//  background:white;
+//  overflow: hidden;
+}
+.BDcyhdRequireDP img{//超惠活动要求下img
+    width:$widhtBwrapDown*0.018;//18px;//来自图片尺寸
+    height: 18px; 
+    vertical-align:middle;
+    margin-right:5px;//暂时全部设置为5
+//  background: greenyellow;    
+}
+.BDcyhdRequireDP span{
+    margin-left:6px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+//  color:red;
+    line-height: 24px;
+    height:24px;
+//  background:red;
+    width:384px;//调试
+}
+.ml50{//缩写margin-left
+    margin-left:50-8px;
+}
+//会员参与资格
+.BDcyhdQualifiedD{
+    width:$widhtBwrapDown/3;
+}
+.BDcyhdQualifiedD2,.BDcyhdQualifiedD3{
+    margin-left:-8px;
+//  background:red;
+}
+.BDcyhdQualifiedDP{
+    font-family:"微软雅黑";
+    font-size:16px;
+    color:black;   
+//  height:$widhtBwrapDown*0.06;//60px;
+//  line-height: $widhtBwrapDown*0.06;//60px;;    
+    margin-top:10px;
+    margin-bottom: 15px;
+}
+//会员参与资格下img(对勾和叉)
+.BDcyhdQualified .BDQFdsImg{
+    margin-right:5px;
+    vertical-align: top;
+}
+//会员参与资格下span//粉丝留存率:活动开始前1天,不低于70%
+.BDcyhdQualified .BDQFdsSpan{
+    display: inline-block;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    color: #333;
+    line-height: 19px;
+    /* height: 24px; */
+    /* background: red; */
+    width: 290px;
+    /* vertical-align: top; */
+}
+//会员参与资格下 门店最下面红字内容（如您的投放门店不在平台）
+.BDQFd2_span1{
+    font-size: 14px;
+    color: red;
+    display: inline-block;
+    width: 10px;
+    margin-top: 4px;
+    vertical-align: top;
+    line-height: 19px;
+}
+.BDQFd2_span2{
+    @extend .BDQFd2_span1;  
+    width: 308px;    
+}
+img.BDcyhdQualifiedXFZimg{
+    width:123px;//来自图片尺寸
+    height: 123px;
+    margin-top:40px;
+    margin-left: 45px;
+}
+//页脚
+footer{
+    width:$widhtBwrapDown;
+//  height:30px;
+    padding:0 $widhtBwrapDown*0.14;//140px
+//  background:#ffffff;    
+    text-align: center;
+    font-family: "微软雅黑";
+    font-size: 12px;
+    color:#777;
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 990px) {
+   header{
+       display: block;
+   }
+  .Bwrap {
+    width: 900px;//    
+//   background: chartreuse;
+  }
+
+  .BwrapUp {
+    width: 900px;//
+    box-sizing: border-box;
+    padding: 10px 39px;//
+  }
+
+  .Bzige_List {
+    margin-bottom: 7px;//
+    height: 42px;
+  }
+
+  .Bzige img {
+    width: 20px;//
+  }
+
+  .Bzige span {
+    font-size: 20px;
+  }
+
+  .Bcollect {
+    width: 138px;
+    height: 30px;
+    border-radius: 2px;
+  }
+
+  .Bcollect img {
+    width: 16px;
+  }
+
+  .Bcollect span {
+    font-size: 16px;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .returnToList {
+    width: 145px;
+    cursor: pointer;
+    display: none;
+  }
+
+  .returnToList p {
+    width: 143px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .BbigTitle p {
+    font-size: 16px;
+    height: 18px;
+    line-height: 18px;
+    margin-right: 10px;
+  }
+
+  .BbigTitle span {
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+  }
+
+  .BsmallTitle {
+    margin: 10px auto;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .BtuwenTu {
+//  width: 322px;
+//  height: 182px;
+    margin-right: 10px;
+  }
+
+  .BtuwenTu img {
+    width: 267px;//
+    height: 150px;//
+  }
+
+  .BtuwenWenP1 {
+    width: 537px;//
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .BtuwenWenS1, .BtuwenWenS2 {
+    font-size: 14px;
+    color: #333;
+  }
+
+  .readMore {
+    color: red;
+  }
+
+  .readMoreZ {
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .readMoreS {
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .BtuwenWenP2 {
+    margin-top: 6px;//
+    margin-bottom: 6px;//
+  }
+
+  .BsubsidyA {
+//  width: 1000px;
+//  height: 148px;
+    margin-top: -30px;
+  }
+
+  .BsubsidyA img {
+    width: 825px;//
+    height: 124px;//
+  }
+
+  .BsubsidyAP1 span, .BsubsidyAP2 span, .BsubsidyAP3, .BsubsidyAP4 {
+    font-size: 30px;
+  }
+
+  .BsubsidyAP1 {
+   left: 166px;//
+    top: 52px;//
+  }
+
+  .BsubsidyAP2 {
+    left: 225px;//
+    top: 84px;//
+  }
+
+  .BsubsidyAP3 {
+    left: 505px;//
+    top: 67px;//
+    /* background: rebeccapurple; */
+    width: 52px;//
+  }
+
+  .BsubsidyAP4 {
+       left: 664px;//
+    top: 66px;//
+    width: 81px;//
+  }
+
+  .BsubsidyB {
+    width: 825px;
+    height: 82.5px;
+    margin-top: 20px;
+  }
+
+  .BsubsidyB img {
+    width: 825px;
+    height: 82.5px;
+  }
+
+  .BsubsidyB p {
+    font-size: 30px;
+  }
+
+  .BsubsidyB span {
+    font-size: 24px;
+        width: 20px;//
+    height: 30px;//
+    line-height: 35px;
+  }
+
+  .BsubsidyBP1 {
+//    background:red;
+    width: 98px;//
+    left: 164px;//
+    top: 26px;//
+  }
+
+  .BsubsidyBP2 {
+//    background:green;
+    width: 86px;//
+    left: 396px;//
+    top: 26px;//
+  }
+
+  .BsubsidyBS1 {
+//  background:red;
+    left: 608px;//
+    top: 39px;//
+  }
+
+  .BsubsidyBS2 {
+//    background:green;
+    left: 630px;
+    top: 39px;
+  }
+
+  .BsubsidyBS3 {
+//    background:red;
+    left: 652px;
+    top: 39px;
+  }
+
+  .BsubsidyBS4 {
+//    background:green;
+    left: 684px;
+    top: 39px;
+  }
+
+  .BsubsidyBS5 {
+//    background:red;
+    left: 705px;
+    top: 39px;
+  }
+
+  .BsubsidyBS6 {
+//    background:green;
+    left: 731px;
+    top: 39px;
+  }
+
+  .BsubsidyBS7 {
+//    background:red;
+    left: 752px;
+    top: 39px;
+  }
+
+  .BsubsidyBS8 {
+//    background:green;
+    left: 778px;
+    top: 39px;
+  }
+
+  .BsubsidyBS9 {
+//    background:red;
+    left: 799px;
+    top: 39px;
+  }
+
+  .Bbtsm {
+    width: 1000px;
+//  height: 222px;
+    margin-top: 10px;
+//  background:gold;
+  }
+
+  .BbtsmL {
+    box-sizing: border-box;
+    width: auto;//
+  }
+
+  .BbtsmL img {
+    width: 55px;//
+    height: 55px;//
+  }
+
+  .BbtsmR {
+//  width: 766px;//
+    border-radius: 5px;
+  }
+
+  .BbtsmRleft {
+    width: 30px;//
+    font-size: 16px;   
+  }
+
+  .BbtsmRleft div {
+    width: 30px;//
+    font-size: 16px;
+    line-height: 20px;   
+  }
+
+  .BbtsmRright {
+//  margin-left: -8px;
+    padding: 0px 7px;
+//  height: 100%;
+    width: 732px;
+    border: 1px solid #FFAD33;
+//  background:red;
+  }
+
+  .BbtsmRright12 {
+    width: 667px;//
+//   background:green;
+  }
+
+  .BbtsmRright1 {
+    height: 30px;
+    width: 667px;//801
+//  background:blueviolet;
+  }
+
+  .BbtsmRright1 p {
+    font-size: 14px;
+    line-height: 30px;
+  }
+
+  .BbtsmRright1 span {
+    font-size: 14px;
+    line-height: 30px;
+    height: 100%;
+    text-indent: 10px;
+  }
+
+  .BbtsmRright2 {
+    width: auto;//801
+//  background:yellow;
+  }
+
+  .BbtsmRright2Content {
+    width: 667px;//801
+//  background:yellowgreen;
+  }
+
+  .BbtsmRright3 {
+        margin-left: -6px;
+    width: 47px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 100%;
+//  background:black;
+  }
+
+  .BbtsmRright3 img {
+    width: 34px;
+     transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%); 
+  }
+
+  .btsm {
+    width: (667px-10*2)/3;;
+    border: 1px solid #ffad33;
+    border-radius: 0 30px 0 0;
+//  max-height: 180px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+//  background:red;
+  }
+
+  .btsm1 {
+    margin-left: 0px;
+  }
+
+  .btsmP1 {
+    width: 90px;
+    height: 25px;
+    font-size: 14px;
+    line-height: 25px;
+  }
+
+  .btsmD1 {
+    font-size: 14px;
+    line-height: 24px;
+//  height: 144px;
+    padding: 3px 5px 4px 5px;//0218从3 15 4 15改为此
+  }
+
+  .BwrapDown {
+    box-sizing: border-box;
+    width: 900px;
+    padding: 0 39px;//
+    padding-bottom: 50px;
+  }
+
+  .BDcyhd {
+    font-size: 16px;
+    height: 60px;
+    line-height: 60px;
+  }
+
+  .BDcyhdCityXianzhi {
+    width: 698px;//谷歌需要698，火狐需要700
+    max-height: 144px;
+  }
+
+  .BDcyhdCityP, .BDcyhdRequireP, .BDcyhdQualifiedP {
+    width: 96px;
+    height: 24px;
+    font-size: 14px;
+    line-height: 25px;
+    margin-right: 20px;
+  }
+
+  .BDcyhdRequire, .BDcyhdQualified {
+    margin-top: 20px;
+  }
+
+  .BDcyhdCity img, .BDcyhdRequire img, .BDcyhdQualified img {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+
+  .BDcyhdCityDsSheng .BDcyhdCityDsP, .BDcyhdCityDsShi .BDcyhdCityDsP {
+    margin-left: -3px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 24px;
+    width: 670px;//672
+  }
+
+  .BDcyhdCityDsqv .BDcyhdCityDsP {
+    margin-left: -3px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 24px;
+    width: 537px;
+  }
+
+  .BDcyhdCityDsPq.dib {
+    margin-left: 68px;
+  }
+
+  .BDcyhdCityDsMore {
+    width: 77px;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .BDcyhdRequireD {
+    width: 698px;//876
+  }
+
+  .BDcyhdRequireDP {
+    width: 339px;
+  }
+
+  .BDcyhdRequireDP img {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+
+  .BDcyhdRequireDP span {
+    margin-left: 6px;
+    font-size: 12px;//14
+    line-height: 24px;
+    height: 24px;
+    width: 310px;//384
+  }
+
+  .ml50 {
+    margin-left: 20px;//42
+  }
+
+  .BDcyhdQualifiedD {
+    width: 273px;
+  }
+
+  .BDcyhdQualifiedD2, .BDcyhdQualifiedD3 {
+    margin-left: -8px;
+  }
+
+  .BDcyhdQualifiedDP {
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  }
+//会员参与资格下img(对勾和叉)
+    .BDcyhdQualified .BDQFdsImg{
+        margin-right:5px;
+        vertical-align: top;
+    }
+    //会员参与资格下span//粉丝留存率:活动开始前1天,不低于70%
+    .BDcyhdQualified .BDQFdsSpan{
+        display: inline-block;
+        font-family: "微软雅黑";
+        font-size: 14px;
+        color: #333;
+        line-height: 19px;
+        /* height: 24px; */
+        /* background: red; */
+        width: 250px;
+        /* vertical-align: top; */
+    }
+  .BDcyhdQualified img {
+    margin-right: 5px;
+  }
+
+  .BDcyhdQualified span {
+    font-size: 12px;
+    line-height: 24px;
+    height: 24px;
+  }
+
+  img.BDcyhdQualifiedXFZimg {
+    width: 123px;
+    height: 123px;
+    margin-top: 40px;
+    margin-left: 45px;
+  }
+
+  footer {
+    width: 900px;
+    padding: 0 39px;
+    box-sizing: border-box;
+    font-size: 12px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  p.ellipsis-text {
+    max-height: 120px;//
+  }
+}
+
+//0210将活动补贴说明从超过6行展开说起，变化超过6行出现滚动条。展开收起作用的箭头按钮，也从有超过6行的显示其，而变为btsm超过3个显示其。其不再控制6行，而控制btsm的个数
+//具体操作，
+//css中把.btsmD1的min-height换成固定行高height,btsm的最大高度去掉
+//html中，btsm1，btsm2，btsm3不再固定为分销商，门店。消费者，而全部由js生成。
+//js中，直接清空BbtsmRright2Content，所有的btsm都由js生成，并且加上控制宽度的类名。

@@ -1,0 +1,81 @@
+/* reset */
+*{margin:0;padding:0;}
+body{font-family:"微软雅黑", Arial, Helvetica, sans-serif;-webkit-text-size-adjust:none;background-color:#fff;overflow-x:hidden;}
+h1,h2,h3,h4,h5,h6{*font-size:100%;font-weight:400;}
+fieldset,img{border:0;}
+address,caption,cite,code,dfn,em,i,strong,th,var{font-style:normal;font-weight:normal;}
+ol,ul,li{list-style:none outside;}
+blockquote:before,blockquote:after,q:before,q:after{content:'';}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;}
+input,textarea,select,button{font-family:inherit;font-size:inherit;*font-size:100%;font-weight:inherit;resize:none;}
+button{cursor:pointer;}
+:focus{outline:0;}
+a{color:#666; text-decoration:none;}
+a:hover{text-decoration:none;}
+.clr{*zoom:1;}
+.clr:before,.clr:after{content:"";display:table;}
+.clr:after{clear:both;}
+
+.colorange{color:orange;}
+.fbold{font-weight:bold;}
+.ml10{margin-left:10px;}
+.mt10{margin-top:10px;}
+
+/*内容区域*/
+.tabmain{width:100%;height:100%;margin:10px auto;background: #F3F3F3;border:1px solid #F3F3F3; }
+.tabmain .tabGroup{float:left;width:129px;height:auto; background:#f5f5f5; z-index:3; }
+.tabmain .tabGroup li{height:78px;line-height:78px;padding-left:20px;text-align:left;cursor:pointer;-webkit-user-select:none; -moz-user-select:none;font-size:18px;font-family:'Microsoft yahei';color:#666; border-bottom:1px #ddd solid;}
+.tabmain .tabGroup li.selectedTab{padding-left:20px;background:#fff;color:#333;}
+.tabmain .tabContent{padding:10px 20px;background-color:#fff;color:#777; min-height:384px;}
+
+.tabmain .tabContent  ul{ padding:0px; margin:0px;width:100%;}
+.tabmain .tabContent  li{ padding:0px; padding-bottom:20px; margin:0px;margin-bottom:10px; border-bottom:1px #c7c5c5 solid; width:100%; background:#fff;}
+
+
+
+.tabmain .tabContent .mainInfo{ padding:0px; margin:0px;width:100%;}
+.tabmain .tabContent .mainInfo .mainInfol{ padding:0px; margin:0px; width:20%; float:left;background:#0f0;}
+.tabmain .tabContent .mainInfo .mainInfol img{margin:0; padding:0;width:100%; height:100%; text-align:center;}
+.tabmain .tabContent .mainInfo .mainInfor{ padding:0px; margin:0px; width:75%; float:right; background:#fff;}
+.tabmain .tabContent .mainInfo .mainInfor .title{ padding:0px; margin:0px; width:100%; height:30px; line-height:30px; clear:both; text-indent:32px; display:inline-block; background:url(../images/icon_lin.png) left center no-repeat;}
+
+.tabmain .tabContent .zhekou{ padding:0px; padding-top:10px; margin:0px;  width:100%; color:#009f96; clear:both;}
+.tabmain .tabContent .remark{ padding:0px; padding-top:10px; margin:0px;  width:100%; height:30px; color:#999; overflow:hidden; clear:both;}
+
+
+.tabContent p a{margin-right:15px;text-decoration:none;text-align:center;color:orange; font-weight:bold;}
+.tabContent h3{margin-bottom:5px;background:orange;color:#fff;font-size:14px;font-weight:bold;line-height:28px;text-align:center;}
+.tabContent dl{line-height:22px;margin-bottom:10px;}
+.tabContent dt{color:#1d9fd3;font-weight:bold;}
+.tabContent dd img{display:block;}
+.tabmain .blueline{position:absolute;top:0px;left:0px;width:7px;height:78px; background:#f7af01;overflow:hidden;}
+
+.tabContent .witness p{position:relative;padding-left:20px;}
+.tabContent .witness p em{color:orange; font-weight:bold;}
+.tabContent .witness p a{color:#666;font-weight:normal;display:block; line-height:24px; text-align:left;}
+.tabContent .witness p a:hover{background-color:#efefef;}
+.tabContent .witness p .ele{left:0px;}
+
+#container{float:left;width:487px;height:584px;background:#fff;overflow:hidden;}
+#slider{position:absolute;top:0px;right:0;width:6px;border-radius:6px;background:#ccc;cursor:pointer;}
+#sliderParent{position:absolute;left:0;height:0;width:608px;z-index:999;}
+#outerWrap{position:relative;z-index:999}
+
+/*滚动条*/
+.wrapacon{position:relative;float:left;width:468px;height:360px;margin-top:5px;overflow:hidden;}
+.wrapaconlis{position:absolute;left:0;top:0;width:450px;}
+.scrbar{position:relative; width:4px; height:355px;border:1px solid #f4f4f4;border-radius:20px;background-color:#f4f4f4; float:left;left:443px;margin-left:15px;}
+.scrbar .barbg{position:absolute;right:-1px;top:50px;width:2px;height:105px;border:2px solid #dadada;background-color:#dadada;border-radius:20px;}
+
+
+/*一级tab*/
+.tabBlock-tabs {list-style: none;margin: 0;padding: 0;float:left;}
+.tabBlock {margin: 0; background:#fff; overflow:hidden;}
+.tabBlock-tab { background: #f5f5f5;padding:20px 10px; color: #666;border-left:7px #f5f5f5 solid;cursor: pointer; font-size:16px; border-bottom:1px #ddd solid;position: relative;width:85%;}
+.tabBlock-tab.is-active {color: #333;background:#fff; border-left:7px #f7af01 solid;}
+.tabBlock-content {background-color: white;border: 2px solid #d8d8d8;padding: 1.25rem;float:right; width:500px;}
+
+
+
+

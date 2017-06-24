@@ -1,0 +1,120 @@
+{
+  "data": [
+    {
+      "picture_url": null,
+      "distance": 1000,
+      "distance_text": "1km",
+      "mobilephone": 17181018820,
+      "fixline": null,
+      "address": "西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门西直门",
+      "retailername": "KeMing的店",
+      "reatiler_id": "1234567890abcdef",
+      "activity_count": 10,
+      "ticket_count": 12,
+      "activitydata": [
+        {
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "activitytype": "activity",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "赠品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距开始3天",
+          "activity_flag":2,
+          "activitytitle": "xxx买一送一",
+          "originalprice": "9.5",
+          "discountprice": "7.6",
+          "discount": "8",
+          "ruledesc": null
+        },
+        {
+          "activitytype": "ticket",
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "单品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距开始3天",
+          "ticketcontent": "商品名称100kg*4箱",
+          "unitcost": 20,
+          "itemtotalnum": 10000,
+          "totalverifynum": 2000,
+          "verifydaylimit": 1,
+          "verifytotallimit": 20,
+          "verifylimit": 10,
+          "btn_state": 1,
+          "btn_text": "明日再来",
+          "cashback": {
+            "content": "距开始3天距开始3天距开始3天距开始3天距开始3天",
+            "more": 0
+          },
+          "activity_flag": 1,
+          "description": "备注备注备注备注"
+        },
+        {
+          "activitytype": "ticket",
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "单品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距结束3天",
+          "ticketcontent": "商品名称100kg*4箱",
+          "unitcost": 20,
+          "itemtotalnum": 10000,
+          "totalverifynum": 2000,
+          "verifydaylimit": 1,
+          "verifytotallimit": 20,
+          "verifylimit": 10,
+          "btn_state": 0,
+          "btn_text": "明日再来",
+          "cashback": {
+            "content": "备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注",
+            "more": 0
+          },
+          "activity_flag": 1,
+          "description": "备注备注备注备注"
+        },
+        {
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "activitytype": "activity",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "赠品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距开始3天",
+          "activity_flag":2,
+          "activitytitle": "xxx买一送一",
+          "originalprice": "9.5",
+          "discountprice": "7.6",
+          "discount": "8",
+          "ruledesc": null
+        },
+        {
+          "activitytype": "ticket",
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "单品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距结束3天",
+          "ticketcontent": "商品名称100kg*4箱",
+          "unitcost": 20,
+          "itemtotalnum": 10000,
+          "totalverifynum": 2000,
+          "verifydaylimit": 1,
+          "verifytotallimit": 20,
+          "verifylimit": 10,
+          "btn_state": 1,
+          "btn_text": "码上用",
+          "cashback": {
+            "content": "商品名称100kg商品名称100kg商品名称100kg商品名称100kg商品名称100kg商品名称100kg商品名称100kg商品名称100kg商品名称100kg",
+            "more": 0
+          },
+          "activity_flag": 1,
+          "description": "备注备注备注备注"
+        }
+      ]
+    }
+  ]
+}

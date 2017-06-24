@@ -1,0 +1,29 @@
+body,div,ul,ol,dt,dd,dl,li,h1,h2,h3,h4,h5,h6,form,input,select,textarea,p,img,a,span,strong,*{ padding:0; margin:0;}
+body{ font-size:12px; font-family:"微软雅黑"; color:#000000; background-color: #FFFFFF;}
+ul,ol,li{ list-style:none;}
+h1,h2,h3,h4,h5,h6{ font-size:12px; font-weight:normal;}
+img,input,select,textarea{ vertical-align:middle}
+img{ border:none;}
+a{ color:#333333; text-decoration:none;}
+
+.clear{ clear:both; height:0; width:0; overflow:hidden;}
+
+/* 清除浮动 在称不开父元素宽高的时候使用 */
+.clearfix:after { content:"."; clear: both; height: 0; overflow: hidden; visibility: hidden; display: block; }
+.clearfix { zoom: 1;}
+
+/* 设置HTML5 - placeholder样式  */
+input[placeholder], [placeholder], *[placeholder] {
+   font-family:微软雅黑;
+}
+
+/* 设置HTML5 - 默认 placeholder样式  */
+input::-webkit-input-placeholder {
+  color: #666;
+}
+
+/* 文字超过一定长度变点点点 */
+.text_overflow{width:237px; white-space:nowrap; text-overflow:ellipsis; -o-text-overflow:ellipsis; overflow:hidden;}
+
+/* 去除Chrome input焦点框框  */
+input{outline:none} 

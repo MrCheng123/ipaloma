@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>核销记录</title>
+
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/retailerstyle.css" rel="stylesheet" />
+    <link href="/retailer/css/dropload.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <link href="/retailer/css/verify.css" rel="stylesheet" />
+</head>
+<body ms-controller="verifyconfirm" class="ms-controller">
+    <div id="pageheader">
+        <div class="headercontent">
+            <p>待确认核销({{authrecordcount}})</p>
+        </div>
+        <div class="headercontent">
+            <div ms-attr-class="btnVerify active {{authrecordcount==0?'disable2':''}}" style="float:right;width:60%" ms-click="allVerify()">全部确认</div>
+        </div>
+        <img src="/retailer/image/verify/xhsx.png" />
+    </div>
+    <!--<div class="verifyTicket">
+        <div class="leftImg">
+            <img src="/consumer/image/cs03.jpg" />
+            <p class="verifyNum">X 16&nbsp;</p>
+            <p class="verifyTimeTitle">核销时间</p>
+            <p class="verifyTime">08/11 13:50:59</p>
+        </div>
+        <div class="rightCount">
+            <div class="ticket_title" style="padding-right:20px">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呵呵呵呵呵呵呵呵xixix</div>
+            <div class="ticket"><span class="price1">￥20</span><span class="price2">￥20</span></div>
+            <div class="ticket">
+                <span class="ticket_zk">7.6折</span>
+            </div>
+            <div class="verifyBtnGroup">
+                <div class="btnVerify" ms-click="singleFailure(el)">拒绝确认</div>
+                <div class="btnVerify active" style="float:right" ms-click="singleVerify(el)">确认</div>
+            </div>
+        </div>
+        <div class="ticket_type">
+            <img src="../image/verify/jb_dp.png" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="verifyTicket">
+        <div class="leftImg">
+            <img src="/consumer/image/cs03.jpg" />
+            <p class="verifyNum">X 16&nbsp;</p>
+            <p class="verifyTimeTitle">核销时间</p>
+            <p class="verifyTime">08/11 13:50:59</p>
+        </div>
+        <div class="rightCount">
+            <div class="ticket_title" style="padding-right:20px">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呵呵呵呵呵呵呵呵xixix</div>
+            <div class="ticket"><span class="price1">￥20</span></div>
+            <div class="ticket">
+                <div>
+                    <span class="ticket_zk">买三赠一</span>
+                </div>
+            </div>
+            <div class="verifyBtnGroup">
+                <div class="btnVerify" ms-click="singleFailure(el)">拒绝确认</div>
+                <div class="btnVerify active" style="float:right" ms-click="singleVerify(el)">确认</div>
+            </div>
+        </div>
+        <div class="ticket_type">
+            <img src="../image/verify/jb_dp.png" />
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="verifyTicket">
+        <div class="leftImg">
+            <img src="/consumer/image/cs03.jpg" />
+            <p class="verifyNum">X 16&nbsp;</p>
+            <p class="verifyTimeTitle">核销时间</p>
+            <p class="verifyTime">08/11 13:50:59</p>
+        </div>
+        <div class="rightCount">
+            <div class="ticket_title" style="padding-right:20px">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈呵呵呵呵呵呵呵呵xixix</div>
+            <div class="ticket"><span class="price1">￥20</span></div>
+            <div class="ticket">
+                <ul>
+                    <li style="width:25px"><font>赠</font></li>
+                    <li class="ztitle">哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</li>
+                    <li style="width:25px" ms-click="showTitle">∧</li>
+                </ul>
+            </div>
+            <div class="verifyBtnGroup">
+                <div class="btnVerify" ms-click="singleFailure(el)">拒绝确认</div>
+                <div class="btnVerify active" style="float:right" ms-click="singleVerify(el)">确认</div>
+            </div>
+        </div>
+        <div class="ticket_type">
+            <img src="../image/verify/jb_dp.png" />
+        </div>
+        <div class="clear"></div>
+    </div>-->
+    <div id="list">
+        <div class="verifyTicket" ms-repeat="array" data-repeat-rendered="jsondataReadered">
+            <div class="leftImg">
+                <img ms-attr-src="el.itempic" />
+                <p class="verifyNum">X {{el.verifynum}}&nbsp;</p>
+                <p class="verifyTimeTitle">核销时间</p>
+                <p class="verifyTime">{{el.issuetime|date('MM/dd HH:mm:ss')}}</p>
+            </div>
+            <div class="rightCount">
+                <div class="ticket_title" style="padding-right:20px">{{el.activitytitle}}</div>
+                <div class="ticket" ms-if="el.activitykind!='有礼'">
+                    <span class="price1">￥{{el.discountprice!=undefined?el.discountprice:el.unitprice}}</span>
+                    <span class="price2" ms-if="el.originalprice!=undefined">￥{{el.originalprice}}</span>
+                </div>
+                <div class="ticket">
+                    <span class="ticket_zk" ms-if="el.activitykind!='有礼'">{{getzktitle(el)}}</span>
+                    <ul ms-if="el.activitykind=='有礼'">
+                        <li style="width:25px"><font>赠</font></li>
+                        <li class="ztitle">{{el.giftname}}</li>
+                        <li class="arrows_down" style="width:6px" ms-click="showTitle"></li>
+                    </ul>
+                </div>
+                <div class="verifyBtnGroup">
+                    <div class="btnVerify" ms-click="singleVerify('failure',el)">拒绝确认</div>
+                    <div class="btnVerify active" style="float:right" ms-click="singleVerify('complete',el)">确认</div>
+                </div>
+            </div>
+            <div class="ticket_type">
+                <img ms-attr-src="{{getactivitykindimg(el)}}" />
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <footer>
+        <div id="bottom-nav"></div>
+    </footer>
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="/js/jquery/dropload.min.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script src="/retailer/js/verify/varifyCommon.js"></script>
+    <script src="/retailer/js/verify/verifyconfirm.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

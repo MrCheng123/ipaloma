@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>使用超惠券</title>
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/qrcode.css" rel="stylesheet" />
+    <link href="/consumer/css/supperticket_hx.css" rel="stylesheet" />
+    <link href="/consumer/css/menustyle.css" rel="stylesheet" />
+    <link href="/consumer/css/reset.css" rel="stylesheet" />
+    <link href="/consumer/css/share.css" rel="stylesheet" />
+    <link href="../css/shakegame/animate.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>    
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+    <script type="text/javascript" src="/js/wx/resetRem.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixinshare-qrcode.js"></script>
+    <script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <style>
+        #page_msg {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+            #page_msg img {
+                height: 60px;
+                margin-top: calc(40% - 60px);
+                margin-top: -moz-calc(40% - 60px);
+                margin-top: -webkit-calc(40% - 60px);
+                margin-bottom: 10px;
+            }
+
+            #page_msg p {
+                margin-top: 10px;
+            }
+
+        .fa {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .fa-spin {
+            -webkit-animation: fa-spin 1.5s infinite linear;
+            animation: fa-spin 1.5s infinite linear;
+        }
+
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+
+        .fa-rotate-90 {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+            -webkit-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        .fa-rotate-180 {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .fa-rotate-270 {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            -webkit-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+        }
+
+        #qt_msg {
+            width: 80%;
+            height: 30px;
+            margin: 0 auto;
+            line-height: 30px;
+            text-align: center;
+            border: solid 1px #ff6600;
+            border-radius: 30px;
+            color: #ff6600;
+        }
+
+        #QRCode {
+            width: 100%;
+            min-height: 260px;
+            text-align: center;
+        }
+
+            #QRCode p {
+                padding: 20px 0;
+                text-align: left;
+                color: #ff6600;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+
+                #QRCode p > img {
+                    height: 20px;
+                    vertical-align: top;
+                    float: left;
+                    margin: -3px 5px 0 10px;
+                }
+
+            #QRCode > img {
+                width: 55%;
+                margin: 0 auto;
+            }
+
+        #btnlist {
+            height: 36px;
+        }
+
+        #tab_tishi {
+            width: 100%;
+            height: 30px;
+            padding: 5px 0;
+            background: #f3f1f1;
+        }
+
+            #tab_tishi li {
+                width: 50%;
+                float: left;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: 30px;
+                font-size: 18px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+                #tab_tishi li:first-child {
+                    border-right: solid 1px #808080;
+                }
+
+            #tab_tishi > .acitve {
+                color: #ff6600;
+            }
+
+        #tab_msg {
+            width: 100%;
+            height: 30px;
+            background: #e1e1e1;
+            border-top: #000;
+            line-height: 30px;
+            text-indent: 10px;
+            position: relative;
+            border-top: solid 1px #adabab;
+            color: gray;
+        }
+
+        #tab .tab_active {
+            background: #fdead6;
+            color: #ff6600;
+        }
+
+        .triangle_left:before, .triangle_left:after {
+            width: 0px;
+            height: 0px;
+            border: transparent solid;
+            position: absolute;
+            right: 100%;
+            content: "";
+        }
+
+        .triangle_left:before {
+            border-width: 8px;
+            border-bottom-color: #ff6600;
+            left: 23%;
+            top: -16px;
+        }
+
+        .triangle_left:after {
+            border-width: 7px;
+            border-bottom-color: #e1e1e1;
+            left: calc(23% + 1px);
+            left: -moz-calc(23% + 1px);
+            left: -webkit-calc(23% + 1px);
+            top: -14px;
+        }
+
+        .triangle_right:before, .triangle_right:after {
+            width: 0px;
+            height: 0px;
+            border: transparent solid;
+            position: absolute;
+            right: 100%;
+            content: "";
+        }
+
+        .triangle_right:before {
+            border-width: 8px;
+            border-bottom-color: #adabab;
+            right: 23%;
+            top: -16px;
+        }
+
+        .triangle_right:after {
+            border-width: 7px;
+            border-bottom-color: #e1e1e1;
+            right: calc(23% + 1px);
+            right: -moz-calc(23% + 1px);
+            right: -webkit-calc(23% + 1px);
+            top: -14px;
+        }
+
+        #tab .tab_active:after {
+            border-bottom-color: #fdead6;
+        }
+
+        .stamp {
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 35px;
+            top: 45px;
+            z-index: 10;
+            transform: rotate(45deg);
+            line-height: 30px;
+            text-align: center;
+            font-size: 18px;
+            border-radius: 5px;
+        }
+
+        .stamp1 {
+            border: solid 2px #ff6600;
+            color: #ff6600;
+            background-color: rgba(255,215,188,0.3);
+        }
+
+        .stamp2 {
+            border: solid 2px #ff0000;
+            color: #ff0000;
+            background-color: rgba(255,230,230,0.5);
+            font-size: 16px;
+        }
+
+        .div_ad {
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: solid 1px #fdc995;
+            white-space: nowrap;
+            overflow: hidden;
+            color: red;
+            background: #fdead6;
+            line-height: 20px;
+        }
+
+            .div_ad img {
+                height: 20px;
+                float: left;
+                margin: 0 5px 0 10px;
+            }
+
+        .btn_jia {
+            width: 40px;
+            height: 35px;
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+
+        .share_hb {
+            width: 80px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+
+        #sharetitle {
+            text-align: center;
+            color: #ff6600;
+        }
+
+        #dowebok {
+            animate-duration: 1.3s; /*动画持续时间 */
+            animate-delay: 0s; /* 动画延迟时间 */
+            animate-iteration-count: 5; /*  动画执行次数 */
+            -webkit-animation-duration: 1.3s; /* Safari 和 Chrome */
+            -webkit-animation-delay: 0s;
+            -webkit-animation-iteration-count: 5;
+            -moz-animation-duration: 1.3s; /* Firefox */
+            -moz-animation-delay: 0s;
+            -moz-animation-iteration-count: 5;
+            -o-animation-duration: 1.3s; /* Opera */
+            -o-animation-delay: 0s;
+            -o-animation-iteration-count: 5;
+            -ms-animation-duration: 1.3s; /* IE */
+            -ms-animation-delay: 0s;
+            -ms-animation-iteration-count: 5;
+        }
+
+        .btn_css4 {
+            width: 90%;
+            height: 40px;
+            border: solid 1px #ff6600;
+            line-height: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff6600;
+            background-color: #ffefe5;
+            margin: 0px 0px 20px 5%;
+            font-size: 20px;
+            border-radius: 3px;
+        }
+
+        .tuijianimg {
+            position: absolute;
+            margin: -14px 0 0 5%;
+            width: 30px;
+        }
+
+        #divQrcode1 {
+            min-height: 280px;
+        }
+
+            #divQrcode1 img {
+                width: 60%;
+                margin: 0 auto;
+        }
+    </style>
+    <script>
+        $(function () {
+            FastClick.attach(document.body);
+        });
+    </script>
+</head>
+<body style="background:#fff; " ms-controller="allMsg" class="ms-controller">
+  
+    <div class="tip-w">
+        <div class="tip">
+            <img src="/consumer/image/shakegame/shareimg.png" style="width:80%;margin:20px 10% 0 10%" />
+        </div>
+    </div>
+    <div ms-controller="superticket_hx" style="margin-bottom:10px">
+        <div class="div_ad" ms-if="vm.hxstep==6">
+            <img src="/consumer/image/supercoupons/exclamation.png" />  门店确认您输入的数量与实际不符,请重新输入
+        </div>
+        <div ms-if="vm.pageStep==1" id="page1" style="height:auto">
+            <div class="div-list">
+                <div class="div-top">
+                    <div class="div-img">
+                        <img ms-attr-src="vm.jsondata.itempic" alt="">
+                    </div>
+                    <div class="div-text">
+                        <p style="margin-bottom:15px">
+                            <span ms-attr-class="{{vm.jsondata.itemkind=='有礼'?'font-youli':vm.jsondata.itemkind=='降价'?'font-jiangjia':vm.jsondata.itemkind=='套餐'?'font-taocan':'font-maizeng'}}">{{vm.jsondata.itemkind}}券</span>
+                            {{vm.jsondata.activitytitle}}
+                        </p>
+                        <p ms-if="vm.jsondata.itemkind=='有礼'" style="font-size:14px;">
+                            <img src="/consumer/image/icon05.png" style="width:20px; float:left;margin-top: -5px;" />
+                            {{vm.jsondata.giftname}}
+                        </p>
+                        <ul style="width:100%; min-height:70px;">
+                            <li ms-if="vm.jsondata.itemkind=='买赠'">
+                                <span>买{{vm.jsondata.buycount}}赠{{vm.jsondata.giftcount}}</span>
+                                <p>￥{{vm.jsondata.unitprice}}</p>
+                            </li>
+                            <li ms-if="vm.jsondata.itemkind=='降价'">
+                                <span>{{vm.jsondata.discount}}折</span>
+                                <p>￥{{vm.jsondata.discountprice}} <small>￥{{vm.jsondata.originalprice}}</small></p>
+                            </li>
+                            <li ms-if="vm.jsondata.itemkind=='套餐'">
+                                <span style="white-space:nowrap;overflow:hidden">已节省{{vm.jsondata.sparevalue}}元</span>
+                                <p>￥{{vm.jsondata.discountprice}} <small>￥{{vm.jsondata.originalprice}}</small></p>
+                            </li>
+                            <li ms-if="selfVerify.token.length>0" style="float:right; padding-right:2px;font-size:18px;color:#000">
+                               1 张
+                            </li>
+                            <li style="float:right; padding-right:2px;" ms-if="selfVerify.token.length==0">
+                                <small>今日可用{{vm.verifylimit}}张</small>
+                                <ul class="jiajian">
+                                    <li style="width:40px;border-right:solid 1px #ff6600;">
+                                        <input type="button" class="btn_jia" ms-attr-id="{{vm.hxNum<=1?'subtractions_gray':'subtractions'}}" ms-click="vm.subtractions" />
+                                    </li>
+                                    <li class="shuzi">
+                                        <input value="1" type="text" id="txt_hx" ms-keyup="txtChange" />
+                                    </li>
+                                    <li style="border-left:solid 1px #ff6600;width:38px">
+                                        <input type="button" class="btn_jia" ms-attr-id="{{vm.hxNum>=vm.verifylimit?'additions_gray':'additions'}}" ms-click="vm.additions" />
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="div-remark" ms-if="vm.jsondata.ruledesc!=''">
+                    {{vm.jsondata.ruledesc}}
+                </div>
+            </div>
+            <div ms-if="isselfverify">
+                <img class="tuijianimg" src="/consumer/image/supercoupons/tuijian.png" ms-if="selfVerify.token.length==0" />
+                <div class="btn_css4" style="margin-top:50px" ms-click="selfVerify.VerifyScan">
+                 {{selfVerify.token.length==0?"自助扫码核销":"确认核销"}}   
+                </div>
+            </div>
+            <div class="btn_css4" ms-click="btnClick" ms-if="selfVerify.token.length==0">门店扫码核销</div>
+            <div class="btn_css4" ms-click="selfVerify.closeWin" style="background-color:#fff" ms-if="selfVerify.token.length>0">我在想想</div>
+        </div>
+        <div id="page2" ms-if="vm.pageStep>=2" ms-controller="superticket_page2">
+            <img src="/consumer/image/shakegame/share_hb.png" class="share_hb animated tada infinite" hidden id="dowebok" />
+            <div id="page_top">
+                <div id="page_msg" hidden>
+                    <img ms-attr-src="Msg.imgurl" id="_loading" />
+                    <p style="margin-bottom:10px;">{{Msg.title}}<br />{{Msg.subtitle}}</p>
+                    <p id="sharetitle" hidden></p>
+                    <!--<div id="qt_msg" class="msg" hidden>去看看当前门店其他可用超惠券(3)</div>-->
+                    <div id="btnlist" class="msg" hidden style="margin:20px 0;">
+                        <div id="btn_1" class="btn btn_css3" style="float:left;margin:0 calc((100% - 236px) / 3);margin:0 -moz-calc((100% - 236px) / 3);margin:0 -webkit-calc((100% - 236px) / 3);" ms-click="page2.goBack">返回</div>
+                        <div id="btn_2" class="btn btn_css2" style="float:left;" ms-click="page2.againLoadQRCode">重试</div>
+                        <div id="btn_3" class="btn btn_css3" style="float:left;margin:0 calc((100% - 236px) / 3);margin:0 -moz-calc((100% - 236px) / 3);margin:0 -webkit-calc((100% - 236px) / 3);" ms-click="page2.quit">退出</div>
+                        <div id="btn_4" class="btn btn_css2" style="float:left;" ms-click="page2.againRequest">继续等待</div>
+                        <div id="btn_5" class="btn btn_css4" style="margin-top:20px" ms-click="btnClick">
+                            门店扫码核销
+                        </div>
+                    </div>
+                </div>
+                <div id="QRCode" hidden>
+                    <p>
+                        <img src="/consumer/image/supercoupons/richScanico.png" /><span id="span_tishi">{{vm.span_tishi}}</span>
+                    </p>
+                    <!--<img id="QRCode_img" />-->
+                    <div id="divQrcode1">
+                        <img id="QRCode_img" />
+                    </div>
+                </div>
+
+            </div>
+            <ul id="page_middle">
+                <li style="max-width:240px">
+                    <p id="p_yxchj">已选超惠券<font color="#ff6600">{{vm.hxNum}}</font>张</p>
+                </li>
+                <li style="float:right">
+                    <ul ms-if="vm.pageStep==2">
+                        <li>
+                            优惠<font color="#ff6600">{{vm.youhui}}</font>元
+                            <p>赠品<font color="#ff6600">{{vm.zengpin}}</font>份</p>
+                        </li>
+                        <li style="line-height:40px">合计：</li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <div id="tab" ms-if="vm.pageStep==3">
+                <ul id="tab_tishi">
+                    <li id="msg_left" class="acitve" ms-click="showUsage(1)">已使用（{{vm.yhxNum}}）</li>
+                    <li id="msg_right" ms-click="showUsage(2)">未使用（{{vm.whxNum}}）</li>
+                </ul>
+                <div id="tab_msg" class="triangle_right tab_active">
+                    合计：优惠{{vm.youhui}}元  赠品 {{vm.zengpin}} 份
+                </div>
+            </div>
+            <hr style="height:1px;border:none;border-top:1px solid #ccc;" ms-if="vm.pageStep!=3" />
+            <div class="div-list" style="position:relative">
+                <div class="div-top">
+                    <div class="div-img" id="divQrcode">
+                        <img ms-attr-src="vm.jsondata.itempic" alt="">
+                    
+                    </div>
+                    <div class="div-text">
+                        <p style="margin-bottom:15px">
+                            <span ms-attr-class="vm.jsondata.itemkind=='有礼'?'font-youli':vm.jsondata.itemkind=='降价'?'font-jiangjia':vm.jsondata.itemkind=='套餐'?'font-taocan':'font-maizeng'">{{vm.jsondata.itemkind}}券</span> {{vm.jsondata.activitytitle}}
+                        </p>
+                        <p ms-if="vm.jsondata.itemkind=='有礼'">
+                            <img src="/consumer/image/icon05.png" style="width:20px; float:left;margin-top: -5px;" />
+                            {{vm.jsondata.giftname}}
+                        </p>
+                        <ul style="display:block;min-height:50px">
+                            <li ms-if="vm.jsondata.itemkind=='买赠'">
+                                <span>买{{vm.jsondata.buycount}}赠{{vm.jsondata.giftcount}}</span>
+                                <p>￥{{vm.jsondata.unitprice}}</p>
+                            </li>
+                            <li ms-if="vm.jsondata.itemkind=='降价'">
+                                <span>{{vm.jsondata.discount}}折</span>
+                                <p>￥{{vm.jsondata.discountprice}} <small>￥{{vm.jsondata.originalprice}}</small></p>
+                            </li>
+                            <li ms-if="vm.jsondata.itemkind=='套餐'">
+                                <span style="white-space:nowrap;overflow:hidden">已节省{{vm.jsondata.sparevalue}}元</span>
+                                <p>￥{{vm.jsondata.discountprice}} <small>￥{{vm.jsondata.originalprice}}</small></p>
+                            </li>
+                            <!--<li ms-if="vm.jsondata.itemkind=='有礼'" style="display:block;min-height:50px">
+                                &nbsp;
+                            </li>-->
+                            <li style="font-size:20px; line-height:60px; float:right">
+                                ×{{vm.hxNum}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="div-remark" ms-if="vm.jsondata.ruledesc!=''">
+                    {{vm.jsondata.ruledesc}}
+                </div>
+                <div class="stamp stamp1" hidden id="tagMsg">数量不足</div>
+                <div class="stamp stamp2" hidden id="tagMsg1">门店不支持</div>
+            </div>
+            <div id="nodata" style="text-align:center; padding-top:40px;" hidden>
+                <img src="/retailer/image/supercoupons/07_03.png" style="width:50px;" />
+                <p>您没有未核销成功的超惠券</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="bottom-nav"></div>
+    </footer>
+    <div class="share_pop1 share_pop">
+        <div class="share_bg"></div>
+        <div class="main_bg">
+            <p><a href="javascript:void(0)"><img class="pop_close" src="../image/Close_icon.png"></a><span></span></p>
+        </div>
+        <div class="share_box">
+            <div class="share_main">
+                <div class="main_haed">
+                    <img src="../image/share_img.png">
+                </div>
+                <div class="main_content">
+                    <div class="content_box" ms-repeat="vm.topicdata">
+                        <h1>{{el.activitytitle}}</h1>
+                        <dl class="clearfix">
+                            <dt><img ms-attr-src="el.poster_url"></dt>
+                            <dd>{{el.description}}</dd>
+                        </dl>
+                        <div class="L-alert">
+                            <span>恭喜您获得{{el.count+el.unit+el.assettype}}，请注意查收！</span>
+                            <div class="arrow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="share_btn" href="javascript:void(0)">分享朋友圈</a>
+        </div>
+    </div>
+    <div class="share_pop2 share_pop">
+        <div class="share_bg"></div>
+        <div class="main_bg">
+            <p><a href="javascript:void(0)"><img class="pop_close" src="../image/Close_icon.png"></a><span></span></p>
+        </div>
+        <div class="share_box">
+            <div class="share_main main2">
+                <div class="main_haed">
+                    <img src="../image/share_img.png">
+                </div>
+                <div class="main_content">
+                    <div class="content_box born" ms-repeat="vm.topicdata">
+                        <h1>{{el.activitytitle}}</h1>
+                        <dl class="clearfix">
+                            <dt><img ms-attr-src="el.poster_url"></dt>
+                            <dd>{{el.description}}</dd>
+                        </dl>
+                    </div>
+                    <div class="conten_wenan" ms-repeat="vm.topicdata">
+                        <p class="p_30">恭喜您在该活动中获得<span>{{el.count}}</span>{{el.unit+el.assettype}}</p>
+                        <!--<p class="p_40">快来抽奖吧!</p>
+                        <a href="javascript:vido(0)">立即抽奖</a>-->
+                    </div>
+                </div>
+            </div>
+            <a class="share_btn" href="javascript:void(0)">分享朋友圈</a>
+        </div>
+    </div>
+    <div id="qrcodediv" hidden></div>
+    <script type="text/javascript" src="/consumer/js/common-buttom-nav.js"></script>
+    <script src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script src="/js/jquery/qrcodeInitialize.js"></script>
+    <script src="/consumer/js/superticket_hx.js"></script>
+</body>
+</html>

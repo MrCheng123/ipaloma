@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>活动审核-不符合</title>
+    <link type="text/css" href="../web_style/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../web_style/jquery.datetimepicker.css" />
+    <script type="text/javascript" src="../web_js/jquery-1.11.3.min.js"></script>
+    <script src="../web_js/jquery.datetimepicker.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+            var currUrl = "";
+            $(function () {
+                $('.search select:eq(3)').change(function () {
+                    var txt = $('.search input:first').val();
+                    if ($(this).find("option:selected").text() == '活动编码')
+                    {
+                        var ytxt = txt.replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                        if (txt != ytxt)
+                            $('.search input:first').val(ytxt);
+                    }
+                });
+                $('.search input:first').keyup(function () {
+                    var txt = $(this).val();
+                    if ($('.search select:first').next().find("option:selected").text() == '活动编码')
+                    {
+                        var ytxt = txt.replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                        if (txt != ytxt)
+                            $(this).val(ytxt);
+                    }
+                });
+                currUrl = window.location.href;
+            })
+
+        </script>
+    <script type="text/javascript">
+
+
+            $(function () {
+                var $divWidth = $('.tabcont-cont').height();
+                $('.tabcont-cont-one').css({'height': $divWidth});
+
+                $('.show1').click(function () {
+                    $('.show-yibaocun').slideToggle(300)
+                })
+
+                $('.chongzhibtn').click(function () {
+                    $('.search select').each(function (index, element) {
+                        $(this).val($(this).children('option:eq(0)').val())
+                    })
+                    $('.search input').val('')
+                })
+
+                $('.show-baocunlist').click(function () {
+                    if ($(this).attr('baocun') == 'a') {
+                        $('.show-baocunlist').attr('baocun', 'a')
+                        $('.show-baocunlist').css('background', '#fff').css('color', '#2c4a93')
+                        $(this).css('background', '#249cfa').css('color', '#fff')
+                        $(this).attr('baocun', 'b')
+                    } else {
+                        $(this).css('background', 'white').css('color', '#2c4a93')
+                        $(this).attr('baocun', 'a')
+                    }
+                })
+
+                $('.show-baocunlist img').click(function () {
+                    $(this).parent('.show-baocunlist').remove();
+                })
+
+
+
+
+
+                $('.close1').click(function () {
+                    $('.show-yibaocun').slideUp(300)
+                })
+                $('.hd-guize').click(function () {
+                    $('.hd-guizebox').show()
+                    $('.hd-guizebox').animate({'right': '0'}, 300)
+                    $('.hd-guize-top').animate({'right': '0'}, 300)
+                    $('.zbtn-box-w1').animate({'right': '0'}, 300)
+
+                })
+                $('.close2').click(function () {
+                    $('.hd-guizebox').animate({'right': '-800px'}, 300)
+                    $('.hd-guize-top').animate({'right': '-800px'}, 300)
+                    $('.zbtn-box-w1').animate({'right': '-800px'}, 300)
+                })
+
+                $('#hd-huize-change').click(function () {
+
+                    $('.hd-guizebox').hide()
+                    $('.hd-guizebox-xg').show()
+                    $('.hd-guizebox-xg').animate({'right': '0'}, 300)
+                    $('.hd-guize-xg-top').animate({'right': '0'}, 300)
+                    $('.zbtn-box-xg-w1').animate({'right': '0'}, 300)
+
+
+                })
+                $('.close3').click(function () {
+                    $('.hd-guizebox-xg').animate({'right': '-800px'}, 300)
+                    $('.hd-guize-xg-top').animate({'right': '-800px'}, 300)
+                    $('.zbtn-box-xg-w1').animate({'right': '-800px'}, 300)
+                })
+                $('#quxiao').click(function () {
+                    $('.hd-guizebox-xg').animate({'right': '-800px'}, 300)
+                    $('.hd-guize-xg-top').animate({'right': '-800px'}, 300)
+                    $('.zbtn-box-xg-w1').animate({'right': '-800px'}, 300)
+                })
+
+
+
+
+                $('.alladdress').click(function () {
+                    $('.address-n').slideToggle(500)
+                })
+
+
+                $('.address-d').click(function () {
+                    var type = $(this).data('type');
+                    if ($(this).attr('dad') == 'a') {
+                        $('div[data-type=' + type + ']').css('background', '#1e90ff').css('color', '#fff')
+                        //$(this).css('background','#1e90ff').css('color','#fff')
+                        //$(this).next('.address-x-w').css('background','#1e90ff').css('color','#fff')
+                        $('div[data-type=' + type + ']').attr('dad', 'b')
+                        $('div[data-type=' + type + ']').attr('xad', 'b')
+                        //$(this).next('.address-x-w').children('.address-x').attr('xad','b')
+                    } else {
+                        $('div[data-type=' + type + ']').css('background', '#fff').css('color', '#2c4a93')
+                        //$(this).next('.address-x-w').css('background','#fff').css('color','#2c4a93')
+                        $('div[data-type=' + type + ']').attr('dad', 'a')
+                        $('div[data-type=' + type + ']').attr('xad', 'a')
+                        //$(this).next('.address-x-w').children('.address-x').attr('xad','a')
+                    }
+                    lf()
+                })
+                $('.address-x').click(function () {
+                    //alert(123)
+                    if ($(this).attr('xad') == 'a') {
+                        $(this).css('background', '#1e90ff').css('color', '#fff')
+                        $(this).attr('xad', 'b')
+                    } else {
+                        $(this).css('background', '#fff').css('color', '#2c4a93')
+                        $(this).attr('xad', 'a')
+                    }
+                    lf()
+                })
+
+
+
+
+
+                function lf() {
+                    $('.address-x').each(function () {
+                        var type = $(this).data('type');
+                        var cls = $(this).attr('xad');
+                        if (cls == 'a') {
+                            $('.address-d[data-type=' + type + ']').attr('dad', 'a')
+                            $('.address-d[data-type=' + type + ']').css('background', '#fff').css('color', '#2c4a93')
+                        }
+                    })
+                }
+
+            })
+
+        </script>
+
+
+
+    <!--活动规则浮层-->
+    <div class="hd-guizebox">
+        <div class="hd-guizebox-n">
+            <div class="hd-guize-top">活动审核规则<img class="close2" src="../web_images/icon05.png" /></div>
+            <div class="space1"></div>
+            <div class="hd-guize-cont">
+                <div class="tit">活动审核规则</div>
+                <div class="nr">总则： 1、禁止销售假冒商品或者未经授权的仿制品。产品图片模糊不清不能通过审核，包括进行遮挡的产品图片。
+                    <br /> 2、产品描述禁止出现含有任何有误导性的词汇及用途。如所售商品是作为某一知名品牌配套使用的，需标明所售商品之用途，避免误导消费者（譬如，和iPod配套使用的保护套应该描述为“Carrying
+                    Case for iPod”，而不应该描述为“iPod Carrying Case”）。<br /> 3、所有存在品牌及授权相关的产品，包括花纹、形状、仿制的会引起法律责任的国际品牌禁止销售。（譬如，与nike类似却印成nkie商标）。文字描述及图片中不得包含品牌关键字，严禁变相及衍生的品牌关键字及Imitation
+                    、copy、similar、fake类似等字眼。衍生词如chanel、channel、cha-nel、cha等更加严厉禁止。对于模仿品牌款式及风格的产品同样视为违规产品。<br /> 4、国家及国际性禁止或限制销售的产品，成人用品用具，黄色刊物，性药及迷幻药：Viagra、Cialis
+                    。<br /> 5、遇到国际性，政治性的品牌或产品质量风波敦煌网有权对产品进行一次性下架处理。
+                    <br /> 6、未经授权，所售商品不能含有任何国际知名产品的品牌、商标、标志或符号（譬如，印有苹果公司商标的mp3播放器）。
+                    <br /> 7、不允许将产品放在不相关目录下。
+                    <br />
+                    <img src="../web_images/cs01.png" />
+                </div>
+
+            </div>
+            <div class="space2"></div>
+            <div class="zbtn-box-w1">
+                <div class="zbtn-box" style="width:160px; margin: 0 auto;">
+                    <button class="bg-red" id="hd-huize-change" style=" width:100%; margin:0 auto; float:none;">修改</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--活动规则修改浮层-->
+    <div class="hd-guizebox-xg">
+        <div class="hd-guizebox-xg-n">
+            <div class="hd-guize-xg-top">活动审核规则<img class="close3" src="../web_images/icon05.png" /></div>
+            <div class="space1"></div>
+            <div class="hd-guize-cont">
+                <div class="tit">活动审核规则</div>
+                <div class="nr">总则： 1、禁止销售假冒商品或者未经授权的仿制品。产品图片模糊不清不能通过审核，包括进行遮挡的产品图片。
+                    <br /> 2、产品描述禁止出现含有任何有误导性的词汇及用途。如所售商品是作为某一知名品牌配套使用的，需标明所售商品之用途，避免误导消费者（譬如，和iPod配套使用的保护套应该描述为“Carrying
+                    Case for iPod”，而不应该描述为“iPod Carrying Case”）。<br /> 3、所有存在品牌及授权相关的产品，包括花纹、形状、仿制的会引起法律责任的国际品牌禁止销售。（譬如，与nike类似却印成nkie商标）。文字描述及图片中不得包含品牌关键字，严禁变相及衍生的品牌关键字及Imitation
+                    、copy、similar、fake类似等字眼。衍生词如chanel、channel、cha-nel、cha等更加严厉禁止。对于模仿品牌款式及风格的产品同样视为违规产品。<br /> 4、国家及国际性禁止或限制销售的产品，成人用品用具，黄色刊物，性药及迷幻药：Viagra、Cialis
+                    。<br /> 5、遇到国际性，政治性的品牌或产品质量风波敦煌网有权对产品进行一次性下架处理。
+                    <br /> 6、未经授权，所售商品不能含有任何国际知名产品的品牌、商标、标志或符号（譬如，印有苹果公司商标的mp3播放器）。
+                    <br /> 7、不允许将产品放在不相关目录下。
+                    <br />
+                    <img src="../web_images/cs01.png" />
+                </div>
+
+            </div>
+            <div class="space2"></div>
+            <div class="zbtn-box-xg-w1">
+                <div class="zbtn-box" style="width:330px; margin: 0 auto;">
+                    <button class="bg-green" style=" width:160px; margin-right:10px;; float:left;">保存</button>
+                    <button class="bg-red" id="quxiao" style=" width:160px; margin:0 auto; float:left;">取消</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-n">
+        <div class="topnav">
+            <div class="logo">会员管理后台系统</div>
+            <ul class="nav">
+                <a href="hd-shenhe.html">
+                    <li class="navbg">活动审核</li>
+                </a>
+                <a href="sh-tongji.html">
+                    <li>审核统计</li>
+                </a>
+                <a href="xt-guanli.html">
+                    <li>系统管理</li>
+                </a>
+            </ul>
+            <div class="userinfo">
+                <a href="javascript:;">
+                    <div class="loginout">退出</div>
+                </a>
+                <div class="username">平台审核员</div>
+                <div class="userimg"><img src="../web_images/cs02.jpg" /></div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="address"><span class="alladdress">-全部地区--   <img src="../web_images/icon17.png" /></span>
+                <div class="address-n">
+                    <div class="address-d" dad="a" data-type="1">【华北】</div>
+                    <div class="address-x-w">
+                        <div class="address-x" xad="a" data-type="1">北京市</div>
+                        <div class="address-x" xad="a" data-type="1">天津市</div>
+                        <div class="address-x" xad="a" data-type="1">河北省</div>
+                        <div class="address-x" xad="a" data-type="1">山西省</div>
+                        <div class="address-x" xad="a" data-type="1">内蒙古自治区</div>
+                    </div>
+
+                    <div class="address-d" dad="a" data-type="2">【东北】</div>
+                    <div class="address-x-w">
+                        <div class="address-x" xad="a" data-type="2">辽宁省</div>
+                        <div class="address-x" xad="a" data-type="2">吉林省</div>
+                        <div class="address-x" xad="a" data-type="2">黑龙江省</div>
+
+                    </div>
+
+                    <div class="address-d" dad="a" data-type="3">【华东】</div>
+                    <div class="address-x-w">
+                        <div class="address-x" xad="a" data-type="3">江苏省</div>
+                        <div class="address-x" xad="a" data-type="3">浙江省</div>
+                        <div class="address-x" xad="a" data-type="3">安徽省</div>
+                        <div class="address-x" xad="a" data-type="3">福建省</div>
+                        <div class="address-x" xad="a" data-type="3">江西省</div>
+                        <div class="address-x" xad="a" data-type="3">山东省</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <select style="display:none;">
+                    <option>--全部地区--</option>
+                    <option>【华北】</option>
+                    <option>北京市</option>
+                    <option>天津市</option>
+                    <option>河北省</option>
+                    <option>山西省</option>
+                    <option>内蒙古自治区</option>
+                    <option>【东北】</option>
+                    <option>辽宁省</option>
+                    <option>吉林省</option>
+                    <option>黑龙江省</option>
+                    <option>【华东】</option>
+                    <option>江苏省</option>
+                    <option>浙江省</option>
+                    <option>安徽省</option>
+                    <option>福建省</option>
+                    <option>江西省</option>
+                    <option>山东省</option>
+
+                </select>
+            <select>
+                    <option>--全部类型--</option>
+                    <option>更正置顶</option>
+                    <option>普通</option>
+                </select>
+
+
+          <select id="activitytype" name="activitytype" >
+                 <!--    <option value="">全部活动</option>
+                    <option value="1">超惠活动</option>
+                    <option value="2">店铺活动</option> -->
+                </select>
+
+            <select id="textQueryType" name="textQueryType">
+                   <!--  <option value="1">活动名称</option>
+                    <option value="2">活动编码</option>
+                    <option value="3">分销商名称</option> -->
+                </select> 
+
+                <!-- start -->
+<!-- 齐枭飞添加的 全部活动，全部名称-->
+
+<!-- END -->
+
+            <input type="text" />
+            <input type="text" class="time" id="datetimepicker7" />
+            <script type="text/javascript">
+                    var logic = function (currentDateTime) {
+                        if (currentDateTime.getDay() == 6) {
+                            this.setOptions({
+                                minTime: '11:00'
+                            });
+                        } else
+                            this.setOptions({
+                                minTime: '8:00'
+                            });
+                    };
+                    $('#datetimepicker7').datetimepicker({
+                        onChangeDateTime: logic,
+                        onShow: logic
+                    });
+                </script>
+
+            <button class="chongzhibtn">重置</button>
+            <div class="chongzhi" style="display:none;"></div>
+        </div>
+        <div class="statebox">
+            <div class="currenthdnum">当前共有<span>0</span>条待审核活动</div>
+            <div class="baocun">保存搜索条件</div>
+            <div class="yibaocun">
+                <show class="show1">已保存(<span>1</span>)</show> <img src="../web_images/icon02.png" />
+                <div class="show-yibaocun">
+                    <div class="show-baocunlist" baocun="a">华北+更正置顶+商铺活动 <img src="../web_images/icon03.png" /></div>
+                    <div class="show-baocunlist" baocun="a">华北+更正置顶+商铺活动<img src="../web_images/icon03.png" /></div>
+                    <div class="show-baocunlist" baocun="a">华北+更正置顶+商铺活动<img src="../web_images/icon03.png" /></div>
+                </div>
+            </div>
+            <div class="hd-guize">审核产品规则》</div>
+        </div>
+        <div class="tabcont-z">
+            <div class="tabcont-n">
+                <div class="tabcont-tit">
+                    <div class="tabcont-tit-one percent1">活动名称/活动编码</div>
+                    <div class="tabcont-tit-one percent2">活动时间</div>
+                    <div class="tabcont-tit-one percent3">活动类型</div>
+                    <div class="tabcont-tit-one percent4">分销商名称</div>
+                    <div class="tabcont-tit-one percent5">联系人/联系电话</div>
+                    <div class="tabcont-tit-one percent6">沙盒域名</div>
+                    <div class="tabcont-tit-one percent7">地市</div>
+                    <div class="tabcont-tit-one percent8">活动提交时间↓</div>
+                    <div class="tabcont-tit-one percent9">操作</div>
+
+                </div>
+                <div class="hd-bufuhe">
+                    <div class="img"><img src="../web_images/icon13.png" /></div>
+                    <div class="text">
+                        <span>对不起暂时无符合您条件的活动？</span><br /> 请重新修改搜索条件后进行搜索
+                    </div>
+                    <div class="img1"><img src="../web_images/icon14.png" /></div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- 齐枭飞新加 全部活动 全部名称 -->
+    <script src='../web_js/option.js'></script>
+</body>
+
+</html>

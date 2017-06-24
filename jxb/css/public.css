@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/*loading图*/
+.loadingDiv {
+  width: 100%;
+  height: 100%;
+  background: white;
+  position: fixed;
+  z-index: 99992;
+  top: 0;
+  left: 0; }
+
+.loadingImg {
+  width: 5%;
+  /*margin:0px auto;*/
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%); }
+
+/*空白遮罩，目前只有详情页在用*/
+.marginShade {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 99999; }
+
+/*弹窗提示popups,见public.js*/
+* {
+  margin: 0px;
+  padding: 0px; }
+
+.popups {
+  width: 402px;
+  height: 170px;
+  box-sizing: border-box;
+  padding: 25px 10px;
+  background: white; }
+
+.popups p {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
+  line-height: 25px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 41px; }
+
+.popups span {
+  display: inline-block;
+  border-radius: 20px;
+  width: 150px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  margin: 0 20px;
+  cursor: pointer; }
+
+span.popups_refreshAgain {
+  background: #fe9833; }
+
+span.popups_refreshOff {
+  background: #c9c9c9; }
+
+* {
+  font-family: "微软雅黑"; }
+
+/*# sourceMappingURL=public.css.map */

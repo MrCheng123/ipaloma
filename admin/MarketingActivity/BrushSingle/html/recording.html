@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>凌云会员管理系统V1.0.3</title>
+		<link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.7/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="../css/recording.css">
+		<link rel="stylesheet" type="text/css" href="/admin/lib/laydate/need/laydate.css">
+		<script src="/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+		<script src="/admin/lib/laydate/laydate.js"></script>
+		<script src="/admin/lib/layer-v2.4/layer/layer.js"></script>
+		<script>
+			$(function() {
+				if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE6.0") {
+					layer.msg("该网站暂不支持Ie 浏览器，请用其它浏览器打开", {
+						time: 3000
+					}); //IE 6.0
+					return;
+				} else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE7.0") {
+					layer.msg("该网站暂不支持Ie 浏览器，请用其它浏览器打开", {
+						time: 3000
+					}); //IE 7.0
+					return;
+				} else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE8.0") {
+					layer.msg("该网站暂不支持Ie 浏览器，请用其它浏览器打开", {
+						time: 3000
+					}); //IE 8.0
+					return;
+				} else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE9.0") {
+					layer.msg("该网站暂不支持Ie 浏览器，请用其它浏览器打开", {
+						time: 3000
+					}); //IE 9.0
+					return;
+				} else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE10.0") {
+					layer.msg("该网站暂不支持Ie 浏览器，请用其它浏览器打开", {
+						time: 3000
+					}); //IE 10.0
+					return;
+				} else if(navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.split(";")[1].replace(/[ ]/g, "") == "MSIE11.0") {
+					layer.msg("该网站暂不支持Ie 浏览器，请用其它浏览器打开", {
+						time: 3000
+					}); //IE 10.0
+					return;
+				}
+			})
+		</script>
+		<script src="/admin/lib/district/js/cityLink.js"></script>
+		<script src="../js/recording.js"></script>
+	</head>
+	<body class="create">
+		<div class="bread-crumb">
+			<span class="path-text">市场营销</span>
+			<i> &gt; </i>
+			<span class="this-text">刷单记录</span>
+		</div>
+		<div class="option clearfix">
+			<div class="optionl left">
+				<ul class="xze1 left">
+					<li>
+						待处理
+						<span>未处理</span>
+					</li>
+					<li>
+						已处理
+						<span>处罚中</span>
+					</li>
+				</ul>
+				<div class="xzcont left">
+					<div class="weichuli" state="未处理">
+						<div class="weiqueren" state="未处理"><span>未确认</span>（<i></i>条）</div>
+						<div class="shensuz" state="申诉中"><span>申诉中</span>（<i></i>条）</div>
+					</div>
+					<div class="yichuli" state="处罚中">
+						<div class="chufaz" state="处罚中"><span>确认违规处罚中</span>（<i></i>条）</div>
+						<div class="yijiesu" state="已结束"><span>确认违规已结束</span>（<i></i>条）</div>
+						<div class="jiechu" state="解除违规"><span>解除违规</span>（<i></i>条）</div>
+					</div>
+				</div>
+			</div>
+			<ul class="optionm left">
+				<li>
+					报警日期
+					<input type="text" id="cgl-cxdata" class="time chatime" placeholder="" /> 至
+					<input type="text" id="cgl-cxdata1" class="time chatime" placeholder="" />
+				</li>
+				<li class="opm2 fsdiqu">
+					<div class="box">
+						<span class="name">发生地区</span>
+						<div class="gf-select" id="province">
+							<span><em>省</em></span>
+							<ul>
+								<li data-value="">省份</li>
+							</ul>
+						</div>
+						<div class="gf-select" id="city">
+							<span><em>市</em></span>
+							<ul>
+								<li data-value="">城市</li>
+							</ul>
+						</div>
+						<div class="gf-select" id="area">
+							<span><em>区</em></span>
+							<ul>
+								<li data-value="">区县</li>
+							</ul>
+						</div>
+					</div>
+				</li>
+				<li class="opm2 opm3">
+					<span class="left">违规次数</span>
+					<div>
+						<select class="left" id="cgl-xzf">
+							<option name="cishu">等于</option>
+							<option name="cishu">大于</option>
+							<option name="cishu">小于</option>
+						</select>
+						<input type="text" id="cgl-wgcs" class="wgnum left" placeholder="" />
+					</div>
+				</li>
+			</ul>
+			<ul class="optionr left">
+				<li class="opm2">会员类型
+					<select id="cgl-md" name="">
+						<option name="">门店</option>
+					</select>
+				</li>
+				<li>会员名称 <input type="text" id="cgl-vipname" class="diqu" placeholder="" /></li>
+				<li class="opm2 opm3">违规级别
+					<select name="" id="cgl-wgdj" class="wgjibie"></select>
+				</li>
+			</ul>
+			<input id="cgl-reset" type="reset" value="重置">
+		</div>
+		<div id="cgl-table">
+			<div class="cgl-anniu">
+				<span id="cgl-qrwg12" class="cgl-import">确认违规</span>
+				<span id="cgl-qrwg1" class="cgl-import">调整并确认</span>
+				<span id="cgl-tzwg1" class="cgl-import">调整违规等级</span>
+				<span id="cgl-jcwg1" class="cgl-import">解除违规</span>
+				<span id="cgl-fstz1" class="cgl-import">发送通知</span>
+			</div>
+			<div id="cgl-box">
+				<table border="1">
+					<thead>
+						<tr>
+							<th width="3%"><input id="checall" type="checkbox" placeholder=""></th>
+							<th width="10%">会员名称</th>
+							<th width="6%">会员类型</th>
+							<th width="8%">发生地区</th>
+							<th width="8%">报警日期</th>
+							<th width="5%">近半年</th>
+							<th width="6%">违规级别</th>
+							<th width="8%">违规原因</th>
+							<th width="8%">处罚措施</th>
+							<th width="13%">处罚周期</th>
+							<th width="6%">刷单金额</th>
+							<th width="6%">扣款金额</th>
+							<th width="6%">当前状态</th>
+							<th width="5%">操作</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+			<div id="cgl-tablebox">
+				<table border="1">
+					<tbody id="cgl-tbody"></tbody>
+				</table>
+				<div id="cgl-more"><span>点击加载更多</span></div>
+			</div>
+		</div>
+		<div id="shuamon">刷单金额：
+			<div>￥<strong id="shua">0.00</strong><span>元</span></div>
+		</div>
+		<div id="koumon">扣款金额：
+			<div>￥<strong id="kou">0.00</strong><span>元</span></div>
+		</div>
+		<div class="copyright">凌云科技版权所有 京ICP号10211557.</div>
+		<div class="cgl-jzz">加载中，请稍后···</div>
+		<div class="cgl-zhezao"> </div>
+	</body>
+</html>

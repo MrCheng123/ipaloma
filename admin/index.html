@@ -1,0 +1,554 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="renderer" content="webkit|ie-comp|ie-stand">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<LINK rel="Bookmark" href="/favicon.ico">
+		<LINK rel="Shortcut Icon" href="/favicon.ico" />
+		<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+		<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+		<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+		<link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css" />
+		<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+		<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+		<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+		<title>凌云会员管理系统V1.0.3</title>
+		<meta name="keywords" content="凌云会员管理系统V1.0.3,凌云科技">
+		<meta name="description" content="凌云会员管理系统V1.0.3，是凌云科技开发的管理系统。">
+		<style type="text/css">
+			/*原样式*/
+			
+			.big-page .Hui-article-box,
+			.big-page .dislpayArrow,
+			.big-page .breadcrumb {
+				left: 50px;
+			}
+			
+			.big-page .Hui-aside {
+				left: -150px;
+			}
+			/*别忘了改为-150*/
+			/* 344357 */
+			
+			.hi {
+				display: none;
+			}
+			/* 样式调整 */
+			
+			@font-face {
+				font-family: 'iconfont';
+				/* project id 175093 */
+				src: url('//at.alicdn.com/t/font_mywaqi3jbyxbhuxr.eot');
+				src: url('//at.alicdn.com/t/font_mywaqi3jbyxbhuxr.eot?#iefix') format('embedded-opentype'), url('//at.alicdn.com/t/font_mywaqi3jbyxbhuxr.woff') format('woff'), url('//at.alicdn.com/t/font_mywaqi3jbyxbhuxr.ttf') format('truetype'), url('//at.alicdn.com/t/font_mywaqi3jbyxbhuxr.svg#iconfont') format('svg');
+			}
+			
+			.iconfont {
+				font-family: "iconfont" !important;
+				font-size: 16px;
+				font-style: normal;
+				-webkit-font-smoothing: antialiased;
+				-webkit-text-stroke-width: 0.2px;
+				-moz-osx-font-smoothing: grayscale;
+			}
+			
+			.navbar-wrapper {
+				height: 85px;
+			}
+			
+			.container-fluid {
+				padding-left: 0px;
+			}
+			
+			.navbar>.container-fluid>.logo {
+				background-color: #274f84;
+				text-align: center;
+				height: 72px;
+				width: 199px;
+				padding-top: 13px;
+			}
+			
+			.Hui-aside {
+				position: absolute;
+				top: 85px;
+			}
+			
+			.dislpayArrow a {
+				top: 52%;
+			}
+			
+			.Hui-article-box {
+				top: 85px;
+			}
+			
+			.navbar-nav>ul>li,
+			.navbar-nav>ul>li>a {
+				line-height: 85px;
+			}
+			
+			.navbar>.container-fluid>.navbar-logo-m>img {
+				display: block;
+				margin: auto;
+			}
+			
+			.navbar>.container-fluid>.navbar-logo-m>span {
+				width: 199px;
+				font-size: 18px;
+				color: #fff;
+				height: 41px;
+				line-height: 41px;
+			}
+			
+			.navbar {
+				background: #4778c7;
+				height: 85px;
+			}
+			
+			.Hui-aside {
+				background: #1b2737;
+				padding-top: 0;
+			}
+			
+			.Hui-aside .menu_dropdown dt {
+				color: #ecf0f1;
+				border-bottom: 1px solid #293648;
+				height: 59px;
+				line-height: 59px;
+			}
+			
+			.Hui-aside .menu_dropdown dt:hover {
+				color: #ecf0f1;
+			}
+			
+			.Hui-aside .menu_dropdown dt .Hui-iconfont {
+				color: #ecf0f1;
+			}
+			.Hui-aside .menu_dropdown dt .iconfont {
+			    color: #ecf0f1;
+			}
+			
+			.Hui-aside .menu_dropdown dt .menu_dropdown-arrow {
+				color: #ecf0f1;
+			}
+			
+			.Hui-aside .menu_dropdown dd ul {
+				/* padding: 3px 8px; */
+				padding: 0;
+			}
+			
+			.Hui-aside .menu_dropdown dd ul>li {
+				background-color: #283649;
+				color: #ecf0f1;
+				height: 50px;
+			}
+			
+			.Hui-aside .menu_dropdown ul li a {
+				color: #ecf0f1;
+				line-height: 50px;
+			}
+			
+			.Hui-aside .menu_dropdown li a:hover {
+				color: #ecf0f1;
+				background-color: #344357;
+			}
+			
+			.project>.icoLong>i:nth-of-type(1),
+			.project>.icoLong>span {
+				font-size: 16px;
+			}
+			
+			.project>.icoLong>span {
+				margin-left: 15px;
+			}
+			
+			.Hui-aside .icoLong2>li>a>span {
+				margin-left: 20px;
+			}
+			
+			.Hui-article {
+				top: 0;
+			}
+			
+			/* li被点击后的样式 */
+			.Hui-aside .menu_dropdown dd ul>li>.action_y{
+				background-color: #4778c7;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="navbar-wrapper">
+			<div class="navbar navbar-fixed-top">
+				<div class="container-fluid cl">
+					<!--<a class="logo navbar-logo f-l mr-10 hidden-xs" href="./index.html">凌云会员管理系统</a>-->
+					<a class="logo navbar-logo-m f-l mr-10 hidden-xs" href="./index.html"><img src="img/logo-y.jpg" /><span class="logo navbar-slogan f-l mr-10 hidden-xs">会员管理系统</span></a>
+					<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
+					<nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
+						<ul class="cl">
+							<li id="Hui-msg">
+								<a href="./index.html" title=""><i class="iconfont" style="font-size:18px">&#xe601;</i><span>&nbsp&nbsp首页</span></a>
+							</li>
+							<li id="Hui-msg">
+								<a href="#" title=""><i class="iconfont" style="font-size:20px">&#xe618;</i><span class="yonghu">&nbsp&nbsp欢迎您</span></a>
+							</li>
+							<li id="Hui-msg">
+								<a href="#" title=""><i class="iconfont" style="font-size:18px">&#xe623;</i><span>&nbsp&nbsp消息中心</span></a>
+							</li>
+							<li id="Hui-msg">
+								<a href="#" title="" class="exit"><i class="iconfont" style="font-size:18px">&#xe636;</i><span>&nbsp&nbsp退出</span></a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<aside class="Hui-aside">
+			<input runat="server" id="divScrollValue" type="hidden" value="" />
+			<div class="<!-- menu_dropdown --> bk_2">
+				<dl id="menu-article" class="project">
+					<dt class="icoLong"><i class="iconfont">&#xe627;</i> <span>系统管理</span><i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+					<dd>
+						<ul class="icoLong2">
+							<!--<li>
+								<a _href="SystemManagement/MenuManagement/MenuManagement.html" data-title="菜单管理" href="javascript:void(0)"> <span>菜单管理</span></a>
+							</li>
+							<li>
+								<a _href="SystemManagement/Organizations/Organization.html" data-title="组织机构" href="javascript:void(0)"> <span>组织机构</span></a>
+							</li>
+							<li>
+								<a _href="SystemManagement/Authorization/Authorization.html" data-title="权限管理" href="javascript:void(0)"> <span>权限管理</span></a>
+							</li>
+							<li>
+								<a _href="SystemManagement/RegionalManagement/article-list.html" data-title="区域管理" href="javascript:void(0)"> <span>区域管理</span></a>
+							</li>-->
+							<li>
+								<a _href="SystemManagement/NotificationManagement/Notification.html" data-title="通知管理" href="javascript:void(0)"> <span>通知管理</span></a>
+							</li>
+							<li>
+								<a _href="SystemManagement/ParametersManagement/ParametersManagement.html" data-title="参数设置" href="javascript:void(0)"> <span>参数设置</span></a>
+							</li>
+							<!--<li>
+								<a _href="SystemManagement/SystemLogs/article-list.html" data-title="系统日志" href="javascript:void(0)"> <span>系统日志</span></a>
+							</li>-->
+						</ul>
+					</dd>
+				</dl>
+				<dl id="menu-picture" class="project">
+					<!--<dt class="icoLong"><i class="iconfont" style="font-size: 20px; margin-left: -3px;">&#xe600;</i> <span style="margin-left: 13px;">会员档案管理</span><i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
+					<dd>
+						<ul class="icoLong2">
+							<li>
+								<a _href="MemberFileManagement/MemberFileManagement.html" data-title="档案管理" href="javascript:void(0)"> <span>档案管理</span></a>
+							</li>
+
+						</ul>
+					</dd>-->
+
+				</dl>
+				<dl id="menu-product" class="project">
+					<!--<dt class="icoLong">
+						<i class="iconfont" style="font-size: 14px;  margin-left: 2px;">&#xe6b1;</i>
+						  <span>服务管理</span>
+						<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+					</dt>
+					<dd>
+						<ul class="icoLong2">
+							<li>
+								<a _href="ServiceManagement/ServiceSalesStatistics.html" data-title="服务销售统计" href="javascript:void(0)"> <span>服务销售统计</span></a>
+							</li>
+							<li>
+								<a _href="ServiceManagement/1.html" data-title="服务设置" href="javascript:void(0)"> <span>服务设置</span></a>
+							</li>
+							<li>
+								<a _href="ServiceManagement/1.html" data-title="服务条款设置" href="javascript:void(0)"> <span>服务条款设置</span></a>
+							</li>
+						</ul>
+					</dd>-->
+				</dl>
+				<dl id="menu-comments" class="project">
+					<dt class="icoLong">
+						<i class="iconfont">&#xe613;</i> <span>市场营销</span>
+						<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+					</dt>
+					<dd>
+						<ul class="icoLong2">
+							<li>
+								<a _href="MarketingActivity/TopicManagement/ActivityList.html" data-title="活动管理" href="javascript:void(0)"> <span>活动管理</span></a>
+							</li>
+							<li>
+								<a _href="MarketingActivity/PropagationManagement/Marketcopymanagement.html" data-title="市场文案管理" href="javascript:void(0)"> <span>市场文案管理</span></a>
+							</li>
+							<li>
+								<a _href="MarketingActivity/BrushSingle/html/recording.html" data-title="刷单记录" href="javascript:void(0)">  <span>刷单记录</span></a>
+							</li>
+						</ul>
+					</dd>
+				</dl>
+				<dl id="menu-financial" class="project">
+					<!--<dt class="icoLong">
+						<i class="iconfont">&#xe614;</i> <span>财务管理</span>
+						<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i>
+					</dt>
+					<dd>
+						<ul class="icoLong2">
+							<li>
+								<a _href="Financialmanagement/Themeactivitymanagement/Activityoperation.html" data-title="主题活动预算管理" href="javascript:;">
+
+									<span>主题活动预算管理</span>
+								</a>
+							</li>
+							<li>
+								<a _href="" data-title="会员钱包" href="javascript:void(0)"> <span>会员钱包</span></a>
+							</li>
+							<li>
+								<a _href="" data-title="活动运营账户管理" href="javascript:void(0)"> <span>活动运营账户管理</span></a>
+							</li>
+						</ul>
+					</dd>-->
+				</dl>
+			</div>
+		</aside>
+		<!--侧边栏收起回缩按钮-->
+		<!--<div class="dislpayArrow hidden-xs">
+			<a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)" style="background:-red"></a>
+		</div>-->
+		<section class="Hui-article-box">
+			<div id="Hui-tabNav" class="Hui-tabNav hidden-xs" style="display: none;">
+				<div class="Hui-tabNav-wp">
+					<ul id="min_title_list" class="acrossTab cl">
+						<li class="active"><span title="我的桌面" data-href="public.html">凌云科技</span><em></em></li>
+					</ul>
+				</div>
+				<div class="Hui-tabNav-more btn-group">
+					<a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a>
+					<a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a>
+				</div>
+			</div>
+			<div id="iframe_box" class="Hui-article">
+				<div class="show_iframe">
+					<div style="display:none" class="loading"></div>
+					<iframe scrolling="yes" frameborder="0" src="http://www.ipaloma.com/"></iframe>
+				</div>
+			</div>
+		</section>
+		<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>-->
+		<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+		<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+		<script src="lib/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(".yonghu").text(sessionStorage.account);
+//			$(".project").eq(1).addClass("hi"); //控制左侧菜单一级项目显示隐藏
+//			$(".project").eq(2).addClass("hi");
+//			$(".project").eq(4).addClass("hi");
+//			$(".project").eq(0).find("li").addClass("hi")
+//			$(".project").eq(0).find("li").eq(4).removeClass("hi"); //控制左侧菜单系统管理的二级项目显示隐藏
+//			$(".project").eq(0).find("li").eq(5).removeClass("hi");
+//
+//			$(".project").eq(3).find("li").eq(4).addClass("hi");
+			if(sessionStorage.status != "true") {
+				// alert(localStorage.status)
+				window.location.href = "login/signin.html";
+			}
+			$(".exit").click(function() {
+					window.location.href = "login/signin.html";
+					sessionStorage["status"] = false;
+					sessionStorage.account = '';
+				})
+				/*资讯-添加*/
+			function article_add(title, url) {
+				var index = layer.open({
+					type: 2,
+					title: title,
+					//		area: ['5000px', '300px'],
+					content: url
+				});
+				layer.full(index); //注意不要	
+			}
+		</script>
+		<script type="text/javascript">
+			//var layerIndex=0;
+			//console.log(layerIndex);	
+			/*左侧菜单-隐藏显示*/
+			function displaynavbar(obj) {
+				//console.log(obj)
+//				console.log($(obj).hasClass("open"))
+				if($(obj).hasClass("open")) {
+					$(obj).removeClass("open");
+					$("body").removeClass("big-page");
+					//下面是添加的,恢复侧边栏原貌
+					//二级菜单标题（和一级菜单完全一样的代码）		
+					$(".icoLong2>li").each(function() {
+							$(this).html($(this).data('htmlSide'));
+						})
+						//一级菜单标题
+					$(".icoLong").each(function() {
+							$(this).html($(this).data('htmlSide'));
+							//							console.log($(this).html())
+						})
+						//关闭tips，目前没有找到开关，目前解决方案是把time改为1ms
+					$(".icoLong").unbind('mouseenter a'); //此处a是命名空间,解除对应bind（a）	
+					$(".icoLong2>li").unbind('mouseenter b');
+				} else {
+					$(obj).addClass("open");
+					$("body").addClass("big-page");
+					//下面是添加的	
+					var icoSide = 0; //用于存储图标字符，	
+					var titleSide1 = 0; //一级title
+					var titleSide2 = 0; //二级title
+					var hrefSide2 = 0; //二级的a标签的href
+					//二级菜单标题
+//					$(".icoLong2>li").each(function() {
+//							icoSide = $(this).find($("i:nth-of-type(1)")).text(); //阿里图标编码，若直接打印会打印方框，不过其实质是正确的字符串，只是浏览器对#号处理了。		
+//							$(this).data('htmlSide', $(this).html());
+//							titleSide2 = $(this).find("span").text();
+//							$(this).data('titleSide2', titleSide2);
+//							hrefSide2 = $(this).find($("a:nth-of-type(1)")).attr("_href");
+//							$(this).data('hrefSide2', hrefSide2);
+//							$(this).empty();
+//							//			$(this).html('<i class="Hui-iconfont" style="padding-left:165px" title='+titleSide2+'>'+icoSide+'</i>');	//pl-150不行	
+//							$(this).html('<a  href="javascript:void(0)" _href=' + hrefSide2 + '><i class="Hui-iconfont" style="padding-left:140px" title=' + titleSide2 + '>' + icoSide + '</i></a>'); //相对一级标签，多了一个a标签，像素竟然差那么多
+//
+//						})
+						//一级菜单标题
+					$(".icoLong").each(function() {
+							//			icoSide=$(this).find($("i:nth-of-type(1)")).attr('iconicon');
+							icoSide = $(this).find($("i:nth-of-type(1)")).text(); //阿里图标编码	
+//							console.log(icoSide)
+							$(this).data('htmlSide', $(this).html());
+							titleSide1 = $(this).find("span").text(); //1.用于tips，2.用于title显示，因为有了1，所以2就多余了。所以下面可以删除。
+							$(this).data('titleSide1', titleSide1);
+							$(this).empty();
+							//			$(this).addClass('text-r')//优先级太高
+							//二选一，显示本身图标
+							//<i class="iconfont">&#xe627;</i>
+							$(this).html('<i class="iconfont" style="padding-left:153px" title='+titleSide1+'>'+icoSide+'</i>');	//pl-150不行		
+							//二选一，显示三角
+							//$(this).html('<i class="Hui-iconfont" style="padding-left:153px" title=' + titleSide1 + '>&#xe6d5;</i>'); //pl-150不行		
+						})
+						//加入layer的tips一级菜单标题
+					$(".icoLong").bind('mouseenter a', function() { //此处a是命名空间，这样用unbind就知道解除的是谁了，二者对应
+//							var layerIndex = layerTipsLong($(this).data('titleSide1'), $(this));
+//							$(this).data("layerIndex", layerIndex)
+						})
+						//关闭tips，但是不是解除移入事件。这点要注意
+					$(".icoLong").bind('mouseleave', function() { //从tipsMore: true,知道本代码有效
+							layer.close($(this).data("layerIndex"));
+						})
+						//加入layer的tips二级菜单标题
+						//					$(".icoLong2>li").bind('mouseenter b', function() {
+						//							var layerIndex = layerTipsLong($(this).data('titleSide2'), $(this));
+						//							$(this).data("layerIndex", layerIndex)
+						//						})
+						//关闭tips
+					$(".icoLong2>li").bind('mouseleave', function() {
+							var index = $(".icoLong2>li").index($(this))
+							layer.close($(this).data("layerIndex"));
+						})
+						//		$(".icoLong2>li").on('mouseover',function(event){此方法目前有冒泡bug]	
+						////		event.stopPropagation();//不行			
+						//			var index=$(".icoLong2>li").index($(this))//啦啦啦啦
+						//			layerTipsLong($(this).data('titleSide2'),$(".icoLong2>li").eq(index));		
+						//			return false;//不可以
+						//		});
+						//测试用
+						//		$(".icoLong2 *").mouseenter(function(){
+						//			console.log($(this)[0].tagName);
+						//		})		
+				}
+			}
+
+			//下拉菜单点击选中样式
+			$(".icoLong2").on("click","li>a",function(){
+				$(".icoLong2").find("li").find("a").removeClass("action_y");
+				$(this).addClass("action_y")
+			})
+			//在左侧菜单隐藏的情况下，点击下拉，左侧菜单显示
+			$(".icoLong").on("click",function(){
+				showNavBar($(this))
+			})
+			function showNavBar(obj){		
+				if(($(".pngfix").hasClass("open"))) {
+//					console.log($(".pngfix").hasClass("open"));
+//					$(".pngfix").addClass("open");
+//					$("body").addClass("big-page");
+					$(".pngfix").removeClass("open");
+					$("body").removeClass("big-page");
+					//下面是添加的,恢复侧边栏原貌
+					//二级菜单标题（和一级菜单完全一样的代码）		
+					$(".icoLong2>li").each(function() {
+							$(this).html($(this).data('htmlSide'));
+						})
+						//一级菜单标题
+					$(".icoLong").each(function() {
+							$(this).html($(this).data('htmlSide'));
+							//							console.log($(this).html())
+						})
+						//关闭tips，目前没有找到开关，目前解决方案是把time改为1ms
+					$(".icoLong").unbind('mouseenter a'); //此处a是命名空间,解除对应bind（a）	
+					$(".icoLong2>li").unbind('mouseenter b');
+				}
+
+			}
+		
+
+			//tips封装函数，可复用
+			function layerTipsLong(contentLong, objLong) {
+				return layer.open({
+					// 	title: false,
+					//		area: ['100px','100px'],//官方，长和宽，默认自适应,建议自适应。我：关闭按钮的相对于绑定元素的距离，layer的高度，
+					// offset: ['1100px', '200px'],//tips无用
+					type: 4,
+					content: [contentLong, objLong], //显示内容，绑定对象，我发现绑定元素有margin，就会影响某些参数，如下面tips
+					shade: 0, //遮罩，1有，0无，
+					time: 3000, //定时关闭，0表示不定时关闭
+					shift: 0, // 动画，1开，0关闭
+					tips: [2, '#c00'], //方向，颜色，
+					tipsMore: false, //允许多个tips，
+					success: function() {
+						console.log("这是回调函数");
+					},
+					//	  	btn: ['明白了', '知道了'],			  
+				});
+			}
+
+			// 自定义_y
+//			var local_arr = [];			
+			$(document).on("click", ".icoLong2 a", function() {
+				//console.log($(this))
+				//				var arr_y = $(this).attr('_href').toString().split("/")
+				//				var len = arr_y.length;
+				//				var str_y = arr_y[len-1];
+				//				var name_y = str_y.substr(0,str_y.length-5)
+				//				console.log(arr_y[len-1])
+				var arr_y = $(this).attr('_href');
+//				if(local_arr.indexOf(arr_y) == -1){
+//					local_arr.push(arr_y);
+////					localStorage.setItem('my_arr', local_arr);
+//				};
+//				console.log(JSON.stringify(localStorage.getItem("my_arr")))
+				var len = arr_y.length;
+				var href_y = arr_y.substr(0, len - 5).split("/");
+				href_y = href_y[href_y.length-1];
+//				console.log(href_y)				
+//				var name_y = $(this).attr('data-title')
+					//console.log(name_y)
+//				localStorage.url_y = name_y;
+				location.hash = href_y;
+//				location.reload()
+			})
+		</script>
+	</body>
+
+</html>

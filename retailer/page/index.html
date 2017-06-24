@@ -1,0 +1,300 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>超惠卖</title>
+
+    <link rel="stylesheet" href="/retailer/css/weui.min.css" />
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <style>
+        html, body, div {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: 0;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1080px;
+            min-height: 20px;
+            overflow: hidden;
+        }
+
+        .bg {
+            background: #2eb0a9;
+        }
+    </style>
+    <style>
+        .bd-bg {
+            padding-left: 40px;
+            box-sizing: border-box;
+            background: url(../image/a.png) no-repeat left center;
+            background-size: 40px;
+        }
+
+        .shop,
+        .store,
+        .addr {
+            padding-left: 25px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .shop {
+            background: url(../image/g.png) no-repeat left center;
+            background-size: 20px;
+            text-overflow: ellipsis;
+            height: 25px;
+            line-height: 25px;
+            white-space: nowrap;
+        }
+
+        .store {
+            background: url(../image/s.png) no-repeat left center;
+            background-size: 20px;
+            text-overflow: ellipsis;
+            height: 25px;
+            line-height: 28px;
+            white-space: nowrap;
+            margin-top: 5px;
+        }
+
+        .addr {
+            background: url(../image/addr.png) no-repeat left 3px;
+            background-size: 20px;
+            height: 45px;
+            overflow: hidden;
+            line-height: 22px;
+            margin-top: 2px;
+        }
+
+        .s-box {
+            border-radius: 3px;
+            width: 94%;
+            left: 3%;
+            top: 200px;
+            position: absolute;
+            z-index: 101;
+            box-sizing: border-box;
+            overflow: inherit;
+            text-align: center;
+        }
+
+            .s-box:last-child {
+                border: 0;
+            }
+
+            .s-box .cont {
+                background: #17a297;
+                padding: 10px 30px;
+                line-height: 25px;
+                color: #fff;
+                text-align: center;
+            }
+
+                .s-box .cont a {
+                    background: #17a297;
+                    padding: 10px 30px;
+                    line-height: 25px;
+                    color: #fff;
+                    text-align: center;
+                }
+
+        .s-close {
+            background: url(../image/close.png) no-repeat center center;
+            width: 35px;
+            height: 35px;
+            background-size: 35px;
+            position: absolute;
+            right: -8px;
+            top: -13px;
+            z-index: 102;
+        }
+
+        .lazyout {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            z-index: 100;
+            position: absolute;
+        }
+
+        body {
+            line-height: 1.6;
+            font-family: "微软雅黑";
+        }
+
+        .btn-know2 {
+            font-size: 14px;
+            background: #2bc9be;
+            color: #fff;
+            border: 0;
+            padding: 7px 10px;
+            border-radius: 20px;
+            -webkit-appearance: none;
+            font-family: "微软雅黑";
+            outline: none;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .weui_btn_area {
+            margin: 1.17647059em 15px .3em;
+            margin-top: 20%;
+        }
+
+        .demo_con {
+            position: fixed;
+            right: 20px;
+            width: 100%;
+            display: none;
+        }
+
+            .demo_con .button {
+                width: 5em;
+                line-height: 2.375em;
+                text-align: center;
+                color: #2F938B;
+                text-shadow: 1px 1px 1px #333;
+                border-radius: 5px;
+                position: relative;
+                overflow: hidden;
+                font-size: 0.9rem;
+                outline: none;
+                font-family: "Microsoft YaHei" !important;
+                margin-top: 0.625em;
+                float: right;
+            }
+
+        .button.red {
+            border: 2px solid #318D88;
+            background: #46B1AB;
+        }
+    </style>
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/retailer/js/lib/common.js"></script>
+    <script>
+        $(function () {
+            if ($.isFunction(wxjsshare)) {
+                wxjsshare({});
+            }
+            if (wxjsconfig.wechatname != "")
+                $("#retailer_qrcode").attr("src", "http://open.weixin.qq.com/qr/code/?username=" + wxjsconfig.wechatname);
+            checkCookie();
+            var notification = common.getUrlParam("notification");
+            if (notification != "") {
+                toasterextend.showtips(notification, "info");
+            }
+        })
+    </script>
+
+    <script type="text/javascript">
+        function getCookie(c_name) {
+            if (document.cookie.length > 0) {
+                c_start = document.cookie.indexOf(c_name + "=")
+                if (c_start != -1) {
+                    c_start = c_start + c_name.length + 1
+                    c_end = document.cookie.indexOf(";", c_start)
+                    if (c_end == -1) c_end = document.cookie.length
+                    return unescape(document.cookie.substring(c_start, c_end))
+
+                }
+            }
+            return ""
+        }
+
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date()
+            exdate.setDate(exdate.getDate() + expiredays)
+            document.cookie = c_name + "=" + escape(value) +
+			((expiredays == null) ? "" : "; expires=" + exdate.toGMTString())
+        }
+        function checkCookie() {
+            username = getCookie('username')
+            if (username != null && username != "") {
+                $(".demo_con").show();
+                setCookie('username', "", -1);
+                getWin();
+                setTimeout(function () { closeWin(); }, 3000);
+
+            }
+        }
+
+        function getWin() {
+            var html = '<div id="win">'
+              + '<div class="lazyout"></div>'
+              + '<div class="weui_cells s-box" >'
+			  + '<div style=" font-size:17px; line-height: 20px; padding:13px; text-align: center;"><img src="/retailer/image/dui.png"></img></div>'
+              + '<div style=" font-size:17px; line-height: 25px; padding:2px; text-align: center;">恭喜您！您的店铺已生效！</div>'
+              + ' <div style=" font-size:15px; color:#cecece; line-height: 25px; padding:10px; text-align: center;">   先带您了解一下超蕙卖功能！</div>'
+              + '     </div></div></div>';
+            $("body").addClass("body");
+            $("body").prepend(html);
+
+            var h = $(window).height() > $(document.body).height() ? $(window).height() : $(document.body).height();
+            $(".lazyout").height(h);
+        }
+        function closeWin() {
+            $("#win").remove();
+            $("body").css("overflow", "inherit")
+        }
+    </script>
+</head>
+
+<body style="background:#e8f6f6;">
+    <div class="demo_con">
+        <button type="button" class="button red" onclick="wx.closeWindow();">跳过</button>
+    </div>
+    <div class="container bg">
+
+        <p style="margin-top:12.9%"><img src="/retailer/image/1.png" style="width:39.8%;"></p>
+        <p style="margin-top:13.5%"><img id="retailer_qrcode" style="width:50%; "></p>
+
+        <p style="margin-top:14.4%"><img src="/retailer/image/3.png" style="width:88%;"></p>
+        <p style="margin:12.7% 0 12% 0"><img src="/retailer/image/4.png" style="width:65.1%;"></p>
+    </div>
+    <div class="container">
+        <p style="margin:29.2% 0 13.3% 0"><img src="/retailer/image/5.png" style="width:61.4%;"></p>
+        <p><img src="/retailer/image/6.png" style="width:33.2%"></p>
+        <p style="margin:4.1% 0 3.7% 0"><img src="/retailer/image/7.png" style="width:38.8%;"></p>
+        <p><img src="/retailer/image/8.png" style="width:48.9%"></p>
+        <p style="margin:28.9% 0 9.2% 0"><img src="/retailer/image/9.jpg" style="width:81.7%;"></p>
+        <p><img src="/retailer/image/10.png" style="width:56%"></p>
+        <p style="margin:4.1% 0 3.7% 0"><img src="/retailer/image/11.png" style="width:44.7%;"></p>
+        <p><img src="/retailer/image/12.png" style="width:29.9%"></p>
+        <p style="margin:28.7% 0 9.2% 0"><img src="/retailer/image/13.png" style="width:58.2%;"></p>
+        <p><img src="/retailer/image/14.png" style="width:56%"></p>
+        <p style="margin:4.3% 0 3.7% 0"><img src="/retailer/image/15.png" style="width:70.6%;"></p>
+        <p><img src="/retailer/image/16.png" style="width:29.95%"></p>
+        <p style="margin:28.7% 0 6.4% 0"><img src="/retailer/image/17.png" style="width:37.3%"></p>
+        <p><img src="/retailer/image/18.png" style="width:53.8%;"></p>
+        <p style="margin:4.1% 0 9.6% 0"><img src="/retailer/image/19.png" style="width:59.4%;"></p>
+        <p><img src="/retailer/image/20.png" style="width:82.7%"></p>
+        <p style="margin:11.1% 0 9.2% 0"><img src="/retailer/image/21.png" style="width:59.2%;"></p>
+        <p><img src="/retailer/image/22.png" style="width:44.4%"></p>
+        <p style="margin:5.4% 0 28.8% 0"><img src="/retailer/image/23.png" style="width:36%;"></p>
+        <p><img src="/retailer/image/24.png" style="width:87.4%"></p><br>
+    </div>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

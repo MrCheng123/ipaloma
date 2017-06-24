@@ -1,0 +1,358 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+<title>店铺选择</title>
+<link rel="stylesheet" href="../css/cui.css" />
+<link rel="stylesheet" href="../css/lib.css" />
+<link rel="stylesheet" href="../css/slick.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/retailerstyle.css" />
+<link rel="stylesheet" href="../css/weixintips.css" />
+<style>
+.txtNew {
+	overflow: hidden;
+	padding-left: 8px;
+	position: relative;
+	min-height: 100px;
+	width: 49%;
+	display: inline-block;
+}
+.userNew {
+	background: url(../image/user-ico.png) left center no-repeat;
+	padding-left: 20px;
+	color: #5C5C5C;
+	background-size: 17px auto;
+	/* height: 18px; */
+	font-size: 14px;/* margin-top: 8%; *//* padding: 0px 0px 0px 23px; *//* position: inherit; *//* bottom: -5px; */
+}
+.timeNew {
+	/* position: absolute; */
+            /* bottom: 13px; */
+            /* left: 9px; */
+	font-size: 13px;
+	background: url(../image/ico-time.jpg) left center no-repeat;
+	/* margin-top: 15px; */
+	background-size: 14px auto;
+	padding-left: 20px;
+	color: #666;
+}
+.h3Style {
+	width: 100%;
+	min-height: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	font-size: 16px;
+}
+</style>
+</head>
+
+<body class="bgf6">
+<style>
+    .pic-list li .pic {
+        position: relative;
+        float: left;
+        width: 75px;
+        height: 75px;
+        overflow: hidden;
+		border-radius:0px;
+		margin-top: 12px;
+    }
+
+    #bd {
+    margin-bottom: 14px;
+    }
+   .sharestyle {
+            position: fixed;
+            left: 0;
+            bottom: 50px;
+            z-index: 99;
+            width: 100%;
+            height: 34px;
+            line-height: 34px;
+            color: #fff;
+            text-align: center;
+            background: rgba(0,0,0,0.6);
+        }
+    .lv-top{
+			width:100%;
+			height:50px;
+			line-height:50px;
+			color:#009f96;
+			background:#f5fffe;
+			font-size:16px;
+			padding-left:12px;
+			border-bottom:solid #e4e4e4 1px;
+			text-align:left;
+			}
+	.new-shop{
+				margin-bottom:64px;
+				}
+    .new-shop a{
+				padding:10px 20px;
+				color: #ffffff; 
+				background:  #009f96 url(../image/new-shop.png) 18px center no-repeat;
+				border-radius: 4px;
+				font-size: 18px;
+				padding-left:50px;
+				margin:35px auto 50px;
+				display:inline-block;
+				}
+	.footer{
+		 text-align:center;
+		 background:#ffffff;
+		}
+	.pic-list li .con {
+    padding: 6px;
+    border-top: 1px solid #e4e4e4;
+	border-bottom:none;
+    overflow: hidden;
+    }
+   .pic-list li {
+    background: #fff;
+	width: 96%;
+    margin: 0 auto;
+  }
+   #list{ background:#ffffff; margin-top: -1px;}
+   
+   .add1 a{float:right; padding:1px 8px; color: #ffffff; background: #0EE8DA; border-radius: 4px; font-size: 16px; margin-top:-62px;}
+   .add2 a{float:right; padding:1px 8px; color: #ffffff; background: #cecece; border-radius: 4px; font-size: 16px; margin-top:-62px;}
+   
+   @font-face {
+    font-family:'HeydingsCommonIconsRegular';
+    src: url('font/heydings_icons-webfont.eot');
+    src: url('font/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/heydings_icons-webfont.woff') format('woff'),
+         url('font/heydings_icons-webfont.ttf') format('truetype'),
+         url('font/heydings_icons-webfont.svg#HeydingsCommonIconsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+#container
+       {width:100%;}
+	   
+
+
+
+
+.tooltip p {
+             font-size:12px;}
+
+.tooltip { 
+           width: 71%;
+           padding:3px;
+           border-radius:3px;
+           position:absolute;
+		   border:solid #fdc995 1px ;
+           margin: -23px 78px 0;
+           background: url(../image/tan.png) 2px center no-repeat #fde7d3;
+		   color:#ff0000;
+		   padding-left:16px;
+           -webkit-transition:margin .5s ease-in-out;
+          -moz-transition:margin .5s ease-in-out;
+		  display:inline-block;}
+
+
+.arrow {
+    position:absolute;
+    margin: -32px 167px 0;
+    margin-left: 80%;
+	width: 0; 
+	height: 0; 
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #fde7d3;
+}
+      
+</style>
+<div id="bd">
+  <div class='lv-top'>已为您找回过往店铺，可选择店铺重新加入</div>
+  <div class="pic-list">
+    <ul id="list">
+    </ul>
+  </div>
+</div>
+<div class="footer">
+  <div class='lv-top'>添加新的门店，请点击下方按钮添加</div>
+  <div class="new-shop"> <a href="/retailer/page/createretailer.html">我要开新店</a></div>
+</div>
+
+
+<div class="overlay"></div>
+<script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script> 
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> 
+<script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script> 
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script> 
+<script type="text/javascript" src="/js/jquery/toastr.min.js"></script> 
+<script type="text/javascript" src="/js/jquery/utitlity.js"></script> 
+<script type="text/javascript" src="/js/wx/configinit.js"></script> 
+<script src="/retailer/js/lib/common.js"></script> 
+<script src="/retailer/js/common-buttom-nav.js"></script> 
+<script type="text/javascript">
+        $(function () {
+            $('.sharestyle').click(function (event) {
+                $('.overlay').fadeIn(200);
+            });
+            $('.overlay').click(function (event) {
+                /* Act on the event */
+                $(this).fadeOut(200);
+            });
+
+            var tem =
+                
+                "  <li>	" +
+                "    <div class='con'>	" +
+                "      <div class='pic'>	" +
+                "        <img style='height:100%' class='lazy' data-original='posterpic' alt='' />	" +
+                "        </div>	" +
+                "      <div class='txtNew' style='text-align:left;vertical-align:bottom;'>	" +
+                "       <div style='overflow:hidden;max-height: 45px;width: 100%; display:inline-block; margin-top: 22px;'>   " +
+                "         <h3 class='h3Style'>activitytitle</h3>	" +
+                "       </div>  " +       
+                "       <div style='line-height: 2em;position: relative; display:inline-block;'>  " +
+                "          <div class='' style='display:inline-block;'>店员：name </div>	" +
+                "           <div class='timeNew'></div></div>	" +
+                "       </div>  " + 
+                "     <div id='container'>" +
+				"      <div class='item'>" +
+				"       <h1 class='add2'><a href='javascript:' id='addId' onclick='jsonretailer(\"retailerId\",\"iscomplete\")' style='background:#009f96;' > 加入</a></h1>  " +
+				"          <div class='tooltip' id='tooltipId0' style='display:none' ><p>需通过其他店员邀请才能重新加入店铺</p><div class='arrow'></div></div>" +
+				"     </div></div></div>	" +
+                "  </li>"
+            
+            var listitem = ""
+			
+            var ajaxdata = {};
+
+            if (wxjsconfig.sharekey != null)
+                ajaxdata[wxjsconfig.sharekey] = "_";
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                data: ajaxdata,
+                url: '/webapi/retailer/weixin/gethistoryretailer',
+                beforeSend: function () {common.loading.show(); },
+                complete: function () {common.loading.hide(); },
+                success: function (json) {
+				
+                   common.loading.hide();
+                  
+				  json = json || {};   /* 统一加这句话 */
+                    if (json.error) {
+                        toasterextend.showtips(json.error, "error");
+                        return;
+                    }
+                    if (json.user_notification != undefined) {
+                        toasterextend.showtips(json.user_notification, "info");
+                        return;
+                    }
+					var number = 0;
+                    $.each(json.data, function (i, value) {
+						var temp = tem;
+					    var employeenames='';
+                        var num = $.trim(Number(value.employeecount));
+                   
+                        if (typeof (value.retailername) !== 'undefined')
+                            temp = temp.replace("activitytitle", value.retailername);
+
+                        if (typeof (value.picture_url) !== 'undefined')
+                            temp = temp.replace("posterpic", value.picture_url);
+                       
+					    if (typeof (value.retailer_id ) !== 'undefined')
+					        temp = temp.replace("retailerId", value.retailer_id);
+					    if (typeof (value.iscomplete) !== 'undefined')
+					        temp = temp.replace("iscomplete", value.iscomplete);
+                        
+					    if (typeof (value.employeename ) !== 'undefined' &&  typeof (value.employeecount )== 'number'  && num>0) {
+						   
+							temp  = temp.replace("none", "black");
+							temp  = temp.replace("background", "");
+							temp  = temp.replace("jsonretailer", "");
+						}  
+                      
+					    if (typeof (value.employeename) !== 'undefined' && typeof (value.employeecount) !== 'undefined' && num>0 && value.employeename!=null && value.employeename!=''){
+					         temp = temp.replace("name", value.employeename);  
+					    }							
+                        if(typeof (value.employeename) == 'undefined' || num<=0 ){
+                            temp = temp.replace("name", "无店员");
+                        }
+						listitem += temp;
+                    });
+                    $('#list').html(listitem);
+					$("img.lazy").lazyload();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                    var errormsg = "访问异常";
+
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;
+                        if (errormsg == undefined || errormsg == '')
+                            errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+                   
+                    toasterextend.showtips(errormsg, "error");
+                }
+            });
+        });
+    </script> 
+<script type="text/javascript">
+    function jsonretailer(id, iscomplete) {
+	
+	    $.ajax({
+			type: 'POST',
+			dataType: 'json',
+			url: '/webapi/retailer/weixin/jsonretailer?retailer_id='+id,
+			beforeSend: function () {common.loading.show(); },
+			complete: function () {common.loading.hide(); },
+			success: function (json) {		  
+			  json = json || {};   /* 统一加这句话 */
+			    if (json.error) {
+					toasterextend.showtips(json.error, "error");
+					return;
+				}
+				if (json.user_notification != undefined) {
+					toasterextend.showtips(json.user_notification, "info");
+					return;
+				}                        
+				$("img.lazy").lazyload();
+			
+				toasterextend.showtips('加入成功', "success"); 
+				if (iscomplete == "true")
+				    setTimeout(function () { wx.closeWindow(); }, 2000);				    
+				else
+				    setTimeout(function () { window.location.href = "/retailer/page/my_retailer_edit.html?retailer_id=" + id; }, 1000);
+			},
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+				var errormsg = "访问异常";
+
+				if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+					var json = JSON.parse(XMLHttpRequest.responseText);
+					errormsg = JSON.parse(json.Message).error;
+					if (errormsg == undefined || errormsg == '')
+						errormsg = "Http error: " + XMLHttpRequest.statusText;
+				}
+				toasterextend.showtips(errormsg, "error");
+			}
+        });
+	}
+	
+	
+	function setCookie(c_name,value,expiredays) {
+		var exdate=new Date()
+		exdate.setDate(exdate.getDate()+expiredays)
+		document.cookie=c_name+ "=" +escape(value)+
+		((expiredays==null) ? "" : "; expires="+exdate.toGMTString())
+	}
+
+	</script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

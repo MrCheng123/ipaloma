@@ -1,0 +1,118 @@
+[
+  {
+    "imgSrc": "/retailer/image/erweima.jpg",
+    "state": "已生效",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 6666,
+    "beginTime": "2017/02/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "凌云",
+    "flag": false,
+    "data":{
+    	"guid":"afdgfdagfhjlkjlk10",
+    	"msg":"信奈那发个规格大师发似的法士大夫阿斯顿噶十多个",
+    	"butie":210,
+    	"yusuan":2200.00,
+    	"fafang":500.00,
+    	"fanxian":"补贴"
+    }
+  },
+  {
+    "imgSrc": "/retailer/image/goods.jpg",
+    "state": "未生效",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 77777,
+    "beginTime": "2016/11/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "西直门",
+    "flag": true
+  },
+  {
+    "imgSrc": "/retailer/image/pic.jpg",
+    "state": "已过期",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 22222,
+    "beginTime": "2017/01/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "西二旗",
+    "flag": false,
+    "data":{
+    	"msg":"嗨翻营养纯净营养纯净营营养纯净营养纯净营，等你来",
+    	"butie":20,
+    	"yusuan":1000.00,
+    	"fafang":500.00,
+    	"fanxian":"补贴"
+    }
+  },
+  {
+    "imgSrc": "/retailer/image/goods.jpg",
+    "state": "未生效",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 77777,
+    "beginTime": "2016/11/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "西直门",
+    "flag": true
+  },
+  {
+    "imgSrc": "/retailer/image/pic.jpg",
+    "state": "已过期",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 22222,
+    "beginTime": "2017/01/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "西二旗",
+    "flag": false,
+    "data":{
+    	"msg":"嗨翻天根本停不下来，等你来",
+    	"butie":20,
+    	"yusuan":1000.00,
+    	"fafang":500.00,
+    	"fanxian":"补贴"
+    }
+  },
+  {
+    "imgSrc": "/retailer/image/goods.jpg",
+    "state": "未生效",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 77777,
+    "beginTime": "2016/11/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "西直门",
+    "flag": true
+  },
+  {
+    "imgSrc": "/retailer/image/pic.jpg",
+    "state": "已过期",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 22222,
+    "beginTime": "2017/01/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "西二旗",
+    "flag": false,
+    "data":{
+    	"msg":"嗨翻天根本停不下来停不下来停不下来停不下来停不下来",
+    	"butie":20,
+    	"yusuan":1000.00,
+    	"fafang":500.00,
+    	"fanxian":"补贴"
+    }
+  },
+  {
+    "imgSrc": "/retailer/image/goods.jpg",
+    "state": "审核中",
+    "title": "纯净营养纯净营养纯净营养纯净营养",
+    "userNum": 10101,
+    "beginTime": "2017/01/01",
+    "endTime": "2017/03/03 20:00",
+    "company": "某某科技有限公司",
+    "flag": false,
+    "data":{
+    	"msg":"嗨翻天，等你来",
+    	"butie":30,
+    	"yusuan":11000.00,
+    	"fafang":5100.00,
+    	"fanxian":"补贴"
+    }
+  }
+]

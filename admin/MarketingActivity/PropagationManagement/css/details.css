@@ -1,0 +1,199 @@
+/*
+* @Author: Administrator
+* @Date:   2016-11-18 18:29:04
+* @Last Modified by:   Administrator
+* @Last Modified time: 2016-11-24 17:22:01
+*/
+*{margin: 0 ;
+ padding:0;
+}
+
+
+.gray_layer{
+	width: 100%;
+	height: 1330px;
+	display:block;
+	position: relative;
+	z-index: 2;
+	background-color:rgba(102,102,102,0.3);
+}
+
+.content{
+	width: 969px;
+	height:auto;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+
+}
+.details_button{
+	height:44px;
+	width: 95%;
+	border-bottom: 1px solid #CBCBCB;
+	/* background-color: #588E0C; */
+	margin: 0 auto;
+}
+
+.details_button span{
+	line-height: 44px;
+	height:44px;
+	/* clear:both; */
+	float: left;
+}
+
+
+/* .details_button dev{
+	line-height: 44px;
+	height:44px;
+	float: right;
+	cursor: pointer;
+} */
+
+
+.content_text{	
+	width: 774px;
+	height: 1330px;
+	margin: 33px auto;
+	/* background-color:#7577DF; */
+}
+
+.big{
+	width: 100%;
+	height:70px;
+
+}
+.big_two{
+	width: 100%;
+	height:70px;
+
+}
+.big_three{
+	width: 100%;
+	height:130px;
+
+}
+
+
+.big_four{
+	width: 100%;
+	height:130px;
+}
+
+.big_five{
+	width: 100%;
+	height:130px;
+}
+
+.big_six{
+	width: 100%;
+	height:350px;
+}
+
+.big_even{
+	width: 100%;
+	height:130px;
+	margin-top:140px;
+}
+.big_eite{
+	width: 100%;
+	height:50px;
+	margin-top:20px
+}
+
+.big_button{
+	width: 544px;
+	height:32px;
+	margin:35px auto;
+}
+
+
+.big_button button{
+	width: 130px;
+	height: 31px;
+	/* background-color: yellow; */
+}
+
+.Copy_title{
+	height:70px;
+	width: 100%;
+	/* background-color: #826F21; */
+}
+.Copy_title1{
+	width: 116px;
+	height:100%;
+	display: inline-block;
+	float:left;
+	/* background-color: #98A90F; */
+}
+.content_title{
+	resize: none;
+	height:100%;
+	width: 650px;
+	float:right;
+	display: inline-block;
+	/* background-color: #ACE397; */
+}
+
+.province{
+	width: auto;
+	height:20px;
+	font-size: 16px;
+}
+.Person_charge{
+	width: auto;
+	height:20px;
+	margin-left:50px;
+	font-size: 16px;
+}
+
+.spacing{
+	margin-left:104px;
+	margin-top: 10px;
+}
+.County{
+	width: auto;
+	height:20px;
+	
+}
+.close{
+	background-color: #A9A9A9;
+	outline-style: none;
+	border:0px;
+	cursor: pointer;
+}
+.close:hover{
+	background-color: #E4BF0B;
+}
+.modify{
+	background-color: #27B46B;
+	outline-style: none;
+	border:0px;
+	cursor: pointer;
+}
+.modify:hover{
+	background-color: #E4BF0B;
+}
+.Send{
+	background-color:#FF5F31;
+	outline-style: none;
+	border:0px;
+	cursor: pointer;
+}
+.Send:hover{
+	background-color:#E4BF0B;
+	outline-style: none;
+	border:0px;
+	cursor: pointer;
+}
+
+.examine{
+	background-color: #FF5F31;
+	outline-style: none;
+	border:0px;
+	cursor: pointer;
+}
+.examine:hover{
+	background-color: #E4BF0B;
+	outline-style: none;
+	border:0px;
+	cursor: pointer;
+}

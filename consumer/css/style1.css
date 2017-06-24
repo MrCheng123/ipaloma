@@ -1,0 +1,757 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*横屏样式*/
+@media only screen and (min-width: 240px) and (max-width:319px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:78%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:64%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:20%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5; 
+        box-sizing:border-box;  
+    }
+    .store1-right1{
+        float:right; 
+        width:20%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:13%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:87%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:68%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        width:32%;
+        float:right;
+    }
+
+    .storeintro-left{
+        float:left; 
+        width:86%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:14%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+
+    .zproname{
+        float:left;
+        width:91%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+
+}
+
+@media only screen and (min-width: 320px) and (max-width:359px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:82%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:74%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right; 
+        width:16%;
+        text-align:center;
+        box-sizing:border-box;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5; 
+    }
+    .store1-right1{
+        float:right; 
+        width:16%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+
+    .active-label{
+
+        float:left;
+        width:10%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:90%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:78%;
+        overflow:hidden;
+    }
+    .activebox-right{
+        float:right;
+        width:22%;
+    }
+
+    .storeintro-left{
+        float:left; 
+        width:90%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:10%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zproname{
+        float:left;
+        width:91%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+
+@media only screen and (min-width: 360px) and (max-width:413px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:84%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:77%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:14%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+    .store1-right1{
+        float:right; 
+        width:14%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:10%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:90%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:73%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:27%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:92%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:8%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:8%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:91%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media only screen and (min-width: 414px) and (max-width:479px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:84%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:79%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:14%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+    .store1-right1{
+        float:right; 
+        width:14%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:10%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:90%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:76%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:24%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:92%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:8%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:8%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:91%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media only screen and (min-width: 480px) and (max-width:599px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:84%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:82%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:14%;
+        text-align:center; 
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5; 
+        box-sizing:border-box;
+    }
+    .store1-right1{
+        float:right; 
+        width:12%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:8%;
+        overflow:hidden;
+    }
+    .activebox{
+        float:left; 
+        width:92%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:80%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:20%; 
+    }
+
+    .storeintro-left{
+        float:left;
+        width:93%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:7%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box;
+    }
+    .zeng{
+        float:left;
+        width:6%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:93%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+
+
+}
+@media only screen and (min-width: 600px) and (max-width:799px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:84%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:84%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:14%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+    .store1-right1{
+        float:right; 
+        width:14%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:6%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:94%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:84%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:16%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:92%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:8%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:6%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:93%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+
+}
+@media only screen and (min-width: 800px) and (orientation:landscape){
+    .store1-left{
+        float:left;
+        width:86%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:86%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right; 
+        width:12%;
+        text-align:center;
+        box-sizing:border-box;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:30px;
+        border-left:1px solid #e5e5e5; 
+    }
+    .store1-right1{
+        float:right; 
+        width:16%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:5%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:95%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:88%;
+        overflow:hidden;
+    }
+    .activebox-right{
+        float:right;
+        width:12%;
+    }
+
+    .storeintro-left{
+        float:left; 
+        width:90%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:10%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:4%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:95%;
+        color:#333;
+        font-size:1.1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:50%;
+        margin-left:-400px;
+        bottom:0;
+        z-index:999;
+        width:800px;
+        height:50px;
+    }
+    .share{
+        position:fixed;
+        left:50%;
+        margin-left:-400px;
+        bottom:50px;
+        z-index:999;
+        width:800px;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+
+
+}

@@ -1,0 +1,22 @@
+﻿body {background-color:#fff
+}
+html, body {height:100%
+}
+.pageCss { height:calc(100% - 20px);height: -moz-calc(100% - 20px);
+height: -webkit-calc(100% - 20px);padding-top:20px
+}
+.verifytcket {width:100%; height:auto;background: url(/consumer/image/blx.png) repeat-x top;background-size: auto 5px;
+border-bottom: solid 2px #ccc;padding:20px 10px 10px 10px
+}
+    .verifytcket .ticket_left {width:90px; height:auto;float:left
+    }
+        .verifytcket .ticket_left img { width:80px; height:80px
+        }
+         .verifytcket .ticket_right {width:calc(100% - 110px); width: -moz-calc(100% - 110px);
+width: -webkit-calc(100% - 110px);height:100px;float:left;
+    }
+            .verifytcket .ticket_right .ticketTitle {width:100%; height:auto;line-height:20px;
+
+            }
+            .verifytcket .ticket_right span {height:20px; line-height:20px; padding:0 10px;background-color:red;border-radius:3px
+            }

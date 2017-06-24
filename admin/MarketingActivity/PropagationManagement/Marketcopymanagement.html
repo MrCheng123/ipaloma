@@ -1,0 +1,371 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<metahttp-equivmetahttp-equiv="x-ua-compatible"content="IE=7"/> 
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="/admin/MarketingActivity/PropagationManagement/js/NewlyAdded.js"></script>
+<!-- <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>  -->
+<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+
+<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+
+
+<!-- <link rel="stylesheet" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet"> -->
+<link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/Newly_added1.css">
+<link rel="stylesheet" type="text/css" href="/admin/static/h-ui.admin/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/admin/static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="/admin/MarketingActivity/PropagationManagement/css/Marketcopymanagement.css" />
+<link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/dropload.css">
+<link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/area_update.css">
+<!-- <link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/summernote.css" /> -->
+<!-- <script src='/admin/MarketingActivity/PropagationManagement/js/summernote.js'></script> -->
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>市场文案管理</title>
+</head>
+
+<body class='body_close'>
+	<div class="page-container">
+		
+		<div class="bread-crumb">营销活动><span style="color:#000">市场文案管理</span></div>
+		<div class="search-wrap">
+				<div class="search-area">
+					<!-- ==========遮罩层=S==================== -->
+					<!-- <div class="xiaoxi" id="msg"> <a style="line-height:100%;position:absolute;left: 46%;top:50%;font-size:26px; color:#fff;" class="msgg">加载中...</a></p></div> -->
+					<!-- ==========遮罩层==E=================== -->
+					<!-- <div class="search-pos-item"> -->
+					<div class='zongchang'>
+						<div class="input-contorl">
+							<label for='datepicker'>文案编号</label>
+							<input type="text" value="" class="input-text" id="numbul_val">
+						</div>
+						
+						<div class="input-contorl xcxc">
+							<label>发送时间</label>
+							<input type="text" value="" readonly="readonly" style="background:url(/admin/MarketingActivity/PropagationManagement/Images/2.png) no-repeat 97% 50%;"; class="input-text date"  id="serverBeginTime"> <span class='zhi'>至</span>
+							<input type="text" value="" readonly="readonly" style="background:url(/admin/MarketingActivity/PropagationManagement/Images/2.png) no-repeat 97% 50%;"; class="input-text date"  id="serverEndTime">
+						</div>
+						<div class="input-contorl juli">
+							<label for='datepicker'>文案标题</label>
+							<input type="text" value="" class="input-text length_val" maxlength="65" id="service_val">
+						</div>
+					</div>
+					<div class='zongchang'>
+						<div class="input-contorl">
+							<label>发送对象</label>
+							<select name="" class="input-text text2 jiantou">
+								<option value="">--请选择--</option>
+								<option value="分销商">分销商</option>
+								<option value="门店">门店</option>
+								<option value="消费者">消费者</option>
+							</select>
+						</div>
+					<!-- </div> -->
+
+					<!-- <div class="search-pos-item"> -->
+						<div class="input-contorl area1">
+							<!-- <label>发送地区</label> -->
+							<!-- <input type="text" value="" class="input-text" id="area"> -->
+							<div class="box">
+								<span class="name">发送地区</span>
+								<div class="gf-select" id="province">
+									<span><em>省</em><i class="icon-jt"><input type="hidden" name="province" value=""></i></span>
+									<ul>
+										<li data-value="">省份</li>
+									</ul>
+								</div>
+								<div class="gf-select" id="city">
+									<span><em>城</em><i class="icon-jt"><input type="hidden" name="city" value=""></i></span>
+									<ul>
+										<li data-value="">城市</li>
+									</ul>
+								</div>	
+								<div class="gf-select" id="area">
+									<span><em>区</em><i class="icon-jt"><input type="hidden" name="area" value=""></i></span>
+									<ul>
+										<li data-value="">区县</li>
+									</ul>
+								</div>	
+							</div>
+						</div>
+						<div class="input-contorl juli_two">
+							<label>发送状态</label>
+							<!-- <input type="text" value="" class="input-text"> -->
+							<select name="" class="input-text text1 jiantou">
+								<option value="">--请选择--</option>
+								<option value="1">草稿</option>
+								<option value="3">审核中</option>
+								<option value="4">审核未通过</option>
+								<option value="5">待发送</option>
+								<option value="5">已发送</option>
+							</select>
+
+							
+					</div>
+					
+					<!-- </div> -->
+					<input type="button" value="查询" class="search-btn"/>				
+					<input type="button" value="重置" class="search-btn2 resetting"/>	
+				</div>
+		</div>
+		<div style="positon:relative" class="bigbx">
+			<div class="newadd">
+					<a href="Newly_added.html">
+						<button class="Newly_added1">新增
+						</button>
+					</a>
+			</div>
+			<table class="table1 notify table table-border table-bordered table-bg table-hover table-sort mt-10 mb-20">
+				<thead>
+					<tr class="text-c">
+						<th style="display:none"><input type="checkbox" name="" value=""></th>	
+						<th width='30'>文案编号</th>
+						<th width='30'>文案标题</th>
+						<th width='30' style="display:none">guid</th>
+						<!-- <th>发送目的</th> -->
+						<th width='30'>发送地区</th>
+						<!-- <th>发送内容</th> -->
+						<th width='30'>发送对象</th>
+						<th width='30'>计划发送</th>					
+						<th width='30'>发送状态</th>
+						<th width='30'>操作</th>
+					</tr>
+				</thead>
+					<tbody style="postion:relative"  class="pagesTbodyLong content_drop">
+					</tbody>
+			</table>
+			<span class='tiaoshu'></span>
+		</div>
+		<!-- <p class="foot_textzo">凌云科技版权所有&nbsp;&nbsp;京ICP号10211557.</p> -->
+	</div>
+	<input type="hidden" name="" id="trIndex">
+	<input type="hidden" name="" id="add">
+	<input type="hidden" name="" id="refresh">
+
+	<div class="c" style="display: none">
+			<div class="content_information">
+
+			<input type="hidden" class="state" value="draft">
+			<input type="hidden" class="_guid">
+				<div class="Copy_Title" id="wordCount">
+					<label>文案标题</label>
+					<div class='text_area'>
+					<textarea name="Copy_Title" id="textarea_value" cols="30" width="650px" onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" rows="10" maxlength="65" resize: none; class="textarea_size"></textarea>
+					<span class="wordwrap" style="margin-right:-17.5%;margin-top: 0%;">
+						<var class="word">1</var>
+						/65
+					</span>
+					</div>
+				</div>
+
+				<div class="area">
+					<span>发送地区</span>
+					<button class="area_Update">设置</button>
+					<button id="count">保存</button>
+				</div>
+				<!-- 显示选择的地区 -->
+				<input type="hidden" class="area_val clear" id='' value>
+				<div class="region-wrap">
+					<!-- <div class='region-item'></div> -->
+				</div>
+               
+				<div class="send_object">
+					<span style="float: left; margin-top: 16px;">发送对象</span>
+					<dir>
+						<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 4px;float: left;" name="fen" value="分销商"><img  class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" height="8" width="11" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;">分销商</a>
+						<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 4px;float: left;" name="fen" value="门店"><img  class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;">门店</a>
+						<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 4px;float: left;" name="fen" value="消费者"><img  class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;">消费者</a>
+						<!-- <input type="checkbox" name="fen" value="分销商">分销商
+						<input type="checkbox" name="fen" value="门店">门店
+						<input type="checkbox" name="fen" value="消费者">消费者 -->
+					</dir>	
+				</div>
+
+	
+
+				<div class="mode1">
+					<span style="float: left; margin-top: 16px;">发送方式</span>
+					<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 16px;float: left;margin-left: 52px;" name="fen" value="图文消息推送"><img class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" height="8" width="11" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;margin-top: 17px;" href="javascript:;">图文消息推送</a>
+				</div>
+
+
+			<form  enctype="multipart/form-data">
+				    
+				<div class="cover_photo">
+					<span>封面图片</span>
+					<div class="upload_img">
+						<div id="preview" class="upload_img">
+						    <img id="imghead" class="up_img" border=0 src='/admin/MarketingActivity/PropagationManagement/Images/4.png'>
+						</div>
+						<div class="right_size">
+							<span>●&nbsp;只适用于微信图文消息推送的封面图片</span><br>
+							<span>●&nbsp;图片尺寸为360*200像素</span><br>
+							<a href="javascript:;" class="file">上传
+							    <input type="file" name="file" id="fileid" onchange="previewImage(this)" />    
+							</a>
+							<!-- <input type="text" name="sss">
+							<input type="submit"  id="upload"> -->
+						</div>
+					</div>
+				</div>
+				</form>
+				<div class="mode">
+					<span>发送内容</span>
+					<!-- <textarea name="" id="send_text" class="Edit_content" cols="30"  rows="10"></textarea> -->
+					<!-- <div id="summernote"></div> -->
+					<div class='kuayu'><iframe src="summernote-develop20160420/index.html" id='iframeID' width='100%' height='391px' frameborder="0"></iframe></div>
+				</div>
+
+				<div class="Graphic_message">
+					<div style="margin-bottom: 10px;"><span>图文消息</span>
+					<div class='ck' style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border-radius: 50%;border:1px solid #999999;margin-left:55px;margin-top: 4px;" name="fen" value="bindwithperiodpush"><img  class="xiyin" style="display: block;margin:4px 4px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/radioon.png" width="7px" alt=""></div><a style="text-decoration: none; color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;"></a>
+
+					<span class="custom">跟随每周推送消息一同推送</span></div>
+					<!-- <input style="border:none;background:#fff" type="text" value="跟随每周推送消息一同推送">
+			        <div> 
+ -->					
+					
+					<span for='datepicker'>发送时间</span>
+					<div class="ck" style="display: inline-block;cursor: pointer; width: 14px;border-radius: 50%;height: 14px;border:1px solid #999999;margin-left:55px;margin-top: 4px;" name="fen" value="pushtime_supplier"><img  class="xiyin" style="display: block;margin:4px 4px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/radioon.png" width="7px" alt=""></div><a style=" text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;"></a>
+					<span class='zdy'>自定义</span>
+					<input type="text" value="" readonly="readonly" style="background:url(/admin/MarketingActivity/PropagationManagement/Images/2.png) no-repeat 97% 50%;"; class="input-text date" id="data_time" onclick="laydate({elem:'#data_time',min: laydate.now(),max: laydate.now(+100000)});">
+					<span class="custom">*选择自定义以后，占用本地区会员消息推送一次</span></div>
+				</div>
+				<div class="_button">	
+					<button class="examine1_close close_off">关闭<input type="hidden"></button>	
+					<button class="examine1_preview">预览<input type="hidden"></button>	
+					<button class="examine1_Preservation">保存<input type="hidden"></button>	
+					<button class="examine1">保存并提交审核<input type="hidden" value="audit"></button>
+					<button class="examine1_Newly_added">保存并继续新增<input type="hidden" value="audit"></button>
+					
+					<!-- <button class="examine1">保存<input type="hidden" value="audit"></button> -->
+				</div>
+			</div>
+	</div>
+	<div class='toolTip'></div>
+		<!-- 地区选择S -->
+	<div class="area-list wrapper"> 
+		<!-- <div class="wrap"> -->
+			<div class="area-list-item Select_the_province"> 
+				<div class="region-text">省</div> 
+				<div class="b">
+					<div class="qt"><input type="checkBox" title="选择全国" class="quanguo" />全国</div>
+					<ul name="check" class="selectable Select_province area_list_js"> 
+					</ul> 
+				</div> 
+			</div>
+
+			<div class="area-list-item select Select_the_province1"> 
+				<div class="region-text">市</div> 
+				<div class="b"> 
+					<div class="qt"><input class="qb quanbusheng" title="选择全部省" type="checkbox" disabled />全省</div> 
+					<ul name="check" class="selectable shi Select_province1 area_list_js"> 
+					</ul> 
+				</div>
+			</div>
+
+			<div class="area-list-item area-list-item1 Select_the_procince2"> 
+				<div class="region-text">县、区</div>
+				<div class="b"> 
+					<div class="qf"><input class="qx quanbushi" title="选择全部市" type="checkbox" disabled />全市</div> 
+					<ul name="check" class="selectable county Select_province2 area_list_js"> 
+					</ul>
+				</div>
+			</div>
+
+			<div class="btn-wrap fl">
+				<span class="btn_a clear">清除勾选</span>
+				<span class="btn_a save">确定</span>
+			</div>
+	</div>
+	<!-- E -->
+
+	<!-- <input type="hidden" name="" id="tr_index"> -->
+<script type="text/javascript" src="/admin/lib/layer/2.1/layer.js"></script> 
+<script type="text/javascript" src="/admin/static/h-ui/js/H-ui.js"></script> 
+<!--<script type="text/javascript" src="/admin/static/h-ui.admin/js/H-ui.admin.js"></script>-->
+<script src="/admin/MarketingActivity/PropagationManagement/js/Marketcopymanagement.js"></script>
+<script src="/admin/MarketingActivity/PropagationManagement/js/dropload.js"></script>
+<!-- <script src='/admin/MarketingActivity/PropagationManagement/js/cityLink.js'></script>  -->
+<script type="text/javascript" src="/admin/lib/district/js/cityLink.js"></script>
+<script type="text/javascript" src="/admin/lib/laydate/laydate.js"></script>
+<script type="text/javascript">
+var start = {
+  elem: '#serverBeginTime',
+  event: 'focus',
+  format: 'YYYY/MM/DD',
+  min: laydate.now(-1000000), //设定最小日期为当前日期
+  max: '2099-06-16 23:59:59', //最大日期
+  // istime: true,
+  istoday: true,
+  choose: function(datas){
+     end.min = datas; //开始日选好后，重置结束日的最小日期
+     end.start = datas //将结束日的初始值设定为开始日
+  }
+};
+var end = {
+  elem: '#serverEndTime',
+  event: 'focus',
+  format: 'YYYY/MM/DD',
+  min: laydate.now(),
+  max: '2099-06-16 23:59:59',
+  // istime: true,
+  istoday: true,
+  choose: function(datas){
+    start.max = datas; //结束日选好后，重置开始日的最大日期
+  }
+};
+laydate(start);
+laydate(end);
+//返回顶层
+$(function(){
+	
+
+	// debugger;
+	$('.search-btn').trigger('click');
+	$(window).on("scroll",$backToTopFun);$backToTopFun();
+	comSelect();
+	selectCity();
+
+	$('.length_val').on('keyup',function(){
+		if($(this).val().length==65){layer.msg('文案标题字数已上限')}
+	});
+// 判断 选择时间的
+	$('.send_object dir div').click(function(){
+		$(this).find('img').toggleClass('xiyin_son')
+	})
+	$('.mode1 div').click(function(){
+		$(this).find('img').toggleClass('xiyin_son')
+	})
+
+	$('.Graphic_message .ck:eq(0)').click(function(){
+		$(this).find('img').addClass('xiyin_son');
+		$('#data_time').val('');
+		$('.Graphic_message .ck:eq(1)').find('img').removeClass('xiyin_son');
+		$('#data_time').attr('disabled',true);
+	});
+	$('.Graphic_message .ck:eq(1)').click(function(){
+		$(this).find('img').addClass('xiyin_son');
+		$('.Graphic_message .ck:eq(0)').find('img').removeClass('xiyin_son');
+		$('#data_time').attr('disabled',false);
+	});
+});
+</script> 
+<script src="/admin/MarketingActivity/PropagationManagement/js/area_select.js"></script>
+<script src="/admin/MarketingActivity/PropagationManagement/js/area_update.js"></script>
+</body>
+</html>

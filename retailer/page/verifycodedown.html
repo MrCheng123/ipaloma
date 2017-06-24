@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>下载核销码</title>
+
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/retailerstyle.css" rel="stylesheet" />
+
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <link href="/retailer/css/verify.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        p {
+            text-align: center;
+            font-size: 20px;
+            line-height: 30px;
+            color: #333;
+        }
+
+        #verifycode {
+            width: 80%;
+            height: 400px;
+            margin: 10% auto;
+            border: solid 1px #0d988f;
+        }
+
+            #verifycode p {
+                height: 20px;
+                line-height: 20px;
+                margin-top: 50%;
+            }
+
+                #verifycode p img {
+                    width: 20px;
+                    vertical-align: top;
+                    margin-right: 5px;
+                }
+
+        .btnLoad {
+            height: 40px;
+            line-height: 40px;
+            margin: 20px auto;
+            float: none;
+        }
+
+        #p_isapply {
+            width: 80%;
+            line-height: 20px;
+            font-size: 18px;
+            margin: 10% 0 10px 10%;
+            text-align: left;
+        }
+
+            #p_isapply img {
+                height: 20px;
+                vertical-align: middle;
+                float: left;
+                margin-right: 6px;
+            }
+    </style>
+</head>
+<body ms-controller="verifycodedown" class="ms-controller">
+    <div id="p_isapply">
+        <p ms-if="IsApply==1" style="line-height: 20px;text-align:left">
+            <img src="../image/verify/check.png" />恭喜您成功申请了核销码！
+        </p>
+    </div>
+    <div id="verifycode" style="margin-top:0px">
+        <img id="QRCode_img" style="width:100%;height:400px;display:none" />
+        <div ms-if="loadState!=2">
+            <p>
+                <img ms-attr-src="/js/shelter/image/{{loadState==0?'loading.gif':'ico_error.png'}}" />
+                {{loadState==0?'图片加载中...':'图片加载失败'}}
+            </p>
+            <div class="btnVerify active btnLoad" ms-if="loadState==1" ms-click="getQRcode">重新加载</div>
+        </div>
+    </div>
+    <p>长按图片下载，制作扫码牌</p>
+    <p>让消费者扫码核销，节省您的时间</p>
+
+    <div id="qrcodediv" hidden></div>
+    <footer>
+        <div id="bottom-nav"></div>
+    </footer>
+    <div id="divQrcode" hidden></div>
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <script src="/retailer/js/verify/verifycodedown.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html;charset=utf-8">-->
+	<meta charset="UTF-8"/>
+    <title></title>
+	<meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="app.css" rel="stylesheet" type="text/css">
+    <link href="fileretriever.css" rel="stylesheet" type="text/css">
+    <link href="jsoneditor/css/jsoneditor.css" rel="stylesheet" type="text/css">
+    <link href="jsoneditor/css/menu.css" rel="stylesheet" type="text/css">
+    <link href="jsoneditor/css/searchbox.css" rel="stylesheet" type="text/css">
+    <link href="jsoneditor/css/contextmenu.css" rel="stylesheet" type="text/css">
+    <!-- TODO: droid font
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans+Mono' rel='stylesheet' type='text/css'>
+    -->
+    <style type="text/css">
+        div.convert-right {
+            background: url('jsoneditor/css/img/jsoneditor-icons.png') -0 -48px;
+        }
+        div.convert-left {
+            background: url('jsoneditor/css/img/jsoneditor-icons.png') -24px -48px;
+        }
+        #auto {
+        	height:95%;
+        }
+        /*div.convert-longBtn {
+            background: url('jsoneditor/css/img/jsoneditor-icons.png') -0px -48px;
+            width:24px;height:74px;
+        }*/
+        /*button#toSaveLong{margin-top:20px;}*/
+        /*.ddddd{background:red;height:100px;width:100px;position: absolute;left: 200px;top: 0;}*/
+        /*.outer{position: relative;}
+        .divOuterLong{background:-green;width:82%;position:absolute;left:61px;top:0px;z-index: 10;}*/
+       
+       /*来自cg*/
+       div#toSaveLong{
+       		position:absolute;
+       		right: 4%;
+       		bottom: 4%;
+            /*float: right;*/      
+            /*margin-right: 40px;*/
+            background-color: rgba(0, 157, 217, 1);
+            color: #fff;
+            padding: 10px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+	<div id="header">
+	    <a href="" title="" class="header">
+	        <img alt="JSON格式化工具" title="JSON格式化工具" src="img/logo.png" id="logo">
+	    </a>	
+	    <div id="menu" style="display: none;">
+	        <ul>
+	            <li>
+	                <a id="clear" title="Clear contents">清除</a>
+	            </li>
+	            <li>
+	                <a id="open" title="从本地上传文件">
+	                    打开
+	                    <span id="openMenuButton" title="远程URL文件">
+	                    &#x25BC;
+	                    </span>
+	                </a>
+	                <ul id="openMenu">
+	                    <li>
+	                        <a id="menuOpenFile" title="Open file from disk">打开文件</a>
+	                    </li>
+	                    <li>
+	                        <a id="menuOpenUrl" title="Open file from url">打开&nbsp;URL</a>
+	                    </li>
+	                </ul>
+	            </li>
+	            <li>
+	                <a id="save" title="Save file to disk">保存</a>
+	            </li>
+	            <li>
+	                <a id="help" title="" href="" target="_blank"></a>
+	            </li>
+	        </ul>
+	    </div>	 
+	</div>	
+	<div id="auto">
+	    <div id="contents">
+	        <div id="codeEditor"></div>	
+	        <div id="splitter">
+	            <div id="buttons">
+	                <div>
+	                    <button id="toTree" class="convert llldf" title="复制代码到树形编辑器">
+	                        <div class="convert-right"></div>
+	                    </button>
+	                </div>
+	                <div>
+	                    <button id="toCode" class="convert" title="复制树形到代码编辑器">
+	                        <div class="convert-left"></div>
+	                    </button>
+	                </div>
+	                <!--<div>
+	                    <button id="toSaveLong" class="convert" title="复制代码到树形编辑器">
+	                        <div class="convert-longBtn">保存并返回</div>
+	                    </button>
+	                </div>-->
+	            </div>
+	            <div id="drag">
+	            </div>
+	        </div>	
+	        <div id="treeEditor"></div>	
+	    </div>
+	</div>
+	<!--<div id="footer">
+	    <div id="footer-inner">	      
+	    </div>
+	</div>-->
+	<!--<input type="text" class="ddddd">-->
+	<!--<textarea name="" rows="" cols="" class="ddddd"></textarea>-->
+	
+	<!--来自cg-->
+	<div class="saveBtn" id="toSaveLong">保存</div>
+</body>
+	<!--<script src="../../lib/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/jsoneditor.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/treeeditor.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/texteditor.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/node.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/appendnode.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/contextmenu.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/history.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/searchbox.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/modebox.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/highlighter.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/util.js"></script>
+    <script type="text/javascript" src="jsoneditor/js/module.js"></script>
+    <script type="text/javascript" src="queryparams.js"></script>
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript" src="fileretriever.js"></script>
+    <script type="text/javascript" src="notify.js"></script>
+    <script type="text/javascript" src="splitter.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="lib/jsonlint/jsonlint.js"></script>
+    <!--<script type="text/javascript" src="lib/ace/ace.js"></script>
+    <script type="text/javascript" src="lib/ace/mode-json.js"></script>
+    <script type="text/javascript" src="lib/ace/theme-textmate.js"></script>
+    <script type="text/javascript" src="lib/ace/theme-jsoneditor.js"></script>-->
+	<script type="text/javascript" src="lib/jsonlint/jsonlint.js"></script>
+	<script src="../../../lib/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">    	
+    var linshi='';//用于调试
+//	var str =getCookieLong('cookieJson');
+	var str=localStorage.dataLong		
+	str = JSON.parse(str);
+	var json=str;			
+    app.load();
+    app.resize();    
+//  var guidBefore=json.guid;//后续删除
+//  linshi=guidBefore
+    $("#toSaveLong").click(function(){
+    	console.log(888)
+//  document.getElementById("toSaveLong").addEventListener1('click',function(){
+    	var aa=document.querySelector("textarea").value;	    	
+    	aa=JSON.parse(aa);  
+//  	console.log(aa)
+//	    a=JSON.stringify(a)    		
+		//*******************特别存储content，为了蛋疼的多加一个引号****
+		var aaContent=aa.content;
+    	aaContent=JSON.stringify(aaContent);
+    	aa.content=aaContent;
+    	///**************************************************    	
+		if(localStorage.ajaxType=='modify'){//如果是修改
+			// console.log(saveBol+'修改'+aa);
+			//以下对不允许修改的项目进行强行重置，这里仅仅重置guid，其他类似。[不完善，暂且放弃]
+//			if(guidBefore!=aa.guid){
+//				alert("请不要修改guid,guid已经自动恢复，您可以继续修改或者直接保存")				
+//				aa.guid=guidBefore;	
+//				linshi=aa.guid;
+//				localStorage.dataLong=JSON.stringify(aa);//将其他已经修改的信息保存在localStorage中，强制恢复guid而其他保留。
+//				window.location.href='indexJson.html';  
+//			}else{
+//				parent.layer.msg('处理中1',{time: 0}); 
+//				ajaxModify(aa);
+//			}	
+			//前端进行content验证，如果为''则弹出提示。后期提醒后台加入相应验证。			
+			if(aa.content=='""'){//这里不能单引双引反用//前端验证，其他的后台已经验证				
+				layer.alert('提示：content不能为空', {icon: 2});	
+				console.log('if')
+			}else if(aa.content=='{}'){
+				layer.alert('提示：content的{}内不能为空', {icon: 2});	
+			}else{				
+				ajaxModify(aa);		
+				// console.log('else')		
+			}		
+		}else if(localStorage.ajaxType=='add'){//如果是新增【因为改为弹出add.html，所以不会走到这里】
+//			parent.layer.msg('保存中', {shade: 0.3})
+			ajaxAdd(aa);				
+		}else{
+			layer.alert('请输入正确的json', {icon: 2});			
+		}
+    })
+ 
+	function ajaxModify(a){
+		var indexLayer=layer.msg('处理中',{time: 0}); 
+		$.ajax({//修改用ajajx
+			type:"put",
+			dataType:'json',	
+			url:"/webapi/configservice/config",
+			data:a,
+			success:function(data){
+//				linshi=data;
+//				debugger
+				layer.close(indexLayer);;
+				// console.log('访问成功修改接口');		
+//				window.location.href='indexPM.html';
+//				if(data.error=="null params or wrong json param"){
+//					console.log("null params or wrong json param6666666")
+//					alert("保存失败，请不要修改guid或删除guid")
+//				}else if(data.content==""||data.content==null){
+//					alert("content不能为空")
+//				}else{
+					if(parent.queryBtnBol){
+						parent.$(".query_btn").click();
+						parent.ajaxSele1();
+					}else{
+						parent.history.go(0);
+					}
+					// parent.queryBtnBol=false;
+					parent.$('.layui-layer-close').click();				
+//					parent.layer.closeAll();
+					// console.log(data)
+//				}				
+			},
+			error:function(data){//因为后台走的500，所以如下
+				layer.close(indexLayer);;
+//				linshi=data;
+				if(JSON.parse(data.responseText).Message=="empty content"){//针对没有content或content为空
+//					layer.confirm('content不能为空', {
+//						btn: ['确定','取消']				
+//					});	
+					layer.alert('content不能为空', {icon: 2});				
+				}else if(JSON.parse(data.responseText).Message=="null params or wrong json param"){//针对没有guid
+					layer.alert('保存失败，请不要修改guid或删除guid', {icon: 2});//					
+				}else if(JSON.parse(data.responseText).Message.length>2000){//针对guid被修改了，修改之后值为3090
+					layer.alert('保存失败，请不要修改guid或删除guid', {icon: 2});//					
+				}
+				layer.alert('保存失败')					
+			}
+		})
+	}
+	 	    
+		    
+	//ajax之新增，【已改为弹出add.html，所以注释掉】
+//	function ajaxAdd(a){//本处，要求后台如果title重复就插入失败，走error回调。其实也可以要求后台正常返回，走success回调。cg建议后者。
+//		$.ajax({
+//			type:"post",
+//			dataType:'json',	
+//			url:"/webapi/configservice/config",
+//			data:a,
+//			success:function(data){
+//				console.log('访问成功1');
+////				window.location.href='indexPM.html';
+//				parent.$(".query_btn_div input").click();
+//				parent.$('.layui-layer-close').click();				
+//				parent.layer.closeAll();
+////				console.log(data)
+//			},
+//			error:function(data){
+//				linshi=data;
+////				console.log(JSON.parse(data.responseText).Message)		
+//				if(JSON.parse(data.responseText).Message=="empty content"){//针对没有content或content为空
+//					alert("content不能为空")//				
+//				}else if(JSON.parse(data.responseText).Message=='exist config in database '){
+//					alert('新建失败，title为空或者已经存在,如果想更新title内容，请尝试修改按钮')
+//				}else{
+//					alert('新建失败')
+//				}
+//				console.log(data.message)
+//			}
+//		});				
+//	}
+	</script>
+
+</html>
+
+
+<!--校验当然是最好前后台都校验-->

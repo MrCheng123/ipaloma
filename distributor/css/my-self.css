@@ -1,0 +1,10 @@
+﻿.my-box li{float: left; margin-left: 4%; width: 44%; text-align: center; color: #fff; font-size: 18px; padding: 12px 0; border-radius: 4px; font-family: \5FAE\8F6F\96C5\9ED1; line-height: 25px; float: left; margin-top: 10px;}
+.my-box:after{content: ' '; clear: both; display: block;}
+.my-box .b-bg{background: #457181;}
+.my-box .o-bg{background: #d58230;}
+.my-box li span,
+.my-cbox span, .company-tbl span{font-family: Tahoma; font-weight: bold;}
+.my-cbox{background: url(../image/mybg.png) no-repeat center top; background-size: 100%; width: 86%; margin: 10px auto; box-sizing: border-box; min-height: 100px; overflow: hidden;} .my-cbox > div{text-align: center; color: #fff; float: left;} .my-cbox .f-title{font-size: 1.4em; margin-top: 16.5%; width: 61.5%;} .my-cbox .f-title span{display: block; padding-bottom: 10px;} .my-cbox .rt-title, .my-cbox .rn-title{font-size: 1.1em; margin-left: 12%; padding: 5% 0; width: 26%; line-height: 26px; overflow: hidden; min-height: 25px;} .my-cbox .rn-title{margin-top: 3.8%; padding-top:4%;}
+@media screen and (max-width: 350px){.my-cbox .rt-title, .my-cbox .rn-title{font-size: 15px; line-height: 22px;} .my-cbox .f-title span{padding-bottom: 0px;}}
+@media screen and (min-width: 640px){.my-cbox .rt-title, .my-cbox .rn-title{line-height: 45px;} .my-cbox .f-title span{padding-bottom: 55px;}}
+@media screen and (min-width: 670px){.my-cbox .rt-title, .my-cbox .rn-title{line-height: 55px;} .my-cbox .f-title span{padding-bottom: 90px;}}

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>活动审核-详情页</title>
+    <link type="text/css" href="../web_style/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="../web_js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../web_js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../web_js/common.js"></script>
+    <script type="text/javascript" src="../web_js/shenhe_checkAgain.js"></script>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+			var subFlag = false;
+			
+            function check()
+            {
+                var colorFlag1 = 1;
+
+                $('.tg').each(function (index, element) {
+                    if ($(this).attr('tg-color') == 'a')
+                    {
+                        colorFlag1 = 0;
+
+                    }
+                });
+
+                var colorFlag2 = 0;
+
+                $('.btg').each(function (index, element) {
+                    if ($(this).attr('btg-color') == 'b')
+                    {
+                        colorFlag2 = 1;
+
+                    }
+                });
+
+
+
+                if (colorFlag1 == 1 && colorFlag2 == 0)
+                {
+                    $('.btn1').html('<img src="../web_images/icon15.png" /> 通过')
+                    $('.btn1').css('background', '#009966').css('color', '#fff');
+                    $('.btn1').attr("status",1);
+                    $('.to-next').attr('ztg', 'b')
+
+                } else if (colorFlag1 == 0 && colorFlag2 == 1)
+                {
+                    $('.btn1').css('background', '#ff0000').css('color', '#fff');
+                    $('.btn1').html('<img src="../web_images/icon16.png" /> 不通过')
+                    $('.btn1').attr("status",0);
+                    $('.to-next').attr('ztg', 'a')
+                } else if (colorFlag1 == 0 && colorFlag2 == 0)
+                {
+                    $('.btn1').html('审核未完成')
+                    $('.btn1').css('background', '#fff').css('color', '#333');
+                    $('.to-next').attr('ztg', 'a')
+                    //$('.btn1').attr('ztg','b')	
+                } else if (colorFlag1 == 1 && colorFlag2 == 1)
+                {
+                    $('.btn1').html('<img src="../web_images/icon15.png" /> 通过222')
+                    $('.btn1').css('background', '#009966').css('color', '#fff');
+                    $('.to-next').attr('ztg', 'a')
+                }
+
+
+            }
+            $(function () {
+                $('.show1').click(function () {
+                    $('.show-yibaocun').slideDown(300)
+                })
+                $('.close1').click(function () {
+                    $('.show-yibaocun').slideUp(300)
+                })
+                $('.hd-guize').click(function () {
+                    $('.hd-guizebox').show()
+                    $('.hd-guizebox').animate({'right': '0'}, 300)
+                    $('.hd-guize-top').animate({'right': '0'}, 300)
+                })
+                $('#close-deletebox').click(function () {
+                    $('.delete-lan-w').fadeOut(500)
+
+                })
+                $('.more-opinion').click(function () {
+                    if ($(this).attr('show') == 'a') {
+                        $('ul.opinion-list').css('overflow', 'visible')
+                        $(this).html('<img src="../web_images/icon06-1.png" />')
+                        $(this).attr('show', 'b')
+                    } else {
+                        $('ul.opinion-list').css('overflow', 'hidden')
+                        $(this).html('<img src="../web_images/icon06.png" />')
+                        $(this).attr('show', 'a')
+                    }
+                })
+
+                $('.xiugai').click(function () {
+                    $(this).parent().parent().hide()
+                    $(this).parent().parent().prev().show()
+                    var shuruzhi = $(this).prev('.shuru').val()
+                })
+
+                $('.tg').click(function () {
+                    $(this).parent().next('.opinion-box').hide()
+                    $(this).parent().next().next('.opinion-box1').hide()
+
+                    $(this).css('background', '#009966')
+                    $(this).prev('.btg').css('background', '#249cfa')
+                    $(this).prev('.btg').html('不通过')
+                    $(this).html('<img src="../web_images/icon15.png" /> 通过')
+					
+					$(this).parent().next('.opinion-box').children('.opinion-listbox').children().children('li').attr('op','a')
+					$(this).parent().next('.opinion-box').children().next().children().children('li').css('background','#fff')
+					$(this).parent().next('.opinion-box').children().next().children().children('li').css('color','#333')
+					$(this).parent().next('.opinion-box').children().next().next().children('textarea').val('')
+					
+
+                    $(this).prev('.btg').attr('btg-color', 'a');
+                    $(this).attr('tg-color', 'b');
+					
+					$(this).next().val('0');
+					
+                    check();
+					
+					
+					subFlag = true;
+
+                });
+                $('.btg').click(function () {
+
+
+                    
+                    $(this).next('.tg').css('background', '#249cfa')
+                    $(this).next('.tg').attr('tg-color', 'a');
+                    $(this).next('.tg').html('通过')
+                    
+                    $(this).parent().next('.opinion-box').show()
+                    
+					if($(this).attr('btg-color')=='b')
+					{
+						$(this).next().next().val('0');
+					}else{
+						$(this).next().next().val('1');
+						}
+					check();
+					
+                })
+
+				$('.to-next').click(function () {
+					var subF = true;
+					$('input[lu="1"]').each(function(i, n) {
+                        if($(this).val() == '1')
+						{
+							subF = false;
+							return false;
+						}
+                    });
+					
+					if(subF)
+						$('.delete-lan-w').fadeIn(500);
+					else
+						$('.delete-lan-w').hide(0);                  
+                })
+
+
+                $('.btj-next').click(function () {
+
+                    $('.delete-lan-w1').fadeIn(500)
+
+                })
+                $('.fou').click(function () {
+                    $('.delete-lan-w').fadeOut(500)
+
+                })
+
+                $('.fou1').click(function () {
+                    $('.delete-lan-w1').fadeOut(500)
+
+                })
+
+                $('.shuru').bind('input propertychange', function () {
+                    var type = $(this).attr('type')
+                    console.log(type)
+                    var znum = 140
+                    var shuru = $(this).val().length
+                    var snum = znum - shuru
+                    var cnum = shuru - znum
+                    if (snum < 0) {
+                        $(this).val($(this).val().substring(0, 140))
+                        alert('字数超过140个啦！')
+						
+                        return false;
+                    }
+					
+					var acc=1
+					$(this).parent().prev().children().children('li').each(function(index, element) {
+                        if($(this).attr('op')=='b'){
+							acc=0
+							}
+                    });
+					if ($('.shuru[type=' + type + ']').val().length <= 0 && acc==1){
+							$(this).parent().parent().prev().children('.btg').attr('btg-color', 'a');
+					}else{
+						$(this).parent().parent().prev().children('.btg').attr('btg-color', 'b');	
+					}
+					
+                    if ($('.shuru[type=' + type + ']').val().length <= 0) {
+                        $('.num[type=' + type + ']').text('最多可输入140个字')	
+                    } else {
+						
+                        $('.num[type=' + type + ']').text('还可以输入' + snum + '字')
+						
+                    }
+					switch_color()
+					check()
+					
+                })
+            })
+
+
+            function shownum(type) {
+                var znum = 140
+                var shuru = $('.shuru[type=' + type + ']').val().length
+                var snum = znum - shuru
+                var cnum = shuru - znum
+                $('.num[type=' + type + ']').text('还可以输入' + snum + '字')
+
+            }
+        </script>
+
+    <script>
+		
+                    var testItem = '';
+                    $(function () {
+						switch_color()
+						
+                        $('.opinion-list li').click(function () {
+                            var op = $(this).attr('op')
+							var areaval=$(this).parent().parent().next().children('textarea').val()
+							var abc=1
+							if(areaval==''){
+								abc=0	
+							}
+                            console.log(op)
+                            if (op == 'a') {
+                                $(this).css('background', '#0099ff').css('color', '#fff')
+                                $(this).attr('op', 'b');
+								$(this).parent().parent().parent().prev().children('.btg').attr('btg-color', 'b');
+                            } else {
+                                $(this).css('background', '#fff').css('color', '#333')
+                                $(this).attr('op', 'a');
+                            }
+							var abd=1
+							$('.opinion-list li').each(function(index, element) {
+								
+                                if($(this).attr('op')=='b'){
+										abd=0
+								}								
+                            });
+							
+							if(abd==1&&abc==0){
+									$(this).parent().parent().parent().prev().children('.btg').attr('btg-color', 'a');
+							}
+							
+							switch_color()
+							check()
+                        })
+						
+						
+                        $('.queding').click(function () {
+							var selectFlag = false;
+							$(this).parent().prev().children().children('li').each(function(){
+								if($(this).attr('op') == 'b')
+								{
+									selectFlag = true;
+									return false;
+								}
+							});
+							if(!selectFlag && ($(this).prev().val() == ''))
+							{
+								alert('请输入内容或选择意见');
+								return;
+							}
+							
+                            $(this).parent().parent().hide()
+							
+                            $(this).parent().parent().next().show()
+                            var type = $(this).attr('type')
+
+                            var html = '';
+                            var i = 1;
+                            $('.opinion-list[type=' + type + '] li').each(function () {
+                                var cls = $(this).attr('op')
+                                console.log(cls)
+                                if (cls == 'b') {
+                                    html = html + i + '.' + $(this).text() + '<br/>'
+                                    i++;
+                                }
+                            })
+                            html += '补充意见：' + $('[csq="lf"][type=' + type + ']').val();
+
+                            $('.shurunr[type=' + type + ']').html(html)
+							
+							$(this).parent().parent().prev().children('input[lu="1"]').val('0');
+                        })
+
+                    });
+					function switch_color(){
+						$('.btg').each(function(){
+							if(($(this).attr('btg-color') == 'b') && ($(this).next().attr('tg-color') == 'a')){
+							$(this).next().next('input[lu="1"]').val('0')
+							$(this).css('background', '#ff0000')
+							$(this).html('<img src="../web_images/icon16.png" /> 不通过')
+						}else if(($(this).attr('btg-color') == 'a') && ($(this).next().attr('tg-color') == 'a')){
+							$(this).next().next('input[lu="1"]').val('1')
+							$(this).css('background', '#249cfa')
+							$(this).html('不通过')	
+							
+						}
+							})
+						
+							}
+						
+					
+                </script>
+
+    <!--提交到下一个提示浮层-->
+    <div class="delete-lan-w">
+        <div class="delete-lan">
+            <div class="create-lan-top">系统提示<span id="close-deletebox"><img src="../web_images/icon05.png" /></span></div>
+            <div class="delete-lan-cont" style="text-align:center;">
+
+                <div class="text" style=" width:100%; text-align:center; font-size:1.4em; text-align:center;">
+                    是否确认提交
+                </div>
+
+            </div>
+            <div class="btn-box3">
+                <div class="btnbox3" style="margin-left:150px;">
+                    <a href="javascript:;">
+                        <button id="checkSubmitBtn" style="width:140px; background:#249cfa; color:#fff; margin-right:10px;">是</button>
+                    </a>
+                    <button class="fou" style="width:140px; background:#ff0000; color:#fff; margin-right:0;">否</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--不提交到下一个提示浮层-->
+    <div class="delete-lan-w1">
+        <div class="delete-lan">
+            <div class="create-lan-top">系统提示<span id="close-deletebox"><img src="../web_images/icon05.png" /></span></div>
+            <div class="delete-lan-cont" style="text-align:center;">
+
+                <div class="text" style=" width:100%; text-align:center; font-size:1.4em; text-align:center;">
+                    是否确认不提交并到下一个
+                </div>
+
+            </div>
+            <div class="btn-box3">
+                <div class="btnbox3" style="margin-left:150px;">
+                    <button id="checknosubmitBtn" style="width:140px; background:#249cfa; color:#fff; margin-right:10px;">是</button>
+                    <button class="fou1" style="width:140px; background:#ff0000; color:#fff; margin-right:0;">否</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-n1">
+        <div class="top-ww">
+            <div class="top">
+                <span id="activitytitle"></span>
+                <a href="../html/sh-tongji.html">
+                    <div class="arrow-left" style="width:100px; height:30px; border-radius:3px; background:#249cfa; color:#fff; cursor:pointer; line-height:30px;"><img style="display:none;" src="../web_images/arrow-left.png" /> 返回审核统计</div>
+                </a>
+                <div class="arrow-right" style="display:none;"><img src="../web_images/arrow-right.png" /></div>
+            </div>
+        </div>
+        <div class="space2"></div>
+        <div class="title">活动基本信息</div>
+        <div class="box-w">
+            <div class="box-info1"><span>活动主题: </span> <span id="activitytitle2"></span></div>
+            <div class="box-info1" style="width:50%; float:left;"><span>活动时间: </span> <span id="begintime"></span> 至 <span id="endtime"></span></div>
+            <div class="box-info1" style="width:50%; float:left;"><span>服务电话: </span> <span id="servicephone"></span></div>
+        </div>
+        <div class="btn-box" style="border-top:0;">
+            <button class="bg-blue btg" btg-color="a">不通过</button> <button class="bg-blue tg" tg-color="a">通过</button><input
+                style="display: none;" lu="1" value="1" />
+        </div>
+
+        <div class="opinion-box">
+            <div class="opinion-top">
+                <div class="opinion-top-l">请输入审核意见</div>
+                <div class="opinion-top-r num" type="1">最多可输入140个字</div>
+            </div>
+            <div class="opinion-listbox">
+                <ul class="opinion-list" type="1">
+                </ul>
+                <div class="more-opinion" show="a"><img src="../web_images/icon06.png" /></div>
+            </div>
+
+            <div class="shu-opinion">
+                <textarea rows="5" csq="lf" type="1" class="shuru" placeholder="请输入补充意见！"></textarea>
+                <button class="sure queding" type="1">确定</button>
+            </div>
+        </div>
+        <div class="opinion-box1">
+            <div class="opinion-top">
+                <div class="opinion-top-l">审核意见</div>
+
+            </div>
+            <div class="shu-opinion1">
+                <div class="shurunr" type="1"></div>
+                <button class="sure xiugai">修改</button>
+            </div>
+        </div>
+        <div class="title1">活动更正说明</div>
+        <div class="box-cont" id="changedexplain"></div>
+
+       <!--  <div class="btn-box borderbottom11">
+            <button class="bg-blue btg" btg-color="a">不通过</button> <button class="bg-blue tg" tg-color="a">通过</button><input
+                style="display: none;" lu="1" value="1" />
+        </div>
+        <div class="opinion-box">
+            <div class="opinion-top">
+                <div class="opinion-top-l">请输入审核意见</div>
+                <div class="opinion-top-r num" type="2">最多可输入140个字</div>
+            </div>
+            <div class="opinion-listbox">
+                <ul class="opinion-list" type="2">
+                </ul>
+                <div class="more-opinion" show="a"><img src="../web_images/icon06.png" /></div>
+            </div>
+            <div class="shu-opinion">
+                <textarea rows="5" csq="lf" type="2" class="shuru" placeholder="请输入补充意见！"></textarea>
+                <button class="sure queding" type="2">确定</button>
+            </div>
+        </div>
+        <div class="opinion-box1">
+            <div class="opinion-top">
+                <div class="opinion-top-l">审核意见</div>
+
+            </div>
+            <div class="shu-opinion1">
+                <div class="shurunr" type="2"></div>
+                <button class="sure xiugai">修改</button>
+            </div>
+        </div> -->
+
+        <div class="title1">门店要求</div>
+        <div class="box-cont" id="customerrequest">
+        </div>
+
+        <!-- <div class="btn-box borderbottom11">
+            <button class="bg-blue btg" btg-color="a">不通过</button> <button class="bg-blue tg" tg-color="a">通过</button><input
+                style="display: none;" lu="1" value="1" />
+        </div>
+        <div class="opinion-box">
+            <div class="opinion-top">
+                <div class="opinion-top-l">请输入审核意见</div>
+                <div class="opinion-top-r num" type="3">最多可输入140个字</div>
+            </div>
+            <div class="opinion-listbox">
+                <ul class="opinion-list" type="3">
+                </ul>
+                <div class="more-opinion" show="a"><img src="../web_images/icon06.png" /></div>
+            </div>
+            <div class="shu-opinion">
+                <textarea rows="5" csq="lf" type="3" class="shuru" placeholder="请输入补充意见！"></textarea>
+                <button class="sure queding" type="3">确定</button>
+            </div>
+        </div>
+        <div class="opinion-box1">
+            <div class="opinion-top">
+                <div class="opinion-top-l">审核意见</div>
+
+            </div>
+            <div class="shu-opinion1">
+                <div class="shurunr" type="3"></div>
+                <button class="sure xiugai">修改</button>
+            </div>
+        </div> -->
+
+        <div class="title">优惠详情</div>
+        <div class="prolistbox">
+            <div class="prolist" id="youli" style="display: none;">
+                <div class="biaoqian">有礼</div>
+                <div class="prolist-l">
+                    <div class="box-info2">
+                        购<span id="activitytitle_yl"></span>赠<span id="giftname_yl"></span>
+
+                    </div>
+                    <div class="box-info2" id="ruledesc_yl">
+                    </div>
+
+                </div>
+                <div class="prolist-r">
+                    <div class="proimg">
+                        <img id="itemPic_yl" src="../web_images/cs02.jpg" />
+                        <div class="biaoqian">有礼</div>
+                    </div>
+                </div>
+            </div>
+            <div class="prolist" id="taocan" style="display: none;">
+                <div class="biaoqian">套餐</div>
+                <div class="prolist-l">
+                    <div class="box-info2">
+                        购<span id="activitytitle_tc"></span>
+                    </div>
+                    <div class="box-info3-w">
+                        <div class="box-info3">
+                            原价：<span id="originalprice_tc"></span>
+                        </div>
+                        <div class="box-info3">
+                            现价：<span id="discountprice_tc"></span>
+                        </div>
+                        <div class="box-info3">
+                            已节省<span id="sparevalue_tc"></span>
+                        </div>
+                    </div>
+                    <div class="box-info2" id="ruledesc_tc"></div>
+
+                </div>
+                <div class="prolist-r">
+                    <div class="proimg">
+                        <img id="itemPic_tc" src="../web_images/cs02.jpg" />
+                        <div class="biaoqian">套餐</div>
+                    </div>
+                </div>
+            </div>
+            <div class="prolist" id="maizeng" style="display: none;">
+                <div class="biaoqian">买赠</div>
+                <div class="prolist-l">
+                    <div class="box-info2">
+                        购<span id="activitytitle_mz"></span>
+
+                    </div>
+                    <div class="box-info3-w">
+                        <div class="box-info3">
+                            价格：<span id="unitprice_mz"></span>
+                        </div>
+                        <div class="box-info3">
+                            买：<span id="bycount_mz"></span>
+                        </div>
+                        <div class="box-info3">
+                            赠<span id="giftcount_mz"></span>
+                        </div>
+                    </div>
+                    <div class="box-info2" id="ruledesc_mz">
+                    </div>
+
+                </div>
+                <div class="prolist-r">
+                    <div class="proimg">
+                        <img id="itemPic_mz" src="../web_images/cs02.jpg" />
+                        <div class="biaoqian">买赠</div>
+                    </div>
+                </div>
+            </div>
+            <div class="prolist" id="jiangjia" style="display: none;">
+                <div class="biaoqian">降价</div>
+                <div class="prolist-l">
+                    <div class="box-info2">
+                        购<span id="activitytitle_jj"></span>
+                    </div>
+                    <div class="box-info3-w">
+                        <div class="box-info3">
+                            原价：<span id="originalprice_jj"></span>
+                        </div>
+                        <div class="box-info3">
+                            优惠价：<span id="discountprice_jj"></span>
+                        </div>
+                        <div class="box-info3">
+                            折扣价：<span id="discount_jj"></span>
+                        </div>
+                    </div>
+                    <div class="box-info2" id="ruledesc_jj">
+                    </div>
+
+                </div>
+                <div class="prolist-r">
+                    <div class="proimg">
+                        <img id="itemPic_jj" src="../web_images/cs02.jpg" />
+                        <div class="biaoqian">降价</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-box borderbottom10">
+            <button class="bg-blue btg" btg-color="a">不通过</button> <button class="bg-blue tg" tg-color="a">通过</button><input
+                style="display: none;" lu="1" value="1" />
+        </div>
+        <div class="opinion-box">
+            <div class="opinion-top">
+                <div class="opinion-top-l">请输入审核意见</div>
+                <div class="opinion-top-r num" type="4">最多可输入140个字</div>
+            </div>
+            <div class="opinion-listbox">
+                <ul class="opinion-list" type="4">
+                </ul>
+                <div class="more-opinion" show="a"><img src="../web_images/icon06.png" /></div>
+            </div>
+            <div class="shu-opinion">
+                <textarea rows="5" csq="lf" type="4" class="shuru" placeholder="请输入补充意见！"></textarea>
+                <button class="sure queding" type="4">确定</button>
+            </div>
+        </div>
+        <div class="opinion-box1">
+            <div class="opinion-top">
+                <div class="opinion-top-l">审核意见</div>
+
+            </div>
+            <div class="shu-opinion1">
+                <div class="shurunr" type="4"></div>
+                <button class="sure xiugai">修改</button>
+            </div>
+        </div>
+
+        <div class="title">活动海报</div>
+        <div class="hd-ad" id="posterpic">
+            <a href="../web_images/cs03.jpg" target="_blank"><img src="../web_images/cs03.jpg" /></a>
+        </div>
+        <div class="btn-box borderbottom10">
+            <button class="bg-blue btg" btg-color="a">不通过</button> <button class="bg-blue tg" tg-color="a">通过</button><input
+                type="hidden" lu="1" value="1" />
+        </div>
+        <div class="opinion-box">
+            <div class="opinion-top">
+                <div class="opinion-top-l">请输入审核意见</div>
+                <div class="opinion-top-r num" type="5">最多可输入140个字</div>
+            </div>
+            <div class="opinion-listbox">
+                <ul class="opinion-list" type="5">
+                </ul>
+                <div class="more-opinion" show="a"><img src="../web_images/icon06.png" /></div>
+            </div>
+            <div class="shu-opinion">
+                <textarea rows="5" csq="lf" type="5" class="shuru" placeholder="请输入补充意见！"></textarea>
+                <button class="sure queding" type="5">确定</button>
+            </div>
+        </div>
+        <div class="opinion-box1">
+            <div class="opinion-top">
+                <div class="opinion-top-l">审核意见</div>
+
+            </div>
+            <div class="shu-opinion1">
+                <div class="shurunr" type="5"></div>
+                <button class="sure xiugai">修改</button>
+            </div>
+        </div>
+
+        <div class="title1">补充信息</div>
+        <div class="box-cont" id="description">
+        </div>
+        <!-- <div class="btn-box borderbottom11">
+            <button class="bg-blue btg" btg-color="a">不通过</button> <button class="bg-blue tg" tg-color="a">通过</button><input
+                style="display: none;" lu="1" value="1" />
+        </div>
+        <div class="opinion-box">
+            <div class="opinion-top">
+                <div class="opinion-top-l">请输入审核意见</div>
+                <div class="opinion-top-r num" type="6">最多可输入140个字</div>
+            </div>
+            <div class="opinion-listbox">
+                <ul class="opinion-list" type="6">
+                </ul>
+                <div class="more-opinion" show="a"><img src="../web_images/icon06.png" /></div>
+            </div>
+            <div class="shu-opinion">
+                <textarea rows="5" csq="lf" type="6" class="shuru" placeholder="请输入补充意见！"></textarea>
+                <button class="sure queding" type="6">确定</button>
+            </div>
+        </div>
+        <div class="opinion-box1">
+            <div class="opinion-top">
+                <div class="opinion-top-l">审核意见</div>
+
+            </div>
+            <div class="shu-opinion1">
+                <div class="shurunr" type="6"></div>
+                <button class="sure xiugai">修改</button>
+            </div>
+        </div> -->
+
+
+        <div class="space2"></div>
+        <div class="zbtn-box-w">
+            <div class="zbtn-box">
+                <button id="shenheStatusBtn" class="bg-white btn1" style="margin-right:40px;">审核未完成</button>
+                <a href="#"><button class="bg-white">回到顶部</button></a>
+                <a href="#"><button class="bg-white btj-next"  style="">暂不提交</button></a>
+                <a href="javascript:;"><button class="bg-blue to-next" ztg="a">提交</button></a>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

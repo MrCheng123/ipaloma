@@ -1,0 +1,289 @@
+@charset "UTF-8";
+html, body {
+  width: 100%;
+  height: 100%; }
+
+* {
+  padding: 0;
+  font-family: "微软雅黑"; }
+
+.fr {
+  float: right; }
+
+.fl {
+  float: left; }
+
+.cl {
+  overflow: hidden; }
+
+.dib {
+  display: inline-block;
+  vertical-align: top; }
+
+.por {
+  position: relative; }
+
+.poa {
+  position: absolute; }
+
+.ver {
+  vertical-align: bottom; }
+
+.hi {
+  display: none; }
+
+.initialHi {
+  display: none; }
+
+.vis {
+  visibility: hidden; }
+
+.Cwrap {
+  width: 260px;
+  height: 718px;
+  position: relative; }
+
+.Cbd {
+  width: 260px;
+  height: 190px;
+  background-image: url("../img/c1.png");
+  background-size: 100% 100%;
+  box-sizing: border-box;
+  z-index: 99;
+  position: relative;
+  z-index: 2; }
+
+.CbdD {
+  width: 100;
+  height: 67px;
+  display: table; }
+
+.CbdD1 {
+  display: table-cell;
+  vertical-align: middle; }
+
+.CbdD1 img {
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  margin-right: 10px; }
+
+.CbdD2 {
+  display: table-cell;
+  vertical-align: middle;
+  width: 200px;
+  margin-left: -8px; }
+
+.CbdD2 p {
+  font-family: "微软雅黑";
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  color: white; }
+
+.Ccontent {
+  width: 260px;
+  height: 595px;
+  position: absolute;
+  top: 70px;
+  overflow-y: auto;
+  overflow-x: hidden; }
+
+.CcBigTitle {
+  font-family: "微软雅黑";
+  font-weight: bold;
+  font-size: 14px;
+  color: #333333;
+  padding: 10px; }
+
+.CcSmallTitle {
+  font-family: "微软雅黑";
+  font-weight: bold;
+  font-size: 14px;
+  color: #999999;
+  padding: 0px 10px; }
+
+.CcButie {
+  background-image: url(../img/c2.png);
+  width: 260px;
+  height: 190px;
+  background-size: 145px 167px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative; }
+
+.CcButieMax {
+  font-family: "微软雅黑";
+  position: absolute;
+  top: 104px;
+  left: 81px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffff36;
+  width: 100px;
+  height: 20px;
+  text-align: center; }
+
+.CcButieAlready {
+  font-family: "微软雅黑";
+  position: absolute;
+  width: 73px;
+  top: 145px;
+  left: 117px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  transform-origin: left;
+  -webkit-transform-origin: left; }
+
+.CcButieLeft, .CcButieRight {
+  width: 30px;
+  height: 30px;
+  background-image: url(../img/c9.png);
+  position: absolute;
+  top: 118px;
+  left: 17px;
+  cursor: pointer; }
+
+.CcButieRight {
+  background-image: url(../img/c10.png);
+  top: 118px;
+  left: 213px; }
+
+.CcconditionImg {
+  background-image: url(../img/c4.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 260px;
+  height: 23px;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 23px;
+  padding-left: 10px;
+  box-sizing: border-box; }
+
+.CcconditionContent {
+  width: 260px;
+  padding: 10px 10px 0px 10px;
+  height: auto;
+  box-sizing: border-box; }
+
+.CcconditionContent p {
+  margin-bottom: 10px;
+  font-size: 14px; }
+
+.CcconditionContent img {
+  margin-right: 2px;
+  vertical-align: middle;
+  width: 18px; }
+
+.CcconditionContent i {
+  vertical-align: middle;
+  line-height: 18px;
+  height: 18px;
+  font-style: normal; }
+
+.CcconditionContent span {
+  margin-right: 2px;
+  vertical-align: top;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  line-height: 18px;
+  font-style: normal; }
+
+.核销次数 .Cccspan {
+  width: 152px; }
+
+.核销人数 .Cccspan {
+  width: 152px; }
+
+.惠粉数 .Cccspan {
+  width: 165px; }
+
+.粉丝留存率 .Cccspan {
+  width: 139px; }
+
+.会员等级 .Cccspan {
+  width: 152px; }
+
+.信誉等级 .Cccspan {
+  width: 152px; }
+
+.会员时长 .Cccspan {
+  width: 152px; }
+
+.粉丝人数 .Cccspan {
+  width: 152px; }
+
+.活动类型 .Cccspan {
+  width: 152px; }
+
+.找后台要 .Cccspan {
+  width: 152px; }
+
+.地区 .Cccspan {
+  width: 177px; }
+
+.CccDescriptionImg {
+  background-image: url(../img/c4.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  width: 260px;
+  height: 23px;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  color: #ffffff;
+  line-height: 23px;
+  padding-left: 10px;
+  box-sizing: border-box; }
+
+.CccDescriptionCon {
+  width: 260px;
+  padding: 10px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  font-family: "微软雅黑";
+  font-size: 12px;
+  line-height: 20px; }
+
+.footer {
+  width: 260px;
+  height: 52px;
+  border-top: 1px solid #CCCCCC;
+  position: absolute;
+  bottom: 0px;
+  padding-top: 12px;
+  box-sizing: border-box; }
+
+.footerCkxq {
+  font-family: "微软雅黑";
+  font-size: 14px;
+  color: #4E9FEE;
+  border: 1px solid #4E9FEE;
+  width: 115px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  margin-left: 10px;
+  cursor: pointer; }
+
+.footerCkgd {
+  font-family: "微软雅黑";
+  font-size: 14px;
+  color: #4E9FEE;
+  border: 1px solid #4E9FEE;
+  width: 115px;
+  height: 28px;
+  line-height: 28px;
+  text-align: center;
+  margin-left: 10px;
+  cursor: pointer; }
+
+.loadingImg {
+  width: 20%; }
+
+/*# sourceMappingURL=TopicActivitySubsidiary.css.map */

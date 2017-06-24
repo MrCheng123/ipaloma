@@ -1,0 +1,355 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="applicable-device" content="mobile">
+    <title>福利领取</title>
+    <meta charset="utf-8" />
+    <link href="/consumer/css/benefit.css" rel="stylesheet" />
+    <link type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet" />
+    <style>
+        *{box-sizing: border-box;}
+        body{margin:0;padding:0;background:#ebebeb;font-size:20px;}
+        .assetinfo {
+            width: calc(100% - 35px);
+            height: 40px;
+            background: url(/consumer/image/asset_consumer.png) no-repeat;
+            background-size: 100% 40px;
+            line-height: 35px;
+            padding: 0 15px 0 20px;
+            color: #fff;
+            /* font-size:1rem; */
+            font-size:12px;
+        }
+
+            .assetinfo .asset_left {
+                width: calc(100% - 90px);
+                float: left;
+                height: 40px;
+                color: #fff;
+                font-weight: bold;
+                overflow: hidden;
+                text-wrap: none;
+                text-overflow: ellipsis;
+            }
+
+            .assetinfo .asset_right {
+                width: 90px;
+                float: left;
+                height: 40px;
+                color: #fff;
+                text-align: right;
+            }
+
+                .assetinfo .asset_right small {
+                    font-size: 11px;
+                }
+
+        .assetinfobj {
+            width: 100%;
+            height: 60px;
+            background: url(/consumer/image/asset_bj.png) no-repeat bottom;
+            background-size: 100% 40px;
+            line-height: 35px;
+            color: #fff;
+            margin-top: -20px;
+        }
+
+            .assetinfobj .assetimg {
+                width: 85px;
+                height: 60px;
+                position: absolute;
+                background: url(/consumer/image/asset_bt.png) no-repeat;
+                background-size: auto 60px;
+                z-index: 3;
+            }
+
+                .assetinfobj .assetimg p {
+                    width: 45px;
+                    height: 20px;
+                    margin: 27px 0 0 14px;
+                    line-height: 20px;
+                    text-align: center;
+                    color: #fff;
+                    font-size: 13px;
+                    transform: rotate(-42deg);
+                    -ms-transform: rotate(-42deg); /* Internet Explorer */
+                    -moz-transform: rotate(-42deg); /* Firefox */
+                    -webkit-transform: rotate(-42deg); /* Safari 和 Chrome */
+                    -o-transform: rotate(-42deg); /* Opera */
+                }
+
+            .assetinfobj .asset_left {
+                width: calc(100% - 195px);
+                float: left;
+                height: 40px;
+                color: #fff;
+                font-weight: bold;
+                overflow: hidden;
+                text-wrap: none;
+                text-overflow: ellipsis;
+                margin: 20px 0 0 85px;
+                line-height: 40px;
+            }
+
+            .assetinfobj .asset_right {
+                width: 90px;
+                float: left;
+                height: 40px;
+                color: #fff;
+                text-align: right;
+                margin: 20px 20px 0 0;
+                line-height: 40px;
+            }
+
+                .assetinfobj .asset_right small {
+                    font-size: 11px;
+                }
+
+            .assetinfobj .asset_money {
+                position: absolute;
+                margin: 0;
+                left: 15px;
+                color: #fff;
+                width: 60px;
+                height: 20px;
+                line-height: 20px;
+                text-indent: 4px;
+                font-weight: bold;
+                transform: rotate(-50deg);
+                -ms-transform: rotate(-50deg); /* Internet Explorer */
+                -moz-transform: rotate(-50deg); /* Firefox */
+                -webkit-transform: rotate(-50deg); /* Safari 和 Chrome */
+                -o-transform: rotate(-50deg); /* Opera */
+            }
+            .datalist{
+                width: calc(100% - 1rem);
+                margin:0.8rem auto 0;
+                padding:1rem 0 1rem 0.6rem;
+                background: #fff;
+                overflow: hidden;
+                border-radius:10px 10px 2rem 10px;
+                border:1px solid #d9d9d9;
+                position: relative;
+                box-shadow:1px 2px 2px #DDD;
+            }
+            .leftImg{
+              width: 7rem;
+              height: 7rem;
+              position: relative;
+              float: left;
+            }
+            .leftImg img{
+              width: 7rem;
+              height: 7rem;
+              display: block;
+            }
+            .leftImg p{
+              width: 100%;
+              /*height: */
+              background: rgba(0,0,0,0.4);
+              color:#FFF;
+              position: absolute;
+              left:0;
+              bottom: 0;
+              font-size: 1rem;
+              text-align: center;
+            }
+            .rightCount{
+              width: calc(100% - 7rem);
+              float: left;
+              padding-left: 1rem;
+            }
+            .rightCount h2{
+              width: calc(100% - 3.5rem);
+              height: 3rem;
+              font-size:1.3rem;
+              line-height: 1.5rem;
+              overflow: hidden;
+              color:#333;
+            }
+            .rightCount .contentMore{
+              width: calc(100% - 1.5rem);
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              height: 1.5rem;
+            }
+            .rightCount p{
+              width: calc(100% - 1rem);
+              font-size: 1.1rem;
+              color:#666;
+              line-height: 1.3rem;
+              margin:0.6rem 0;
+            }
+            .rightCount .money{
+              color:#f00;
+              font-size: 1.5rem;
+              margin-top:0.4rem;
+            }
+            .rightCount .moneyInvalid{
+              color:#b0b0b0;
+              font-size: 1.5rem;
+              margin-top:0.4rem;
+            }
+            .activity, .activityInvalid{
+              font-size: 1.2rem;
+              color: #ff8401;
+              overflow: hidden;
+              width: calc(100% - 6rem);
+            }
+            .activity a,.activityInvalid a{
+              width: 1.6rem;
+              height: 1.6rem;
+              display: inline-block;
+              background: #ff8401;
+              color:#FFF;
+              border-radius: 50%;
+              text-align: center;
+              line-height:  1.6rem;
+              font-size: 1rem;
+            }
+            .activityInvalid a{
+              color:#FFF;
+              background: #aeaeae;
+            }
+            .activity span,.activityInvalid span{
+              text-overflow: ellipsis;
+              overflow: hidden;
+              white-space: nowrap;
+              width: calc(100% - 32px);
+              display: inline-block;
+              line-height:  1.6rem;
+              vertical-align: middle;
+              padding-left: 0.5rem;
+            }
+            .activityInvalid span{
+              color:#aeaeae;
+            }
+            .voucherType{
+              width:5.5rem;
+              position: absolute;
+              top:0;
+              right:0;
+            }
+            .activityWay{
+              width: 4rem;
+              height: 4rem;
+              border-radius: 50%;
+              background: #ff8401;
+              position: absolute;
+              right: 0;
+              bottom: 0;
+              text-align: center;
+              font-size: 1.2rem;
+              color:#FFF;
+              line-height: 4rem;
+            }
+            .activityWay2{
+              background: #d85600;
+            }
+            .activityWay3{
+              line-height: 1.4rem;
+              padding-top:0.8rem;
+              padding-left: 0.25rem;
+            }
+            .activityWay4{
+              line-height: 1.4rem;
+              padding:0.6rem 0.4rem 0;
+            }
+            .activityWayInvalid{
+              background: #999;
+            }
+            #nobenefit img{
+              width: 10rem;
+              display: block;
+              margin:4rem auto;
+            }
+            #nobenefit p{
+              color:#999;
+              font-size:1.4rem;
+              width: 100%;
+              text-align: center;
+            }
+    </style>
+</head>
+<body>
+    <div id="nobenefit" >
+        <img src="../image/benefit/nobenefit.png" />
+        <p>您还没有使用过超惠券获得福利哦~</p>
+    </div>
+   <!--  <div class="datalist">
+      <div class="leftImg">
+          <img src="../image/cs03.jpg" />
+          <p class="imgtitle">24小时失效</p>
+      </div>
+      <div class="rightCount">
+        <h2 class="contentMore">我是标语天猫双十二天猫双十二天</h2>
+        <p>主题有主题有主题有主题有主题有主题有</p>
+        <div class="activity">
+          <a>返</a><span>手气红包、返现券、</span>
+        </div>
+      </div>
+      <img src="../image/benefit/jb_tc.png" class="voucherType">
+      <div class="activityWay">
+      去领取
+      </div>
+      </div>
+      <div class="datalist">
+      <div class="leftImg">
+          <img src="../image/cs03.jpg" />
+          <p class="imgtitle">24小时失效</p>
+      </div>
+      <div class="rightCount">
+        <h2>我是标语天猫双十二天猫双十二天我是标语天猫双十二天猫双十二天</h2>
+        <p class="money">¥20.90</p>
+        <div class="activity">
+          <a>返</a><span>3元红包</span>
+        </div>
+      </div>
+      <img src="../image/benefit/jb_tc.png" class="voucherType">
+      <div class="activityWay activityWay2">
+      去领取
+      </div>
+      </div>
+      <div class="datalist">
+      <div class="leftImg">
+          <img src="../image/cs03.jpg" />
+          <p class="imgtitle">24小时失效</p>
+      </div>
+      <div class="rightCount">
+        <h2 class="contentMore">我是标语天猫双十二天猫双十二天</h2>
+        <p>主题有主题有主题有主题有主题有主题有</p>
+        <div class="activityInvalid">
+          <a>返</a><span>手气红包、返现券、</span>
+        </div>
+      </div>
+      <img src="../image/benefit/jb_tc.png" class="voucherType">
+      <div class="activityWay activityWay3 activityWayInvalid">
+      待门店确认
+      </div>
+      </div>
+      <div class="datalist">
+      <div class="leftImg">
+          <img src="../image/cs03.jpg" />
+          <p class="imgtitle">24小时失效</p>
+      </div>
+      <div class="rightCount">
+        <h2>我是标语天猫双十二天猫双十二天我是标语天猫双十二天猫双十二天</h2>
+        <p class="moneyInvalid">¥20.90</p>
+        <div class="activityInvalid">
+          <a>返</a><span>3元红包</span>
+        </div>
+      </div>
+      <img src="../image/benefit/jb_tc_n.png" class="voucherType">
+      <div class="activityWay activityWay4 activityWayInvalid">
+      门店拒绝
+      </div>
+      </div> -->
+
+
+    <script src="/js/sdk/sdk.js"></script>
+
+</body>
+</html>

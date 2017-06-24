@@ -1,0 +1,47 @@
+<div class="fd-nav">
+    <ul>
+        <li>
+            <a onclick="location.href='index.html'" class="logo">
+                <img style="vertical-align: middle; margin-bottom: 12px;left: 0;width: 33px;height: 33px;" src="/distributor/image/logo.png" />
+            </a>
+        </li>
+        <li junmo="activity">
+            <a href="javascript:void(0);" class="v1">活动专区</a>
+            <div class="sub-nav">
+                <em></em>
+                <dl>
+                    <dd><a href="suppercoupon.html" class="">超惠券</a></dd>
+                    <dd><a href="suppermarketactivitylist.html" class="">超惠活动</a></dd>
+                    <dd><a href="noactivity.html" class="">店铺活动</a></dd>
+                </dl>
+            </div>
+            <div class="sanjiao"></div>
+        </li>
+        <li junmo="result">
+            <a href="javascript:void(0);" class="v1">销售业绩</a>
+            <div class="sub-nav">
+                <em></em>
+                <dl>
+                    <dd><a href="/distributor/page/employeecustomsendtime.html" class="">推送设置</a></dd>
+                    <dd><a href="/distributor/page/salesjobtodaysummary.html">今日统计</a></dd>
+                </dl>
+            </div>
+            <div class="sanjiao"></div>
+
+        </li>
+        <li junmo="mine">
+            <a href="javascript:void(0);" class="v1">我的</a>
+            <div class="sub-nav">
+                <em></em>
+                <dl>
+                    <dd><a href="withdraw.html">钱包</a></dd>
+                    <dd><a href="distributor_hx.html">核销记录</a></dd>
+                    <dd><a href="/distributor/page/bindingmobilemodify.html">手机认证</a></dd>
+                    <dd><a href="m-self.html">个人</a></dd>
+                    <dd><a href="m-company.html">公司</a></dd>
+                </dl>
+            </div>
+            <div class="sanjiao"></div>
+        </li>
+    </ul>
+</div>

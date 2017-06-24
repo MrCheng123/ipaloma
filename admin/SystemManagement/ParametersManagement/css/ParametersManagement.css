@@ -1,0 +1,273 @@
+
+
+.wrap{
+	min-width: 1080px;
+}
+a:hover{
+	text-decoration: none;
+}
+
+
+/*通用设定*/
+	/*带有该类名的标签，拥有此样式。*/
+	.classInline{
+		display: inline-block;
+	}
+	.seDivCen{
+		text-align: center;
+		/*margin-right: 1.5%;*/
+		vertical-align: middle;
+	}
+	.seDivCenOOO{
+	    height: 66px;
+	    width: 106px;		
+	}
+/*非通用设定*/
+	/*查询div*/
+	.query_condition_div{
+		vertical-align: middle;
+		padding-bottom: 20px;
+		background: -red;
+		justify-content: space-around;
+		float: left;
+		width:86%;
+	    display: box;              /* OLD - Android 4.4- */
+	    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	    display: -ms-flexbox;      /* TWEENER - IE 10 */
+	    display: -webkit-flex;     /* NEW - Chrome */
+	    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	}
+	/*select选框*/
+	select.quSe{
+		width: 110px;
+		height: 30px;
+	}
+	/*查询div中的input-text*/
+	input.iT{
+		width:110px;
+		height:30px;
+	}
+	/*查询div中的input-radio*/
+	/*input.inra{
+		height: 30px;
+	}*/
+	/*查询div中的日期组件*/
+	input.inData{
+		height: 28px;
+	}		
+	/********/
+	/*查询按钮*/			
+	.query_btn_div{
+		float: left;
+		vertical-align: middle;
+		width:10%;
+		margin-left: 2%;
+	}
+	.query_btn,.reset_btn{
+		background:#4c83db;
+		border:0px;
+		font-size:1.2em;
+		width:120px;
+		line-height: 30px;
+		height:30px;
+		display: inline-block;
+		margin-top: 12px;
+		border-radius: 4px;
+		color: #fff;
+	}	
+	/*分页器*/
+	.paging_content_div{}
+	.paging_data_ul{}
+	.paging_paging_div{}
+	/*loading图片*/
+	/*.imgcontent{
+		text-align: center;
+	}*/
+	.text-overflow{
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+	
+	/*cg编辑按钮开始，cg****/
+	.handle {
+	    position: relative;
+	    cursor: pointer;
+	}	
+	.handle-icon {
+	    display: inline-block;
+	    width: 20px;
+	    height: 20px;
+	    /*background-color: #bbb;*/
+	}	
+	.handle-icon.on + .handle-btns-wrap {
+	    display: table;
+	}	
+	.handle-btns-wrap {
+	    position: absolute;
+		z-index: 2;
+		right: 33%;
+		top: 36px;
+		background: #C4E4EF;
+		height: 34px;
+		line-height: 34px;
+		display: inline-block;
+		word-wrap: normal;
+		word-break: keep-all;
+		padding: 0px 5px; 
+		display: none;
+	}	
+	.handle-btns{
+	    text-align: left;
+	}	
+	.handle-btns a {
+	    display: inline-block;
+	    vertical-align: -5px;
+	}	
+	.handle-btns .arrow-right {
+	    position: absolute;
+		top: -8px;
+		right: 9px;
+		border-top: 0px;
+		border-bottom: 8px solid #C4E4EF;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+	}
+	/*cg编辑按钮结束，cg****/
+	.seleHid{display: none;}
+	input.Wdate{
+		height: 28px;		
+		width: 125px;
+		font-size: 12px;
+		/*text-indent: 10px;*/
+		/*text-align:center;*/
+
+	}
+	.btn{/*1214添加，用于隐藏启用按钮的时候宽度可以自适应。配合注释掉.handle-btns-wrap的277px以及js生成的handle-btns-wrap的186px*/
+		display: inline;
+		background: #C4E4EF;
+	}
+	.btn1:hover{
+		color: #f60;
+	}
+	.btn1{
+		width: 35px;
+		border-right: 1px solid #8abdcf;
+		display: inline-block;
+		height: 12px;
+		line-height: 12px;
+		text-align: center;
+	}
+	.del{
+		border-right: none;
+	}
+	.adda{
+		background:#ff6032;
+		display: inline-block;
+		width: 130px;
+		line-height: 30px;
+		text-align: center;
+		font-weight: normal;
+	}
+	.adda:hover{
+		background:#ff6032; 
+	}
+
+
+
+	/* table */
+	.mt-20{
+		position: relative;
+	}
+	.table{
+		background: #f5fafe;
+	}
+	.table tbody tr td{
+		padding: 18px 0;
+		text-align: center;
+		background: #fff;
+	}
+	.table tbody {
+
+	    display:block;
+
+	    height:570px;
+
+	    overflow-y:scroll;
+
+	}
+	.table thead,.table tbody tr {
+
+	    display:table;
+
+	    width:100%;
+
+	    table-layout:fixed;
+
+	}
+
+	.table thead {
+
+	    width: calc( 99.9% - 1em )
+
+	}
+	.finished{
+		position: absolute;
+	  top: 540px;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  margin: auto;
+	  width: 200px;
+	  height: 20px;
+	  display: none;
+	  z-index: 99999;
+	}
+	.loaded{
+	  position: absolute;
+	  top: 540px;
+	  left: 0;
+	  bottom: 0;
+	  right: 0;
+	  margin: auto;
+	  width: 200px;
+	  height: 20px;
+	  display: none;
+	  z-index: 99999;
+	}
+
+	.loaded .loading{
+	    display: inline-block;
+	    height: 15px;
+	    width: 15px;
+	    border-radius: 100%;
+	    margin-top: -5px;
+	    border: 2px solid #666;
+	    border-bottom-color: transparent;
+	    vertical-align: middle;
+	    -webkit-animation: rotate 0.75s linear infinite;
+	    animation: rotate 0.75s linear infinite;
+	}
+	@-webkit-keyframes rotate {
+	    0% {
+	        -webkit-transform: rotate(0deg);
+	    }
+	    50% {
+	        -webkit-transform: rotate(180deg);
+	    }
+	    100% {
+	        -webkit-transform: rotate(360deg);
+	    }
+	}
+	@keyframes rotate {
+	    0% {
+	        transform: rotate(0deg);
+	    }
+	    50% {
+	        transform: rotate(180deg);
+	    }
+	    100% {
+	        transform: rotate(360deg);
+	    }
+	}

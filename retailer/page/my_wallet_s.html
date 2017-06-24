@@ -1,0 +1,482 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <title>我的钱包</title>
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/my_wallet.css" rel="stylesheet" />
+    <link href="/retailer/css/dropload.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet" />
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="/retailer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/lib/common.js"></script>
+    <script src="/retailer/js/lib/lib.js"></script>
+    <script src="/js/jquery/dropload.min.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+    <!-- <script src="/retailer/js/my_wallet_s.js"></script> -->
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap" id="wrap" v-cloak>
+        <header></header>
+        <section>
+            <div class="WalletBalance">
+                <p>钱包余额</p>
+                <h1>
+                    ￥{{mymoney.balance}}
+                </h1>
+                <div v-bind:class="[mymoney.balance>=1 ? 'valid' : 'invalid', 'deposit']" v-on:click="userwithdraw()"><a href="javascript:void(0)">提现</a></div>
+            </div>
+            <div class="Wallet_nav mt46">
+                <p class="border_efeef4"></p>
+                <!-- 正常情况下 -->
+                <div class="Wallet_list">
+                    <h2 class="incomeDetail">收入明细</h2>
+                    <p class="p_list">
+                        <a v-on:Click="categoryChange('all')" v-bind:class="[category == 'all' ? 'on' : '']">全部</a>
+                        <a v-on:Click="categoryChange('income')" v-bind:class="[category == 'income' ? 'on' : '']">收入</a>
+                        <a v-on:Click="categoryChange('expend')" v-bind:class="[category == 'expend' ? 'on' : '']">支出</a>
+                    </p>
+                    <div id="list_1" v-if="category=='all'">
+                        <div class="Wallet_sr ">
+                            <div v-for="item in alllist.array">
+                                <h1 v-if="item.summaryperiod!=undefined"><span>{{item.summaryperiod}}</span> <b>收入￥{{item.recv}}</b><b>支出￥{{item.expend}}</b></h1>
+                                <dl v-if="item.summaryperiod==undefined" class="clearfix">
+                                    <dt>
+                                        <h2>{{item.tradingtag}}</h2>
+                                        <p>{{item.issuetime}}</p>
+                                    </dt>
+                                    <dd>
+                                        <span v-bind:class="[item.flowing_direction == '收入'?'':'on']">{{item.flowing_direction == '收入'?'+':'-'}}{{item.count}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <!--<p><a href="javascript:void(0)">更多明细</a></p>-->
+                        </div>
+                        <div class="Wallet_fail" v-if="alllist.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无流水记录哦！</span></p>
+                        </div>
+                    </div>
+                    <div id="list_2" v-if="category=='income'">
+                        <div>
+                            <div class="Wallet_sr ">
+                                <div v-for="item in incomelist.array">
+                                    <h1 v-if="item.summaryperiod!=undefined"><span>{{item.summaryperiod}}</span> <b>收入￥{{item.recv}}</b><b>支出￥{{item.expend}}</b></h1>
+                                    <dl class="clearfix" v-if="item.summaryperiod==undefined">
+                                        <dt>
+                                            <h2>{{item.tradingtag}} </h2>
+                                            <p>{{item.issuetime}}</p>
+                                        </dt>
+                                        <dd>
+                                            <span v-bind:class="[item.flowing_direction == '收入'?'':'on']">{{item.flowing_direction == '收入'?'+':'-'}}{{item.count}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <!-- <p><a href="javascript:void(0)">更多明细</a></p> -->
+                            </div>
+                        </div>
+                        <div class="Wallet_fail" v-if="incomelist.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无收入流水记录哦！</span></p>
+                        </div>
+                    </div>
+                    <div id="list_3" v-if="category=='expend'">
+                        <div>
+                            <div class="Wallet_sr ">
+                                <div v-for="item in expendlist.array">
+                                    <h1 v-if="item.summaryperiod!=undefined"><span>{{item.summaryperiod}}</span> <b>收入￥{{item.recv}}</b><b>支出￥{{item.expend}}</b></h1>
+                                    <dl class="clearfix" v-if="item.summaryperiod==undefined">
+                                        <dt>
+                                            <h2>{{item.tradingtag}} </h2>
+                                            <p>{{item.issuetime}}</p>
+                                        </dt>
+                                        <dd>
+                                            <span v-bind:class="[item.flowing_direction == '收入'?'':'on']">{{item.flowing_direction == '收入'?'+':'-'}}{{item.count}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <!-- <p><a href="javascript:void(0)">更多明细</a></p> -->
+                            </div>
+                        </div>
+                        <div class="Wallet_fail" v-if="expendlist.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无支出流水记录哦！</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div id="bottom-nav"></div>
+        </footer>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script>
+        var tmdropme = null;
+        var tmdropme2 = null;
+        var tmdropme3 = null;
+        var vm = new Vue({
+            el: "#wrap",
+            data: {
+                mymoney: { balance: 0 },
+                array: [],
+                category: "all",
+                alllist: { array: [], paging: {}, pageIndex: 1 },//全部
+                incomelist: { array: [], paging: {}, pageIndex: 1 },//收入
+                expendlist: { array: [], paging: {}, pageIndex: 1 }//支出
+            },
+            methods: {
+                getMyMoney: function () {
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: '/webapi/asset/member/my/asset',
+                        data: { assettype: '现金', withemployer: false },
+                        beforeSend: function () { common.loading.show(); },
+                        complete: function () { common.loading.hide(); },
+                        success: function (json) {
+                            // console.log(json)
+                            if (json.content.length > 0) {
+                                var account = $.grep(json.content, function (item) {
+                                    return item.owner_class == "tblaccount";//个人收入信息
+                                })
+                                vm.mymoney = account == undefined || account == "" ? {} : account[0];
+                            } else {
+                                return vm.mymoney = { balance: 0 }
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            common.loading.hide();//隐藏转圈动画
+                            var errormsg = "访问异常";
+                            if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                                var json = JSON.parse(XMLHttpRequest.responseText);
+                                if (json.error != undefined && json.error != null) {
+                                    errormsg = json.error
+                                } else
+                                    errormsg = JSON.parse(json.Message).error;
+                                if (errormsg == undefined || errormsg == '')
+                                    errormsg = "Http error: " + XMLHttpRequest.statusText;
+                            }
+                            toasterextend.showtips(errormsg, "error");
+                        }
+                    })
+                },
+                categoryChange: function (type) {
+                    vm.category = type
+                    if ((type == "all" && vm.alllist.array.length == 0) || (type == "income" && vm.incomelist.array.length == 0) || (type == "expend" && vm.expendlist.array.length == 0)) {
+                        $(".dropload-down").remove()
+                        vm.getAssetFlow(1, null)
+                    }
+                },
+                getAssetFlow: function (index, me) {
+                    var paging = { pageindex: index, current: {} }
+                    if (index > 1) {
+                        if (vm.category == "all") {//全部
+                            paging = $.extend({}, vm.alllist.paging, { pageindex: index });
+                        } else if (vm.category == "income") {//收入
+                            paging = $.extend({}, vm.incomelist.paging, { pageindex: index });
+                        } else {
+                            paging = $.extend({}, vm.expendlist.paging, { pageindex: index });
+                        }
+
+                    }
+                    var data = {
+                        paging: JSON.stringify(paging),
+                        myemployer: false,
+                        category: vm.category,
+                        assettype: "现金"
+                    }
+
+                    $.ajax({
+                        type: 'GET',
+                        dataType: 'json',
+                        url: '/webapi/asset/member/my/asset/flowing',
+                        data: data,
+                        success: function (json) {
+                            var mydetailArr = [];
+                            if (json.content.length > 0) {
+
+                                for (var i = 0; i < json.content.length; i++) {
+                                    mydetailArr.push(json.content[i]);
+                                }
+
+                                vm.mydetail = mydetailArr;
+                                // console.log(mydetail)
+                            }
+
+                            if (vm.category == "all") {
+                                tmdropme = me
+                            } else if (vm.category == "income") {
+                                tmdropme2 = me
+                            } else
+                                tmdropme3 = me
+                            json = json || {};   /* 统一加这句话 */
+                            if (json.error) {
+                                dealdropme(me);
+                                // toasterextend.showtips(json.error, "error");
+                                return;
+                            }
+                            if (json.user_notification != undefined) {
+                                dealdropme(me);
+                                //toasterextend.showtips(json.user_notification, "info");
+                                return;
+                            }
+                            if (index != 1) {
+                                if (vm.category == "all") {//全部
+                                    var filterarray = $.grep(vm.alllist.array, function (item) {
+                                        return item.summaryperiod != undefined;//筛选出每月统计
+                                    });
+                                    $.each(json.content, function (i, v) {
+                                        if (filterarray.length > 0) {
+                                            var bl = false;
+                                            $.each(filterarray, function (i, item) {
+                                                bl = !compare(item, v)
+                                            })
+                                            if (bl)
+                                                vm.alllist.array.push(v)
+                                        } else {
+                                            vm.alllist.array.push(v)
+                                        }
+                                    });
+                                    vm.alllist.paging = json.paging
+
+                                } else if (vm.category == "income") {//收入
+                                    var filterarray = $.grep(vm.incomelist.array, function (item) {
+                                        return item.summaryperiod != undefined;//筛选出每月统计
+                                    });
+                                    $.each(json.content, function (i, v) {
+                                        if (filterarray.length > 0) {
+                                            var bl = false;
+                                            $.each(filterarray, function (i, item) {
+                                                bl = !compare(item, v)
+                                            })
+                                            if (bl)
+                                                vm.incomelist.array.push(v)
+                                        } else {
+                                            vm.incomelist.array.push(v)
+                                        }
+                                    });
+                                    vm.incomelist.paging = json.paging
+                                } else {
+                                    var filterarray = $.grep(vm.expendlist.array, function (item) {
+                                        return item.summaryperiod != undefined;//筛选出每月统计
+                                    });
+                                    $.each(json.content, function (i, v) {
+                                        if (filterarray.length > 0) {
+                                            var bl = false;
+                                            $.each(filterarray, function (i, item) {
+                                                bl = !compare(item, v)
+                                            })
+                                            if (bl)
+                                                vm.expendlist.array.push(v)
+                                        } else {
+                                            vm.expendlist.array.push(v)
+                                        }
+                                    });
+                                    vm.expendlist.paging = json.paging
+                                }
+
+                            } else {
+                                if (vm.category == "all") {//全部
+                                    vm.alllist.array = json.content
+                                    vm.alllist.paging = json.paging
+                                } else if (vm.category == "income") {//收入
+                                    vm.incomelist.array = json.content
+                                    vm.incomelist.paging = json.paging
+                                } else {
+                                    vm.expendlist.array = json.content
+                                    vm.expendlist.paging = json.paging
+                                }
+                            }
+
+
+                            if (json.content.length == 0 || json.content.length < 15) {
+                                dealdropme(me);
+                                $(".dropload-down").remove()
+                                return;
+                            } else {
+                                //这样可以，nextTick里面的代码会在DOM更新后执行
+                                Vue.nextTick(function () {
+                                    if (vm.category == "all") {
+                                        vm.jsondataReadered()
+                                    } else if (vm.category == "income") {
+                                        vm.jsondataReadered2()
+                                    } else
+                                        vm.jsondataReadered3()
+                                })
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+
+                            common.loading.hide();//隐藏转圈动画
+
+                            var errormsg = "访问异常";
+
+                            if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                                var json = JSON.parse(XMLHttpRequest.responseText);
+                                errormsg = JSON.parse(json.Message).error;
+                                if (errormsg == undefined || errormsg == '')
+                                    errormsg = "Http error: " + XMLHttpRequest.statusText;
+                            }
+                            toasterextend.showtips(errormsg, "error");
+                        }
+                    });
+                },
+                jsondataReadered: function (e) {
+                    if (vm.alllist.pageIndex == 1) {
+                        $(".dropload-down").remove()
+                        $('#list_1').dropload({
+                            scrollArea: window,
+                            domDown: {
+                                domClass: 'dropload-down',
+                                domRefresh: '<div class="dropload-refresh">↑加载更多</div>',
+                                domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                                domNoData: '<div class="dropload-noData">暂无数据</div>'
+                            },
+                            loadDownFn: function (me) {
+                                vm.alllist.pageIndex++
+                                tmdropme = me;
+                                vm.getAssetFlow(vm.alllist.pageIndex, me)
+                            }
+                        });
+                    }
+                    if (tmdropme != null)
+                        tmdropme.resetload();
+                },
+                jsondataReadered2: function (e) {
+                    if (vm.incomelist.pageIndex == 1) {
+                        $(".dropload-down").remove()
+                        $('#list_2').dropload({
+                            scrollArea: window,
+                            domDown: {
+                                domClass: 'dropload-down',
+                                domRefresh: '<div class="dropload-refresh">↑加载更多</div>',
+                                domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                                domNoData: '<div class="dropload-noData">暂无数据</div>'
+                            },
+                            loadDownFn: function (me) {
+                                vm.incomelist.pageIndex++
+                                tmdropme2 = me;
+                                vm.getAssetFlow(vm.incomelist.pageIndex, me)
+                            }
+                        });
+                    }
+                    if (tmdropme2 != null)
+                        tmdropme2.resetload();
+                },
+                jsondataReadered3: function (e) {
+                    if (vm.expendlist.pageIndex == 1) {
+                        $(".dropload-down").remove()
+                        $('#list_3').dropload({
+                            scrollArea: window,
+                            domDown: {
+                                domClass: 'dropload-down',
+                                domRefresh: '<div class="dropload-refresh">↑加载更多</div>',
+                                domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                                domNoData: '<div class="dropload-noData">暂无数据</div>'
+                            },
+                            loadDownFn: function (me) {
+                                vm.expendlist.pageIndex++
+                                tmdropme3 = me;
+                                vm.getAssetFlow(vm.expendlist.pageIndex, me)
+                            }
+                        });
+                    }
+                    if (tmdropme3 != null)
+                        tmdropme3.resetload();
+                },
+                userwithdraw: function () {//用户提现
+                    if (vm.mymoney.balance >= 1)
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'json',
+                            data: { count: vm.mymoney.balance, type: "account" },
+                            url: '/webapi/retailer/mine/withdraw',
+                            beforeSend: function () { shelter.init({ icos: "/js/shelter/image/loading.gif", title: "提现中..." }) },
+                            success: function (json) {
+                                shelter.close()
+                                json = json || {};   /* 统一加这句话 */
+                                if (json.error) {
+                                    shelter.init({
+                                        title: json.error,
+                                        icos: "/js/shelter/image/ico_warn.png",
+                                        autoClear: 5,
+                                        shadeClose: true
+                                    })
+                                    return;
+                                }
+                                if (json.user_notification != undefined) {
+                                    shelter.init({
+                                        title: json.user_notification,
+                                        icos: "/js/shelter/image/ico_warn.png",
+                                        autoClear: 5,
+                                        shadeClose: true
+                                    })
+                                    if (json.state == 1) {
+                                        ///提现成功，重新加载余额记录
+                                        vm.getMyMoney()
+                                        vm.getAssetFlow(1, null)
+                                    }
+                                }
+                            },
+                            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                                shelter.close();//隐藏转圈动画
+                                var errormsg = "访问异常";
+                                if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                                    var json = JSON.parse(XMLHttpRequest.responseText);
+                                    if (json.error != undefined && json.error != null) {
+                                        errormsg = json.error + (json.user_notification != undefined ? json.user_notification : "")
+                                    } else
+                                        errormsg = JSON.parse(json.Message).error;
+                                    if (errormsg == undefined || errormsg == '')
+                                        errormsg = "Http error: " + XMLHttpRequest.statusText;
+                                }
+
+                                shelter.init({
+                                    title: errormsg,
+                                    icos: "/js/shelter/image/ico_error.png",
+                                    autoClear: 5,
+                                    shadeClose: true
+                                })
+                            }
+                        });
+                }
+            }
+        })
+
+        ///对比object 是否相同
+        function compare(Obj_1, Obj_2) {
+            for (var key in Obj_1) {
+                if (typeof (Obj_2[key]) === 'undefined') {
+                    return false;
+                } else {
+                    if (typeof (Obj_1[key]) === 'object') {
+                        compare(Obj_1[key], Obj_2[key]);
+                    } else {
+                        if (Obj_1[key] !== Obj_2[key]) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        $(document).ready(function () {
+            vm.getMyMoney();
+            vm.getAssetFlow(1, null)
+        })
+    </script>
+</body>
+</html>

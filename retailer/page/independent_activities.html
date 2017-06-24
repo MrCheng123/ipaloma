@@ -1,0 +1,607 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>自主活动</title>
+    <link href="../css/weixintips.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link href="../css/independent_activities.css" rel="stylesheet" />
+    <link href="../css/default.css" rel="stylesheet" />
+    <link href="../css/default.date.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container add">
+        <div class="a-title" onclick="activity.create()">创新新活动</div>
+        <div class="clear"></div>
+        <i>消费者一般在平台审核通过后的第二天看到您的活动</i>
+    </div>
+    <!--创建-->
+    <div id="create">
+
+
+    </div>
+
+    <div id="list">
+
+    </div>
+    <div id="bottom-nav"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/retailer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script src="../js/lib/picker.js"></script>
+    <script src="../js/lib/picker.date.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script>
+        $(function () {
+            activity.list();
+        })
+        var cssObj = {
+            tabChange: function (t, obj) {
+                if ($(obj).is(".curr"))
+                    return;
+                var parentObj = $(obj).closest("table");
+                if (t == 0) {
+                    $(obj).parent().find("input[name=reltype]").val(0);
+                    parentObj.find("tr[data-type=1]").hide();
+                    parentObj.find("tr[data-type=0]").show();
+                }
+                else {
+                    $(obj).parent().find("input[name=reltype]").val(1);
+                    parentObj.find("tr[data-type=0]").hide();
+                    parentObj.find("tr[data-type=1]").show();
+                }
+                parentObj.find(".curr").removeClass("curr");
+                $(obj).addClass("curr");
+            },
+            noAuditShow: function (t, obj) {
+                t == 0 ? $(obj).parent().next().show() : $(obj).parent().hide();
+            }
+        }
+        var popup = {
+            show: function (t, callback) {
+                var cont = "";
+                if (t == 1)
+                    cont = '<div class="win-box"><p><img src="../image/activities/tl-4.png"  style="width:37px" /></p><p>您是否确定删除此活动？</p><p style="margin-top:20px;"><input type="button" class="w-save" value="确定" /><input class="w-cancel" onclick="popup.close()" type="button" value="取消" /></p></div>';
+                else if (t == 2)
+                    cont = '<div class="win-box"><p><img src="../image/activities/tl-5.png"  style="width:40px"  /></p><p>网络异常，请重试！</p><p style="margin-top:20px;"><input type="button" class="w-save" value="确定" /><input class="w-cancel" onclick="popup.close()" type="button" value="取消" /></p></div>';
+                else if (t == 3)
+                    cont = '<div class="win-box"><p><img src="../image/activities/tl-6.png" style="width:32px"  /></p><p>您还有内容未保存！<br/>退出后将清空，确定要退出？</p><p style="margin-top:20px;"><input type="button" class="w-save" value="确定" /><input class="w-cancel" onclick="popup.close()" type="button" value="取消" /></p></div>';
+                else if (t == 4)
+                    cont = '<div class="win-box win-6"><p><img src="../image/activities/tl-6.png" /></p><p>该活动刚刚完成审核<br/>如要修改，请先下架！</p></p></div><div class="win-close" ></div>';
+                else if (t == 5)
+                    cont = '<div class="win-box win-6"><p><img src="../image/activities/tl-6.png"  /></p><p> 该活动刚刚完成审核，且未通过！<br/>请到未发布活动列表中修改。</p></p></div><div class="win-close"></div>';
+                else if (t == 6)
+                    cont = '<div class="win-box"><p><img src="../image/activities/tl-6.png" style="width:32px"  /></p><p>该活动已在审核中<br/>将很快与惠粉见面，确认要修改？</p><p style="margin-top:20px;"><input type="button" class="w-save" value="确定" /><input class="w-cancel" onclick="popup.close()" type="button" value="取消" /></p></div>';
+                else if (t == 7)
+                    cont = '<div class="win-box win-6"><p><img src="../image/activities/tl-8.png"  /></p><p style="color:#000">保存成功</p><p style="color:#999">请到未发布活动列表查看</p></p></div><div class="win-close"></div>';
+                else if (t == 8)
+                    cont = '<div class="win-box win-6"><p><img src="../image/activities/tl-8.png"  /></p><p style="color:#000">发布成功</p><p  style="color:#999">请到已发布活动列表查看</p></div><div class="win-close" "></div>';
+                else if (t == 9)
+                    cont = '<div class="win-box"><p><img src="../image/activities/tl-6.png" style="width:32px"  /></p><p>确定下架？<br/>下架后惠粉将看不到您的活动</p><p style="margin-top:20px;"><input type="button" class="w-save" value="确定" /><input class="w-cancel" onclick="popup.close()" type="button" value="取消" /></p></div>';
+                else if (t == 10)
+                    cont = '<div class="win-box date-box"><ul><li class="curr">00</li><li>01</li><li>02</li><li>03</li><li>04</li><li>05</li><li>06</li><li>07</li><li>08</li><li>09</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li></ul><p style="margin-top:20px;"><input class="date-btn" onclick="popup.close()" type="button" value="取消" /><input type="button" class="date-btn" value="确定" id="date-save" style="margin-left:10px;" /></p></div>';
+                $("body").css("padding-bottom", "0")
+                $("body").append('<div class="lazyout" id="lazyout"></div><div id="win_box">' + cont + '</div>');
+                var h = $(window).height() > $(document.body).height() ? $(window).height() : $(document.body).height();
+                $("#lazyout ").height(h);
+                var winH = ($(window).height() - $("#win_box .win-box").outerHeight()) / 2 + $(document).scrollTop() - 25;
+                $(window).bind("touchmove", function (e) {
+                    e.preventDefault();
+                })
+                $("#win_box .win-box").css("top", winH);
+                $("#win_box .win-close").css("top", winH + $("#win_box .win-box").outerHeight() + 50);
+                $("#win_box .w-save,#win_box .win-close").click(function () {
+                    popup.close();
+                    if (callback != null)
+                        callback();
+                })
+            },
+            close: function () {
+                $("body").css("padding-bottom", "60px")
+                $("#lazyout,#win_box").remove();
+                $(window).unbind("touchmove");
+            }
+        };
+        function initDate() {
+            $("#create input[name=originalprice]").blur(function () {
+                var originalprice = $(this).val();
+                if (!$.isNumeric(originalprice)) {
+                    $(this).val("");
+                    return;
+                }
+                originalprice = new Number(originalprice).toFixed(2);
+                $(this).val(originalprice);
+                var discountprice = new Number($(this).parent().find("input[name=discountprice]").val());
+                $(this).parent().find(".d-cont").text(getDiscount(discountprice, originalprice));
+            })
+            $("#create input[name=discountprice]").blur(function () {
+                var discountprice = $(this).val();
+                var discountprice = $(this).val();
+                if (!$.isNumeric(discountprice)) {
+                    $(this).val("");
+                    return;
+                }
+                discountprice = new Number(discountprice).toFixed(2);
+                $(this).val(discountprice);
+                var originalprice = new Number($(this).parent().find("input[name=originalprice]").val());
+
+                $(this).parent().find(".d-cont").text(getDiscount(discountprice, originalprice));
+            })
+
+            function getDiscount(specialprice, originalcost) {
+                if (specialprice > 0 && originalcost > 0 && originalcost > specialprice) {
+                    var discount = specialprice / originalcost * 10+'';
+                    return discount.substring(0, discount.lastIndexOf('.') + 2) + "折";
+                }
+                return "";
+            }
+
+            $('.date').pickadate({ min: Date.now });
+            $('.date-hour').click(function () {
+                var parent = this;
+                popup.show(10);
+                $("#win_box li").click(function () {
+                    $("#win_box .curr").removeClass("curr");
+                    $(this).addClass("curr");
+                })
+                $("#win_box ul").scroll(function (stop) {
+                    var top = $(this).scrollTop();
+                    var h = Math.ceil(top / 50);
+                    $("#win_box .curr").removeClass("curr");
+                    $($("#win_box li:eq(" + h + ")")).addClass("curr");
+                });
+                $("#date-save").click(function () {
+                    $(parent).val($("#win_box .curr").text());
+                    popup.close();
+                })
+            });
+            $(".create textarea").keyup(function () {
+            $(this).next().text($(this).val().length + "/" + $(this).attr("maxlength"));
+        });
+        }
+
+
+
+         function convertformtoedit(obj, json)
+            {
+                $(obj.parentNode.parentNode).hide();
+                $(obj).closest(".relitem").after(createHtml);
+                initDate();
+                var fm = $(obj).closest(".relitem").next();
+                fm.find(".a-title").text("编辑活动");
+                var relType = (json.type == "markdown" ? 0 : 1);
+                fm.find("input[name=activityid]").val(json.activityid);
+                fm.find("input[name=reltype]").val(relType);
+                
+                fm.find("textarea[name=goodsname]").val(json.goodsname);
+                fm.find("input[name=begintime]").val(json.begintime);
+                var endTime = new Date(json.endtime + ":00:00");
+                fm.find("input[name=endtime]").val(endTime.getFullYear() + "-" + (endTime.getMonth() + 1) + "-" + endTime.getDate());
+                fm.find("textarea[name=remark]").val(json.remark);
+                fm.find("input[name=datehour]").val(endTime.getHours());
+                if (relType == 0) {
+                    fm.find("input[name=originalprice]").val(json.originalprice);
+                    fm.find("input[name=discountprice]").val(json.discountprice);
+                    fm.find(".dis-box .d-cont").text(json.discount + "折");
+                    fm.find("tr[data-type=1]").hide();
+                    fm.find("tr[data-type=0]").show();
+                } else {
+                    fm.find("input[name=unitprice]").val(json.unitprice);
+                    fm.find("input[name=buycount]").val(json.buycount);
+                    fm.find("input[name=giftcount]").val(json.giftcount);
+                    fm.find("tr[data-type=0]").hide();
+                    fm.find("tr[data-type=1]").show();
+                }
+                fm.find(".a-type .curr").removeClass("curr");
+                fm.find(".a-type a:eq(" + relType + ")").addClass("curr");
+            }
+        var activity = {
+            //查询数据
+            list: function () {
+                _ajax("GET", "/webapi/retailer/owner/activities/",null, function (json) {
+                    if (json.activities.length == 0)
+                        return;
+                    var releaseHtml = "";
+                    var noReleaseHtml = "";
+                    var noReleaseCount = 0;
+                    var releaseCount = 0;
+                    $.each(json.activities, function (i, item) {
+                        if ($.trim(item.state) == "未发布" || $.trim(item.state) == "审核失败")
+                        {
+                            noReleaseHtml += activity.getRelHtml(item);
+                            noReleaseCount += 1;
+                        }
+                        else
+                        {
+                            releaseHtml += activity.getRelHtml(item);
+                            releaseCount += 1;
+                        }
+                    });
+                    var htmlContent = noReleaseCount > 0 ? '<div class="container no-release"> <div class="a-title">未发布的活动</div>' + noReleaseHtml + '</div>' : '';
+                    htmlContent = releaseCount > 0 ? htmlContent + '<div class="container release"><div class="a-title">已发布进行中的活动</div>' + releaseHtml + '</div>' : htmlContent;
+                    
+                    $("#list").html(htmlContent);
+                    
+                    //$("#list").html('<div class="container no-release"> <div class="a-title">未发布的活动</div>' + noReleaseHtml + '</div> <div class="container release"><div class="a-title">已发布进行中的活动</div>' + releaseHtml + '</div>');
+                });
+            },
+            getRelHtml: function (item) {
+                var content = "";
+                var state = $.trim(item.state);
+                var isMarkDown = false;
+                if ($.trim(item.type) == "markdown")
+                    isMarkDown = true;
+
+                content += '<div class="relitem" ' + (state == "上架" ? 'style="padding-bottom:0"' : '') + '>'
+                        + '<table cellpadding="0" cellspacing="0">'
+                        + '<tr><td colspan="2" class="ft17"><label class="cut">' + (isMarkDown ? "降价" : "买赠") + '</label>' + item.goodsname;
+
+                if (state == "审核中")
+                    content += '<label class="auit">审核中</label>';
+                else if (state == "上架")
+                    content += '<label class="released">已发布</label>';
+
+                if (item.reason != null && $.trim(item.reason).length > 0) {
+                    content += '<div class="no-audit"><b></b><div class="n-title">该活动审核未通过<a href="javascript:;" onclick="cssObj.noAuditShow(0,this)">查看原因</a></div>'
+                    + '<div class="n-cont">' + item.reason + '<div class="n-close" onclick="cssObj.noAuditShow(1,this)"></div></div></div>';
+                }
+                content += "</td></tr>";
+
+                if (isMarkDown)
+                    content += '<tr><th>原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</th><td>￥' + item.originalprice + '</td></tr>'
+                             + '<tr><th>优&nbsp;&nbsp;惠&nbsp;&nbsp;价：</th><td>￥' + item.discountprice + '</td></tr>'
+                             + '<tr><th>折&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;扣：</th><td>' + item.discount + '折</td></tr>';
+                else
+                    content += '<tr><th>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</th><td>￥' + item.unitprice + '</td></tr>'
+                             + '<tr><th>优&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</th><td>' + item.buycount + '赠' + item.giftcount + '</td></tr>';
+
+                content += '<tr><th>活动时间：</th><td>' + item.begintime + '至 ' + item.endtime + '</td></tr>'
+                         + '<tr><th valign="top">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</th><td valign="top">' + item.remark + '</td></tr>';
+                if ($.trim(item.state) == "未发布" || $.trim(item.state) == "审核失败") {
+                    content += '</table><ul class="op-pnl" data-code=' + item.activityid + '><li onclick="activity.del(this)"><label class="op-del">删除</label></li><li onclick="activity.edit(this)"><label class="op-update" >修改</label></li>';
+                    if (item.reason != null && $.trim(item.reason).length > 0)
+                        content += '<li onclick="popup.show(5,null)">';
+                    else
+                        content += '<li onclick="activity.updateState(\'up\',this)">';
+                    content += '<label class="op-release">发布</label></li></ul><div class="clear"></div>';
+                }
+                else if ($.trim(item.state) == "审核中")
+                    content += '</table><ul class="op-pnl" data-code=' + item.activityid + ' ><li style="width:50%;"  onclick="activity.del(this)""><label class="op-del">删除</label></li><li style="width:50%;" onclick="activity.edit(this)"><label class="op-update">修改</label></li><div class="clear"></div>';
+                else if ($.trim(item.state) == "上架")
+                    content += '<tr><td colspan="2" align="center" style="height:45px;"  data-code="' + item.activityid + '"><input  type="button" onclick="activity.stateDown(this)" value="下架" class="ots-btn" /></td></tr> </table>';
+                content += "</div>";
+                return content;
+            },
+            //删除
+            del: function (obj) {
+                var activityid = $(obj.parentNode).attr("data-code");
+                popup.show(1, function () {
+                    _ajax("DELETE", '/webapi/retailer/activities/' + activityid, null, function (json) {
+                        if (json.activityid == activityid)
+                            activity.delRelItem($(obj).parent().parent());
+                    })
+                });
+            },
+            delRelItem: function (obj) {
+                if ($(obj).parent().find(".relitem").length == 1)
+                    $(obj).parent().remove();
+                else
+                    $(obj).remove();
+            },
+            create: function () {
+                $("#create").append(createHtml);
+                initDate();
+            },
+            //新增
+            add: function (obj, t) {
+                var createObj = $(obj).closest(".create");
+                var relType = parseInt(this.getParam(createObj, "reltype"));
+                var hour = this.getParam(createObj, "datehour");
+                var dataForm = {
+                    goodsname: $(createObj).find("textarea[name=goodsname]").val(),
+                    type: (relType == 0 ? "markdown" : "promotional"),
+                    begintime: this.getParam(createObj, "begintime"),
+                    endtime: this.getParam(createObj, "endtime"),
+                    remark: $(createObj).find("textarea[name=remark]").val(),
+                    optype: t == 0 ? "store" : "release"
+                };
+                if ($.trim(dataForm.goodsname).length == 0) {
+                    toasterextend.showtips("请输入商品名称", "error");
+                    return;
+                }
+                if (relType == 0) {
+                    dataForm["originalprice"] = parseFloat(this.getParam(createObj, "originalprice"));
+                    dataForm["discountprice"] = parseFloat(this.getParam(createObj, "discountprice"));
+                    if ($.trim(dataForm.originalprice).length == 0) {
+                        toasterextend.showtips("请输入原价", "error");
+                        return;
+                    }
+                    if (dataForm.originalprice == 0 || parseInt(dataForm.originalprice).length > 7) {
+                        toasterextend.showtips("原价格式不正确", "error");
+                        return;
+                    }
+                    if ($.trim(dataForm.discountprice).length == 0) {
+                        toasterextend.showtips("请输入优惠价", "error");
+                        return;
+                    }
+                    if (dataForm.discountprice == 0 || parseInt(dataForm.discountprice).length > 7) {
+                        toasterextend.showtips("超惠价格式不正确", "error");
+                        return;
+                    }
+                    if (dataForm.discountprice <= dataForm.originalprice)
+                        dataForm["discount"] = (dataForm.discountprice / dataForm.originalprice * 10).toFixed(1);
+                    else {
+                        toasterextend.showtips("超惠价不能大于原价", "error");
+                        return;
+                    }
+                } else {
+                    dataForm["unitprice"] = parseFloat(this.getParam(createObj, "unitprice"));
+                    dataForm["buycount"] = parseInt(this.getParam(createObj, "buycount"));
+                    dataForm["giftcount"] = parseInt(this.getParam(createObj, "giftcount"));
+                    if ($.trim(dataForm.unitprice).length == 0) {
+                        toasterextend.showtips("请输入单价", "error");
+                        return;
+                    }
+                    if (dataForm.unitprice == 0 || parseInt(dataForm.unitprice).length > 7) {
+                        toasterextend.showtips("单价格式不正确", "error");
+                        return;
+                    }
+                    if ($.trim(dataForm.buycount).length == 0 || $.trim(dataForm.giftcount).length == 0) {
+                        toasterextend.showtips("请输入买赠数量", "error");
+                        return;
+                    }
+                    if (dataForm.buycount.length == 0 || dataForm.buycount.length > 7) {
+                        toasterextend.showtips("买赠格式不正确", "error");
+                        return;
+                    }
+                    if (dataForm.giftcount.length == 0 || dataForm.giftcount.length > 7) {
+                        toasterextend.showtips("买赠格式不正确", "error");
+                        return;
+                    }
+                }
+                if ($.trim(dataForm.begintime).length == 0) {
+                    toasterextend.showtips("请输入起始时间", "error");
+                    return;
+                }
+                if ($.trim(dataForm.endtime).length == 0) {
+                    toasterextend.showtips("请输入结束时间", "error");
+                    return;
+                }
+                if (new Date(dataForm.endtime) < new Date(dataForm.begintime)) {
+                    toasterextend.showtips("结束时间不能小于起始时间", "error");
+                    return;
+                }
+                if ($.trim(hour).length == 0) {
+                    toasterextend.showtips("请输入时", "error");
+                    return;
+                }
+                dataForm.endtime += " " + hour + ":00:00";
+                dataForm["activityid"] = this.getParam(createObj, "activityid");
+                this.saveData(createObj, t, dataForm);
+
+            },
+            //编辑
+            edit: function (obj) {
+                if ($(obj).closest(".relitem").next().is(".create")) {
+                    $(obj).closest(".relitem").next().remove();
+                    return;
+                }
+                _ajax("GET", '/webapi/retailer/owner/activities/' + $(obj).parent().attr("data-code"), null, function (json) {
+                    if (json.state == "上架") {
+                        popup.show(4, null);
+                        return;
+                    } else if (json.state == "未发布" && $.trim(json.reason).length > 0) {
+                        popup.show(5, null);
+                        return;
+                    } else if (json.state == "未发布" && $.trim(json.reason).length == 0)
+                    {
+                        convertformtoedit(obj, json);
+                    } 
+                    else if (json.state == "审核中") {
+                        popup.show(6, function()
+                        {
+                            convertformtoedit(obj, json);
+                        });
+                        return;
+                    }
+                });
+            },
+            saveData: function (createObj, t, dataForm) {
+                var isUpdate = false;
+                var url = "/webapi/retailer/activities";
+                var method = "POST";
+                if ($.trim(dataForm.activityid).length > 0 &&  $.trim(dataForm.activityid) != "0") {
+                    isUpdate = true;
+                    method = "PUT"
+                    url = "/webapi/retailer/activities/" + dataForm.activityid;
+                }
+                _ajax(method, url, dataForm, function (json) {
+
+                    var rt = 8;
+                    if (t == 0)
+                        rt = 7
+                    popup.show(rt, function () {
+                        if (isUpdate)
+                            createObj.prev().remove();
+                        if (json.state == "未发布") {
+                            if ($("#list .no-release").length == 0)
+                                $("#list").append('<div class="container no-release"> <div class="a-title">未发布的活动</div>' + activity.getRelHtml(json) + '</div>');
+                            else {
+                                if (isUpdate && createObj.parent().is(".no-release"))
+                                    createObj.before(activity.getRelHtml(json));
+                                else
+                                    $("#list .no-release").append(activity.getRelHtml(json));
+                            }
+                        }
+                        else {
+                            if ($("#list .release").length == 0)
+                                $("#list").append('<div class="container release" style="padding-bottom:0"> <div class="a-title">已发布进行中的活动</div>' + activity.getRelHtml(json) + '</div>');
+                            else {
+                                if (isUpdate && createObj.parent().is(".release"))
+                                    createObj.before(activity.getRelHtml(json));
+                                else
+                                    $("#list .release").append(activity.getRelHtml(json));
+                            }
+                        }
+                        createObj.remove();
+                    });
+                });
+            },
+            getParam: function (obj, name) {
+                return $(obj).find("input[name=" + name + "]").val();
+            },
+            updateState: function (state, obj) {
+                var activityid = $(obj.parentNode).attr("data-code");
+                _ajax("PUT", '/webapi/retailer/activities/' + activityid + "/" + state, null, function (json) {
+                    
+                    if (state == "up") {
+                        var relObj = $(obj).parent().parent();
+                        if (json.state == "审核中") {
+                            relObj.find("table tr:eq(0) td").remove(".no-audit").append('<label class="auit">审核中</label>');
+                            relObj.append('<ul class="op-pnl" data-code="' + activityid + '"><li style="width:50%;" onclick="activity.del(this)"><label class="op-del">删除</label></li><li style="width:50%;"  onclick="activity.edit(this)"><label class="op-update" >修改</label></li><div class="clear"></div></ul>');
+                        }
+                        else if (json.state == "上架") {
+                            relObj.find("table tr:eq(0) td").remove(".no-audit").append('<label class="released">已发布</label>');
+                            relObj.find("table").append('<tr><td colspan="2" align="center" style="height:45px;"  data-code="' + activityid + '"><input type="button"   onclick="activity.stateDown(this)" value="下架" class="ots-btn"></td></tr>');
+                            relObj.css("padding-bottom", "0");
+                        }
+                        $(obj).parent().remove();
+                        $("#list .release").append(relObj[0].outerHTML);
+                        activity.delRelItem(relObj);
+                        popup.show(8, null);
+                    } else {
+                        var relObj = $(obj).closest(".relitem");
+                        $(obj).parent().parent().remove();
+                        relObj.find(".released").remove();
+                        relObj.append('<ul class="op-pnl" data-code="' + activityid + '"><li  onclick="activity.del(this)"><label class="op-del">删除</label></li><li onclick="activity.edit(this)"><label class="op-update" >修改</label></li><li onclick="activity.updateState(\'up\',this)"><label class="op-release">发布</label></li></ul>');
+                        relObj.css("padding-bottom", "50px")
+                        $("#list .no-release").append(relObj[0].outerHTML);
+                        activity.delRelItem(relObj);
+                        popup.show(7, null);
+                    }
+
+                });
+            },
+            stateDown: function (obj) {
+                popup.show(9, function () {
+                    activity.updateState('down', obj);
+                });
+            }
+        }
+        var _ajax = function (type, url, data, success) {
+            $.ajax({
+                type: type,
+                dataType: "json",
+                url: url,
+                data: data,
+                beforeSend: function () { common.loading.show(); },
+                complete: function () { common.loading.hide(); },
+                timeout: function () { popup.show(2, null) },
+                success: function (json) {
+                    common.loading.hide();//隐藏转圈动画
+
+                    json = json || {};   /* 统一加这句话 */
+                    if (json.error) {
+                        toasterextend.showtips(json.error, "error");
+                        return;
+                    }
+                    if (json.user_notification != undefined) {
+                        toasterextend.showtips(json.user_notification, "info");
+                        return;
+                    }
+                    success(json);
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    common.loading.hide();//隐藏转圈动画
+
+                    var errormsg = "访问异常";
+
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;
+                        if (errormsg == undefined || errormsg == '')
+                            errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+
+                    toasterextend.showtips(errormsg, "error");
+                }
+            });
+        }
+        var createHtml = '<div class="container create">'
+                   + '<div class="a-title">新创建活动</div>'
+                   + '<table cellpadding="0" cellspacing="0">'
+                   + '   <thead>'
+                   + '       <tr>'
+                   + '           <th width="75" height="40">活动类型</th>'
+                   + '           <td class="a-type">'
+                   + '               <a href="javascript:;" class="curr" onclick="cssObj.tabChange(0,this)">降价</a>'
+                   + '               <a href="javascript:;" onclick="cssObj.tabChange(1, this)">买赠</a>'
+                   + '                <input type="hidden" name="reltype" value="0" /><input type="hidden" name="activityid" value="" />'
+                   + '           </td>'
+                   + '        </tr>'
+                   + '     </thead>'
+                   + '    <tbody>'
+                   + '         <tr>'
+                   + '            <th valign="top">商品名称</th>'
+                   + '            <td>'
+                   + '                 <input type="hidden" name="retailerid" value="" />'
+                   + '                 <textarea class="g-name" name="goodsname" maxlength="30" rows="3" placeholder="请输入商品名称"></textarea>'
+                   + '                 <label class="g-name-limit">0/30</label>'
+                   + '            </td>'
+                   + '        </tr>'
+                   + '        <tr data-type="0">'
+                   + '            <th style="line-height:40px;">原&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价<br />超&nbsp;&nbsp;惠&nbsp;&nbsp;价</th>'
+                   + '            <td class="price-box">'
+                   + '                <label class="money-ico">￥</label>'
+                   + '               <input type="number" name="originalprice" style="padding-left:20px;" /><br />'
+                   + '               <label class="money-ico" style="top:62px;">￥</label>'
+                   + '               <input type="number" name="discountprice" style="margin-top:10px;padding-left:20px;" />'
+                   + '               <div class="dis-box">'
+                   + '                   <div class="d-title">折扣</div>'
+                   + '                    <div class="d-cont"></div>'
+                   + '                </div>'
+                   + '           </td>'
+                   + '        </tr>'
+                   + '        <tr data-type="1" style="display:none">'
+                   + '            <th>单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价</th>'
+                   + '            <td><label class="money-ico">￥</label><input name="unitprice" type="number" style="padding-left:20px;" /></td>'
+                   + '        </tr>'
+                   + '        <tr data-type="1" style="display:none">'
+                   + '            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;买</th>'
+                   + '            <td><input type="number" name="buycount" style="width:44%;" /><label style="padding:0 5px;">赠</label><input name="giftcount" type="number" style="width: 44%;" /></td>'
+                   + '        </tr>'
+                   + '        <tr>'
+                   + '             <th valign="top" style="line-height:40px;">活动时间</th>'
+                   + '             <td style="line-height:45px;">'
+                   + '                  <input type="text" name="begintime" class="date" />'
+                   + '                  <label style="padding:0 3px">至</label>'
+                   + '                  <input type="text" name="endtime" class="date" />'
+                   + '                  <input type="text" name="datehour" readonly="readonly" class="date-hour" />'
+                   + '              </td>'
+                   + '          </tr>'
+                   + '          <tr>'
+                   + '             <th valign="top">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注</th>'
+                   + '              <td>'
+                   + '                  <textarea placeholder="可输入活动特别要求，如限量限购等" class="g-name" name="remark" rows="5" maxlength="60"></textarea>'
+                   + '                  <label class="g-name-limit" style="top:100px;">0/60</label>'
+                   + '               </td>'
+                   + '           </tr>'
+                   + '           <tr>'
+                   + '               <td colspan="2" style="text-align:center;height:50px;">'
+                   + '                   <input type="button" class="save-btn" value="保存" onclick="activity.add(this,0)" />'
+                   + '                   <input type="button" class="rel-btn" value="发布" onclick="activity.add(this,1)" />'
+                   + '               </td>'
+                   + '            </tr>'
+                   + '        </tbody>'
+                   + '    </table>'
+                   + ' </div>';
+           
+    </script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>每日总结通知</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="applicable-device" content="mobile">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+	<script type="text/javascript" src="../js/rem.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/dailysummary.css">
+</head>
+<body>
+	<article>
+		<section class="daynotice">
+			<div class="daynotice_top">
+				<img class="Smalltriangle" src="../image/8.png" alt="">
+				<p class="Smalltrianglefont">每日总结通知<a>(<span class="begin_t"> </span>&nbsp;00:00:00-<span class="end_t">23:59:59</span>)</a></p>
+			</div>
+			
+			<div class="Activity_number">
+				<div class="Activity_number_left">
+					<div class="activ_text">
+						<a href="javascript:;">活动数</a>
+					</div>
+					<img class="active_pic" src="../image/23.png" alt="">
+					<div class="Pie_chart1">
+						<canvas width="100%" height="100%" id="can"></canvas>
+						<a href="javascript:;">0</a>
+					</div>
+				</div>
+				<div class="Activity_number_right">
+					<p class="Activity_ri_text"><i></i>其中<span>0</span>个活动符合平台补贴</p>
+				</div>
+			</div>
+			
+			<div class="Market_cost">
+				<div class="Market_cost_left">
+					<div class="Mark_text">
+						<a href="javascript:;">市场费用</a>
+					</div>
+					<img class="Mark_pic" src="../image/24.png" alt="">
+					<div class="Mark_chart1">
+						<canvas width="100%" height="100%" id="can2"></canvas>
+						<a href="javascript:;">0</a>
+					</div>
+				</div>
+				<div class="Market_cost_right">
+					<p class="Market_cost_ri_text"><i></i>其中<span class="fir_span">0</span>元由平台补贴<!-- <span class="two_span">55</span>,第一名<span class="three_span" style="color: #5b84c2;">￥2000</span> --></p>
+				</div>
+			</div>
+			
+			<div class="number_write">
+				<div class="number_write_left">
+					<div class="Numb_text">
+						<a href="javascript:;">核销次数</a>
+					</div>
+					<img class="Numb_pic" src="../image/25.png" alt="">
+					<div class="Numb_char">
+						<canvas width="100%" height="100%" id="can3"></canvas>
+						<a href="javascript:;">0</a>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		
+			
+		<div class="box_hui"></div>
+		<section class="activity_cum">
+			<img src="../image/8.png" alt="">
+			<p>活动统计<span>(开始时间至当前<i class="this_time"></i>)</span></p>
+		</section>
+		<section class="thre_iptn">
+			<div class="thre_iptn_left">
+				<p class="triangle_left_top">按照核销次数</p>
+				<div class="triangle_right">
+					<div class="triangle_left1_top" id="1"></div>
+					<div class="triangle_left1_bottom" id="0"></div>
+				</div>
+			</div>
+			<div class="thre_iptn_cent">
+				<div class="thre_iptn_cent_top">
+					<p class="triangle_cent_tops">按人数</p>
+					<div class="triangle_cent">
+						<div class="triangle_cent_top "></div>
+						<div class="triangle_cent_bottom"></div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="thre_iptn_right">
+				<div class="thre_iptn_cent_top">
+					<p style="color: #70c6ed" class="triangle_right_tops">按门店数</p>
+					<div class="triangle_cent" style="top:0">
+						<div class="triangle_right_top "></div>
+						<div class="triangle_right_bottom"></div>
+					</div>
+				</div>
+				
+			</div>
+		</section>
+		<section class="number_vox">
+			<ul class="Bar_charts">
+				<!-- <li>
+					<div class="activeson1">
+						<div class="activeson1_left">
+							<a href="javascript:;">活动一活动一活动一活动一活动一活动一</a>
+						</div>
+						<div class="line"></div>
+						<div class="activeson1_right">
+							<div class="activeson1_right1 ctiveson1_right0">
+								<a href="javascript:;"></a>
+							</div>
+							<div class="activeson1_right2 fen_num1">
+								<a class="Sumnumber1" href="javascript:;"></a>
+							</div>
+							<div class="activeson1_right3 men_num1">
+								<a class="Sumnumbe1" href="javascript:;"></a>
+							</div>
+						</div>
+					</div>
+				</li> -->
+				<!-- <li>
+					<div class="activeson1">
+						<div class="activeson1_left">
+							<a href="javascript:;">活动二</a>
+						</div>
+				
+						<div class="activeson1_right">
+							<div class="activeson1_right1 ctiveson1_right1">
+								<a href="javascript:;"></a>
+							</div>
+							<div class="activeson1_right2 fen_num2">
+								<a class="Sumnumber2" href="javascript:;"></a>
+							</div>
+							<div class="activeson1_right3 men_num2">
+								<a class="Sumnumbe2" href="javascript:;"></a>
+							</div>
+						</div>
+					</div>
+				</li>
+				<li>
+					<div class="activeson1">
+						<div class="activeson1_left">
+							<a href="javascript:;">活动三</a>
+						</div>
+						<div class="activeson1_right">
+							<div class="activeson1_right1 ctiveson1_right2">
+								<a href="javascript:;"></a>
+							</div>
+							<div class="activeson1_right2 fen_num3">
+								<a class="Sumnumber3" href="javascript:;"></a>
+							</div>
+							<div class="activeson1_right3 men_num3">
+								<a class="Sumnumbe3" href="javascript:;"></a>
+							</div>
+						</div>
+					</div>
+				</li> -->
+			</ul>
+		</section>
+		<div class="blank_box"></div>
+	</article>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/dailysummary.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

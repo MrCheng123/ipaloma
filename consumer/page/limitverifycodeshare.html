@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>二维码分享关注</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        .title1 {
+            color: #ff6600;
+            font-size: 25px;
+        }
+
+        .title2 {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        #qrcode {
+            width: 60%;
+            border: solid 1px #ff6600;
+            margin-left: 20%;
+        }
+
+        #qrcode_foot {
+            color: #666;
+        }
+
+        #foot {
+            color: #ff6600;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            var idx = this.URL.toString().indexOf("?", 0);
+            if (idx > 0) {
+                var msg = this.URL.toString().substr(idx, this.URL.length - idx);
+                var qrcodeurl = decodeURIComponent(msg.replace("?", ""));
+                var qrcode = qrcodeconfig["consumer"];
+                qrcodeconfig["consumer"]["sharecard"]["url"] = "/webapi/consumer/weixin/share_generate_code?qrtype=4001&" + qrcodeurl;
+                draw(qrcode, "sharecard", qrcode["logo"]);                
+            }
+        });
+    </script>
+</head>
+<body style="text-align:center">
+    <p class="title1">超惠买邀请您关注</p>
+    <p class="title1 title2">尊享优惠</p>
+    <div id="qrcode">
+        <img id="QRCode_img" style="width: 99%;height: 65%;text-align: center;" /><br />
+    </div>
+    <p id="qrcode_foot">长按上方二维码关注超惠买</p>
+
+    <p id="foot">身边便利店 触手可及</p><div id="qrcodediv" hidden></div>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

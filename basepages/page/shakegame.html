@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <title>摇一摇</title>
+    <link href="/basepages/css/shakegame/style.css" rel="stylesheet" />
+    <link href="/basepages/css/shakegame/animate.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- 红包音乐 -->
+    <audio id="shakemusic" src="/basepages/css/shakegame/red-01.mp3" style="display: none;"></audio>
+    <audio id="openmusic" src="/basepages/css/shakegame/red-02.mp3" style="display: none;"></audio>
+    <!-- End 红包音乐 -->
+    <!-- 红包 -->
+    <div class="red_bg" id="shakegame" hidden>
+        <div class="red-ts"></div>
+        <div class="red-ss-bg">
+            <span class="red-ss animated" id="btnshake"></span>
+        </div>
+        <div class="red-jh">
+            <img src="/basepages/image/shakegame/01111.png" />
+        </div>
+        <div class="red-jh">
+            您还有<span>{{ shakeNum }}</span>次机会
+        </div>
+
+        <div class="red-tc" v-on:click.stop.prevent="closeBJ($event)">
+            <!-- 已中奖 -->
+            <div class="red-yzj" v-if="shakeStatus==1">
+                <div class="red-tc-k">
+                    <p>￥<span>{{winMoney}}</span>元</p>
+                    恭喜你获得<br>现金红包大奖
+                </div>
+                <div class="red-tc-btn" v-on:click.stop.prevent="againClick($event)">
+                    <button>我知道了</button>
+                </div>
+            </div>
+            <!-- End 已中奖 -->
+            <!-- 未中奖 -->
+            <div class="red-yzj" v-if="shakeStatus==2">
+                <div class="red-tc-k">
+                    <img src="/basepages/image/shakegame/red-bw.png">
+                    哎呀！<br />差一点点就中奖了
+                </div>
+                <!--<div class="red-tc-btn" onclick="closeWindow()">
+                    <button>返回主页</button>
+                </div>-->
+                <div class="red-tc-btn" v-on:click.stop.prevent="againClick($event)">
+                    <button>再摇一次</button>
+                </div>
+            </div>
+            <!-- End 未中奖 -->
+            <!-- 机会用光了 -->
+            <div class="red-yzj" v-if="shakeStatus==3">
+                <div class="red-tc-k">
+                    <img src="/basepages/image/shakegame/red-jh.png">
+                    机会用光了哦！<br />明天再来吧！
+                </div>
+                <div class="red-tc-btn" onclick="closeWindow()">
+                    <button>返回主页</button>
+                </div>
+            </div>
+            <!-- End 机会用光了 -->
+        </div>
+    </div>
+    <!-- End 红包 -->
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+    <script src="/js/lib/common.js"></script>
+    <script src="/js/lib/lib.js"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script src="//cdn.bootcss.com/vue/2.1.10/vue.js"></script>
+    <script src="/basepages/js/shakegame.js"></script>
+</body>
+</html>

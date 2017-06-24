@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>   
+	<meta charset="UTF-8"/>
+    <title>新增</title>
+	<style type="text/css">
+.input-contorl{
+	display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.input-contorl input{
+    width: 306px;/*300*/
+    height: 30px;
+    border: 1px solid #e4e4e4;
+    outline: none;
+}
+/*.input-contorl select {
+    width: 306px;
+    height: 30px;
+}*/
+
+.input-contorl label{
+	width: 90px;
+    display: inline-block;
+}
+
+.add-btn{
+	background-color: rgba(0, 157, 217, 1);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 10px;
+    /*position: absolute;*/
+    border: 0;
+    /*right: 0;*/
+    /*bottom: 17px;*/
+    cursor: pointer;
+    margin: 0 auto;
+    width:32px;
+}
+
+
+.addForm{
+    width: 600px;/*加span之前是500*/
+    /*height: 300px;*/
+    /*background-color: #eee;*/
+    /*display: none;*/
+    padding: 20px 0 50px 50px;
+    box-sizing: border-box;
+    /*text-align: center;*/
+    margin: 0 auto;
+}
+
+span{
+	width:100px;
+	height:30px;
+	color:red;
+	font-size:12px;
+	line-height: 30px;
+	vertical-align: middle;
+}
+.input-contorl textarea{
+    height: 100px;
+    width: 300px;
+    vertical-align: top;
+    /*transition: .6s;*/
+}
+
+textarea.content{
+	height: 150px;
+    font-size: 14px;
+}
+.seleHid{display: none;}
+
+/*开始模拟下拉框*/
+.select-wrap ul {
+	list-style: none;
+	padding: 0
+}
+
+.select-wrap {
+	width: 306px;
+	border: 1px solid #e4e4e4;
+	line-height: 30px;
+	height: 30px;
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.select-wrap em {
+	display: inline-block;
+	text-indent: 0;
+	text-align: center;
+	font-style: normal;
+	/*background: yellow;*/
+	width: 100%;
+	height: 100%;
+    overflow: hidden;
+    /*position:relative;*/
+}
+
+.select-wrap i {
+	width: 9%;
+	height: 100%;
+	position: absolute;
+	height: 20px;
+	right: 0;
+	top: 6px;
+	border-left: 1px solid #ccc;
+	cursor: pointer;
+    z-index: 8;
+    background: white;
+}
+
+.select-wrap i:before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-right: 2px solid #ccc;
+	border-bottom: 2px solid #ccc;
+	transform: rotate(45deg);
+	display: inline-block;
+	margin: 0 0 7px 10px;
+	position: absolute;
+	left: 0;
+	top: 0
+}
+
+.select-wrap .select {
+	display: none;
+	width: 100%;
+	padding: 0 10px;
+	background-color:#f5f5f1;
+	border: 1px solid #ccc;
+	border-top: 0;
+	text-align: center;
+	box-sizing: border-box;
+	position: absolute;
+	top: 15px;
+	line-height: 30px;
+	z-index: 9;
+	cursor: pointer;
+}
+
+.select-wrap ul li+li {
+	border-top: 1px solid #ddd
+}
+/*模拟下拉框结束*/
+.quSe4{
+    text-align: center;
+}
+
+
+
+	</style>   
+</head>
+
+<body>
+	<div class="addForm">			
+		<div class="input-contorl sele1">
+			<label>一级类型</label>
+			<!-- <select name="" id="quSe1" class="firstlevel quSe1"> -->
+			<!-- </select> -->
+			<div class="select-wrap">
+				<i></i>
+				<em class="selected firstlevel quSe1Em"  contenteditable="true" style="outline:none"></em>
+				<ul class="select quSe1">
+					<!-- <li class="option">谢谢参与</li>
+					<li class="option">微信手气红包</li>
+					<li class="option">随机金额返现券</li>
+					<li class="option">固定积分</li>
+					<li class="option">特定超惠券</li> -->
+				</ul>
+			</div>			
+			<span>可输,可选</span>
+		</div>
+		<div class="input-contorl sele2 ">
+			<label>二级类型</label>
+<!-- 			<select name="" id="quSe2" class="secondlevel quSe2">
+				<option value=""></option>
+			</select> -->
+			<div class="select-wrap">
+				<i></i>
+				<em class="selected secondlevel quSe2Em"  contenteditable="true" style="outline:none"></em>
+				<ul class="select quSe2">
+				<!-- 	<li class="option">谢谢参与</li>
+					<li class="option">微信手气红包</li>
+					<li class="option">随机金额返现券</li>
+					<li class="option">固定积分</li>
+					<li class="option">特定超惠券</li> -->
+				</ul>
+			</div>			
+			<span>可输,可留白</span>
+		</div>
+		<div class="input-contorl sele3 ">
+			<label>三级类型</label>
+			<div class="select-wrap">
+				<i></i>
+				<em class="selected thirdlevel quSe3Em"  contenteditable="true" style="outline:none"></em>
+				<ul class="select quSe3">
+			<!-- 		<li class="option">谢谢参与</li>
+					<li class="option">微信手气红包</li>
+					<li class="option">随机金额返现券</li>
+					<li class="option">固定积分</li>
+					<li class="option">特定超惠券</li> -->
+				</ul>
+			</div>			
+<!-- 			<select name="" id="quSe3" class="thirdlevel quSe3">
+				<option value=""></option>
+			</select> -->
+			<span>可输,可留白</span>
+		</div>
+		<div class="input-contorl sele4 ">
+			<label>四级类型</label>
+			<input type="text" value="" id=".quSe4" class="input-text undeterlevel quSe4">
+			<span>可输,可留白</span>
+		</div>	
+		<div class="input-contorl">
+			<label>内容</label>
+			<textarea name="" id="" class="content" placeholder="请输JSON格式的数据"></textarea>
+			<!-- <span>可输,不可留白</span> -->
+		</div>
+		<div class="input-contorl">
+			<label>描述</label>
+			<textarea name="" id="" class="description" ></textarea>
+			<!-- <span>可输,可留白</span> -->
+		</div>
+		<!-- <input type="submit" value="确定" class="submit-btn add-btn"> -->
+		<div class="add-btn">确定</div>
+	</div>	
+</body>
+	<!--<script src="../lib/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>  
+	<!-- <script type="text/javascript" src="../../lib/layer/2.1/layer.js"></script>  -->
+	<script type="text/javascript" src="../json/lib/layer-v2.4/layer/layer.js"></script> 
+	
+
+    <script type="text/javascript">    	
+        $(".quSe1").focus();
+        var linshi = "";
+        $(".add-btn").click(function() {
+            var firstlevel = $(".addForm .firstlevel").text();
+            var secondlevel = $(".addForm .secondlevel").text();
+            var thirdlevel = $(".addForm .thirdlevel").text();
+            var fourthlevel = "";
+            var undeterlevel = $(".addForm .undeterlevel").val();
+            fourthlevel = undeterlevel;
+            var addForm = {
+                firstlevel: firstlevel,
+                secondlevel: secondlevel,
+                thirdlevel: thirdlevel,
+                fourthlevel: fourthlevel,
+                content: $(".addForm .content").val(),
+                description: $(".addForm .description").val()
+            };
+        //  linshi = addForm;
+            if (firstlevel == "") {
+                layer.msg("请选择一级类型或输入一级类型");
+                return
+            } else {
+                if (firstlevel == "constantconfig" || firstlevel == "serverconfig") {
+                    layer.msg("一级类型不合法");
+                    return
+                }
+            }
+            var content = $("textarea.content");
+            try {
+                var obj = JSON.parse(content.val());
+                var str = $.trim(JSON.stringify(obj));
+                addForm["content"] = str
+            } catch(e) {
+                layer.msg("请输JSON格式的数据");
+                return
+            }
+            $(".layui-layer-close").click();
+            layer.msg("正在新增...", {
+                time: 0
+            });
+            // alert(JSON.stringify(addForm))
+            // console.log(JSON.stringify(addForm))
+            // return;
+            ajaxAdd(addForm)
+        });
+        ajaxSele1();
+        function ajaxSele1() {
+            var indexLayer = layer.msg("处理中", {
+                time: 0
+            });
+            return $.ajax({
+                type: "get",
+                url: "/webapi/configservice/dict/firstlevel",
+                async: true,
+                success: function(data) {
+                    layer.close(indexLayer);
+                    var temp_html = "";
+                    $(".quSe1").empty();
+                    $.each(data,
+                    function(i, s1) {
+                        if (s1 != "constantconfig" && s1 != "serverconfig") {
+                            temp_html += "<li class='option' value=" + s1 + ">" + s1 + "</li>"
+                        }
+                    });
+                    $(".quSe1").html(temp_html)
+                }
+            })
+        }
+        function ajaxSele2() {
+            var indexLayer = layer.msg("处理中", {
+                time: 0
+            });
+            return $.ajax({
+                type: "get",
+                url: "/webapi/configservice/dict/" + $(".quSe1Em").text() + "/secondlevel",
+                async: true,
+                success: function(data) {
+                    layer.close(indexLayer);
+                    var temp_html = "";
+                    var li2 = $(".quSe2").val();
+                    $(".quSe2").empty();
+                    if (data.length != 0) {
+                        $(".sele2 span").text("可输,可选,可留白")
+                    } else {
+                        $(".sele2 span").text("可输,可留白")
+                    }
+                    $.each(data,
+                    function(i, s2) {
+                        temp_html += "<li class='option' value=" + s2 + ">" + s2 + "</li>"
+                    });
+                    $(".quSe2").html(temp_html)
+                }
+            })
+        }
+        function ajaxSele3() {
+            var indexLayer = layer.msg("处理中", {
+                time: 0
+            });
+            return $.ajax({
+                type: "get",
+                url: "/webapi/configservice/dict/" + $(".quSe1Em").text() + "/" + $(".quSe2Em").text() + "/thirdlevel",
+                async: true,
+                success: function(data) {
+                    layer.close(indexLayer);
+                    var temp_html = "";
+                    $(".quSe3").empty();
+                    if (data.length > 0) {
+                        $(".sele3 span").text("可输,可选,可留白")
+                    } else {
+                        $(".sele3 span").text("可输,可留白")
+                    }
+                    $.each(data,
+                    function(i, s3) {
+                        temp_html += "<li class='option' value=" + s3 + ">" + s3 + "</li>"
+                    });
+                    $(".quSe3").html(temp_html)
+                }
+            })
+        }
+        function ajaxAdd(a) {
+            var indexLayer = layer.msg("处理中", {
+                time: 0
+            });
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                url: "/webapi/configservice/config",
+                data: a,
+                success: function(data) {
+        //      	debugger;
+                    layer.close(indexLayer);
+                    parent.ajaxSele1();
+                    parent.$(".query_btn_div input").click();//和测试说明后，经理解可解除注释
+                    parent.history.go(0);
+                    parent.$(".layui-layer-close").click();
+                    parent.layer.closeAll()
+                },
+                error: function(data) {
+                    layer.close(indexLayer);
+                    // if (JSON.parse(data.responseText).Message == "empty content") {
+                    //     layer.alert("content不能为空", {
+                    //         icon: 2
+                    //     })
+                    // } else {
+                    //     if (JSON.parse(data.responseText).Message == "exist config in database ") {
+                    //         layer.alert("新建失败，fourthlevel为空或者已经存在,如果想更新fourthlevel内容，请尝试修改按钮", {
+                    //             icon: 2
+                    //         })
+                    //     } else {
+                    //         layer.alert("新建失败", {
+                    //             icon: 2
+                    //         })
+                    //     }
+                    // }
+                    layer.alert(JSON.parse(data.responseText).Message, {
+                        icon: 2
+                    })
+                }
+            })
+        }
+        moni();
+        function moni() {
+            $(".select-wrap").click(function(e) {
+                e.stopPropagation();
+                $(".select-wrap").not(this).find(".select").hide()
+            });
+            $(".select-wrap").find("i").click(function(e) {
+                $(this).parent().find(".select").toggle()
+            });
+            $(".select-wrap").on("click", ".select .option",
+            function(e) {
+                // console.log(8);
+                e.stopPropagation();
+                $(this).parent().prev().text($(this).text());
+                $(this).parent().hide();
+                // console.log($(this).parent());
+                if ($(this).parent().hasClass("quSe1")) {
+                    ajaxSele2()
+                } else {
+                    if ($(this).parent().hasClass("quSe2")) {
+                        ajaxSele3()
+                    }
+                }
+            });
+            $(document).click(function() {
+                $(".select").hide()
+            });
+            $(".selected").click(function() {
+                $(this).attr("contenteditable", "true");
+                $(this).focus()
+            });
+            $("selected").blur(function() {
+                $(this).attr("contenteditable", "false")
+            })
+        }
+        $("[contenteditable]").each(function() {
+            try {
+                document.execCommand("AutoUrlDetect", false, false)
+            } catch(e) {}
+            $(this).on("paste",
+            function(e) {
+                e.preventDefault();
+                var text = null;
+                if (window.clipboardData && clipboardData.setData) {
+                    text = window.clipboardData.getData("text")
+                } else {
+                    text = (e.originalEvent || e).clipboardData.getData("text/plain") || prompt("在这里输入文本")
+                }
+                if (document.body.createTextRange) {
+                    if (document.selection) {
+                        textRange = document.selection.createRange()
+                    } else {
+                        if (window.getSelection) {
+                            sel = window.getSelection();
+                            var range = sel.getRangeAt(0);
+                            var tempEl = document.createElement("span");
+                            tempEl.innerHTML = "&#FEFF;";
+                            range.deleteContents();
+                            range.insertNode(tempEl);
+                            textRange = document.body.createTextRange();
+                            textRange.moveToElementText(tempEl);
+                            tempEl.parentNode.removeChild(tempEl)
+                        }
+                    }
+                    textRange.text = text;
+                    textRange.collapse(false);
+                    textRange.select()
+                } else {
+                    document.execCommand("insertText", false, text)
+                }
+            })
+        });
+
+
+
+
+	</script>
+</html>

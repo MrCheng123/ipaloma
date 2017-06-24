@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>核销超惠券</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+
+    <link rel="stylesheet" href="/retailer/css/cui.css" />
+    <link rel="stylesheet" href="/retailer/css/lib.css" />
+    <link rel="stylesheet" href="/retailer/css/slick.css" />
+    <link rel="stylesheet" href="/retailer/css/style.css" />
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link href="/retailer/css/richscan_hx.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/style.css" rel="stylesheet" />
+    <link href="/retailer/css/suppercouponitems.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">
+        document.writeln("<script type=\"text\/javascript\"");
+        document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");
+        document.writeln("<\/script>");
+    </script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript">var share_category = "retailer";</script>
+    <script src="/retailer/js/lib/common.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        #Msg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 10;
+            top: 0;
+            left: 0;
+            text-align: center;
+        }
+
+            #Msg img {
+                margin-top: 50%;
+                width: 60px;
+                margin-top: 50%;
+                margin-bottom: 10px;
+            }
+
+            #Msg p {
+                font-size: 20px;
+            }
+
+        #btn_list {
+            width: 100%;
+            margin-top: 30px;
+            height: 36px;
+            text-align: center;
+        }
+
+            #btn_list .btn_css1 {
+                width: 118px;
+                height: 36px;
+                background: url(/retailer/image/supercoupons/btn_1.png) no-repeat;
+                text-align: center;
+                line-height: 36px;
+                color: #ff6600;
+                background-size: 118px 36px;
+                font-size: 19px;
+            }
+
+            #btn_list .btn_css2 {
+                width: 118px;
+                height: 36px;
+                background: url(/retailer/image/supercoupons/btn_3.png) no-repeat;
+                text-align: center;
+                line-height: 36px;
+                color: #009f96;
+                background-size: 118px 36px;
+                font-size: 14px;
+            }
+
+
+        #page_top {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+            #page_top img {
+                margin-top: 80px;
+                height: 60px;
+                width: 60px;
+                margin-bottom: 10px;
+            }
+
+        #page_middle {
+            width: 100%;
+            height: 50px;
+        }
+
+            #page_middle > li {
+                width: initial;
+                float: left;
+                height: 50px;
+                max-width: 50%;
+                overflow: hidden;
+            }
+
+                #page_middle > li #p_yxchj {
+                    height: 30px;
+                    line-height: 30px;
+                    border: solid 1px #009f96;
+                    border-radius: 0 20px 20px 0;
+                    border-left: none;
+                    padding: 0 10px;
+                    margin-top: 10px;
+                }
+
+                #page_middle > li > ul {
+                    width: 100%;
+                    float: right;
+                    height: 40px;
+                    padding: 5px 10px 0 0;
+                }
+
+                    #page_middle > li > ul > li {
+                        float: right;
+                    }
+
+        #tab_tishi {
+            width: 100%;
+            height: 30px;
+            padding: 5px 0;
+            background: #f3f1f1;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+        }
+
+            #tab_tishi li {
+                width: 50%;
+                float: left;
+                box-sizing: border-box;
+                text-align: center;
+                line-height: 30px;
+                font-size: 18px;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+                #tab_tishi li:first-child {
+                    border-right: solid 1px #808080;
+                }
+
+            #tab_tishi > .acitve {
+                color: #009f96;
+            }
+
+        #tab_msg {
+            width: 100%;
+            height: 30px;
+            background: #e1e1e1;
+            border-top: #000;
+            line-height: 30px;
+            text-indent: 10px;
+            position: relative;
+            border-top: solid 1px #adabab;
+            color: gray;
+        }
+
+        #tab .tab_active {
+            background: #e8f6f6;
+            color: #009f96;
+        }
+
+        .triangle_left:before, .triangle_left:after {
+            width: 0px;
+            height: 0px;
+            border: transparent solid;
+            position: absolute;
+            right: 100%;
+            content: "";
+        }
+
+        .triangle_left:before {
+            border-width: 8px;
+            border-bottom-color: #009f96;
+            left: 23%;
+            top: -16px;
+        }
+
+        .triangle_left:after {
+            border-width: 7px;
+            border-bottom-color: #e1e1e1;
+            left: calc(23% + 1px);
+            left: -moz-calc(23% + 1px);
+            left: -webkit-calc(23% + 1px);
+            top: -14px;
+        }
+
+        .triangle_right:before, .triangle_right:after {
+            width: 0px;
+            height: 0px;
+            border: transparent solid;
+            position: absolute;
+            right: 100%;
+            content: "";
+        }
+
+        .triangle_right:before {
+            border-width: 8px;
+            border-bottom-color: #adabab;
+            right: 23%;
+            top: -16px;
+        }
+
+        .triangle_right:after {
+            border-width: 7px;
+            border-bottom-color: #e1e1e1;
+            right: calc(23% + 1px);
+            right: -moz-calc(23% + 1px);
+            right: -webkit-calc(23% + 1px);
+            top: -14px;
+        }
+
+        #tab .tab_active:after {
+            border-bottom-color: #e8f6f6;
+        }
+
+        .stamp {
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 40px;
+            top: 50px;
+            z-index: 10;
+            transform: rotate(45deg);
+            line-height: 30px;
+            text-align: center;
+            font-size: 18px;
+            -webkit-box-sizing: content-box;
+            -moz-box-sizing: content-box;
+            box-sizing: content-box;
+            border-radius: 5px;
+        }
+
+        .stamp1 {
+            border: solid 2px #ff6600;
+            color: #ff6600;
+            background-color: rgba(255,215,188,0.3);
+        }
+
+        .stamp2 {
+            border: solid 2px #ff0000;
+            color: #ff0000;
+            background-color: rgba(255,230,230,0.5);
+        }
+
+        .btnfloat {
+            float: left;
+            margin: 0 calc((100% - 236px) / 3);
+            margin: 0 -moz-calc((100% - 236px) / 3);
+            margin: 0 -webkit-calc((100% - 236px) / 3);
+        }
+
+        .fa {
+            display: inline-block;
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: inherit;
+            text-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .fa-spin {
+            -webkit-animation: fa-spin 1.5s infinite linear;
+            animation: fa-spin 1.5s infinite linear;
+        }
+
+        @-webkit-keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+
+        @keyframes fa-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+
+        .fa-rotate-90 {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+            -webkit-transform: rotate(90deg);
+            -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
+
+        .fa-rotate-180 {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        .fa-rotate-270 {
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+            -webkit-transform: rotate(270deg);
+            -ms-transform: rotate(270deg);
+            transform: rotate(270deg);
+        }
+
+        #list {
+            position: absolute;
+            height: 50%;
+            width: 100%;
+            display: none;
+        }
+
+        .punish {
+            position: absolute;
+            width: 20%;
+            left: 8%;
+            top: 7%;
+        }
+
+        .upp {
+            width: 8%;
+            height: 8%;
+            position: absolute;
+            right: 6%;
+            top: 5%;
+        }
+
+        .days-img {
+            width: 100%;
+            height: 40%;
+        }
+
+            .days-img img {
+                width: 20%;
+                margin-left: 40%;
+                margin-top: 5%;
+            }
+
+        .stop {
+            width: 100%;
+            height: 12%;
+            font-size: 18px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+            .stop span {
+                color: #ff7e00;
+            }
+
+        .time-down {
+            width: 100%;
+            height: 20%;
+            margin-top: 3%;
+        }
+
+        .time-down {
+            text-align: center;
+            line-height: 26px;
+        }
+
+        .how {
+            width: 100%;
+            height: 10%;
+            margin-top: 3%;
+            text-align: center;
+            font-family: blue;
+            line-height: 26px;
+            font-size: 18px;
+        }
+
+            .how a {
+                text-decoration: underline;
+            }
+
+        .question {
+            width: 100%;
+            height: 10%;
+            text-align: center;
+            line-height: 26px;
+        }
+
+        .f-list {
+            width: 100%;
+            height: 2rem;
+            background: #ff9800;
+            position: absolute;
+            display: none;
+        }
+
+        .f-list-img1 {
+            width: 8%;
+            height: 100%;
+            margin-left: 2%;
+            float: left;
+        }
+
+        .f-list p {
+            float: left;
+            height: 100%;
+            line-height: 2rem;
+            margin-left: 2%;
+        }
+
+        .f-list-img2 {
+            width: 8%;
+            height: 82%;
+            float: right;
+            margin-right: 1%;
+            margin-top: 0.5%;
+        }
+    </style>
+</head>
+<body style="background:#fff" ms-controller="richscan_hx" class="ms-controller">
+    <div class="f-list"><img class="f-list-img1" src="../image/trumper.jpg" /><p>您的店铺正在违规处罚中，暂停核销......</p><img class="f-list-img2" src="../image/doww.jpg" /></div>
+    <div id="list">
+        <div class="punish">处罚中</div>
+        <div class="upp"><img src="../image/upp.jpg" /></div>
+        <div class="days-img"><img class="change" /></div>
+        <div class="stop"></div>
+        <div class="time-down">
+            <p class="f-p">处罚结束倒计时</p>
+            <p><span class="sp4"></span><span class="sp1"></span>:<sapn class="sp2"></sapn>:<sapn class="sp3"></sapn></p>
+        </div>
+        <div class="how"><a href="details.html">如何做到不违规？</a></div>
+        <div class="question">如有疑问请联系客服 4006797960</div>
+    </div>
+    <div id="page" style="height:100%;" ms-if="vm.pageStep!=1">
+        <div id="page_top">
+            <img ms-attr-src="vm.imgurl" style="width:60px; " />
+            <p>{{vm.title}}<br />{{vm.subTitle}}</p>
+            <div id="btn_list">
+                <div id="hx_1" class="btn btn_css1 btnfloat" style="font-size:13px;" ms-click="vm.restartverifycard">数量不符重新核销</div>
+                <div id="hx_2" class="btn btn_css2" style="float:left" ms-click="vm.verifycard">确认核销（8s）</div>
+                <div id="hx_3" class="btn btn_css2" style="margin:0 auto" ms-click="vm.scanwx">继续核销</div>
+            </div>
+        </div>
+        <ul id="page_middle">
+            <li>
+                <p id="p_yxchj">
+                    已选超惠券<font color="#009f96">{{vm.totalnum}}</font>张
+                </p>
+            </li>
+            <li style="float:right">
+                <ul ms-if="vm.pageStep==2">
+                    <li>
+                        优惠<font color="#009f96">{{vm.youhui}}</font>元
+                        <p>赠品<font color="#009f96">{{vm.zengpin}}</font>份</p>
+                    </li>
+                    <li style="line-height:40px">合计:</li>
+                </ul>
+            </li>
+        </ul>
+        <div id="tab" ms-if="vm.pageStep==3">
+            <ul id="tab_tishi">
+                <li id="msg_left" class="acitve" ms-click="vm.showUsage(1)">已核销（{{vm.yhxNum}}）</li>
+                <li id="msg_right" ms-click="vm.showUsage(2)">未核销（{{vm.whxNum}}）</li>
+            </ul>
+            <div id="tab_msg" class="triangle_left tab_active ">
+                合计：优惠{{vm.youhui}}元  赠品 {{vm.zengpin}} 份
+            </div>
+        </div>
+        <hr style="height:1px;border:none;border-top:1px solid #ccc;width:100%" ms-if="vm.pageStep!=3" />
+        <div class="div-list" style="position:relative; margin-bottom:55px;border-top:none;">
+            <div class="div-top" style="padding:10px 0 0 0">
+                <div class="div-img">
+                    <img ms-attr-src="vm.jsondata.itempic" alt="">
+                </div>
+                <div class="div-text">
+                    <p style="margin-bottom:10px">
+                        <font class="font-jiangjia" ms-attr-class="vm.jsondata.itemkind=='有礼'?'font-youli':vm.jsondata.itemkind=='降价'?'font-jiangjia':vm.jsondata.itemkind=='套餐'?'font-taocan':'font-maizeng'">{{vm.jsondata.itemkind}}券</font> {{vm.jsondata.activitytitle}}
+                    </p>
+                    <p ms-if="vm.jsondata.itemkind=='有礼'">
+                        <img src="/consumer/image/icon05.png" style="width:20px; float:left;" />
+                        {{vm.jsondata.giftname}}
+                    </p>
+                    <ul>
+                        <li ms-if="vm.jsondata.itemkind=='买赠'">
+                            <span>买{{vm.jsondata.buycount}}赠{{vm.jsondata.giftcount}}</span>
+                            <p>￥{{vm.jsondata.unitprice}}</p>
+                        </li>
+                        <li ms-if="vm.jsondata.itemkind=='降价'">
+                            <span>{{vm.jsondata.discount}}折</span>
+                            <p>￥{{vm.jsondata.discountprice}} <small>￥{{vm.jsondata.originalprice}}</small></p>
+                        </li>
+                        <li ms-if="vm.jsondata.itemkind=='套餐'">
+                            <span>已节省{{vm.jsondata.sparevalue}}元</span>
+                            <p>￥{{vm.jsondata.discountprice}} <small>￥{{vm.jsondata.originalprice}}</small></p>
+                        </li>
+                        <!--<li ms-if="vm.jsondata.itemkind=='有礼'" style="width: 50%;">
+                            &nbsp;
+                        </li>-->
+                        <li style="font-size:20px; line-height:60px; float:right">
+                            ×{{vm.hxNum}}
+                        </li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="div-remark" ms-if="vm.jsondata.ruledesc!=''" style="color:#a7a7a7">
+                {{vm.jsondata.ruledesc}}
+            </div>
+
+            <div class="stamp stamp1" hidden id="tagMsg">数量不足</div>
+        </div>
+        <div id="nodata" style="text-align:center; padding:40px 0px 100px 0px;" hidden>
+            <img src="/retailer/image/supercoupons/07_03.png" style="width:50px;" />
+            <p style="font-size:16px;">您没有未核销成功的超惠券</p>
+        </div>
+    </div>
+
+    <div id="Msg" hidden ms-controller="allMsg">
+        <img ms-attr-src="Msg.imgurl" id="_loading" />
+        <p>{{Msg.title}}<br />{{Msg.subTitle}}</p>
+        <div id="btn_list">
+            <div id="btn_1" hidden class="btn btn_css2 msg" ms-click="vm.scanwx" style="margin:0 auto">返回</div>
+            <div id="btn_2" hidden class="btn btn_css1 msg btnfloat" ms-click="vm.scanwx">返回</div>
+            <div id="btn_3" hidden class="btn btn_css2 msg" style="float:left" ms-click="vm.fun_tautology">重试</div>
+            <div id="btn_4" hidden class="btn btn_css2 msg" style="float:left" ms-click="vm.verifycard">重试</div>
+            <div id="btn_5" hidden class="btn btn_css2 msg" style="float:left" ms-click="vm.restartverifycard">重试</div>
+        </div>
+    </div>
+    <div id="bottom-nav">
+
+    </div>
+    <script src="/retailer/js/hexiao.js"></script>
+    <script src="/retailer/js/richscan_hx.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

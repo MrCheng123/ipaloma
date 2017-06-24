@@ -1,0 +1,261 @@
+<!DOCTYPE html>  
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>详情</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/TopicActivityDetail.css"/>
+		
+		<style type="text/css">
+		.marginShade{
+		    position:fixed;
+		    top:0;
+		    left:0;
+		    width:100%;
+		    height:100%;
+		    background:white;
+		    z-index: 99999;
+		}
+		</style>
+	</head>	
+	<body>
+		<script type="text/javascript">
+			var marginShade=document.createElement("div");			
+			marginShade.className="marginShade";
+			document.getElementsByTagName("body")[0].appendChild(marginShade);			
+		</script>
+		<header><img src="img/a8.png" alt="" /><span>亲爱的会员，下午好!</span><img src="img/a9.png" alt="" /></header>
+		<!--整个活动详情容器，宽度指定的容器-->
+		<div class="Bwrap -initialHi"><!--改为suceess结尾移除类名hi-->
+			<div class="BwrapUp">
+				<!--资格收藏返回超惠券列表，主题活动列表-->			
+				<div class="Bzige_List -cl"><!--暂时不清理浮动，稍后注意。-->
+					<div class="Bzige fl">
+						<img src="img/b6.png" alt="" /><span>资格查询中...</span>
+					</div>
+					<!--资格、返回列表-->
+					<div class="Blist fr">
+						<div class="Bcollect dib hi"><!--收藏先不做了-->					
+								<img src="img/b7.png" alt="" /><span>&nbsp&nbsp收藏</span>						
+						</div>
+						<div class="BreList dib">	
+							<p class="dib returnTopicList hi">返回主题活动列表</p>
+							<p class="dib returnChaohuiquanList">返回超惠券列表</p>
+						</div>			
+					</div>				
+				</div>
+				<!--大小标题A位置BtitleA-->
+				<div class="Btitle BtitleA -hi stateYes">
+					<!--大标题-->
+					<div class="BbigTitle"><p class="dib">查询中...</p><span class="">已参与分销商数:102人</span>
+					</div>
+					<!--小标题-->
+					<p class="BsmallTitle">查询中...</p>				
+				</div>
+	
+				<!--图文-->
+				<div class="Btuwen">
+					<div class="dib BtuwenTu"><img src="img/b10.png" alt="" /></div>
+					<div class="dib BtuwenWen -hi">
+						<!--大小标题B位置BtitleB-->
+						<div class="Btitle BtitleB -hi stateNo">
+							<!--大标题-->
+							<div class="BbigTitle"><p class="dib">查询中...</p><span class="-hi">已参与分销商数:102人</span>
+							</div>
+							<!--小标题-->
+							<div class="BsmallTitle">查询中...</div>				
+						</div>
+						<p class="BtuwenWenP1 ellipsis-text stateYes" id="BtuwenWenP1">查询中...</p>
+						<p class="BtuwenWenP2"><span class="BtuwenWenS1">活动时间&nbsp:&nbsp</span><span class="BtuwenWenS2">查询中...</span></p>
+						<p class="BtuwenWenP3"><span class="BtuwenWenS1">服务电话&nbsp:&nbsp</span><span class="BtuwenWenS2">查询中...</span></p>
+					</div>
+				</div>
+				<!--补贴类型图片A符合-->
+				<div class="BsubsidyA -hi stateYes">
+					<img src="img/b1.png" alt="" />
+					<!--下面的p统统定位-->
+					<p class="BsubsidyAP1"><span class="BsubsidyAP1S1"></span></p>
+					<p class="BsubsidyAP2"><span class="BsubsidyAP2S1"></span></p>
+					<p class="BsubsidyAP3"></p>
+					<p class="BsubsidyAP4"></p>
+				</div>
+				<!--补贴类型图片A不符合-->
+				<div class="BsubsidyB -hi stateNo">
+					<img src="img/b3.png" alt="" />
+					<!--下面的p统统定位-->
+					<p class="BsubsidyBP1"></p>
+					<p class="BsubsidyBP2"></p>
+					<!--下面的span统统定位-->
+					<span class="BsubsidyBS1">8</span>
+					<span class="BsubsidyBS2">8</span>
+					<span class="BsubsidyBS3">8</span>
+					<span class="BsubsidyBS4">8</span>
+					<span class="BsubsidyBS5">8</span>
+					<span class="BsubsidyBS6">8</span>
+					<span class="BsubsidyBS7">8</span>
+					<span class="BsubsidyBS8">8</span>
+					<span class="BsubsidyBS9">8</span>				
+				</div>			
+				<!--活动补贴说明-->
+				<div class="Bbtsm">
+					<!--左边箭头-->
+					<div class="BbtsmL dib">
+						<img src="img/b2.png" alt="" />
+					</div>
+					<!--右边整体-->
+					<div class="BbtsmR dib">
+						<!--左边-->
+						<div class="BbtsmRleft dib">
+							<div>
+								<p>活<br />动<br />补<br />贴<br />说<br />明</p>
+							</div>						
+						</div>
+							
+						<!--右边--><div class="BbtsmRright dib">
+							<!--上-->
+							<div class="BbtsmRright12 dib">
+								<div class="BbtsmRright1"><p class="dib">会员参与时间:</p><span class="dib">查询中...</span></div>
+								<!--下-->
+								<div class="BbtsmRright2 dib">							
+									<div class="BbtsmRright2Content">
+										<div class="btsm btsm1 dib">
+											<p class="btsmP1">对分销商</p>											
+											<div class="btsmD1">
+												<!--下面的p的条数不固定，但希望是一条。-->
+												<p class="btsmPs">查询中...</p>
+												<!--<p class="btsmPs">2.我是啦了绿绿绿绿</p>-->
+												<!--<p class="btsmPs">3.我的的顶顶顶</p>-->
+											</div>	
+										</div>
+										<div class="btsm btsm2 dib">
+											<p class="btsmP1">对门店</p>										
+											<div class="btsmD1">
+												<!--下面的p的条数不固定-->
+												<p class="btsmPs">查询中...</p>
+												<!--<p class="btsmPs">2.我是绿绿绿绿绿绿</p>-->
+												<!--<p class="btsmPs">3.我顶顶顶顶顶顶顶顶</p>-->
+											</div>	
+										</div>	
+										<div class="btsm btsm3 dib">
+											<p class="btsmP1">对消费者</p>										
+											<div class="btsmD1">
+												<!--下面的p的条数不固定-->
+												<p class="btsmPs">查询中...</p>
+												<!--<p class="btsmPs">2.我是啦啦绿</p>-->
+												
+											</div>										
+										</div>	
+									</div>							
+								</div>
+							</div>
+							<div class="BbtsmRright3 dib">
+									<img src="img/b8.png" alt="" class="BbtsmRright3Img"/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="BwrapDown">
+				<!--参与活动条件Bjoincondtion-->
+				<div class="Bjoincondtion">
+					<p class="BDcyhd">参与活动条件&nbsp:&nbsp</p>
+					<!--活动地区-->					
+					<div class="BDcyhdCity">
+						<p class="dib BDcyhdCityP">活动地区</p>
+						<div class="BDcyhdCityXianzhi dib">
+							<div class="BDcyhdCityD"><!--活动地区容器-->
+								<!--地区一-->
+								<div class="BDcyhdCityDs">
+									<!--省-->
+									<div class="BDcyhdCityDsSheng">
+										<!--对勾，根据类名确定是否显示，不显示也要占位，好吧visibility-->
+										<div class="BDcyhdCityDsImg dib"><img src="img/a3.png" alt="" /></div>
+										<!--省-->
+										<p class="BDcyhdCityDsP dib">河北省</p>									
+									</div>
+									<!--市-->
+									<div class="BDcyhdCityDsShi">
+										<div class="BDcyhdCityDsImg dib"><img src="img/a3.png" alt="" /></div>
+										<p class="BDcyhdCityDsP dib">邯郸市</p>		
+									</div>
+									<!--区，首行缩进-->
+									<div class="BDcyhdCityDsqv">
+										<!--为了布局简单，加上了图片，哈哈-->
+										<!--<div class="BDcyhdCityDsImg dib vis"><img src="img/a3.png" alt="" /></div>-->
+										<p class="BDcyhdCityDsP dib BDcyhdCityDsPq">海海海淀区</p>
+									</div>									
+								</div>							
+							</div>						
+						</div>	
+						<!--展开更多，目前考虑定位,根据高度决定是否显示,需要重新定位-->
+						<p class="BDcyhdCityDsMore"><span>展开更多>></span></p>
+					</div>
+					<!--超惠活动要求-->
+					<div class="BDcyhdRequire">
+						<p class="dib BDcyhdRequireP">超惠活动要求</p>
+						<div class="dib BDcyhdRequireD">
+							<!--如果是偶数，那就加上类名,用以调整margin值，-->
+							<p class="dib BDcyhdRequireDP"><img src="img/a3.png" alt="" class="" /><span class="dib">查询中...</span></p>
+							<!--<p class="dib BDcyhdRequireDP ml50"><img src="img/a3.png" alt="" class="" /><span class="dib">买赠（精品比例不低于买3增2  投放门店数量：10-30）</span></p>-->
+							<!--<p class="dib BDcyhdRequireDP"><img src="img/a3.png" alt="" class="" /><span class="dib">买赠（精品比例不低于买3增2  投放门店数量：10-30）</span></p>-->
+							<!--<p class="dib BDcyhdRequireDP ml50"><img src="img/a3.png" alt="" class="" /><span class="dib">买赠（精品比例不低于买3增2  投放门店数量：10-30）</span></p>-->
+						</div>
+					</div>
+					<!--会员参与资格-->
+					<div class="BDcyhdQualified">
+						<p class="BDcyhdQualifiedP">会员参与资格</p>
+						<!--分销商-->
+						<div class="dib BDcyhdQualifiedD BDcyhdQualifiedD1">
+							<p class="BDcyhdQualifiedDP BDcyhdQualifiedD1">分销商</p>
+							<div class="BDQFd1">
+								<p><img src="img/a3.png"/><span>买赠</span></p>
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<img src="img/b4.png" alt="" class="BDcyhdQualifiedXFZimg"/>
+							</div>
+							
+						</div>
+						<!--门店-->
+						<div class="dib BDcyhdQualifiedD BDcyhdQualifiedD2">
+							<p class="BDcyhdQualifiedDP">门店</p>
+							<div class="BDQFd2">
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<img src="img/b4.png" alt="" class="BDcyhdQualifiedXFZimg"/>
+							</div>
+						</div>
+						<!--消费者BDcyhdQualifiedXFZ-->
+						<div class="dib BDcyhdQualifiedD BDcyhdQualifiedD3">
+							<p class="BDcyhdQualifiedDP">消费者</p>
+							<div class="BDQFd3">
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<p class=""><img src="img/a3.png" alt="" class="" /><span>买赠</span></p>
+								<img src="img/b4.png" alt="" class="BDcyhdQualifiedXFZimg"/>
+							</div>
+						</div>
+					</div>
+				</div>
+								
+			</div>	
+			<!--页脚-->			
+			<footer class="footer">本活动最终解释权归凌云科技所有</footer>
+		</div>
+
+	</body>
+	<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	<script src="lib/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="//cdn.bootcss.com/Clamp.js/0.5.1/clamp.js"></script>-->
+	<script src="js/clamp.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/jquery.dotdotdot.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/coherent.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/TopicActivityDetail.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+	</script>
+</html>

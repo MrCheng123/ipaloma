@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>店铺活动</title>
+
+    <link type="text/css" href="/distributor/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/lib.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/style1.css" rel="stylesheet" />
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="/distributor/js/lib/lib.js" type="text/javascript"></script>
+
+    <style>
+        .logoimg {
+            vertical-align: middle;
+            margin-bottom: 12px;
+            left: 0;
+            width: 33px;
+            height: 33px;
+        }
+    </style>
+
+</head>
+<body style="background:#fff;">
+    <div class="container-w">
+        <div class="mainpic">
+            <img src="/distributor/image/cs02.jpg" />
+            <div class="state1 moreh">进行中</div>
+        </div>
+        <div class="dpdetail-info">
+            <div class="hdname">纯净营养 夏进全脂纯牛奶双十一特惠</div>
+            <div class="hdtime1"><img src="/distributor/image/icon02.png" />2016/04/13至2016/04/29</div>
+        </div>
+        <div class="dpdetail-cont">
+            距离双十一超来超近了，相信大家都已经感觉到今年的双十一来势汹汹，被电话广告、微信、短信、邮箱里的各种双十一促销活动轰炸的忍不住要疯狂购物了吧！面对这样的促销大节，各大商家奇招百出，夏进牛奶更是火力全开，全面大促活动让人看得眼花缭乱。
+        </div>
+    </div>
+
+
+    <div class="space"></div>
+    <footer>
+        <div class="bottom-nav">
+            <div class="fd-nav" >
+                <ul>
+                    <li>
+                        <a onclick="location.href='index.html'" class="logo">
+                            <img class="logoimg" src="/distributor/image/logo.png" />
+                        </a>
+                    </li>
+                    <li junmo="activity">
+                        <a href="javascript:void(0);" class="v1">活动专区</a>
+                        <div class="sub-nav">
+                            <em></em>
+                            <dl>
+                                <dd><a href="suppercoupon.html" class="">超惠券</a></dd>
+                                <dd><a href="suppermarketactivitylist.html" class="">超惠活动</a></dd>
+                                <dd><a href="noactivity.html" class="">店铺活动</a></dd>
+                            </dl>
+                        </div>
+                        <div class="sanjiao"></div>
+                    </li>
+                    <li junmo="result">
+                        <a href="javascript:void(0);" class="v1">销售业绩</a>
+                        <div class="sub-nav">
+                            <em></em>
+                            <dl>
+                                <dd><a href="javascript:void(0);" class="">推送设置</a></dd>
+                                <dd><a href="javascript:void(0);">今日统计</a></dd>
+                            </dl>
+                        </div>
+                        <div class="sanjiao"></div>
+                    </li>
+                    <li junmo="mine">
+                        <a href="javascript:void(0);" class="v1">我的</a>
+                        <div class="sub-nav">
+                            <em></em>
+                            <dl>
+                                <dd><a href="withdraw.html">钱包</a></dd>
+                                <dd><a href="distributor_hx.html">核销记录</a></dd>
+                                <dd><a href="javascript:void(0);">手机认证</a></dd>
+                                <dd><a href="m-self.html">个人</a></dd>
+                                <dd><a href="m-company.html">公司</a></dd>
+                            </dl>
+                        </div>
+                        <div class="sanjiao"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        <script>
+            $(function () {
+                $('ul li').removeClass('on');
+                $('ul li dd a').removeClass('on');
+                //当前页是什么 就给他加个class   on
+                //当前选项卡
+                $('[junmo=activity]').addClass('on');
+                //当前项
+                $('[junmo=activity] dd:eq(0) a').addClass('on');
+                //		   $('[junmo=result]').addClass('on');
+                //		   $('[junmo=mine]').addClass('on');
+            });
+        </script>
+    </footer>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

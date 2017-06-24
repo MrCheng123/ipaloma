@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <metahttp-equivmetahttp-equiv="x-ua-compatible"content="IE=7"/> 
+        <title>市场文案管理</title>
+        <script src="/admin/lib/jquery/1.9.1/jquery.min.js"></script>
+        <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script> 
+		<link href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		<script src='/admin/MarketingActivity/PropagationManagement/js/summernote.js'></script>
+		<script src="http://apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+		<script src="/admin/MarketingActivity/PropagationManagement/js/NewlyAdded.js"></script>
+		<link href="http://www.jq22.com/jquery/bootstrap-3.3.4.css" rel="stylesheet">
+        <link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/Newly_added.css">
+        <link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/area.css">
+        <link rel="stylesheet" href="/admin/MarketingActivity/PropagationManagement/css/summernote.css">
+    </head>
+    <body>
+    <div class="page-container">
+    	<div class="bread-crumb"><span class='activice'>营销活动></span> <span class='activice1'>市场文案管理></span>新增</div>
+    	<!-- <div id='bj'> -->
+			<div class="content">
+			<div class="content_information">
+				<input type="hidden" class="state" value="audit">
+				<div class="Copy_Title" id="wordCount">
+					<span>文案标题</span>
+					<div class='right_word'>
+						<textarea name="Copy_Title" id="textarea_value" cols="30" onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" width="650px" rows="10" maxlength="65" resize: none; class="textarea_size"></textarea>
+						<dev class="wordwrap ab" style="margin-top: 12px;">
+							<var class="word">0</var>
+							/65
+						</dev>
+					</div>
+				</div>
+				<div class="area">
+					<span>发送地区</span>
+					<button  class="setBtn">设置</button>
+					<button  id="count">保存</button>
+				</div>
+				<!-- 显示选择的地区 -->
+				<input type="hidden" class="area_val clear" value>
+				<div class="region-wrap"></div>
+				<div class="send_object">
+					<span style="float: left; margin-top: 16px;">发送对象</span>
+					<dir>
+						<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 4px;float: left;border-radius:3px" name="fen" value="分销商"><img  class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" height="8" width="11" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;">分销商</a>
+						<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 4px;float: left;border-radius:3px" name="fen" value="门店"><img  class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;">门店</a>
+						<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 4px;float: left;border-radius:3px" name="fen" value="消费者"><img  class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;" href="javascript:;">消费者</a>
+					</dir>	
+				</div>
+				<div class="mode1_fa">
+					<span style="float: left; margin-top: 16px;">发送方式</span>
+					<div style="display: inline-block;cursor: pointer; width: 14px;height: 14px;border:1px solid #999999;margin-right: 5px;margin-top: 16px;float: left;margin-left: 52px;border-radius:3px;" name="fen" value="图文消息推送"><img class="xiyin" style="display: block;margin:3px 2px;cursor: pointer;" src="/admin/MarketingActivity/PropagationManagement/Images/3.png" alt=""></div><a style="float: left;text-decoration: none;color: #000;margin-right: 13px;margin-top: 4px;margin-top: 17px; " href="javascript:;">图文消息推送</a>
+				</div>
+               <form  enctype="multipart/form-data" >
+				<div class="cover_photo">
+					<span class='fengmian_img'>封面图片</span>
+					<div class="upload_img">
+						<div id="preview" class="upload_img">
+						    <img id="imghead" class="up_img" width="100%" border=0 src=''>
+						</div>
+						<div class="right_size">
+							<span>●&nbsp;只适用于微信图文消息推送的封面图片</span><br>
+							<span>●&nbsp;图片尺寸为360*200像素</span><br>
+							<a href="javascript:;" class="file">上传
+							    <input type="file" name="file" id="fileid" onchange="previewImage(this)" />    
+							</a>
+						</div>
+					</div>
+				</div>
+				</form>
+		<!-- </div> -->
+
+<!-- 地区选择S -->
+	<div class="area-list wrapper"> 
+		<!-- <div class="wrap"> -->
+			<div class="area-list-item Select_the_province"> 
+				<div class="region-text">省</div> 
+				<div class="b"> 
+					<div class="qt"><input type="checkBox" title="选择全国" class="quanguo" />全国</div>
+					<ul name="check" class="selectable Select_province area_list_js"> 
+					</ul> 
+				</div> 
+			</div>
+
+			<div class="area-list-item select Select_the_province1"> 
+				<div class="region-text">市</div> 
+				<div class="b"> 
+					<div class="qt"><input class="qb quanbusheng" title="选择全部省" type="checkbox" disabled />全省</div> 
+					<ul name="check" class="selectable shi Select_province1 area_list_js"> 
+					</ul> 
+				</div>
+			</div>
+
+			<div class="area-list-item area-list-item1 Select_the_procince2"> 
+				<div class="region-text">县、区</div>
+				<div class="b"> 
+					<div class="qf"><input class="qx quanbushi" title="选择全部市" type="checkbox" disabled />全市</div> 
+					<ul name="check" class="selectable county Select_province2 area_list_js"> 
+					</ul>
+				</div>
+			</div>
+			<div class="btn-wrap fl">
+				<span class=" btn btn_b clear">清除勾选</span>
+				<span class=" btn btn_b save">确定</span>
+			</div>
+	</div>
+
+	<div id="area_selected" style="display: none;"></div> 
+	<ul id="area_selected_show"> 
+		<ul id="area_selected_show1"></ul> 
+	</ul>
+	<!-- <script src="js/area.js"></script> -->
+	<!-- 地区选择E -->
+				<div class="mode">
+					<span class='send_content5'>发送内容</span>
+					<!-- 替换富文本编辑器 -->
+					<!-- <textarea name="" id="send_text" class="Edit_content" cols="30"  rows="10"></textarea> -->
+					<div id="summernote"></div>
+					<!-- <iframe src="summernote-develop20160420/index.html" width="91%" height='auto'></iframe> -->
+				</div>
+				<div class="Graphic_message">
+
+					<div style="margin-bottom: 10px;"><span>图文消息</span>
+					<input name="Fruit" type="radio" value="bindwithperiodpush" /><span class="custom">跟随每周推送消息一同推送</span></div>
+			        <div> 
+					<label for='datepicker'>发送时间</label>
+					<input name="Fruit" type="radio" value="pushtime_supplier" />自定义
+					<input type="text" value="" readonly="readonly" class="input-text date" style="background:url(/admin/MarketingActivity/PropagationManagement/Images/2.png) no-repeat 97% 50%"; id="LAY_demorange_s">
+					<span class="custom">*选择自定义以后，占用本地区会员消息推送一次</span></div>
+				</div>
+				<div class="_button">
+					<button class="close_off">关闭</button>
+					<button type="submit" class="Preservation">保存</button>
+					<button class="preview">预览</button>
+					<button class="examine">保存并提交审核<input type="hidden" value="audit"></button>
+					<button class="Newly_added">保存并继续新增</button>
+				</div>
+			</div>
+		</div>
+	<div class='foot_textzo'>
+		凌云科技版权所有  京ICP号10211557.
+	</div>
+	<script src="/admin/lib/laydate/laydate.js"></script>
+	<script>
+		laydate({
+		  elem: '#LAY_demorange_s',
+		  min: laydate.now(), //-1代表昨天，-2代表前天，以此类推
+		  max: laydate.now(+100000) //+1代表明天，+2代表后天，以此类推
+		});
+
+$(function(){
+	$('.send_object dir div').click(function(){
+		$(this).find('img').toggleClass('xiyin_son')
+	})
+	$('.mode1_fa div').click(function(){
+		$(this).find('img').toggleClass('xiyin_son')
+	})
+
+	$('.Graphic_message div input:eq(0)').on('click',function(){
+		$('#LAY_demorange_s').val('');
+		$('#LAY_demorange_s').attr('disabled',true);
+	})
+	$('.Graphic_message div input:eq(1)').on('click',function(){
+		// $('#LAY_demorange_s').val('');
+		$('#LAY_demorange_s').attr('disabled',false);
+	})
+})
+ 	$(document).ready(function() {
+        $('#summernote').summernote();
+    });
+	</script>
+    </div>
+		<script type="text/javascript" src="/admin/lib/layer/2.1/layer.js"></script> 
+		<script src="/admin/MarketingActivity/PropagationManagement/js/area_select.js"></script>
+		<script src="/admin/MarketingActivity/PropagationManagement/js/area.js"></script>
+		<!-- <script src="/admin/MarketingActivity/PropagationManagement/js/layer/layer.js"></script> -->
+    </body>
+
+</html>

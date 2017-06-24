@@ -1,0 +1,287 @@
+﻿.wrap{
+  width:6.4rem;
+  margin: 0 auto;
+}
+.mt46{
+  margin-top: .46rem;
+}
+.mb15{
+  margin-bottom: .15rem;
+}
+.user_tx{
+    width: 6.4rem;
+    height: 3.53rem;
+    background-image: url(/consumer/image/my/head_bg.png);
+    background-repeat: no-repeat;
+    padding-top: .22rem;
+    box-sizing: border-box;
+}
+.user_tx a{
+  width:2.66rem;
+  height: 2.7rem;
+  margin: auto;
+  display: block;
+  background-image: url('/consumer/image/my/head_tx_border.png');
+  background-repeat: no-repeat;
+  padding-top: .68rem;
+  padding-left: .62rem;
+  box-sizing: border-box;
+  background-size: 100%;
+}
+.user_tx a img{
+  width: 1.56rem;
+  height: 1.56rem;
+  display: block;
+  background-color: #000;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+}
+.user_tx p{
+  text-align: center;
+  color: #ffffff;
+  font-size: .26rem;
+  margin-top:.14rem; 
+  padding-left: .22rem;
+  box-sizing: border-box;
+}
+.user_wallet{
+  /*width:100%;*/
+  height: 1.6rem;
+  background-color: #ff6600;
+}
+.user_wallet h1{
+  text-align: center;
+  font-size: .7rem;
+  color: #ffffff;
+  padding-top: .28rem;
+}
+.user_wallet p{
+  text-align: center;
+  font-size: .26rem;
+  padding-top: .15rem;
+  color: #ffffff;
+}
+.border_efeef4{
+  height: .2rem;
+  background-color: #efeef4;
+  border-top:1px solid #c7c7c7;
+  border-bottom:1px solid #c7c7c7;
+  box-sizing: border-box;
+}
+.welfare a{
+  height: 1.14rem;
+  padding-left: .26rem;
+  font-size: .3rem;
+  color: #333333;  
+  display: block;
+  line-height: 1.14rem;
+}
+.welfare a span{
+  color: #999999;
+  font-size: .26rem;
+}
+.welfare a img{
+    float: right;
+    margin-top: .43rem;
+    margin-right: .3rem;
+    width: .28rem;
+}
+.WalletBalance p{
+  font-size: .3rem;
+  padding-top:  .38rem;
+  padding-left: .54rem;
+  color: #333333;
+}
+.WalletBalance h1{
+  font-size: .45rem;
+  padding-top:  .74rem;
+  text-align: center;
+  color: #fe8636;
+  padding-bottom:  1.2rem;
+}
+.WalletBalance a{
+    width:  5.86rem;
+    height: .68rem;
+    background-color: #fe8636;
+    border-radius: .1rem;
+    display: block;
+    margin: auto;
+    text-align:   center; 
+    font-size: .26rem;
+    line-height: .68rem;
+    color: #fff;
+}
+.WalletBalance .on {
+    background-color: #cccccc;
+border: #afafaf 1px solid;
+box-sizing: border-box;
+}
+.border_dashed{
+  border-top:#fe8636 dashed 1px;
+}
+
+.border_tixing{
+    width: 72.6%;
+    height: 4px;
+    border: 1px solid #c7c7c7;
+    background: #fe8636;
+    border-bottom: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: -.01rem;
+    /* margin-left: 1px; */
+    margin-left: 0.296rem;
+}
+.Wallet_list{
+  padding-bottom: .26rem;
+  border-bottom: 1px solid #c7c7c7;
+}
+.Wallet_list li{
+  text-align: center;
+  padding-top: .1rem;
+  position: relative;
+  border-bottom: 1px solid #c7c7c7;
+  /* background: #fff; */
+  height: .65rem;
+}
+.Wallet_list li.on{
+  border-bottom: none;
+}
+.Wallet_list li a{
+  line-height: 1;
+  padding-top: .18rem;
+  display: block;
+  font-size: .26rem;
+  color: #333333;
+}
+.Wallet_list li.on a{
+  line-height: 1;
+  display: block;
+  color: #fe8636;
+}
+.Wallet_list li:last-child.on a{
+  padding-top: .18rem;
+}
+.Wallet_list li:first-child .border_tixing1{
+  width: 87%;
+  margin: 0;
+}
+.Wallet_list li:first-child .border_tixing{
+    width: 86%;
+    margin-left: 1px;
+}
+.Wallet_list li:last-child .border_tixing1{
+  width: 87%;
+  float: right;
+}
+.Wallet_list li:last-child .border_tixing{
+    width: 86%;
+    float: right;
+}
+.Wallet_list li.on .border_xiexian_l,.Wallet_list li.on .border_xiexian_r,
+.Wallet_list li.on .border_tixing1,.Wallet_list li.on .border_tixing{
+  visibility: inherit;
+}
+.Wallet_list li .border_xiexian_l,.Wallet_list li .border_xiexian_r,
+.Wallet_list li .border_tixing1,.Wallet_list li .border_tixing{
+  visibility: hidden;
+}
+.border_xiexian_l{
+    border-bottom: 1px solid #c7c7c7;
+    transform: rotate(116deg);
+    width: .72rem;
+    position: absolute;
+    left: -.21rem;
+    top: .43rem;
+}
+.border_xiexian_r{
+    border-bottom: 1px solid #c7c7c7;
+    transform: rotate(65deg);
+    width: .72rem;
+    position: absolute;
+    right: -.21rem;
+    top: .42rem;
+}
+.Wallet_list h1{
+  margin:0px .25rem;  
+  background-color: #f7f7f7;
+  border-radius: .1rem .1rem 0 0;
+  height: .48rem;
+  border-bottom: 1px solid #c7c7c7;
+  line-height: .48rem;
+  margin-top: .22rem;
+}
+.Wallet_list h1 span{
+  padding-left: .42rem;
+  font-size: .26rem;
+  width: 45%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.Wallet_list h1 b{
+  padding-left: .3rem;
+  color: #333333;
+  font-size: .2rem;
+  width: 21%;
+  display: inline-block; 
+}
+.Wallet_sr dl {
+    padding-top: .4rem;
+    border-bottom: 1px solid #c7c7c7;
+    padding-bottom: .05rem;
+}
+.Wallet_sr dl dt h2{
+  font-size: .24rem;
+  color: #333333;
+  padding-left: .42rem;
+  padding-bottom: .1rem;
+}
+.Wallet_sr dl dt p{
+  font-size: .22rem;
+  color: #999999;
+  padding-left: .42rem;
+}
+.Wallet_sr dl dt{
+  width: 4rem;
+  float: left;
+}
+.Wallet_sr dl dd span{
+  font-size: .28rem;
+  float: right;
+  margin-right: .35rem;
+  color: #149200;
+}
+.Wallet_sr dl dd span.on{
+  color: #e00000;
+}
+.Wallet_sr p a {
+  text-align: center;
+  display: block;
+  font-size: .26rem;
+  color: #333333;
+  margin-top: .26rem;
+}
+
+.Wallet_fail{
+  padding-top: .72rem;
+}
+.Wallet_fail p{
+  text-align: center;
+}
+.Wallet_fail p img{
+  width: .92rem;
+  margin: auto;
+}
+.Wallet_fail p span{  
+  display: block; 
+  text-align: center;
+  font-size: .26rem;
+  color: #999999;
+  margin-top: .32rem;
+  padding-bottom: .3rem;
+}
+/*3-1*/
+.Wallet_list h1 b{
+    white-space: nowrap;
+}

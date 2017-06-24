@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>			
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/TopicActivityList.css"/>
+		<style type="text/css">
+
+		</style>	
+	</head>
+	<body>
+		<header><img src="img/a8.png" alt="" /><span>亲爱的会员，下午好!</span><img src="img/a9.png" alt="" /></header>
+		<div class="Awrap initialHi">		
+			<div class="returnToList">	
+				<p class="p1 hi">返回主题活动列表</p>
+				<p class="p2">返回超惠券列表</p>
+			</div>	
+			<ul class="yeNo">
+				<li class="yeNoL1">已参与的活动</li>
+				<li class="yeNoL2">未参与的活动</li>
+			</ul>
+			<!--已参与的活动-->
+			<div class="content -hi Aalready">
+				<!--地区,已经参与的活动没有地区选项-->
+				<div class="contentDq hi">
+					<img src="img/a7.png" alt="" /><span>本地区</span>				
+				</div>
+				<!--每行内容的容器-->
+				<div class="contentCont">
+					<div class="alist initialHi"><!--改为ajax中插入，success的最后移除类名hi-->
+						<!--每行内容-->
+						<div class="con">
+							<div class="conImg por dib">
+								<img src="img/a1.png" alt="" class="poa"/>
+								<img src="img/a2.png" alt="" class="poa" />
+								<span class="poa dib">99.99万</span>
+								<span class="poa">已发放800元</span>
+							</div>
+							<div class="conCon dib">
+								<div class="cCHead">
+									<p class="dib ver cCHeadSp1">查询中...！</p><span class="dib ver cCHeadSp2 hi">已参与分销商数：99999</span><p class="dib cCHeadP hi"><span class="cCHeadPs1 ">仅剩</span><span class="cCHeadPs2">999</span><span class="cCHeadPs3">席</span></p>
+								</div>
+								<p class="ccBt">查询中...</p>
+								<div class="ccCoFu"><!--后加-->
+									<p class="ccCo">查询中...<a style="color: #F4606C;" href="#" class="longa">read more</a></p>
+								</div>
+								<div class="ccTi">						
+										<p class="dib">参与时间&nbsp;:&nbsp;</p><span class="ccTis1">查询中...</span><p class="dib">参与条件&nbsp;:&nbsp;</p><img src="img/a3.png" alt="" /><span class="ccTis2">地区</span><img class="hi" src="img/a4.png" alt="" /><span class="ccTis2 hi">商品类目</span><img src="img/a3.png" alt="" /><span class="ccTis2">超惠活动要求</span><img src="img/a3.png" alt="" /><span class="ccTis2">参与会员资格</span>				
+								</div>
+								<div class="ccfoot">
+									<div class="ccfootRight">
+										<div class="dib ccfoot1"><p class="ccfoot1p1 dib">距结束</p><span>0</span><span>0</span><span>4</span><p class="ccfoot1p1 dib">天</p><span>1</span><span>3</span><p class="ccfoot1p1 dib ccfoot1p2">:</p><span>2</span><span>3</span><p class="ccfoot1p1 dib ccfoot1p2">:</p><span>5</span><span>9</span></div><div class="dib  ccfoot2">马上参与</div>
+									</div>
+								</div>	
+								<!--无法参与-->
+								<div class="ccNo">
+									<img src="img/a6.png" alt="" />
+								</div>					
+							</div>						
+						</div>
+						<!--每行之间的剑阁县-->
+						<hr class="contentLine"/>					
+					</div>					
+				</div>		
+			</div>
+			<!--未参与的活动-->
+			<div class="content -hi Ano">
+				<div class="contentDq hi"><!--方案改变，2个地区不用切换所以这里注释掉，如果有一天需要地区切换，那就找20170117以及之前的版本-->
+					<img src="img/a7.png" alt="" /><span>本地区</span>				
+				</div>
+				<div class="contentCont"><!--contentCont会在js中清空-->
+					<div class="thisDistrict">
+						<div class="contentDq"><img src="img/a7.png" alt="" /><span>本地区</span></div>
+					</div>
+					<div class="elseDistrict">
+						<div class="contentDq"><img src="img/a7.png" alt="" /><span>其他地区</span></div>
+					</div>
+				</div>
+			</div>			
+		</div>
+
+	</body>
+	<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+	<!--<script src="//cdn.bootcss.com/jQuery.dotdotdot/1.7.4/jquery.dotdotdot.js">用于多行省略</script>-->
+	<!--<script src="jquery.dotdotdot.js" type="text/javascript" charset="utf-8">用于多行省略<</script>-->
+	<script src="lib/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/clamp.js" type="text/javascript" charset="utf-8"></script>	
+	<script src="js/coherent.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/TopicActivityList.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+	</script>
+</html>

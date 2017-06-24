@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>绑定核销码</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/retailerstyle.css" rel="stylesheet" />
+
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <link href="/retailer/css/verify.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        #retailerName {
+            margin: 25% 0 25% 0;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        .btncss {
+            margin: 0 auto;
+            float: none;
+            width: 70%;
+            height: 40px;
+            line-height: 40px;
+            font-size: 18px;
+        }
+
+        #fail-img {
+            margin: 20px 0;
+            width: 35%;
+        }
+
+        #page2 p {
+            font-size: 18px;
+            line-height: 35px;
+            color: #333;
+        }
+
+            #page2 p img {
+                height: 30px;
+                vertical-align: middle;
+            }
+
+        #verifycode {
+            width: 80%;
+            height: 400px;
+            margin: 20px 0 10px 10%;
+            border: solid 1px #0d988f;
+        }
+    </style>
+</head>
+<body ms-controller="verifycodebind" class="ms-controller">
+    <div id="page1" ms-if="state==1">
+        <p id="retailerName">{{retailername}}</p>
+
+        <div class="btnVerify active btncss" ms-click="bindcode">确认绑定</div>
+    </div>
+    <div id="page2" style="text-align:center" ms-if="state==2">
+        <img src="/retailer/image/verify/fail.png" id="fail-img" />
+        <p>{{errorMsg}}</p>
+        <p>
+            <img src="/retailer/image/verify/finger.png" />不妨直接下载您的专属二维码
+        </p>
+        <div id="verifycode">
+
+        </div>
+        <p>长按二维码下载图片</p>
+        <br />
+        <img id="QRCode_img" hidden />
+    </div>
+    <footer>
+        <div id="bottom-nav"></div>
+    </footer>
+    <div id="divQrcode" hidden></div>
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script src="/retailer/js/verify/drawImg.js"></script>
+    <script src="/retailer/js/verify/verifycodebind.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+	<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{margin-left:0px;border:1px solid red;width:100px;height:100px;}
+		</style>
+	</head>
+	<body>		
+		<div>888</div>		
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="layer.js"></script>
+	<script type="text/javascript">
+$(function(){
+	//tips层
+	 // layer.msg('Hello layer');
+	 // layer.msg('Hello layer', {time: 3333})
+	// layer.tips('Hi，我是tips', $("div"));
+var index=0;
+function d(){
+	return layer.open({
+	// 	title: false,
+		area: ['100px','100px'],//官方，长和宽，默认自适应,建议自适应。我：关闭按钮的相对于绑定元素的距离，layer的高度，
+		// offset: ['1100px', '200px'],//tips无用
+		type: 4,
+		content: ['的点点滴滴', $("div")], //显示内容，绑定对象，我发现绑定元素有margin，就会影响某些参数，如下面tips
+		shade: 0,//遮罩，1有，0无，
+		time: 0,//定时关闭，0表示不定时关闭
+	 	shift:0,// 动画，1开，0关闭
+		tips: [2, '#c00'],//方向，颜色，
+		tipsMore: false,//允许多个tips，
+		success:function(){
+	  	console.log("这是回调函数")
+	  },
+	}); 	
+}	
+
+	$("div").mouseover(function(){
+		// console.log(index+'d');
+		index=d();
+		console.log(index)
+	})
+	$("div").mouseleave(function(){
+		// console.log(index+'d');
+		// for(i=0;i<20;i++){
+			layer.close(index);
+			console.log(index)
+			// layer.close(2);
+		// }
+		
+	})
+	
+})
+
+	</script>
+</html>
+<!--
+	
+	
+	
+	
+	
+-->

@@ -1,0 +1,207 @@
+	@charset "utf-8";
+	html,
+	body,
+	div,
+	ul,
+	ol,
+	li,
+	dl,
+	dt,
+	dd,
+	h1,h2,h3,h4,h5,h6,
+	form,
+	fieldset,
+	table,
+	tr,
+	td,
+	p,
+	input,
+	img
+	{
+		margin: 0;
+		padding: 0;
+		font-family: "Microsoft yahei";
+		font-size: 14px;
+	}
+
+	img{
+		border:none;
+	}
+
+	li{
+		list-style:none;
+	}
+
+	i,
+	em{
+		display: inline-block;
+		font-style: normal;
+	}
+
+	a{
+		text-decoration:none;	
+		color: #fff
+	}
+
+	a:hover,
+	a:active,
+	a:visited,
+	a:focus{
+		/*text-decoration:none;	*/
+		outline: transparent;
+	}
+
+	input,select,textarea{
+		outline:none;
+		border:none;
+		background:none
+	}
+
+	.wrap{
+		margin:auto;
+	}
+	.header{
+		width: 100%;
+		height: 103px;
+	}
+	.header_wrap{
+		width: 1000px;
+		height: 103px;
+		margin:0 auto;
+	}
+	.header_wrap img{
+		display: block;
+		float: left;
+		vertical-align: middle;
+		margin-top: 19px;
+	}
+	.login_text{
+		float: left;
+		line-height: 103px;
+		font-size: 24px;
+		margin-left: 20px;
+	}
+	.main-cont{
+		width: 100%;
+		height: 538px;
+		background: url(../images/big_back.png) no-repeat center center;
+		/* background-size: cover; */
+	}
+	.main_wrap{
+		width: 1000px;
+		height: 538px;
+		margin:0 auto;
+	}
+	.user_box{
+		width: 351px;
+		height: 338px;
+		background: #fff;
+		float: right;
+		margin-top: 100px;
+		border-radius: 3px;
+	}
+	.user_center{
+		width: 307px;
+		height: 338px;
+		margin:0 auto;
+	}
+	.uesr_login{
+		font-size: 14px;
+		line-height: 61px;
+		font-weight: bold;
+	}
+	.user_name{
+		width: 305px;
+		height: 40px;
+		border:1px solid #cfcfcf;
+		border-radius: 3px;
+		display: block;
+		margin-bottom: 19px;
+		text-indent: 40px;
+	}
+	.password{
+		width: 305px;
+		height: 40px;
+		border:1px solid #cfcfcf;
+		border-radius: 3px;
+		display: block;
+		margin-bottom: 19px;
+		text-indent: 40px;
+	}
+	.user_name:focus,.password:focus{
+		border-color: #4f8ced;
+	}
+	.user_center div:nth-child(2){
+		position: relative;
+	}
+	.user_center div:nth-child(3){
+		position: relative;
+	}
+	.user_name_pic{
+		position: absolute;
+		left: 12px;
+		top: 10px;
+	}
+	.password_pic{
+		position: absolute;
+		left: 12px;
+		top: 10px;
+	}
+	.user_center div:nth-child(4){
+		width: 100%;
+		height: 15px;
+	}
+	.Remember_username{
+		width: 92px;
+		height: 15px;
+		float: left;
+	}
+	.Remember_username i{
+		display: inline-block;
+	    width: 13px;
+	    height: 13px;
+	    border: 1px solid #cfcfcf;
+	    float: left;
+	    margin:2px 0 0 5px;
+	    cursor: pointer;
+	}
+	.checked{
+		background: url(../images/checked.png) 8px 5px no-repeat;
+	}
+	.Remember_username a{
+		font-size: 13px;
+		float: left;
+		color:  #000;
+		margin-left: 5px;
+	}
+	.Forget_password{
+		display: block;
+		float: right;
+		color: #000;
+		line-height: 15px;
+	}
+	.submit{
+		display: block;
+		width: 300px;
+		height: 40px;
+		border-radius: 2px;
+		background: #ff6032;
+		color: #fff;
+		font-size: 16px;
+		line-height: 40px;
+		text-align: center;
+		margin:60px auto 0;
+		letter-spacing: 1.5px;
+		cursor: pointer;
+	}
+	.footer{
+		width: 100%;
+		height: 170px;
+	}
+	.footer a{
+		color: #000;
+		text-align: center;
+		line-height: 170px;
+		display: block;
+		font-size: 14px;
+	}

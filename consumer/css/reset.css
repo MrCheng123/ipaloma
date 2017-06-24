@@ -1,0 +1,61 @@
+body,div,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,iframe,input,textarea,select,label,article,aside,footer,header,menu,nav,section,time,audio,video{
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+article,aside,footer,header,hgroup,nav,section,audio,canvas,video{
+  display: block
+}
+
+html,body {
+  font-size: 12px;
+  background-color: #ffffff;
+}
+
+textarea {
+  resize: none
+}
+
+iframe,img {
+  border: 0
+}
+
+input[type=text],input[type=button],input[type=submit],input[type=reset],button {
+  -webkit-appearance: none
+}
+
+ul,ol {
+  list-style: none
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255,0,0,0)
+}
+.clearfix:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0;
+}
+    
+.clearfix {
+  zoom: 1;
+}
+.box{
+  width:100%;
+  display:box;
+  display:-webkit-box;
+  display:-moz-box;
+  display:-ms-box;
+}
+.box-flex{
+  box-flex:1;
+  -webkit-box-flex:1;
+  -moz-box-flex:1;
+  -ms-box-flex:1;
+}
+html,body{margin:0;padding:0;}

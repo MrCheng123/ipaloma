@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <title>我的钱包</title>
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/my_wallet.css" rel="stylesheet" />
+    <link href="/retailer/css/dropload.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="/retailer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/lib/common.js"></script>
+    <script src="/retailer/js/lib/lib.js"></script>
+    <script src="/js/jquery/dropload.min.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+    <script src="/retailer/js/my_wallet.js"></script>
+
+</head>
+<body ms-controller="mywallet" class="ms-controller">
+    <div class="wrap">
+        <header></header>
+        <section>
+            <div class="WalletBalance">
+                <p>钱包余额</p>
+                <h1>
+                    ￥{{toNumner(Moneys.account.count)+toNumner(Moneys.retailer.count)}}
+                    <!--<span>不可提现 ￥0</span>-->
+                </h1>
+                <div class="user_info clearfix">
+                    <ul ms-attr-class="toNumner(Moneys.account.count)==0?'on':''">
+                        <li><h2>我的核销收入</h2></li>
+                        <li><h3>￥{{toNumner(Moneys.account.balance)}}</h3></li>
+                        <!--<li><p>可提现 ￥{{toNumner(Moneys.account.balance)}}</p></li>-->
+                        <li><a href="javascript:void(0)" ms-click="userwithdraw('account')">提现</a></li>
+                    </ul>
+                    <span class="info_bg"></span>
+                    <ul ms-attr-class="toNumner(Moneys.retailer.count)==0?'on':''">
+                        <li><h2>自助核销收入</h2></li>
+                        <li><h3>￥{{toNumner(Moneys.retailer.balance)}}</h3></li>
+                        <!--<li><p>可提现 ￥{{toNumner(Moneys.retailer.balance)}}</p></li>-->
+                        <li><a href="javascript:void(0)" ms-click="userwithdraw('retailer')">提现</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="Wallet_nav mt46">
+                <p class="border_dashed mb15"></p>
+                <p class="border_efeef4"></p>
+
+                <!-- 正常情况下 -->
+                <div class="Wallet_list">
+                    <ul class="box ">
+                        <li ms-attr-class="box-flex {{showType==0?'on':''}}" ms-click="budgetswitch(0)">
+                            <p class="border_tixing"></p>
+                            <a class="" href="javascript:void(0)">我的核销收入明细</a>
+                            <p class="border_xiexian_r"></p>
+                        </li>
+                        <li ms-attr-class="box-flex {{showType==1?'on':''}}" ms-click="budgetswitch(1)">
+                            <p class="border_tixing"></p>
+                            <a href="javascript:void(0)">自助核销收入明细 </a>
+                            <p class="border_xiexian_l"></p>
+                        </li>
+                    </ul>
+                    <div id="list_1" ms-if="showType==0">
+                        <p class="p_list">
+                            <a ms-attr-class="{{individual.category=='all'?'on':''}}" href="javascript:void(0)" ms-click="categoryChange('all')">全部</a>
+                            <a ms-attr-class="{{individual.category=='income'?'on':''}}" href="javascript:void(0)" ms-click="categoryChange('income')">收入</a>
+                            <a ms-attr-class="{{individual.category=='expend'?'on':''}}" href="javascript:void(0)" ms-click="categoryChange('expend')">支出</a>
+                        </p>
+                        <div class="Wallet_sr ">
+                            <div ms-repeat="individual.array" data-repeat-rendered="jsondataReadered">
+                                <h1 ms-if="el.summaryperiod!=undefined"><span>本月</span> <b>收入￥{{el.recv}}</b><b>支出￥{{el.expend}}</b></h1>
+                                <dl ms-if="el.summaryperiod==undefined" class="clearfix">
+                                    <dt>
+                                        <h2>{{el.tradingtag}}</h2>
+                                        <p>{{el.tradingtime}}</p>
+                                    </dt>
+                                    <dd>
+                                        <span ms-attr-class="{{el.flowing_direction=='收入'?'':'on'}}">{{el.flowing_direction=='收入'?'+':'-'}} {{el.count}}</span>
+                                    </dd>
+                                </dl>
+                            </div>
+                            <!--<p><a href="javascript:void(0)">更多明细</a></p>-->
+                        </div>
+
+                        <div class="Wallet_fail" ms-if="individual.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无我的核销收入流水记录哦！</span></p>
+                        </div>
+                    </div>
+                    <div id="list_2" ms-if="showType==1">
+                        <p class="p_list">
+                            <a ms-attr-class="{{retail.category=='all'?'on':''}}" href="javascript:void(0)" ms-click="categoryChange('all')">全部</a>
+                            <a ms-attr-class="{{retail.category=='income'?'on':''}}" href="javascript:void(0)" ms-click="categoryChange('income')">收入</a>
+                            <a ms-attr-class="{{retail.category=='expend'?'on':''}}" href="javascript:void(0)" ms-click="categoryChange('expend')">支出</a>
+                        </p>
+                        <div>
+                            <div class="Wallet_sr ">
+                                <div ms-repeat="retail.array" data-repeat-rendered="jsondataReadered2">
+                                    <h1 ms-if="el.summaryperiod!=undefined"><span>本月</span> <b>收入￥{{el.recv}}</b><b>支出￥{{el.expend}}</b></h1>
+                                    <dl ms-if="el.summaryperiod==undefined" class="clearfix">
+                                        <dt>
+                                            <h2>{{el.tradingtag}}</h2>
+                                            <p>{{el.tradingtime}}</p>
+                                        </dt>
+                                        <dd>
+                                            <span ms-attr-class="{{el.flowing_direction=='收入'?'':'on'}}">{{el.flowing_direction=='收入'?'+':'-'}} {{el.count}}</span>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <!--<p><a href="javascript:void(0)">更多明细</a></p>-->
+                            </div>
+                        </div>
+                        <div class="Wallet_fail" ms-if="retail.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无自助核销收入流水记录哦！</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div id="bottom-nav"></div>
+        </footer>
+    </div>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

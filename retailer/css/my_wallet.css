@@ -1,0 +1,328 @@
+.wrap{
+  width:6.4rem;
+  margin: 0 auto;
+}
+.mt46{
+  margin-top: .46rem;
+}
+.mb15{
+  margin-bottom: .15rem;
+}
+
+.border_efeef4{
+  height: .2rem;
+  background-color: #efeef4;
+  border-top:1px solid #c7c7c7;
+  border-bottom:1px solid #c7c7c7;
+}
+.welfare a{
+  height: 1.14rem;
+  padding-left: .26rem;
+  font-size: .3rem;
+  color: #333333;  
+  display: block;
+  line-height: 1.14rem;
+}
+.welfare a span{
+  color: #999999;
+  font-size: .26rem;
+}
+.welfare a img{
+  float: right;
+  margin-top: 0.45rem;
+  margin-right: .3rem;
+}
+.WalletBalance p{
+  font-size: .3rem;
+  padding-top:  .38rem;
+  padding-left: .54rem;
+  color: #333333;
+}
+.WalletBalance h1{
+  font-size: .45rem;
+  padding-top:  .74rem;
+  text-align: center;
+  color: #fe8636;
+  /*padding-bottom:  .75rem;*/
+  padding-bottom:  .5rem;
+}
+.WalletBalance h1.on{
+  color: #999999;
+}
+.WalletBalance h1.on span{
+  color: #999999;
+}
+.WalletBalance h1 span{
+    display: block;
+    font-size: .18rem;
+    color: #c7c7c7;
+    margin-top: .1rem;
+    font-weight: normal;
+}
+.user_info ul{
+  width:3.13rem;
+  float: left;
+  height: 2rem;
+}
+.user_info span.info_bg{
+  width:.14rem;
+  height: 2rem;
+  background: url('../image/user_info_bg.png') no-repeat right center;
+  background-size:100%;
+  display: block;
+  float: left; 
+}
+.user_info ul li h2{
+  font-size: .26rem;
+  color: #333333;
+  margin-bottom: .2rem;
+  text-align: center;
+}
+.user_info ul li h3{
+  text-align: center;
+  font-size: .22rem;
+  margin-bottom: .15rem;
+}
+.user_info ul li p{
+  text-align: center;
+  font-size: .18rem;
+  margin-bottom: .2rem;
+  padding: 0;
+}
+.user_info ul li a{
+  width:2.14rem;
+}
+.WalletBalance a{
+    width:  5.86rem;
+    height: .68rem;
+    background-color: #2bc9be;
+    border-radius: .1rem;
+    display: block;
+    margin: auto;
+    text-align:   center; 
+    font-size: .26rem;
+    line-height: .68rem;
+    color: #fff;
+}
+.WalletBalance ul.on a{
+    background-color: #cccccc;
+    border:#afafaf 1px solid;
+    box-sizing: border-box;
+}
+.border_dashed{
+  border-top:#2bc9be dashed 1px;
+}
+
+.border_tixing{
+    border: 1px solid #c7c7c7;
+    background: #2bc9be;
+    height: 4px;
+    border-bottom: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: auto;
+}
+.Wallet_list{
+  padding-bottom: .26rem;
+}
+.Wallet_list li{
+  text-align: center;
+  padding-top: .1rem;
+  position: relative;
+  border-bottom: 1px solid #c7c7c7;
+  /* background: #fff; */
+  height: .65rem;
+}
+.Wallet_list li a{
+  line-height: 1;
+  padding-top: .25rem;
+  display: block;
+  font-size: .26rem;
+  color: #333333;
+}
+.Wallet_list li.on a{
+  line-height: 1;
+  display: block;
+  font-size: .26rem;
+  color: #2bc9be;
+}
+.Wallet_list li:first-child.on a{
+   padding-top: .17rem; 
+}
+.Wallet_list li.on{
+  border-bottom: none;
+}
+.Wallet_list li:first-child .border_tixing1{
+    width: 92.2%;
+  margin: 0;
+}
+.Wallet_list li:first-child .border_tixing{
+    width:91%;
+    margin-left: 1px;
+}
+.Wallet_list li:last-child .border_tixing1{
+    width: 92.2%;
+  float: right;
+}
+.Wallet_list li:last-child .border_tixing{
+    width: 91%;
+    float: right;
+}
+.Wallet_list li.on .border_xiexian_l,.Wallet_list li.on .border_xiexian_r,
+.Wallet_list li.on .border_tixing1,.Wallet_list li.on .border_tixing{
+  display: block;
+}
+.Wallet_list li .border_xiexian_l,.Wallet_list li .border_xiexian_r,
+.Wallet_list li .border_tixing1,.Wallet_list li .border_tixing{
+  display: none;
+}
+.Wallet_list p.p_list{
+  text-align: center;
+  margin-top: .3rem;
+  padding-bottom: .1rem;
+}
+.Wallet_list p.p_list a{
+  margin: 0px .42rem;
+  font-size: .24rem;
+  color: #999999;
+}
+.Wallet_list p.p_list a.on{
+  color: #2bc9be;
+}
+.border_xiexian_l{
+    border-bottom: 1px solid #c7c7c7;
+    transform: rotate(116deg);
+    width: .72rem;
+    position: absolute;
+    left: -.22rem;
+    top: .43rem;
+}
+.border_xiexian_r{
+    border-bottom: 1px solid #c7c7c7;
+    transform: rotate(65deg);
+    width: .72rem;
+    position: absolute;
+    right: -.212rem;
+    top: .422rem;
+}
+.Wallet_list h1{
+  margin:0px .25rem;  
+  background-color: #f7f7f7;
+  border-radius: .1rem 1rem 0 0;
+  height: .48rem;
+  border-bottom: 1px solid #c7c7c7;
+  line-height: .48rem;
+  margin-top: .22rem;
+}
+.Wallet_list h1 span{
+  padding-left: .42rem;
+  font-size: .26rem;
+  width: 42%;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.Wallet_list h1 b{
+  padding-left: .3rem;
+  color: #333333;
+  font-size: .2rem;
+  width: 21%;
+  display: inline-block;
+}
+.Wallet_sr dl {
+    padding-top: .48rem;
+    border-bottom: 1px solid #c7c7c7;
+    padding-bottom: .1rem;
+}
+.Wallet_sr dl dt h2{
+  font-size: .24rem;
+  color: #333333;
+  padding-left: .42rem;
+  padding-bottom: .1rem;
+
+}
+.Wallet_sr dl dt h2 span{
+   font-size: .22rem;
+  color: #999;
+  font-weight:normal; 
+}
+.Wallet_sr dl dt p{
+  font-size: .22rem;
+  color: #999999;
+  padding-left: .42rem;
+}
+.Wallet_sr dl dt{
+  width: 4rem;
+  float: left;
+}
+.Wallet_sr dl dd span{
+  font-size: .28rem;
+  float: right;
+  margin-right: .35rem;
+  color: #149200;
+}
+.Wallet_sr dl dd span.on{
+  color: #e00000;
+}
+.Wallet_sr p a {
+  text-align: center;
+  display: block;
+  font-size: .28rem;
+  color: #333333;
+  margin-top: .26rem;
+}
+
+.Wallet_fail{
+  padding-top: .72rem;
+}
+.Wallet_fail p{
+  text-align: center;
+}
+.Wallet_fail p img{
+  width: .92rem;
+  margin: auto;
+}
+.Wallet_fail p span{  
+  display: block; 
+  text-align: center;
+  font-size: .26rem;
+  color: #999999;
+  margin-top: .32rem;
+  padding-bottom: .3rem;
+}
+/*新增*/
+.WalletBalance p{
+  padding-left: .25rem;
+}
+.deposit a{width: 2.2rem;}
+.Wallet_list .incomeDetail{
+  margin:.25rem;
+  color: #333;
+  font-size:.3rem;
+  font-weight: normal;
+}
+.Wallet_list h2{
+  font-weight: normal;
+}
+dl.clearfix{
+  margin-left: .25rem;
+  margin-right: .25rem;
+}
+.Wallet_list h1{
+  border-radius: .2rem .2rem 0 0;
+}
+.invalid a{
+  background: #ccc;
+}
+.valid a{
+  background: #2bc9be;
+}
+.Wallet_sr dl dt h2{
+  padding-left:.22rem;
+}
+.Wallet_sr dl dt p{
+  padding-left: .22rem;
+}
+/*3-1*/
+.Wallet_list h1 b{
+    white-space: nowrap;
+}

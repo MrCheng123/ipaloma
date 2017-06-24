@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>系统管理</title>
+    <link type="text/css" href="../web_style/style.css" rel="stylesheet" />
+    <script type="text/javascript" src="../web_js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../web_js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../web_js/common.js"></script>
+    <script type="text/javascript" src="../web_js/xt-guanli.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+
+            $(function () {
+
+                var length = $('ul.create-lan-class li').length;
+
+                $('ul.create-lan-class li').click(function () {
+
+                    $('ul.create-lan-class li').css('background', '#fff').css('color', '#333');
+                    $(this).css('background', '#249cfa').css('color', '#fff');
+                    $('ul.create-lan-class li').removeClass("active");
+                    $(this).addClass("active");
+                })
+
+                $('#show-createbox').click(function () {
+                    $('.create-lan-w').fadeIn(500)
+                    $('#shortcutinfoId').val();
+                })
+                $('#close-createbox').click(function () {
+                    $('.create-lan-w').fadeOut(500)
+                })
+
+                $('.quedingaaaa').click(function () {
+                    $('.delete-lan-wab').fadeOut(500)
+                })
+                $('#close-deletebox').click(function () {
+                    $('.delete-lan-w').fadeOut(500)
+                })
+
+                $('.change').click(function () {
+                    $('.add-lan-w').fadeIn(500)
+                })
+                $('#close-addbox').click(function () {
+                    $('.add-lan-w').fadeOut(500)
+                })
+                $('.quxiao').click(function () {
+                    $('.add-lan-w').fadeOut(500)
+                    $('.create-lan-w').fadeOut(500)
+                    $('.delete-lan-w').fadeOut(500)
+                })
+
+                $('.quxiao1').click(function () {
+                    $('.delete-lan-wab').fadeOut(500)
+
+                })
+
+                $('.delete').click(function () {
+                    var gid = $(this).attr("gid");
+//                    if ($(this).parent().prev().prev().prev().children('input').is(':checked')) {
+                    $('.queding').attr("gid", gid);
+                    $('.delete-lan-w').fadeIn(500)
+//                    }
+
+                })
+                $(".tabcont-tit-one input[type='checkbox']").change(function () {
+                    $(".tabcont-cont-one input[type='checkbox']").prop('checked', $(this).is(':checked'));
+                });
+                $(".tabcont-cont-one input[type='checkbox']").change(function () {
+                    var flag = true;
+                    $(".tabcont-cont-one input[type='checkbox']").each(function () {
+                        if (!$(this).is(':checked'))
+                            flag = false;
+                    });
+                    $(".tabcont-tit-one input[type='checkbox']").prop('checked', flag);
+                });
+
+                var nimeitype = GetRequest();
+                var htmltype = nimeitype.type
+                $('[csq="del"]').attr('type', htmltype)
+
+
+            })
+
+            function GetRequest() {
+                var url = window.location.search; //获取url中"?"符后的字串 
+                var theRequest = new Object();
+                if (url.indexOf("?") != -1) {
+                    var str = url.substr(1);
+                    strs = str.split("&");
+                    for (var i = 0; i < strs.length; i++) {
+                        theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+                    }
+                }
+                return theRequest;
+            }
+
+
+        </script>
+
+    <div class="create-lan-w">
+        <div class="create-lan">
+            <div class="create-lan-top">快捷审核选项卡<span id="close-createbox"><img class="close2" src="../web_images/icon05.png" /></span></div>
+            <div class="create-lan-cont">
+                <div class="singlebox">
+                    <div class="singlebox-l">类型：</div>
+                    <div class="singlebox-r">
+                    <!-- 这有齐枭飞添加的类名 common_class-->
+                        <ul class="create-lan-class common_class">
+                            <li type="1" class="active">基本信息</li>
+                            <li type="2">海报信息</li>
+                            <li type="3">更正说明</li>
+                            <li type="4">门店要求</li>
+                            <li type="5">优惠详情</li>
+                            <li type="6">补充信息</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="singlebox">
+                    <div class="singlebox-l">内容：</div>
+                    <div class="singlebox-r">
+                    <!-- 添加了鼠标弹起事件 -->
+                        <textarea id="shortcutinfo" rows="12" placeholder="
+                        请输入您想创建的选项卡，选项卡内容字数最多30个字符"  maxlength="31" onkeyup="maxLen()"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-box3">
+                <div class="btnbox3">
+                    <input type="hidden" id="shortcutinfoId" value="" />
+                    <button style="width:160px; background:#249cfa; color:#fff; margin-right:10px;" id="save_shortcutinfo_btn">确定</button>
+                    <button style="width:120px; background:#fff; color:#333;" class="quxiao">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- 齐枭飞添加 弹浮提示框 ——文字已达上限30个-->
+    <div class="delete-lan-w3">
+        <div class="delete-lan1">
+            <div class="create-lan-top">系统提示<span id="close-deletebox"><img src="../web_images/icon05.png" /></span></div>
+            <div class="delete-lan-cont" style="text-align:center;">
+                <div class="text" style=" width:100%; text-align:center; line-height:40px; font-size:1.4em; text-align:center;">
+                    您输入的字符以达到上限<br/>请删除字符
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- 齐枭飞添加 弹浮提示框 ——请必须填写内容-->
+    <div class="delete-lan-w4">
+        <div class="delete-lan1">
+            <div class="create-lan-top">系统提示<span id="close-deletebox"><img src="../web_images/icon05.png" /></span></div>
+            <div class="delete-lan-cont" style="text-align:center;">
+                <div class="text" style=" width:100%; text-align:center; line-height:40px; font-size:1.4em; text-align:center;">
+                    请必须填写内容
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--删除用语浮层-->
+    <div class="delete-lan-w">
+        <div class="delete-lan">
+            <div class="create-lan-top">系统提示<span id="close-deletebox"><img class="close2" src="../web_images/icon05.png" /></span></div>
+            <div class="delete-lan-cont">
+                <div class="img"><img src="../web_images/icon12.png" /></div>
+                <div class="text" nimei="ABCD">
+                    <span>您确定彻底删除信息吗？</span><br /> 信息彻底删除后不可恢复
+                </div>
+
+            </div>
+            <div class="btn-box3">
+                <div class="btnbox3" style="margin-left:150px;">
+                    <input type="hidden" id="delete_ids" value="">
+                    <button style="width:160px; background:#249cfa; color:#fff; margin-right:10px;" type="" gid="" class="queding">确定</button>
+                    <button style="width:120px; background:#fff; color:#333;" class="quxiao">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--提示层-->
+    <div class="delete-lan-wab " style="display: none">
+        <div class="delete-lan">
+            <div class="create-lan-top">系统提示<span id="close-deletebox"><img class="close2" src="../web_images/icon05.png" /></span></div>
+            <div class="delete-lan-cont">
+                <div class="img"><img src="../web_images/icon12.png" /></div>
+                <div class="text" nimei="ABCD">
+                    <span>请选择要删除的快捷选项！</span><br />
+                </div>
+
+            </div>
+            <div class="btn-box3">
+                <div class="btnbox3" style="margin-left:150px;">
+                    <button style="width:160px; background:#249cfa; color:#fff; margin-right:10px;" class="quedingaaaa">确定</button>
+                    <button style="width:120px; background:#fff; color:#333;" class="quxiao1">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-n">
+        <div class="topnav">
+            <div class="logo">会员管理后台系统</div>
+            <ul class="nav">
+                <a href="hd-shenhe.html">
+                    <li>活动审核</li>
+                </a>
+                <a href="sh-tongji.html">
+                    <li>审核统计</li>
+                </a>
+                <a href="xt-guanli.html">
+                    <li class="navbg">系统管理</li>
+                </a>
+            </ul>
+            <div class="userinfo">
+                <a href="javascript:;">
+                    <div class="loginout">退出</div>
+                </a>
+                <div class="username">平台审核员</div>
+                <div class="userimg"><img src="../web_images/cs02.jpg" /></div>
+            </div>
+        </div>
+        <div class="search">
+        <!-- 这有齐枭飞添加的类名 common_class-->
+            <ul class="lan-class common_class">
+                <li li="1"><a href="../html/xt-guanli.html?type=1">全部类型</a></li>
+                <li li="2"><a href="../html/xt-guanli.html?type=2">基本信息</a></li>
+                <li li="3"><a href="../html/xt-guanli.html?type=3">海报信息</a></li>
+                <li li="4"><a href="../html/xt-guanli.html?type=4">更正说明</a></li>
+                <li li="5"><a href="../html/xt-guanli.html?type=5">门店要求</a></li>
+                <li li="6"><a href="../html/xt-guanli.html?type=6">优惠详情</a></li>
+                <li li="7"><a href="../html/xt-guanli.html?type=7">补充信息</a></li>
+            </ul>
+            <div class="opera-btn" id="delete-lan" csq="del" type="1">
+                <img src="../web_images/icon11.png" />删除选项卡
+            </div>
+            <div class="opera-btn" id="show-createbox">
+                <img src="../web_images/icon10.png" />创建选项卡
+            </div>
+        </div>
+        <div class="statebox" style="display:none;">
+            <div class="currenthdnum">当前共有<span>0</span>条待审核活动</div>
+            <div class="baocun">保存搜索条件</div>
+            <div class="yibaocun">
+                <show class="show1">已保存(<span>1</span>)</show> <img src="../web_images/icon02.png" />
+                <div class="show-yibaocun">更正置顶+北京+北京百鸿翔悦科技发展有限公司 <img class="close1" src="../web_images/icon03.png" /></div>
+            </div>
+            <div class="hd-guize">审核产品规则》</div>
+        </div>
+        <div class="tabcont-z">
+            <div class="tabcont-n">
+                <div class="tabcont-tit">
+                    <div class="tabcont-tit-one perc1"><input style="margin:15px auto;" type="checkbox" /></div>
+                    <div class="tabcont-tit-one perc2">快捷审核选项卡</div>
+                    <div class="tabcont-tit-one perc3">类型</div>
+                    <div class="tabcont-tit-one perc4">操作</div>
+
+
+                </div>
+                <!--全部类型-->
+                <div class="tabbox-show" type="1">
+                    <div id="shortcutinfo_datas_1">
+                    </div>
+
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-1" tab="1"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_1">
+                            </ul>
+                            <div class="x-page x-page-1" tab="1"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_1" value="1" />
+                            <div class="pagetext">共<span id="totalPage_1"></span>页，到第<input type="text" id="designatedPage_1" />页<button class="goDesignatedPageBtn"
+                                    tab="1">确定</button></div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <!--基本信息-->
+                <div class="tabbox-show" type="2">
+                    <div id="shortcutinfo_datas_2">
+                    </div>
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-2" tab="2"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_2">
+                            </ul>
+                            <div class="x-page x-page-2" tab="2"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_2" value="1" />
+                            <div class="pagetext">共<span id="totalPage_2"></span>页，到第<input type="text" id="designatedPage_2" />页<button class="goDesignatedPageBtn"
+                                    tab="2">确定</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!--海报信息-->
+                <div class="tabbox-show" type="3">
+                    <div id="shortcutinfo_datas_3">
+                    </div>
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-3" tab="3"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_3">
+                            </ul>
+                            <div class="x-page x-page-3" tab="3"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_3" value="1" />
+                            <div class="pagetext">共<span id="totalPage_3"></span>页，到第<input type="text" id="designatedPage_3" />页<button class="goDesignatedPageBtn"
+                                    tab="3">确定</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!--更正说明-->
+                <div class="tabbox-show" type="4">
+                    <div id="shortcutinfo_datas_4">
+                    </div>
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-4" tab="4"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_4">
+                            </ul>
+                            <div class="x-page x-page-4" tab="4"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_4" value="1" />
+                            <div class="pagetext">共<span id="totalPage_4"></span>页，到第<input type="text" id="designatedPage_4" />页<button class="goDesignatedPageBtn"
+                                    tab="4">确定</button></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--门店要求-->
+                <div class="tabbox-show" type="5">
+                    <div id="shortcutinfo_datas_5">
+                    </div>
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-5" tab="5"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_5">
+                            </ul>
+                            <div class="x-page x-page-5" tab="5"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_5" value="1" />
+                            <div class="pagetext">共<span id="totalPage_5"></span>页，到第<input type="text" id="designatedPage_5" />页<button class="goDesignatedPageBtn"
+                                    tab="5">确定</button></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--优惠详情-->
+                <div class="tabbox-show" type="6">
+                    <div id="shortcutinfo_datas_6">
+                    </div>
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-6" tab="6"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_6">
+                            </ul>
+                            <div class="x-page x-page-6" tab="6"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_6" value="1" />
+                            <div class="pagetext">共<span id="totalPage_6"></span>页，到第<input type="text" id="designatedPage_6" />页<button class="goDesignatedPageBtn"
+                                    tab="6">确定</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!--补充信息-->
+                <div class="tabbox-show" type="7">
+                    <div id="shortcutinfo_datas_7">
+                    </div>
+                    <!-- 分页-->
+                    <div class="allpage-w">
+                        <div class="page-w">
+                            <div class="s-page s-page-7" tab="7"><span>&lt;</span> <a href="#">上一页</a></div>
+                            <ul class="pagenum type_7">
+                            </ul>
+                            <div class="x-page x-page-7" tab="7"><a href="#">下一页 </a><span>&gt;</span></div>
+                            <input type="hidden" id="currentPage_7" value="1" />
+                            <div class="pagetext">共<span id="totalPage_7"></span>页，到第<input type="text" id="designatedPage_7" />页<button class="goDesignatedPageBtn"
+                                    tab="7">确定</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

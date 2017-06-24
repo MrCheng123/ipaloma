@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>核销记录</title>
+
+    <link type="text/css" href="/distributor/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/lib.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/style1.css" rel="stylesheet" />
+    <link href="/distributor/css/weixintips.css" rel="stylesheet" />
+    <link href="/distributor/css/suppercouponitems.css" rel="stylesheet" />
+    <link href="../css/dropload.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/distributor\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/juicer-min.js"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+
+    <script type="text/javascript">var 
+     = "distributor";</script>
+
+    <script src="/distributor/js/lib/jquery-common.js"></script>
+    <script src="/distributor/js/lib/common.js"></script>
+    <script src="/distributor/js/common-buttom-nav.js"></script>
+    <script src="/distributor/js/common-recommend.js"></script>
+    <script src="/distributor/js/common-supperfans.js"></script>
+
+    <style>
+        .div-list {
+            margin: 20px 0 0 0;
+        }
+
+        .li-down {
+            padding: 0 10px;
+            height: 34px;
+            background: #fff;
+            border-bottom: solid 1px #ccc;
+        }
+
+            .li-down span {
+                background: #00A297;
+                color: #fff;
+                border-radius: 3px;
+                width: 20px;
+                height: 20px;
+                float: left;
+                display: inline-block;
+                text-align: center;
+                margin-top: 7px;
+            }
+
+            .li-down p {
+                line-height: 34px;
+                display: inline-block;
+                overflow: hidden;
+                padding-left: 5px;
+                font-size: 14px;
+                color: #666;
+            }
+
+
+        .div-down li {
+            width: calc(25% - 1px);
+            border: none;
+            border-right: none;
+        }
+
+        .parenttitle {
+            color: #fff;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+
+        .state_css {
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            color: red;
+        }
+
+
+        .img_tag1 {
+            position: absolute;
+            top: 0;
+            height: 40px;
+            z-index: 10;
+            width: 100px;
+        }
+
+        .maizeng .img_tag1 {
+            background: url(/distributor/image/tag_mz1.png) no-repeat;
+            background-size: auto 40px;
+        }
+
+        .youli .img_tag1 {
+            background: url(/distributor/image/tag_yl1.png) no-repeat;
+            background-size: auto 40px;
+        }
+
+        .jiangjia .img_tag1 {
+            background: url(/distributor/image/tag_jj1.png) no-repeat;
+            background-size: auto 40px;
+        }
+
+        .taocan .img_tag1 {
+            background: url(/distributor/image/tag_tc1.png) no-repeat;
+            background-size: auto 40px;
+        }
+
+        .maizeng .parenttitle {
+            border-bottom: solid 1px #afd3ee;
+        }
+
+        .youli .parenttitle {
+            border-bottom: solid 1px #b1d6b6;
+        }
+
+        .jiangjia .parenttitle {
+            border-bottom: solid 1px #fed4b8;
+        }
+
+        .taocan .parenttitle {
+            border-bottom: solid 1px #fae3a5;
+        }
+    </style>
+</head>
+<body ms-controller="distributor_hx" class="ms-controller">
+
+    <!--推荐给朋友浮层样式-->
+    <div class="showbox-w2">
+        <div class="show-step"><img src="/distributor/image/step.png" /></div>
+    </div>
+
+    <div id="dropload" class="container-w " ms-if="vm.isShow">
+        <!--ms-for: el in vm.jsondata-->
+        <div ms-class="['div-list',(el.activitykind=='降价'?'jiangjia':el.activitykind=='有礼'?'youli':el.activitykind=='买赠'?'maizeng':'taocan')]">
+            <div class="div-top" style="padding: 10px 10px 10px 10px; overflow-x:hidden">
+                <div class="parenttitle" style="">
+                    <b>{{el.parentactivitytitle}}</b>
+                    <p>{{el.distributorname}}</p>
+                </div>
+                <div class="li-img" style="height:auto;position:relative">
+                    <img ms-attr="{src: el.itempic}" alt="">
+                    <div class="state_css">
+                        {{el.time_to_end_text}}
+                    </div>
+                    <div class="img_tag1"></div>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='降价'">
+                    <p>{{el.activitytitle}}</p>
+                    <ul class="jiangjia_price">
+                        <li>￥{{el.discountprice}}</li>
+                        <li>
+                            <span>{{el.discount}}折</span>
+                            <p>￥{{el.originalprice}}</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='有礼'">
+                    <p>{{el.activitytitle}}</p>
+                    <div class="pre">
+                        <font>赠</font>
+                        <div class="txt-r" style="">
+                            {{el.giftname}}
+                        </div>
+                    </div>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='买赠'">
+                    <p>{{el.activitytitle}}</p>
+                    <ul class="jiangjia_price">
+                        <li style="width:100%;">￥{{el.unitprice}}<span style="font-size:15px">买{{el.buycount}}赠{{el.giftcount}}</span></li>
+                    </ul>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='套餐'">
+                    <p>{{el.activitytitle}}</p>
+                    <ul class="jiangjia_price">
+                        <li>￥{{el.discountprice}}</li>
+                        <li>
+                            <span>已节省{{el.sparevalue}}元</span>
+                            <p>￥{{el.originalprice}}</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="whiteblock"></div>
+            <ul class="div-down">
+                <li>
+                    {{el.itemtotalnum==null?'0':el.itemtotalnum|html}}
+                    <p>总投放</p>
+                </li>
+                <li style="border-right:none">
+                    {{el.totalverifynum==null?'0':el.totalverifynum}}
+                    <p>总核销</p>
+                </li>
+                <li style="border-right:none">&nbsp;</li>
+                <li style="color: #457181;border-right:none">
+                    {{el.verifyrate==null?'0%':el.verifyrate}}
+                    <p>使用率</p>
+                </li>
+                <div class="clear"></div>
+            </ul>
+        </div>
+        <!--ms-for-end:-->
+    </div>
+    <footer style="margin-top:60px">
+        <!--<div class="bottom-btn">
+            <div class="bottom-btnl">邀请惠粉</div>
+            <div class="bottom-btnr">推荐给朋友</div>
+        </div>-->
+        <div class="bottom-nav">
+        </div>
+    </footer>
+    <script src="//cdn.bootcss.com/avalon.js/2.0.1/avalon.min.js"></script>
+    <script src="/js/jquery/dropload.min.js"></script>
+    <script src="/distributor/js/distributor_hx.js"></script>
+    <script src="/distributor/js/wx_banscroll.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

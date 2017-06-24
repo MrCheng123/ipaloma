@@ -1,0 +1,231 @@
+.wrap{
+  width:6.4rem;
+  margin: 0 auto;
+}
+.share_pop1,.share_pop2{
+  display: none;
+}
+.share_icon{
+  width: .53rem;
+  height: .5rem;
+  float:left;
+  margin-right: .18rem;
+  margin-top: .25rem;
+}
+.share_icon1{
+  width: .53rem;
+  height: .5rem;
+  float:  right;
+  margin-right: .18rem;
+  margin-top: .25rem;
+}
+.share_bg{
+  position: fixed;
+  width:6.4rem;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  top: 0; z-index:1119
+}
+.share_box{
+  padding: 0 .46rem;
+  position: fixed;
+  z-index: 1;
+  width: 6.4rem;
+  box-sizing: border-box;
+  top: 2.2rem; z-index:1201
+}
+.share_main{
+  width: 100%;
+  max-height: 7rem;
+  background: #ff4126;
+  border-radius: .5rem;
+  position: relative;
+  padding-top: 1rem;
+  box-sizing: border-box;
+  margin-bottom: .35rem;
+  padding-bottom: .4rem;z-index:1200
+}
+
+.share_main {}
+.main_bg{
+  width: 6.4rem;
+  height: 5.84rem;
+  background: url(../image/share_bg.png) center no-repeat;
+  position: absolute;
+  top: -2em;
+  background-size: 100%;
+}
+.main_bg p{
+  position: absolute;
+  right: .9rem;
+  bottom: 1rem;z-index:1200
+}
+.main_bg p img{
+    width: .6rem;
+    display: block;
+}
+.main_bg p span{
+  display: inline-block;
+  width: 1px;
+  height: 3.1rem;
+  background: #fff;
+  margin-left: .3rem;
+}
+.main_haed{
+  width: 100%;
+  border-radius: .5rem;
+  height: 2.92rem;
+  position: absolute;
+  top: -1.4rem;
+  overflow: hidden;
+  pointer-events: none;
+}
+.main_haed img{
+  width: 100%;
+  position: absolute;
+  left: -.2rem; 
+}
+.main_content{
+  width: 5.16rem;
+  max-height: 5.6rem;
+  background: #bf3925;
+  margin: 0px auto;
+  padding: .12rem;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+.main_content h1{
+    font-size: .32rem;
+    padding: .08rem 0;
+    color: #fef1b3;
+    font-weight: normal;
+}
+.main_content dl dt{
+  width: 1.5rem;
+  float: left;
+  padding-right: .1rem;
+}
+.main_content dl dd{
+  font-size: .24rem;
+  color: #fef1b3;
+  line-height: .3rem;
+}
+.main_content dl dt img{
+  width: 1.5rem;
+}
+.content_box{
+  position: relative;
+  height: 1.81rem;
+  border-bottom: #dd5945 1px solid;
+}
+.L-alert{
+    position: absolute;
+    -webkit-box-shadow: 0 0px 10px rgba(0,0,0,.2);
+    box-shadow: 0 0px 10px rgba(0,0,0,.2);
+    font-size: 12px;
+    color: #798989;
+    z-index: 111;
+    border-radius: .1rem .1rem 0 0;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fbda30;
+    height: .4rem;
+    line-height: .4rem;
+    bottom: 0;
+    border-bottom: #a42c1a 1px solid;
+}
+.L-alert span{
+  font-size: .24rem;
+  padding-left: .1rem;
+      color: #602a10;
+}
+.L-alert .arrow:after{
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 4px;
+    left: -4px;
+    content: "";
+    border-bottom-color: #fbda30;
+    border-top-width: 0;
+}
+.L-alert .arrow {
+    border-width: 4px;
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    left: .3rem;
+    top: -4px;
+    margin-right: -11px;
+    border-bottom-color: #fbda30;
+    border-top-width: 0;
+}
+.share_btn{
+    display: block;
+    width: 2.92rem;
+    height: .72rem;
+    border-radius: .5rem;
+    border-bottom: 2px #c68d0c solid;
+    background: url(../image/btn_bg.png) #fbda31 top left no-repeat;
+    background-size: .66rem .06rem;
+    background-position: .35rem .06rem;
+    margin: 0 auto;
+    text-align: center;
+    font-size: .32rem;
+    line-height: .72rem;
+    color: #602a10;
+}
+.L-alert a{
+    display: inline-block;
+    width: .16rem;
+    position: absolute;
+    right: .1rem;
+}.L-alert a img{
+   width: .16rem;
+    margin-top: .06rem;
+}
+
+
+
+.content_box.born{
+  border: none;
+}
+.share_main.main2 .main_content{
+  background: none;
+}
+.conten_wenan img{
+  width: 4.84rem;
+}
+.conten_wenan a{
+  width: 1.84rem;
+  height: .5rem;
+  border-radius:.5rem;
+  border:1px solid #b32a16;
+  display: block;
+  text-align: center;
+  line-height: .5rem;
+  font-size: .24rem;
+  color: #921f0e;
+  margin: 0 auto;
+  margin-top: .2rem;
+}
+.conten_wenan .p_30{
+    text-align: center;
+    font-size: .28rem;
+    color: #fff3ba;
+    margin-bottom: .2rem;
+    text-shadow: 0px 0px 0.05rem #333;
+}
+.conten_wenan .p_40{
+    text-align: center;
+    font-size: .4rem; 
+    color: #fff3ba;
+    text-shadow: 0px 0px 0.05rem #333;
+}

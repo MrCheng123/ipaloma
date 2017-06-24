@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的</title>
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/consumer/css/menustyle.css" rel="stylesheet" />
+    <link href="/consumer/css/my_center.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js">
+    </script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script src="/consumer/js/lib/lib.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixinshare-qrcode.js"></script>
+    <script type="text/javascript" src="/consumer/js/common-buttom-nav.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script src="/consumer/js/my/my_center.js"></script>
+</head>
+<style type="text/css">
+	.user_wallet {
+	    /* width: 100%; */
+	    height: 1.14rem;
+	    background-color: #fff; 
+	    line-height: 1.14rem;
+	    padding: 0 0 0 .26rem;
+	    /* margin-top: 15px; */
+	}
+	.user_wallet p {
+	    float: left;
+	    text-align: center;
+	    font-size: .3rem;
+	    padding-top: .0;
+	    color: #333333;
+	    line-height: 1.14rem;
+	}
+	.user_wallet h1 {
+	    float: right;
+	    text-align: center;
+	    font-size: .3rem;
+	    color: #ff6600;
+	    padding-top: 0;
+	    line-height: 1.14rem;
+	    font-weight: normal;
+	    margin-right: 10px;
+	}
+	.user_wallet img {
+	    float: right;
+	    margin-top: .43rem;
+	    margin-right: .3rem;
+	    width: .28rem;
+	}
+</style>
+<body ms-controller="mycenter" class="ms-controller">
+    <div class="wrap" ms-if="isShow">
+        <header></header>
+        <section>
+            <div class="user_head">
+                <div class="user_tx">
+                    <a href="javascript:void(0)">
+                        <img ms-attr-src="consumer.headimageurl" />
+                    </a>
+                    <p>{{consumer.nickname}}</p>
+                </div>
+                <p class="border_efeef4"></p>
+                <div class="user_wallet" onclick="location.href='my_wallet.html'">
+                	<p>我的钱包</p>
+                	<img src="/consumer/image/my/icon_jt.png">
+                    <h1>￥{{Moneys.balance}}</h1>                    
+                </div>
+            </div>
+            <div class="welfare">
+                <p class="border_efeef4"></p>
+                <a href="javascript:void(0)">
+                    领取福利<span>( 0 )</span>
+                    <img src="/consumer/image/my/icon_jt.png">
+                </a>
+                <p class="border_efeef4"></p>
+            </div>
+        </section>
+        <footer>
+            <div class="space2"></div>
+            <div id="bottom-nav"></div>
+        </footer>
+    </div>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

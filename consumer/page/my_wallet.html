@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的钱包</title>
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link href="/consumer/css/menustyle.css" rel="stylesheet" />
+    <link href="/css/site.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <link href="/consumer/css/my_center.css" rel="stylesheet" />
+    <link href="/consumer/css/dropload.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/consumer/js/common-buttom-nav.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixinshare-qrcode.js"></script>
+    <script src="/consumer/js/lib/lib.js"></script>
+    <script src="/js/jquery/dropload.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script src="/js/shelter/shelter.js"></script>
+</head>
+<body ms-controller="mywallet" class="ms-controller">
+    <div class="wrap">
+        <header></header>
+        <section>
+            <div class="WalletBalance">
+                <p>钱包余额</p>
+                <h1>￥{{Moneys.balance}}</h1>
+                <a href="javascript:void(0)" ms-attr-class="{{Moneys.balance<1?'on':''}}" ms-click="userwithdraw">提 现</a>
+            </div>
+            <div class="Wallet_nav mt46">
+                <p class="border_dashed mb15"></p>
+                <p class="border_efeef4"></p>
+                <div class="Wallet_list">
+                    <ul class="box">
+                        <li ms-attr-class="box-flex {{category=='all'?'on':''}}" ms-click="categorychange('all')">
+                            <p class="border_tixing"></p>
+                            <a href="javascript:void(0)">全部</a>
+                            <p class="border_xiexian_r"></p>
+                        </li>
+                        <li ms-attr-class="box-flex {{category=='income'?'on':''}}" ms-click="categorychange('income')">
+                            <p class="border_tixing"></p>
+                            <a href="javascript:void(0)">收入</a>
+                            <p class="border_xiexian_l"></p>
+                            <p class="border_xiexian_r"></p>
+                        </li>
+                        <li ms-attr-class="box-flex {{category=='expend'?'on':''}}" ms-click="categorychange('expend')">
+                            <p class="border_tixing"></p>
+                            <a href="javascript:void(0)">支出</a>
+                            <p class="border_xiexian_l"></p>
+                        </li>
+                    </ul>
+
+                    <div id="list_1" class="Wallet_sr " ms-if="category=='all'">
+                        <div ms-repeat="alllist.array" data-repeat-rendered="jsondataReadered">
+                            <h1 ms-if="el.summaryperiod!=undefined"><span>{{el.summaryperiod}}</span> <b>收入￥{{el.recv}}</b><b>支出￥{{el.expend}}</b></h1>
+                            <dl ms-if="el.summaryperiod==undefined" class="clearfix">
+                                <dt>
+                                    <h2>{{el.tradingtag}}</h2>
+                                    <p>{{el.tradingtime}}</p>
+                                </dt>
+                                <dd>
+                                    <span ms-attr-class="{{el.flowing_direction=='收入'?'':'on'}}">{{el.flowing_direction=='收入'?'+':'-'}} {{el.count}}</span>
+                                </dd>
+                            </dl>
+                            <!--<p><a href="javascript:void(0)">更多明细</a></p>-->
+                        </div>
+
+                        <div class="Wallet_fail" ms-if="alllist.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无流水记录哦！</span></p>
+                        </div>
+                    </div>
+                    <div id="list_2" class="Wallet_sr " ms-if="category=='income'">
+                        <div ms-repeat="incomelist.array" data-repeat-rendered="jsondataReadered2">
+                            <h1 ms-if="el.summaryperiod!=undefined"><span>{{el.summaryperiod}}</span> <b>收入￥{{el.recv}}</b><b>支出￥{{el.expend}}</b></h1>
+                            <dl ms-if="el.summaryperiod==undefined" class="clearfix">
+                                <dt>
+                                    <h2>{{el.tradingtag}}</h2>
+                                    <p>{{el.tradingtime}}</p>
+                                </dt>
+                                <dd>
+                                    <span ms-attr-class="{{el.flowing_direction=='收入'?'':'on'}}">{{el.flowing_direction=='收入'?'+':'-'}} {{el.count}}</span>
+                                </dd>
+                            </dl>
+                            <!--<p><a href="javascript:void(0)">更多明细</a></p>-->
+                        </div>
+                        <div class="Wallet_fail" ms-if="incomelist.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无收入流水记录哦！</span></p>
+                        </div>
+                    </div>
+                    <div id="list_3" class="Wallet_sr " ms-if="category=='expend'">
+                        <div ms-repeat="expendlist.array" data-repeat-rendered="jsondataReadered3">
+                            <h1 ms-if="el.summaryperiod!=undefined"><span>{{el.summaryperiod}}</span> <b>收入￥{{el.recv}}</b><b>支出￥{{el.expend}}</b></h1>
+                            <dl ms-if="el.summaryperiod==undefined" class="clearfix">
+                                <dt>
+                                    <h2>{{el.tradingtag}}</h2>
+                                    <p>{{el.tradingtime}}</p>
+                                </dt>
+                                <dd>
+                                    <span ms-attr-class="{{el.flowing_direction=='收入'?'':'on'}}">{{el.flowing_direction=='收入'?'+':'-'}} {{el.count}}</span>
+                                </dd>
+                            </dl>
+                            <!--<p><a href="javascript:void(0)">更多明细</a></p>-->
+                        </div>
+                        <div class="Wallet_fail" ms-if="expendlist.array.length==0">
+                            <p><img src="/retailer/image/fail_icon.png"><span>暂无支出流水记录哦！</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <footer>
+            <div class="space2"></div>
+            <div id="bottom-nav"></div>
+        </footer>
+    </div>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script src="/consumer/js/my/my_wallet.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

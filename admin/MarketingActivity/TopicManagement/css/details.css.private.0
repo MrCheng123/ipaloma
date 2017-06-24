@@ -1,0 +1,180 @@
+body.details{
+	background-color: transparent;
+}
+
+body.details section{
+	display: block;
+    height: auto;
+    /*background: aliceblue;*/
+}
+
+.detail-wrapper{
+	width: 960px;
+	height: 860px;
+	padding: 30px;
+	/*border: 1px solid #e4e4e4;*/
+	border-radius: 2px;
+	margin: 0 auto;
+	margin-top: 20px;
+	/*overflow: auto;*/
+	position: relative;
+}
+
+.detail-wrapper .loading{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.3) url(../img/loading.gif) no-repeat center;
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+}
+
+.detail-wrapper h3{
+	position: relative;
+	margin: 0;
+	margin-bottom: 15px;
+}
+
+.detail-wrapper h3 span{
+	background-color: #fff;
+    padding-right: 10px;
+}
+
+.detail-wrapper h3 .line{
+	width: 100%;
+	height: 1px;
+	background-color: #e4e4e4;
+	position: absolute;
+	top: 50%;
+}
+
+.detail-wrapper .basic-msg{
+	width: 510px;
+	margin: 0;
+	/*background: #eee;*/
+}
+
+.detail-wrapper .choice{
+	margin-left: 30px;
+	color: #999;	
+}
+
+.detail-wrapper .edit-area{
+	color: #999;
+}
+
+
+
+.detail-wrapper .region-view {
+    margin: 0;
+}
+
+.detail-wrapper .region-view .region-info{
+	margin-left: 10px;
+}
+
+
+
+.detail-wrapper table.activity-condition{
+    margin: -39px 0 0 80px;
+}
+
+.detail-wrapper label.hycytj{
+	width: 60px;
+}
+
+.detail-wrapper table th, 
+.detail-wrapper table td{
+	text-align: left;
+	padding-bottom: 10px;
+}
+
+.detail-wrapper .sec + .sec{
+	margin: 10px 0;
+}
+
+.detail-wrapper .activity-wrap{
+	margin-left: 124px;
+}
+
+
+.detail-wrapper table.activity-condition .operator{
+    text-align: center;
+	width: 50px;
+}
+
+
+
+.detail-wrapper table.canyu{
+	margin: -20px 0 0 78px;
+}
+
+.detail-wrapper table.canyu td p{
+	margin: 0;
+}
+
+.detail-wrapper table.canyu .typeTxt{
+	width: 80px;
+}
+
+.detail-wrapper .sec table.butie {
+    margin-top: -20px;
+    margin-left: 123px;
+}
+
+/* .detail-wrapper .btsz{
+	margin-left: 20px;
+} */
+
+
+.detail-wrapper .item.third{
+	margin: 20px 0;
+}
+
+.detail-wrapper .sec.hdbtgz{
+	border: none;
+	margin-bottom: 10px;
+}
+
+.detail-wrapper .ysfz i{
+	margin-right: 20px;
+}
+
+.detail-wrapper b{
+	color: #333;
+}
+
+
+
+
+.detail-wrapper .area{
+	display: none;
+}
+
+.detail-wrapper .subTitle{
+	color: #4778c7;
+}
+
+.detail-wrapper .detail {
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: 0;
+    border-radius: 2px;
+    margin-left: 95px;
+    margin-top: -19px;
+}
+
+.detail-wrapper .wenan-text{
+	padding-bottom: 0;
+}
+
+.detail-wrapper .btn.close{
+	background-color: #e4e4e4;
+	color: #333;
+}
+
+.detail-wrapper .btn-group{
+	text-align: center;
+}

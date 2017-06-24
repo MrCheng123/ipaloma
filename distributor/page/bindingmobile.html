@@ -1,0 +1,307 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>手机号绑定</title>
+
+    <link href="/distributor/css/bootstrap.css" rel="stylesheet" />
+    <link href="/distributor/css/font-awesome.css" rel="stylesheet" />
+    <link href="/distributor/css/jquery-ui.css" rel="stylesheet" />
+    <link href="/distributor/css/ace.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/style.css" rel="stylesheet" />
+    <link href="/distributor/css/weixin.css" rel="stylesheet" />
+    <link href="/distributor/css/weixintips.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/distributor\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+
+    <script type="text/javascript" src="/distributor/js/lib/lib.js"></script>
+    <script type="text/javascript" src="/distributor/js/lib/jquery-common.js"></script>
+    <script type="text/javascript" src="/distributor/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/distributor/js/lib/common.js"></script>
+    <script type="text/javascript" src="/distributor/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/distributor/js/jquery.unobtrusive-ajax.min.js"></script>
+
+    <style>
+        input[type="number"], input[type="tel"] {
+            border-width: 0px 0px 1px 0px;
+            border-color: #2F5761;
+            background: none repeat scroll 0% 0% !important;
+            box-shadow: 3px 5px 5px #AFC8D1;
+        }
+
+        .rowStyle {
+            /*margin-top: 20%;
+            width: 90%;
+            min-height: 30px;
+            max-height: 40px;
+            margin-left: 5%;*/
+            margin-top: 20%;
+            width: 80%;
+            min-height: 30px;
+            max-height: 40px;
+            margin-left: 12%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="autoHeight">
+
+        <div class="weixin_page" style="overflow-y: auto;height:100%;">
+
+            <div class="condition_title condition_cursor baindding_offset rowStyle">
+
+                <input type="tel" pattern="[^0-9]" autocomplete="off" maxlength="11" name="mobile" id="mobile" placeholder="手机号" class="bindMobile" />
+                <label style="width:90px;height:32px;"></label>
+
+            </div>
+
+            <div class="condition_title condition_cursor rowStyle baindding_offset" style="margin-top:10%">
+
+                <input type="tel" min="0" max="999999" maxlength="6" pattern="[^0-9]" name="verification" id="verification" placeholder="验证码" class="bindMobile" />
+                <input type="button" id="GetVerification" class="bindVerifyBtn" style="padding-top: 0%;" onclick="VerificationClick()" value="获取验证码" />
+
+            </div>
+
+            <div class="baindding_offset">
+
+                <label class="msg MobileModify" style="display: none;margin-left:10px;" id="VerificationMsg"><span id="countdown">60</span>秒后重新发送</label>
+
+            </div>
+
+            <div>
+                <button class="wbtn" type="button" onclick="submits()" id="btnNextStep">
+                    立即绑定
+                </button>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        var varCnum = 60;
+
+        $(function () {
+
+
+            /*限制文本框只能输入数字*/
+            $("#verification").keyup(function () { $("#verification").val($("#verification").val().replace(/D|^0/g, "")); })
+                .bind("paste", function () { $("#verification").val($("#verification").val().replace(/D|^0/g, '')); })
+                .css("ime-mode", "disabled");
+
+            $("#verification").keyup(function () { $("#verification").val($("#verification").val().replace(/[^0-9]/g, '')); })
+                .bind("paste", function () { $("#verification").val($("#verification").val().replace(/[^0-9]/g, '')); })
+                .css("ime-mode", "disabled");
+
+
+            $("#mobile").keyup(function () { $("#mobile").val($("#mobile").val().replace(/D|^0/g, "")); })
+                .bind("paste", function () { $("#mobile").val($("#mobile").val().replace(/D|^0/g, '')); })
+                .css("ime-mode", "disabled");
+
+            $("#mobile").keyup(function () { $("#mobile").val($("#mobile").val().replace(/[^0-9]/g, '')); })
+                .bind("paste", function () { $("#mobile").val($("#mobile").val().replace(/[^0-9]/g, '')); })
+                .css("ime-mode", "disabled");
+
+
+            $.fn.countDown = function (settings, to) {
+                settings = $.extend({
+                    startFontSize: '13px',
+                    endFontSize: '13px',
+                    duration: 1000,
+                    startNumber: varCnum,
+                    endNumber: 0,
+                    callBack: function () { }
+                }, settings);
+                return this.each(function () {
+
+                    //where do we start?
+                    if (!to && to != settings.endNumber) { to = settings.startNumber; }
+
+                    //set the countdown to the starting number
+                    $(this).text(to).css('fontSize', settings.startFontSize);
+
+                    //loopage
+                    $(this).animate({
+                        'fontSize': settings.endFontSize
+                    }, settings.duration, '', function () {
+                        if (to > settings.endNumber + 1) {
+                            $(this).css('fontSize', settings.startFontSize).text(to - 1).countDown(settings, to - 1);
+                        }
+                        else {
+                            settings.callBack(this);
+                        }
+                    });
+                });
+            };
+
+            LockButtonStyle(false);//激活按钮
+        });
+
+        //获取验证码，60秒倒计时
+        function VerificationClick() {
+
+            if (!verifyMobile($('#mobile').val())) {
+                changeState("请正确填写您的手机号码", false, false);
+                return;
+            }
+            LockButtonStyle(true);//锁定按钮
+
+            $("#VerificationMsg").show();
+            $("#countdown").show();
+
+            $('#countdown').countDown({
+                startFontSize: '13px',
+                endFontSize: '13px',
+                startNumber: 60,
+                callBack: function (me) {
+                    LockButtonStyle(false);
+                }
+            });
+
+
+            //60秒后重发
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/webapi/distributor/weixin/verifymobilephonebysms',
+                data: { mobile: $('#mobile').val() },
+                beforeSend: function () { common.loading.show(); },
+                complete: function () { common.loading.hide(); },
+                success: function (msg) {
+                    if (msg.error != null) {
+                        showTips(msg.error, 'error');
+                        LockButtonStyle(false);
+                    }
+                    else if (msg.user_notification != null) {
+                        showTips(msg.user_notification, 'info');
+
+                        common.loading.hide();
+                        $("#btnNextStep").removeAttr("disabled").removeClass("wbtnDisable").addClass("wbtn");
+                        $("#btnNextStep").bind("click", function () { submits() });
+                    }
+                    else {
+                        common.loading.hide();
+                        $("#btnNextStep").removeAttr("disabled").removeClass("wbtnDisable").addClass("wbtn");
+                        $("#btnNextStep").bind("click", function () { submits() });
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    common.loading.hide();//隐藏转圈动画
+
+                    var errormsg = "访问异常";
+
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+                    showTips(errormsg, "error");
+                    LockButtonStyle(false, true);//激活按钮，清除倒计时
+                }
+            });
+        }
+
+        //tipsmsg 提示消息  statusval True：锁定验证码及下一步按钮，显示动画 False：取消动画，恢复下一步及验证码按钮   flagloack是否激活下一步按钮
+        function changeState(tipsmsg, statusval, flagloack) {
+            showTips(tipsmsg, "error");
+
+            //TODO:如果获取验证码按钮未激活跳转else，增加check
+            if (flagloack && $("#GetVerification").hasClass("bindVerifyBtn")) {
+                common.loading.hide();
+                $("#btnNextStep").removeAttr("disabled").removeClass("wbtnDisable").addClass("wbtn");
+                $("#btnNextStep").bind("click", function () { submits() });
+            }
+            else {
+                LockButtonStyle(statusval);
+            }
+        }
+
+        //提交按钮
+        function submits() {
+
+            LockButtonStyle(true);
+
+            if ($(this).valid) {
+                showTipsAutoClose("页面已过期", "warning");
+                return;
+            }
+            if (!verifyMobile($('#mobile').val())) {
+                changeState("请正确填写您的手机号码", false, true);
+                return;
+            }
+            if (!checkVerifyCode($("#verification").val())) {
+                changeState("请正确填写验证码", false, true);
+                return;
+            }
+
+
+            //60秒后重发
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: '/webapi/distributor/weixin/bindingmobilephone',/* 替换API URL */
+                data: {
+                    mobile: $('#mobile').val(),
+                    verification: $('#verification').val()
+                },
+                success: function (msg) {
+                    common.loading.hide();//隐藏转圈动画
+
+                    if (msg.error) {
+                        changeState(msg.error, false, true);
+                        return;
+                    }
+                    else if (msg.user_notification && msg.user_notification != undefined) {
+                        showTips(msg.user_notification, "info");
+                        return;
+                    }
+                    else {
+                        showTipsAutoClose("手机号绑定成功！", "success");
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    common.loading.hide();//隐藏转圈动画
+
+                    var errormsg = "访问异常";
+
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;
+                        if (errormsg == undefined || errormsg == '')
+                            errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+
+                    //showTips(errormsg, "error");
+                    changeState(errormsg, false, true);
+                }
+            });
+        }
+
+        //还原按钮、光标缺省状态； True：锁定验证码及下一步按钮，显示动画 False：取消动画，恢复下一步及验证码按钮
+        function LockButtonStyle(cursorState) {
+            if (cursorState) {
+                $("#GetVerification").attr("disabled", "disabled").removeClass("bindVerifyBtn").addClass("btnDisable");//锁定获取验证码按钮
+                $("#GetVerification").unbind();//解绑按钮事件
+                common.loading.show();
+                $("#btnNextStep").attr("disabled", "disabled").removeClass("wbtn").addClass("wbtnDisable");//锁定下一步按钮
+                $("#btnNextStep").unbind();
+            }
+            else {
+                common.loading.hide();
+                $("#btnNextStep").removeAttr("disabled").removeClass("wbtnDisable").addClass("wbtn");
+                $("#btnNextStep").bind("click", function () { submits() });
+
+                $("#VerificationMsg").hide();
+                $('#countdown').stop();
+                $("#countdown").hide().html("60");
+                $("#verification").val("");
+                $("#GetVerification").removeAttr("disabled").removeClass("btnDisable").addClass("bindVerifyBtn");
+                $("#GetVerification").bind("click", function () { VerificationClick() });
+            }
+        }
+    </script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>附近超惠详情</title>
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/qrcode.css" rel="stylesheet" />
+    <link href="/consumer/css/menustyle.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+
+
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixinshare-qrcode.js"></script>
+    <script type="text/javascript" src="/consumer/js/common-buttom-nav.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <style>
+        .active-num img {
+            width: 20px;
+            vertical-align: top;
+        }
+    </style>
+</head>
+<body>
+    <div class="tip-w">
+        <div class="tip"><img src="/consumer/image/icon09.png" /></div>
+    </div>
+    <div class="active-w ajaxdata" id="list">
+    </div>
+    <!--<footer>
+        <div class="space"></div>
+        <div class="share">推荐给朋友 <img src="/consumer/image/icon04.png" /></div>
+        <div class="bottomnav">
+            <div class="logo"><a data-original="/consumer/page/index.html"><img src="/consumer/image/logo.png" /></a></div>
+            <a data-original="/consumer/page/retailerlist.html">
+                <div class="nav"><img src="/consumer/image/icon02.png" /><br />附近门店</div>
+            </a>
+            <a data-original="/consumer/page/activitylist.html">
+                <div class="nav" style="background:#ff6600;"><img src="/consumer/image/icon03.png" /><br />附近超惠</div>
+            </a>
+            <a data-original="/consumer/page/supercouponslist.html">
+                <div class="nav" style="border-right:none"><img src="/consumer/image/icon11.png" style="margin:10px 0px 4px 0;" /><br />超惠券</div>
+            </a>
+        </div>
+    </footer>-->
+    <footer>
+        <div class="space2"></div>
+        <div class="share">推荐给朋友 <img src="/consumer/image/icon04.png" /></div>
+        <div id="bottom-nav"></div>
+    </footer>
+    <script>
+        var activitiy_item_guid = common.getUrlParam("activitiy_item_guid");
+        $(function () {
+
+            $('.tip-w').click(function () {
+                $('.tip-w').fadeOut(200);
+            })
+
+            $('.share').click(function () {
+                $('.tip-w').fadeIn(200);
+            })
+            if (activitiy_item_guid.length == 0) {
+                location.href = 'retailerlist.html';
+                return;
+            }
+            waitloadaddress(function () {
+                loaddata(wxlocation.longitude, wxlocation.latitude);
+            });
+            
+        });
+
+        function loaddata(longitude, latitude) {
+            var ajaxdata = {};
+            if (wxjsconfig.sharekey != null)
+                ajaxdata[wxjsconfig.sharekey] = "_";
+            var search = window.location.search;
+            if (search.length > 0) {
+                var keyvalue = [];
+                var key = "", value = "";
+                var paraString = search.substring(search.indexOf("?") + 1, search.length).split("&");
+                for (var i in paraString) {
+                    keyvalue = paraString[i].split("=");
+                    key = keyvalue[0];
+                    value = keyvalue[1];
+                    ajaxdata[key] = value;
+                }
+            }
+            if (longitude != undefined && longitude != '' && latitude != undefined && latitude != '') {
+                ajaxdata["longitude"] = longitude;
+                ajaxdata["latitude"] = latitude
+            }
+            $.ajax({
+                type: 'GET',
+                dataType: "json",
+                url: '/webapi/consumer/weixin/activities/' + activitiy_item_guid,
+                data: ajaxdata,
+                beforeSend: function () { common.loading.show(); },
+                complete: function () { common.loading.hide(); },
+                success: function (jsondata) {
+
+                    common.loading.hide();//数据请求成功即隐藏转圈动画
+
+                    jsondata = jsondata || {};
+                    if (jsondata.error) {
+                        toasterextend.showtips(jsondata.error, "error", false);
+                        qrcode.href();
+                        return;
+                    }
+
+                    if (jsondata.user_notification != undefined) {
+                        toasterextend.showtips(jsondata.user_notification, "info");
+                        qrcode.href();
+                        return;
+                    }
+
+                    var itemsobj = jsondata.data[0];
+                    if ($.isFunction(wxjsshare)) {
+                        wxjsshare(jsondata.share || {});
+                    }
+
+                    var html = ' <div class="storelist"><div class="active-n1 bgwhite"><div class="active-label">'
+                    + '<div class="labellist">' + itemsobj.activitykind + '</div></div>'
+                    + '<div class="activebox"><div class="activebox-left"><div class="proname fbold">' + itemsobj.activitytitle + '</div><div class="proinfo">';
+                    var productObj = common.product;
+                    html += productObj.getActivityKind(itemsobj);
+                    var imgUrl;
+                    if (itemsobj.itempic != null && itemsobj.itempic.length > 0)
+                        imgUrl = itemsobj.itempic;
+                    else
+                        imgUrl = productObj.imgUrl;
+
+                    html += '</div></div><div class="activebox-right"><div class="proimgbox"><div class="img"><img src="' + imgUrl
+                        + '" /></div><div class="' + productObj.getFlagCss(itemsobj.activity_flag) + '">'
+                        + itemsobj.time_to_end_text + '</div></div> </a></div></div></div>'
+                        + '<div class="remark"><span>备注：</span>'
+                        + itemsobj.ruledesc + '</div></div> <div class="title">支持门店<span>('
+                        + itemsobj.retailerdata.length + ')</span></div>';
+
+                    var n = itemsobj.retailerdata.length;
+
+                    for (var i = 0; i < n; i++) {
+                        var obj = itemsobj.retailerdata[i];
+                        var picUrl = obj.picture_url;
+                        if (picUrl == null || picUrl.length == 0)
+                            picUrl = "http://dl.oss.ipaloma.com/common/membership/default/membershipd5d2e2976e5b47d6bedcc459de2a260f.png";
+                        html += ' <div class="storelist"><div class="store1-w1"><a data-original="/consumer/page/retaileritems.html?retailer_id=' + obj.retailer_id + '">'
+                                + '<div class="store1-left">'
+                                + '<div class="storerimg"><img src="' + picUrl + '" /></div>'
+                                + '<div class="textinfo">'
+                                + '<div class="storename">' + obj.retailername + '(' + obj.address + ')</div>'
+                                + ' <div class="active-num" style="color: #ff6600;"><img src="/consumer/image/icon12.png" />&nbsp;&nbsp;' + obj.activity_count + ' &nbsp;&nbsp;&nbsp;&nbsp;<img src="/consumer/image/icon13.png" />&nbsp;&nbsp;' + obj.ticket_count + '</font></div>'
+                                + '</div></div></a>';
+                        if (obj.mobilephone == null || obj.mobilephone.length == 0)
+                            html += '<div class="store1-right" style="color:gray"> <img src="/consumer/image/icon01_gray.png" /><br /> 联系购买 </div>';
+                        else
+                            html += '     <a href="tel:' + obj.mobilephone + '"> <div class="store1-right"> <img src="/consumer/image/icon01.png" /><br /> 联系购买 </div> </a>';
+                        html += '</div> <div class="address-single">' + obj.address + ' <span>' + obj.distance_text + '</span></div></div>';
+                    }
+                    $("#list").html(html);
+                    qrcode.show();
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    common.loading.hide();//隐藏转圈动画
+
+                    var errormsg = "访问异常";
+
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;
+                        if (errormsg == undefined || errormsg == '')
+                            errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+                    qrcode.href();
+                    toasterextend.showtips(errormsg, "error");
+                }
+            });
+        };
+
+    </script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+.switch-btn, .checked-switch, .text-switch, .toggle-btn
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.switch-btn
+{
+    position: relative;
+    display: block;
+    vertical-align: top;
+    width: 80px;
+    height: 30px;
+    border-radius: 18px;
+    cursor: pointer;
+}
+
+.checked-switch
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.text-switch
+{
+    background-color: #ed5b49;
+    border: 1px solid #d2402e;
+    border-radius: inherit;
+    color: #fff;
+    display: block;
+    font-size: 15px;
+    height: inherit;
+    position: relative;
+    text-transform: uppercase;
+}
+
+    .text-switch:before, .text-switch:after
+    {
+        position: absolute;
+        top: 50%;
+        margin-top: -.5em;
+        line-height: 1;
+        -webkit-transition: inherit;
+        -moz-transition: inherit;
+        -o-transition: inherit;
+        transition: inherit;
+    }
+
+    .text-switch:before
+    {
+        content: attr(data-no);
+        right: 11px;
+    }
+
+    .text-switch:after
+    {
+        content: attr(data-yes);
+        left: 11px;
+        color: #FFFFFF;
+        opacity: 0;
+    }
+
+.checked-switch:checked ~ .text-switch
+{
+    background-color: #00af2c;
+    border: 1px solid #068506;
+}
+
+    .checked-switch:checked ~ .text-switch:before
+    {
+        opacity: 0;
+    }
+
+    .checked-switch:checked ~ .text-switch:after
+    {
+        opacity: 1;
+    }
+
+.toggle-btn
+{
+    background: linear-gradient(#eee, #fafafa);
+    border-radius: 100%;
+    height: 28px;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+    width: 28px;
+}
+
+    .toggle-btn::before
+    {
+        color: #aaaaaa;
+        content: "|||";
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: -2px;
+        padding: 4px 12px;
+        vertical-align: middle;
+    }
+
+.checked-switch:checked ~ .toggle-btn
+{
+    left: 81px;
+}
+
+.text-switch, .toggle-btn
+{
+    transition: All 0.3s ease;
+    -webkit-transition: All 0.3s ease;
+    -moz-transition: All 0.3s ease;
+    -o-transition: All 0.3s ease;
+}
+
+.no-radius, .no-radius .toggle-btn
+{
+    border-radius: 0;
+}
+
+.circle-style .toggle-btn::before
+{
+    background: linear-gradient(#dedede, #cacaca);
+    border-radius: 50%;
+    content: "";
+    height: 14px;
+    margin-top: 6px;
+    padding: 0;
+    width: 14px;
+}
+.modulePeople {
+  background: #f3f1f1;
+  width: 99.1%; 
+  margin: 0 auto;
+}
+.modulePeople tbody .last img {
+  cursor: pointer; }
+
+.modulePeople th {
+  font-weight: bold;
+  font-size: 12px;
+  color: #333;
+  border-top: 1px solid #e4e4e4;
+  border-left: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  height: 40px;
+  text-align: center;
+  background-color: #f3f1f1;
+  }
+
+.modulePeople th.last {
+  border-right: 1px solid #e4e4e4; }
+
+.modulePeople td {
+  font-size: 12px;
+  color: #333;
+  height: 55px;
+  line-height: 22px;
+  border-left: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  text-align: center;
+  /*background-color: #FFFFFF;*/
+  /*display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
+  word-wrap: break-word;
+  }
+
+.ac_tip{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+
+.modulePeople tbody{
+  width: 100%;
+  background: #ffffff;
+  /*overflow-y:scroll;*/
+  height: 500px;
+  float: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/*-------单元格样式--------*/
+
+.modulePeople thead,.modulePeople tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.modulePeople thead {
+    width: calc( 99.9% - 0.95em )
+}
+
+
+/*---------------*/
+td .templatecontent{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 94%;
+}
+
+
+
+.modulePeople tbody tr:hover {
+  background: #f1f1f1}
+
+.modulePeople td.last {
+  border-right: 1px solid #e4e4e4; }
+
+.modulePeople .checkBox {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  background: url("../img/check.png") 100% 100% no-repeat; }
+
+.modulePeople .checkBox {
+  background: url("../img/checked.png") 100% 100% no-repeat; }
+
+.modulePeople .edit {
+  position: relative;
+  font-size: 0px; }

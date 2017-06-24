@@ -1,0 +1,53 @@
+﻿
+#mask {
+    position: fixed;
+    z-index: 1101;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+#shelterInfo {
+     position: fixed;
+    z-index: 5000;
+    width: 85%;
+    max-width: 300px;
+    top:40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    overflow: hidden;
+}
+#shelterheader {width:calc(100% - 14px);height:50px;background-color:#009f96;line-height:25px;padding:5px 7px
+}
+    #shelterheader h3 { font-size:15px;color:#fff
+    }
+    #shelterheader p {font-size:12px;color:#ccc
+    }
+#shelterContent {
+   padding:20px
+}
+    #shelterContent #btnGroup {margin-top:10px;padding: 10px 0
+    }
+    #shelterContent p { height:20px; line-height:20px;
+    }
+         #shelterContent p img {width:20px;vertical-align:top;margin-right:5px;float: left;
+            }
+/* 按钮 */
+.btnVerify { width:45%;height:30px;border:solid 1px #009f96;color:#009f96; text-align:center; line-height:30px;float:left;
+}
+    .btnVerify:active {background-color:#007c75;color:#fff
+    }
+.active { background-color:#009f96;color:#fff;
+}
+.disable1 {border-color:#999;color:#999
+}
+  .disable1:active {background-color:#fff;color:#999
+    }
+.disable2 {background-color:#999;border-color:#999;
+}
+    .disable2:active {background-color:#999;
+    }

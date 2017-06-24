@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <title>店铺信息</title>
+
+    <link rel="stylesheet" href="/retailer/css/weui.min.css" />
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link rel="stylesheet" href="/retailer/css/weixintips.css" />
+
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script src="/retailer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/lib/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            var retailer_id = common.getUrlParam("retailer_id");
+            var src = "";
+            if (retailer_id == "")
+                src = "/webapi/retailer/weixin/register_generate_code?qrtype=12";
+            else
+                src = "/webapi/retailer/weixin/register_generate_code?qrtype=12&retailer_id=" + retailer_id;
+            var qrcode = qrcodeconfig["retailer"];
+            qrcode["inviteretailer"]["url"] = src;
+            draw(qrcode, "inviteretailer", qrcodeconfig["retailer"]["logo"]);
+            var ajaxdata = {};
+            if (wxjsconfig.sharekey != null)
+                ajaxdata[wxjsconfig.sharekey] = "_";
+            $.getJSON2('/webapi/retailer/weixin/getpersonalpage', ajaxdata, function (json) {
+                var employee = json.employee;
+                var retailer = json.retailer;
+
+                if (typeof (employee.nickname) !== 'undefined')
+                    $("#personname").html('<style=class:Name16>' + employee.nickname);
+                if (typeof (retailer.retailername) !== 'undefined')
+                    $("#retailname").html('<style=class:Store14>' + retailer.retailername);
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bd">
+            <div class="weui_cells weui_height6em">
+                <div class="weui_cell weui_GRbg_img">
+                    <div class="weui_photo150x150"><img src="http://dl.oss.ipaloma.com/common/membership/default/membershipf1c8c6aa63de4270a8d8f08dd27f174a.png" alt="" /></div>
+                    <div class="weui_cell_bd weui_cell_primary">
+                        <p id="personname" class="Name16"></p>
+                        <p id="retailname" class="Store14"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <!--二维码扫描-->
+            <div class="weui_DPcode weui_top4em">
+                <img id="QRCode_img" style="max-width:80%" src="" alt="店铺二维码" />
+                <p>
+                    <div class="savepic">
+                        <span style="color:#c2c2c2;font-size:18px; font-family:微软雅黑;">仅限手机使用</span>
+                    </div>
+                </p><div id="qrcodediv" hidden></div>
+            </div>
+        </div>
+        <div class="weui_Kong"></div>
+    </div>
+
+    <div id="bottom-nav"></div>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

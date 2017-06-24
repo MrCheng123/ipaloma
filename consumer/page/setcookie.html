@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>经纬度</title>
+
+    <link href="/consumer/css/style.css" rel="stylesheet" />
+    <link href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/qrcode.css" rel="stylesheet" />	
+    <style>
+        .ul-num { width:100%; color:#000
+        }
+            .ul-num li { width:33%; float:left; line-height:20px;white-space:nowrap; overflow:hidden
+            }
+                .ul-num li img { width:20px; vertical-align:middle; margin-right:5px
+                }
+    </style>
+</head>
+<body style="padding-bottom:10px;">
+    <div class="tip-w">
+        <div class="tip"><img src="/consumer/image/icon09.png" /></div>
+    </div>
+    <div id="list">
+    </div>	
+	<footer>
+        <div class="space"></div>
+        <div class="share">推荐给朋友 <img src="/consumer/image/icon04.png" /></div>
+        <div class="bottomnav">
+            <div class="logo"><a href="/consumer/page/index.html"><img src="/consumer/image/logo.png" /></a></div>
+            <a href="/consumer/page/retailerlist.html">
+                <div class="nav" style="background:#ff6600;"><img src="/consumer/image/icon02.png" /><br />附近门店</div>
+            </a>
+            <a href="/consumer/page/activitylist.html">
+                <div class="nav"><img src="/consumer/image/icon03.png" /><br />附近超惠</div>
+            </a>
+            <a href="/consumer/page/supercouponslist.html">
+                <div class="nav"><img src="/consumer/image/icon11.png" /><br />超惠劵</div>
+            </a>
+        </div>
+    </footer>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>    	
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    function saveLocation(latitude, longitude) {
+        setCookie("wx-lat", latitude);
+        setCookie("wx-lng", longitude);
+    }
+
+    function setCookie(name, value) {
+        //var days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 5* 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+    }
+	
+    $(function () {
+		saveLocation("39.949625","116.356726");
+	});
+       
+</script>
+
+</body>
+</html>

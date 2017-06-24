@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>主题活动详情页</title>
+	<link rel="stylesheet" href="css/CreateActivity.css">
+	<link rel="stylesheet" href="css/details.css">
+</head>
+
+<body class="details">
+
+	<div class="detail-wrapper">
+
+		<!-- 1.活动基础信息 -->
+		<section class='item first'>
+			<h3><span>活动基础信息</span><i class="line"></i></h3>
+
+			<div class="basic-msg">
+
+				<div class="input-contorl">
+					<label for="">活动编号</label>
+					<span class="edit-area guid">
+					</span>
+				</div>
+
+				<div class="input-contorl">
+					<label for="">活动主题</label>
+					<span class="edit-area activitytitle">
+					</span>
+				</div>
+
+				<div class="input-contorl">
+					<label for="">服务电话</label>
+					<span class="edit-area">
+						<i class='servicephone'></i>
+					</span>
+				</div>
+
+				<div class="input-contorl">
+					<label for="">活动时间</label>
+					<span class="edit-area">
+						<i class='begintime'></i> - <i class='endtime'></i>
+					</span>
+				</div>
+
+				<div class="input-contorl">
+					<label for="">会员参与时间</label>
+					<span class="edit-area">
+						<i class='earliestjointime'></i> - <i class='latestjointime'></i>
+					</span>
+				</div>
+
+				<div class="input-contorl">
+					<label for="">活动状态</label>
+					<span class="edit-area state"></span>
+				</div>
+
+				<div class="input-contorl">
+					<label for="">申报说明</label>
+					<span class="edit-area description">
+						
+					</span>
+				</div>
+				
+				<div class="input-contorl">
+					<span class="xs">此活动是否与其他活动同时享受</span>
+					<span class="choice"></span>
+				</div>
+				
+			</div>
+		</section>
+
+		<!-- 2.参与活动条件 -->
+		<section class='item second'>
+			<h3><span>参与活动条件</span><i class="line"></i></h3>
+			
+			<div class="activity-wrap">
+			<div class="sec region-view">
+
+				<label>活动地区</label>
+
+				<div class="province-wrap">
+				</div>
+
+			</div>
+
+			<div class="sec">
+				<label class="hycytj">会员活动条件</label>
+				<table class="activity-condition">
+					<thead>
+						<tr>
+							<th>活动类型</th>
+							<th>优惠力度条件</th>
+							<th>投放门店数</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td width="80">买赠</td>
+							<td width="180" class="mz">
+								赠品比例 不低于 <i>买</i> 3 <i>赠</i> 2
+							</td>
+							<td>10-30</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+
+			<div class="sec">
+				<label for="">主办方</label>
+				<span class="zbf"></span>
+			</div> 	
+
+			<div class="sec">
+				<label for="">参与会员</label>
+				<table class="canyu">
+					<thead>
+						<tr>
+							<th>会员类型</th>
+							<th>参加名额</th>
+							<th>参与资格</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- <tr>
+							<td width="80">分销商</td>
+							<td width="80">10-30</td>
+							<td>核销次数 活动开始前23天 &nbsp;&gt;=100次</td>
+						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			</div>
+
+		</section>
+
+		<!-- 3.活动补贴规则 -->
+		<section class='item third'>
+			<h3><span>活动补贴规则</span><i class="line"></i></h3>
+			<div class="sec hdbtgz">
+				<label class="btsz" ="">补贴设置</label>
+				<table class="butie">
+					<thead>
+						<tr>
+							<th>补贴对象</th>
+							<th>补贴条件</th>
+							<th>补贴形式</th>
+							<th>范围/值</th>
+							<th>发放上限</th>
+							<th>补贴峰值</th>
+							<th>申报预算</th>
+							<!-- <th>已审批预算</th> -->
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
+
+
+			<div class="input-contorl">
+				<label for="">活动预算峰值</label>
+				<span class="edit-area ysfz">
+					<i>直发现金 <b class='totalYuan'></b> 元</i>
+					<!-- <i>返现券 <b>500</b> 张，价值 <b>100,00</b> 元</i> -->
+					<!--<i>积分 <b class='totalFen'></b> 分</i>-->
+				</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">申报总预算</label>
+				<span class="edit-area">
+					<i><b class='totalSbysYuan'></b> 元</i> 
+					<!--<i><b class='totalSbysFen'></b> 分</i>-->
+				</span>
+			</div>
+			
+			<!--
+			<div class="input-contorl">
+				<label for="">已审批</label>
+				<span class="edit-area">
+					<i><b>?</b> 元（待审批）</i>
+				</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">已发送</label>
+				<span class="edit-area">
+					<i><b>?</b> 元</i>
+				</span>
+			</div>
+			-->
+
+		</section>
+
+
+		<!-- 4.宣传图文资料 -->
+		<section class='item fourth'>
+			<h3><span>宣传图文资料</span><i class="line"></i></h3>
+
+			<div class="area fenxiaoshang">
+
+				<h3><span class='subTitle'>分销商</span><i class="line"></i></h3>
+
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class="edit-area activitytitle">活动标语活动标语</span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class="edit-area wechattitle">微信图文消息标题微信图文消息标题</span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<div class="haibao">
+								<img src="http://img6.bdstatic.com/img/image/smallpic/xingkong1201.jpg" alt="" class="posterurl">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<div class="detail">
+							<div class="edit-area wenan-text propagation">宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案</div>
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+
+			<div class="area mendian">
+
+				<h3><span class='subTitle'>门店</span><i class="line"></i></h3>
+
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class="edit-area activitytitle">活动标语活动标语</span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class="edit-area wechattitle">微信图文消息标题微信图文消息标题</span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<div class="haibao">
+								<img src="http://img6.bdstatic.com/img/image/smallpic/xingkong1201.jpg" alt="" class="posterurl">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<div class="detail">
+							<div class="edit-area wenan-text propagation">宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案</div>
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+
+			<div class="area xiaofeizhe">
+
+				<h3><span class='subTitle'>消费者</span><i class="line"></i></h3>
+
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class="edit-area activitytitle">活动标语活动标语</span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class="edit-area wechattitle">微信图文消息标题微信图文消息标题</span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<div class="haibao">
+								<img src="http://img6.bdstatic.com/img/image/smallpic/xingkong1201.jpg" alt="" class="posterurl">
+							</div>
+						</div>
+
+					</div>
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<div class="detail">
+							<div class="edit-area wenan-text propagation">宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案</div>
+						</div>
+
+					</div>
+
+				</div>
+				
+			</div>
+
+		</section>
+
+		<div class="footer btn-group">
+			
+		</div>
+		
+		<div class="loading"></div>
+
+		<input type="hidden" name="" class="currentState">
+	</div>
+
+	<!-- <input type="hidden" name="" id='detailData'> -->
+</body>
+</html>
+
+<script type="text/javascript" src="../../lib/jquery/1.9.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/linq.js/2.2.0.2/jquery.linq.min.js"></script>
+<script type="text/javascript" src="js/detail.js"></script>

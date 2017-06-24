@@ -1,0 +1,53 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none; }
+
+.gf-select {
+  font-size: 10px;
+  float: left;
+  width: 74.2px;
+  /*width: 78px;*/
+  margin-left: -1.5px;
+  /*16px;*/
+  position: relative;
+  vertical-align: middle; }
+
+.gf-select span {
+  /*width: 67px;*/
+  padding: 4px 0px 4px 10px;
+  display: block;
+  border: 1px solid #ddd;
+  cursor: pointer; }
+
+.gf-select span em {
+  font-style: normal; }
+
+.gf-select .icon-jt {
+  background: url(/admin/lib/district/image/2.png) center right no-repeat;
+  width: 18px;
+  height: 15px;
+  position: absolute;
+  right: 4px;
+  /*10px*/
+  top: 32%;
+  margin-top: -3px; }
+
+.gf-select ul {
+  border: 1px solid #ddd;
+  position: absolute;
+  width: 100%;
+  top: 31px;
+  overflow-y: auto;
+  display: none;
+  background: #fff; }
+
+.gf-select ul li {
+  border-bottom: 1px solid #ddd;
+  line-height: 30px;
+  padding-left: 10px; }
+
+.gf-select ul li:last-child {
+  border-bottom: none; }
+
+/*# sourceMappingURL=cityLink.css.map */

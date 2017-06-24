@@ -1,0 +1,44 @@
+*{margin: 0; padding: 0;}
+body{ font-size: 14px; font-size: "微软雅黑";}
+.ms-controller {
+    visibility: hidden;
+}
+/*红包*/
+.red_bg{background-image:url(/basepages/image/shakegame/red-bg.png); position: absolute; height: 100%; width: 100%; background-size: 30px;}
+.red_bg>div.red-ts{background: url(/basepages/image/shakegame/red-ts.png); background-repeat: no-repeat; width: 100%; height: 80px; background-size: 200px; background-position: center; margin-top: 5%;}
+.red_bg>div.red-ss-bg{height: 260px; width: 260px; margin: 20px auto; background: #fff; position: relative; border-radius: 100%;}
+.red_bg>div.red-ss-bg::after{content: ' '; width: 264px; height: 264px; position: absolute; top: -2px; left: -2px; background:url(/basepages/image/shakegame/red-ss-bg.png); background-size: cover;}
+.red_bg>div.red-ss-bg>span{background: url(/basepages/image/shakegame/red-ss.png); width: 100%; height: 100%; position: absolute; background-size: 60%; background-position: 40% 80%; background-repeat: no-repeat; display: inline-block;}
+
+/*.red_bg>div.red-jh{width: 63%; font-size: 14px; border-radius: 5px; height: 44px; line-height: 22px; background: rgba(0,0,0,0.45); margin: 0px auto; padding:5px 0 5px 10px;}
+.red_bg>div.red-jh>span{color: #f3f125; padding: 0px 5px;}*/
+    .red_bg > div.red-jh { width:100%; height:auto; text-align:center;color: #fff;
+    }
+
+.red-jh img { width:70%; margin:0 auto
+}
+
+
+/*提示信息*/
+
+.red-tc{background: rgba(0,0,0,0.85); position: absolute; width: calc( 100% - 80px ); padding: 0px 40px; height: 100%; top: 0; display: none;color: #fff;}
+.red-yzj>.red-tc-k,.red-tc-btn{width: calc( 100% - 40px ); padding: 20px; background-repeat: no-repeat;}
+.red-yzj>.red-tc-k{background: url(/basepages/image/shakegame/red-zj-bg.png); background-size: 100%;  margin-top: 40%; text-align: center; font-size: 16px;}
+.red-yzj>.red-tc-k>img{width: 50%; display: block; margin: 0 auto; padding-bottom: 10px;}
+.red-yzj>.red-tc-k>p{font-size: 20px; padding-bottom: 10px;}
+.red-yzj>.red-tc-k>p>span{font-size: 34px; padding: 0px 5px;}
+.red-yzj>.red-tc-btn{ background: url(/basepages/image/shakegame/red-btn-bg.png); background-size: 100%;}
+.red-yzj>.red-tc-btn>button{width: 100%; background: #ff0006; border-radius: 5px; border: none; line-height: 40px; font-size: 18px; color: #fff;}
+
+
+@media screen and (min-width: 320px) and (max-width:359px) and (orientation:landscape){
+
+  .red_bg>div.red-jh{width: 70%; font-size: 13px; border-radius: 5px; height: 44px; line-height: 22px; background: rgba(0,0,0,0.45); margin: 0px auto; padding:5px 0 5px 10px;}
+}
+@media screen and (min-width: 240px) and (max-width:319px) and (orientation:landscape){
+
+   .red_bg>div.red-jh{width: 70%; font-size: 13px; border-radius: 5px; height: 44px; line-height: 22px; background: rgba(0,0,0,0.45); margin: 0px auto; padding:5px 0 5px 10px;}
+}
+
+
+

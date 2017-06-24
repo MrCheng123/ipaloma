@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">		
+		<title>附属</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" /> 
+		<link rel="stylesheet" type="text/css" href="css/reset.css"/>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/TopicActivitySubsidiary.css"/>
+		<style type="text/css">
+			html{
+				width:100%;
+			}
+			body{
+				width:100%;
+			}
+			/*.Cwrap{
+				margin:0 auto;
+			}*/
+		</style>
+
+	</head>
+	<body>
+		<div class="Cwrap initialHi">
+			<!--背景图，固定定位-->
+			<div class="Cbd">
+				<div class="CbdD">
+					<div class="CbdD1" >
+						<img src="img/b5.png" alt="" />			
+					</div>							
+					<div class="CbdD2 dib">
+						<p class="CbdD2P1">查询中...</p>
+						<p class="CbdD2P2"></p>					
+					</div>					
+				</div>
+			</div>
+			<!--content-->
+			<div class="Ccontent">
+				<!--大标题-->
+				<p class="CcBigTitle">查询中...</p>
+				<!--小标题-->
+				<p class="CcSmallTitle">查询中...</p>
+				<!--补贴图以及金额-->
+				<div class="CcButie">
+					<!--平台最高补贴-->
+					<p class="CcButieMax"></p>
+					<!--已发放-->
+					<p class="CcButieAlready"></p>
+				</div>
+				<!--参与活动条件-->
+				<div class="Cccondition">
+					<!--参与活动条件背景图-->
+					<div class="CcconditionImg">参与活动条件</div>
+					<!--参与活动条件具体内容-->
+					<div class="CcconditionContent">
+						<!--每条数据都是一个p，-->
+						<!--根据条件是啥，分配不同的类名，不同的类目对应不同的width-->
+						
+						<!--<p class="活动类型"><img src="img/a3.png" alt="" /><i><span>活动类型:</span><span class="Cccspan dib">买赠</span></i></p>
+						
+						<p class="核销次数"><img src="img/a3.png" alt="" /><i><span>核销次数:</span><span class="Cccspan dib">至今，大于等于100次</span></i></p>
+						
+						<p class="地区"><img src="img/a3.png" alt="" /><i><span>地区:</span><span class="Cccspan dib">待定</span></i></p>
+						
+						<p class="惠粉数"><img src="img/a3.png" alt="" /><i><span>惠粉数:</span><span class="Cccspan dib">活动开始前23天，大于等于80人活动开始前</span></i></p>
+						
+						<p class="核销人数"><img src="img/a3.png" alt="" /><i><span>核销人数:</span><span class="Cccspan dib">至今，大于等于50人</span></i></p>
+						
+						<p class="粉丝留存率"><img src="img/a3.png" alt="" /><i><span>粉丝留存率:</span><span class="Cccspan dib">至今，大于等于20%</span></i></p>-->
+					</div>					
+				</div>
+				<!--活动补贴说明-->
+				<div class="CccDescription">
+					<!--活动补贴说明背景图-->
+					<div class="CccDescriptionImg">活动补贴说明</div>
+					<!--活动补贴说明具体内容-->
+					<div class="CccDescriptionCon">
+						<p><span>分销商</span><span>等待后台</span></p>
+					</div>					
+				</div>						
+			</div>
+			<div class="footer">
+				<div class="footerCkxq dib">查看详情</div><div class="footerCkgd dib">查看更多</div>
+			</div>
+		</div>			
+	</body>
+	<!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+	<script src="js/jquery-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>	
+	<script src="lib/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/coherent.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/TopicActivitySubsidiary.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+
+	</script>
+</html>

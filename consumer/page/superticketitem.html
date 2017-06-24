@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>超惠券详情</title>
+    <link href="//res.wx.qq.com/open/libs/weui/0.4.2/weui.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/qrcode.css" rel="stylesheet" />
+    <link href="/consumer/css/suppercouponitems.css" rel="stylesheet" />
+    <link href="/consumer/css/menustyle.css" rel="stylesheet" />
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixinshare-qrcode.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <style>
+        .active-num {
+            height: 22px;
+            line-height: 19px;
+        }
+
+            .active-num img {
+                width: 20px;
+                vertical-align: bottom;
+            }
+
+        .div-list {
+            margin: 10px 0 0 0;
+        }
+
+        .btn_css {
+            width: 80%;
+            height: 30px;
+            border-radius: 20px;
+            line-height: 30px;
+            margin: 0 auto;
+            margin-top: 4px;
+        }
+
+        .btn_css1 {
+            border: solid 1px #ff6600;
+            color: #ff6600;
+        }
+
+        .btn_css2 {
+            border: solid 1px #d6d6d6;
+            color: #d6d6d6;
+        }
+
+        /*.div-down {
+            -moz-box-shadow: 0 4px 4px rgba(0,0,0,.20);
+            -webkit-box-shadow: 0 4px 4px rgba(0,0,0,.20);
+            box-shadow: 0 4px 4px rgba(0,0,0,.20);
+        }
+
+        .jiangjia .div-down {
+            border-bottom: solid 8px #e49867;
+        }
+
+        .youli .div-down {
+            border-bottom: solid 8px #7dab83;
+        }
+
+        .maizeng .div-down {
+            border-bottom: solid 8px #76a4c6;
+        }
+
+        .taocan .div-down {
+            border-bottom: solid 8px #dfb84c;
+        }*/
+
+        .jiangjia .div-down li:first-child {
+            border-right: solid 1px #e49867;
+        }
+
+        .youli .div-down li:first-child {
+            border-right: solid 1px #7dab83;
+        }
+
+        .maizeng .div-down li:first-child {
+            border-right: solid 1px #76a4c6;
+        }
+
+        .taocan .div-down li:first-child {
+            border-right: solid 1px #dfb84c;
+        }
+    </style>
+</head>
+
+<body style="background:#fff" ms-controller="superticketitem" class="ms-controller">
+    <div class="tip-w">
+        <div class="tip">
+            <img src="/consumer/image/icon09.png">
+        </div>
+    </div>
+    <div class="active-w " id="list" ms-if="vm.isShow">
+        <div ms-attr-class="div-list {{vm.jsondata.activitykind=='降价'?'jiangjia':vm.jsondata.activitykind=='有礼'?'youli':vm.jsondata.activitykind=='买赠'?'maizeng':'taocan'}}">
+            <div class="div-top" style="padding-bottom:20px;">
+                <div class="li-img">
+                    <img ms-attr-src="vm.jsondata.itempic" alt="">
+                    <p ms-attr-class="vm.jsondata.activity_flag=='1'?'state_sx':'state_wsx'">
+                        {{vm.jsondata.time_to_end_text}}
+                    </p>
+                </div>
+                <div class="li-text" ms-if="vm.jsondata.activitykind=='降价'">
+                    <p>{{vm.jsondata.activitytitle}}</p>
+                    <table class="tbl_tc">
+                        <tr>
+                            <td rowspan="2" class="tbl_td_left">￥{{vm.jsondata.discountprice}}</td>
+                            <td class="tbl_td_right"> <p>{{vm.jsondata.discount}}折</p></td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:line-through;padding-left:8px;">￥{{vm.jsondata.originalprice}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="li-text" ms-if="vm.jsondata.activitykind=='有礼'">
+                    <p>{{vm.jsondata.activitytitle}}</p>
+                    <div class="pre">
+                        <font>赠</font>
+                        <div class="txt-r" style="">
+                            {{vm.jsondata.giftname}}
+                        </div>
+                    </div>
+                </div>
+                <div class="li-text" ms-if="vm.jsondata.activitykind=='买赠'">
+                    <p>{{vm.jsondata.activitytitle}}</p>
+                    <ul class="jiangjia_price">
+                        <li style="width:100%">￥{{vm.jsondata.unitprice}}<span style="font-size:15px">买{{vm.jsondata.buycount}}赠{{vm.jsondata.giftcount}}</span></li>
+                    </ul>
+                </div>
+                <div class="li-text" ms-if="vm.jsondata.activitykind=='套餐'">
+                    <p>{{vm.jsondata.activitytitle}}</p>
+                    <table class="tbl_tc">
+                        <tr>
+                            <td rowspan="2" class="tbl_td_left">￥{{vm.jsondata.discountprice}}</td>
+                            <td class="tbl_td_right"> <p>已节省{{vm.jsondata.sparevalue}}元</p></td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:line-through;padding-left:8px; color:#fff">￥{{vm.jsondata.originalprice}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="img_tag">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="assetinfo" ms-if="vm.jsondata.topiclist.length>0">
+                <a href="javascript:;" class="assetcontent" ms-click="topicClick(vm.jsondata)">
+                    <div class="asset_left">
+                        <div class="topictitle"><nobr style="font-size: 1.1rem;">{{vm.jsondata.topiclist[0].topictitle}}</nobr></div>
+                        <div class="topictitle_1"><small>{{vm.jsondata.topiclist.length>1?'等活动':''}}</small></div>
+                    </div>
+                    <div class="asset_right">
+                        <small>已参加</small>{{getheadcount(vm.jsondata.topiclist)}}<small>人</small>
+                    </div>
+                </a>
+            </div>
+            <div class="whiteblock" ms-if="vm.jsondata.topiclist == null"></div>
+            <ul class="div-down">
+                <li>
+                    {{vm.jsondata.itemtotalnum==null?'0':vm.jsondata.itemtotalnum}}
+                    <p>投放</p>
+                </li>
+                <li>
+                    {{vm.jsondata.totalverifynum==null?'0':vm.jsondata.totalverifynum}}
+                    <p>已用</p>
+                </li>
+                <li style="color:#ff6600" ms-if="vm.jsondata.verifylimit>0">
+                    {{vm.jsondata.verifylimit==null?'0':vm.jsondata.verifylimit}}
+                    <p>今日可用</p>
+                </li>
+                <li style="color:#d6d6d6" ms-if="vm.jsondata.verifylimit<=0">
+                    {{vm.jsondata.verifylimit==null?'0':vm.jsondata.verifylimit}}
+                    <p>今日可用</p>
+                </li>
+
+                <li style="width:40%; ">
+                    <div ms-attr-class="btn_css {{vm.jsondata.verifylimit>0?'btn_css1':' btn_css2'}}" ms-click="useticket">
+                        {{vm.jsondata.verifylimit>0?'码上用':vm.jsondata.state==0?'还未生效':vm.jsondata.state==1?'来晚了,已抢光':vm.jsondata.state==2?'明日再来':vm.jsondata.state==3?'您已用完':'码上用'}}
+                    </div>
+                </li>
+                <div class="clear"></div>
+            </ul>
+
+            <hr />
+        </div>
+        <div class="title" style="border-bottom:solid 1px #ccc; margin-top:10px;">
+            适用门店
+            <span>({{vm.jsondata.retailerdata.length}})</span>
+        </div>
+
+        <div class="storelist" ms-repeat="vm.jsondata.retailerdata">
+            <div class="store1-w1">
+                <a ms-attr-data-original="/consumer/page/retaileritems.html?retailer_id={{el.retailer_id}}&type=ticket">
+                    <div class="store1-left">
+                        <div class="storerimg">
+                            <img ms-attr-src="el.picture_url">
+                        </div>
+                        <div class="textinfo">
+                            <div class="storename">{{el.retailername}}</div>
+                            <div class="active-num" style="color: #ff6600;">
+                                <img src="/consumer/image/icon12.png" /> {{el.activity_count}} &nbsp;&nbsp;&nbsp;&nbsp;
+                                <img src="/consumer/image/icon13.png" /> {{el.ticket_count}}
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <a ms-attr-data-original="tel:{{el.mobilephone}}" ms-if="el.mobilephone!=null&&el.mobilephone.length > 0">
+                    <div class="store1-right">
+                        <img src="/consumer/image/icon01.png">
+                        <br>联系购买
+                    </div>
+                </a>
+                <div class="store1-right" style="color:gray" ms-if="el.mobilephone==null||el.mobilephone.length == 0">
+                    <img src="/consumer/image/icon01_gray.png">
+                    <br>联系购买
+                </div>
+            </div>
+            <div class="address-single" style="border-bottom:solid 2px #ccc">
+                {{el.address}}
+                <span>{{el.distance_text}}</span>
+            </div>
+        </div>
+    </div>
+    <!--<footer>
+        <div class="space"></div>
+        <div class="share">
+            推荐给朋友
+            <img src="/consumer/image/icon04.png">
+        </div>
+        <div class="bottomnav">
+            <div class="logo">
+                <a data-original="/consumer/page/index.html">
+                    <img src="/consumer/image/logo.png">
+                </a>
+            </div>
+            <a data-original="/consumer/page/retailerlist.html">
+                <div class="nav">
+                    <img src="/consumer/image/icon02.png">
+                    <br>附近门店
+                </div>
+            </a>
+            <a data-original="/consumer/page/activitylist.html">
+                <div class="nav">
+                    <img src="/consumer/image/icon03.png">
+                    <br>附近超惠
+                </div>
+            </a>
+            <a data-original="/consumer/page/supercouponslist.html">
+                <div class="nav" style="background:#ff6600;border-right:none">
+                    <img src="/consumer/image/icon11.png" style="margin:10px 0px 4px 0;">
+                    <br>超惠券
+                </div>
+            </a>
+        </div>
+    </footer>-->
+    <footer>
+        <div class="space2"></div>
+        <div class="share">推荐给朋友 <img src="/consumer/image/icon04.png" /></div>
+        <div id="bottom-nav"></div>
+    </footer>
+    <div id="activityrule"></div>
+    <script type="text/javascript" src="/consumer/js/common-buttom-nav.js"></script>
+    <script src="/consumer/js/superticketitem.js"></script>
+    <script>
+    (function(para) {
+      var p = para.sdk_url, n = para.name, w = window, d = document, s = 'script',x = null,y = null;
+      w['sensorsDataAnalytic201505'] = n;
+      w[n] = w[n] || function(a) {return function() {(w[n]._q = w[n]._q || []).push([a, arguments]);}};
+      var ifs = ['track','quick','register','registerPage','registerOnce','clearAllRegister','trackSignup', 'trackAbtest', 'setProfile','setOnceProfile','appendProfile', 'incrementProfile', 'deleteProfile', 'unsetProfile', 'identify','login','logout'];
+      for (var i = 0; i < ifs.length; i++) {
+        w[n][ifs[i]] = w[n].call(null, ifs[i]);
+      }
+      if (!w[n]._t) {
+        x = d.createElement(s), y = d.getElementsByTagName(s)[0];
+        x.async = 1;
+        x.src = p;
+        y.parentNode.insertBefore(x, y);
+        w[n].para = para;
+      }
+    })({
+      sdk_url: 'http://static.sensorsdata.cn/sdk/1.6.53/sensorsdata.min.js',
+      name: 'sa',
+      server_url: 'http://ipaloma.cloud.sensorsdata.cn:8006/sa?token=7e374f4ba1aca25f'
+    });
+    sa.quick('autoTrack');
+    </script>
+    <script type="text/javascript">
+        window._pt_lt = new Date().getTime();
+        window._pt_sp_2 = [];
+        _pt_sp_2.push('setAccount,7fa27880');
+        var _protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        (function(){
+        var atag = document.createElement('script'); atag.type = 'text/javascript'; atag.async = true;
+        atag.src = _protocol + 'js.ptengine.cn/7fa27880.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(atag, s);
+        })();
+    </script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+
+</html>

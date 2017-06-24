@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit"  />
+	<meta charset="UTF-8">
+	<title>登录页</title>
+	<link rel="stylesheet" type="text/css" href="css/sigin.css">
+</head>
+<body>
+<div class="wrap">
+	<div class="header">
+		<div class="header_wrap">
+			<img src="images/login1.png" height="62" width="112" alt="">
+			<p class="login_text">会员运营平台</p>
+		</div>
+	</div>
+	<div class="main-cont">
+		<div class="main_wrap">
+			<div class="user_box">
+				<div class="user_center">
+					<p class="uesr_login">用户登录</p>
+					<div>
+						<input id="account" class="user_name" type="text">
+						<img class="user_name_pic" src="images/userpic1.png" height="22" width="21" alt="">
+					</div>
+					<div>
+						<input id="password" class="password" type="password">
+						<img class="password_pic" src="images/password1.png" height="23" width="19" alt="">
+					</div>
+					<div>
+						<div id="remember_pass" class="Remember_username checked">
+							<i></i>
+							<a href="javascript:;">记住用户名</a>
+						</div>
+						<!-- <a class="Forget_password" href="javascript:;">忘记密码?</a> -->
+					</div>
+					<input id="enter" type="submit" value="立即登录" class="submit">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<a href="javascript:;">凌云科技版权所有&nbsp;&nbsp;京ICP备14000258号-1</a>
+	</div>
+</div>
+	<script src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript">
+	$(function(){
+
+		$('.Remember_username').click(function() {
+			$(this).toggleClass('checked');
+		});		
+		/*
+		 * 记住用户名bug修复	
+		 */
+		if(localStorage.userName){
+			$(".user_name").val(localStorage.userName);
+		}
+		function rememberUser(){
+			if( $('#remember_pass').hasClass('checked') ) { 
+				localStorage.userName = $(".user_name").val();
+			}else{
+				localStorage.userName = '';
+			}
+		}
+		//用户名登录
+		$('#enter').click(function(){
+			rememberUser();
+			play()
+		})
+		$(document).keydown(function(event){
+           if(event.keyCode == 13){
+           		rememberUser();
+           		play()
+           		//$('#enter').click();
+           }       
+        });
+
+	function play(){
+		$.ajax({
+				type:'post',
+				url:'/webapi/account/login',
+				dataType:'json',
+				data:{
+					"username": $('#account').val(),
+					"password": $('#password').val(),
+					"host":"membership-dev.ipaloma.com"
+				},
+				success:function(data){
+
+						if( sessionStorage["account"] ) {   // 页面在加载时需要判断本地是否有用户登录信息
+							console.log(8)
+			                $('#account').val( sessionStorage["account"] );
+			                $('#password').val( sessionStorage["password"] );
+			            }
+						//$('#enter').on('click',function () { //  点击登录按钮调用defaultaccount且传账户密码值过去
+			                defaultaccount( $('#account').val(),$('#password').val() );
+						//})
+
+			            function defaultaccount( account,password ) {   
+			                if( $('#account').val() == "" && $('#password').val() == "" ) {     
+			                    alert('需要您填写账号密码')
+			                     sessionStorage["status"]  = false; 
+			                }else if (data.error==""&&data.result==true){  
+			                    //if( $('#remember_pass').hasClass('checked') ) {  
+			                         sessionStorage["account"]  = account;    
+			                         sessionStorage["status"]  = true;    
+			                         // localStorage["password"] = password;   
+			                    //}
+			                   
+			                    window.location.href="../index.html";
+			                }else{
+			                	alert('账号或者密码错误')
+			                	 sessionStorage["status"]  = false;    
+			                }
+			            }
+
+
+				},
+				error:function(){
+					alert('异常')
+					 sessionStorage["status"]  = false; 
+				}
+			})
+	}
+
+			
+		
+
+		
+
+
+
+
+
+/*//cookie用法
+$.cookie('the_cookie'); // 获得cookie
+$.cookie('the_cookie', 'the_value'); // 设置cookie
+$.cookie('the_cookie', 'the_value', { expires: 7 }); //设置带时间的cookie
+$.cookie('the_cookie', '', { expires: -1 }); // 删除
+$.cookie('the_cookie', null); // 删除 cookie
+$.cookie('the_cookie', 'the_value', {expires: 7, path: '/', domain: 'jquery.com', secure: true});//新建一个cookie 包括有效期 路径 域名等
+*/
+
+
+
+
+	 })
+			
+	</script>
+</body>
+</html>

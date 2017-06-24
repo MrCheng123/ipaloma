@@ -1,0 +1,322 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>超惠券详情</title>
+
+    <link type="text/css" href="/distributor/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/lib.css" rel="stylesheet" />
+    <link type="text/css" href="/distributor/css/style1.css" rel="stylesheet" />
+    <link href="/distributor/css/weixintips.css" rel="stylesheet" />
+    <link href="/distributor/css/suppercouponitems.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/distributor\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <script type="text/javascript" src="/js/jquery/juicer-min.js"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <script type="text/javascript">var share_category = "distributor";</script>
+
+    <script src="/distributor/js/lib/jquery-common.js"></script>
+    <script src="/distributor/js/lib/common.js"></script>
+    <script src="/distributor/js/common-buttom-nav.js"></script>
+    <script src="/distributor/js/common-recommend.js"></script>
+    <script src="/distributor/js/common-supperfans.js"></script>
+    <style>
+        .stamp {
+            width: 100px;
+            height: 30px;
+            position: absolute;
+            right: 10px;
+            top: 50px;
+            z-index: 10;
+            transform: rotate(45deg);
+            line-height: 30px;
+            text-align: center;
+            font-size: 18px;
+            box-sizing: content-box;
+            border-radius: 5px;
+        }
+
+        .stamp1 {
+            border: solid 2px #ff6600;
+            color: #ff6600;
+            background-color: rgba(255,215,188,0.3);
+        }
+
+        .stamp2 {
+            border: solid 2px #ff0000;
+            color: #ff0000;
+            background-color: rgba(255,230,230,0.5);
+        }
+
+        .color1 {
+            color: #457181;
+        }
+
+        .color2 {
+            color: #999;
+        }
+
+        .assetinfo {
+            width: 100%;
+            height: 40px;
+            background: url(/consumer/image/asset_consumer.png) no-repeat;
+            background-size: 100% 40px;
+            line-height: 40px;
+            padding: 0 15px 0 25px;
+            color: #fff;
+        }
+
+            .assetinfo .asset_left {
+                width: calc(100% - 95px);
+                float: left;
+                height: 40px;
+                color: #fff;
+                font-weight: bold;
+                overflow: hidden;
+                text-wrap: none;
+                text-overflow: ellipsis;
+            }
+
+            .assetinfo .asset_right {
+                width: 90px;
+                float: left;
+                height: 40px;
+                color: #fff;
+                text-align: right;
+            }
+
+                .assetinfo .asset_right small {
+                    font-size: 11px;
+                }
+                .asset_left .topictitle {
+                    max-width: calc(100% - 40px);
+                    overflow: hidden;
+                    text-wrap: none;
+                    text-overflow: ellipsis;
+                    float: left;
+                }
+
+                .asset_left .topictitle  nobr{
+                    font-size:1.05em;
+                }
+
+                 .asset_left .topictitle_1 {
+                    width: 40px;
+                    float: left;
+                }
+    </style>
+</head>
+<body ms-controller="suppercouponitems" class="ms-controller">
+    <!--<div class="pin-spinner" style="display:block;">
+        <div class="pin-spinner-container pin-spinner-container1">
+            <div class="pin-spinner-circle1"></div>
+            <div class="pin-spinner-circle2"></div>
+            <div class="pin-spinner-circle3"></div>
+            <div class="pin-spinner-circle4"></div>
+        </div>
+        <div class="pin-spinner-container pin-spinner-container2">
+            <div class="pin-spinner-circle1"></div>
+            <div class="pin-spinner-circle2"></div>
+            <div class="pin-spinner-circle3"></div>
+            <div class="pin-spinner-circle4"></div>
+        </div>
+        <div class="pin-spinner-container pin-spinner-container3">
+            <div class="pin-spinner-circle1"></div>
+            <div class="pin-spinner-circle2"></div>
+            <div class="pin-spinner-circle3"></div>
+            <div class="pin-spinner-circle4"></div>
+        </div>
+    </div>-->
+    <!--推荐给朋友浮层样式-->
+    <div class="showbox-w2">
+        <div class="show-step"><img src="/distributor/image/step.png" /></div>
+    </div>
+
+    <!--<div class="container-w">
+    </div>-->
+    <div class="container-w" ms-if="vm.isShow" style="margin-bottom:50px">
+        <div class="mainpic" style="height:210px;">
+            <img style="height:180px;" ms-attr="{src: vm.jsondata.posterpic!=''&&vm.jsondata.posterpic!=null?vm.jsondata.posterpic:'http://dl.oss.ipaloma.com/common/membership/default/membership5ece179a10ad4b26b62d08c58be7634d.png'}">
+            <div id="title-css">
+                <div id="title-left">超惠券</div>
+                <div id="title-right">{{vm.jsondata.activitystate}}</div>
+                <div id="bianjiao"></div>
+            </div>
+        </div> <div class="dpdetail-info">
+            <div class="hdname" style="max-height: 100%;">{{vm.jsondata.activitytitle}}</div>
+            <div class="hdtime1">{{vm.jsondata.activitycode}}</div>
+            <div class="hdtime1">{{vm.jsondata.begintime}}至{{vm.jsondata.endtime}}</div>
+        </div>
+        <div class="chdetail-textbox" ms-if="vm.jsondata.changes!=null&&vm.jsondata.changes.length>0">
+            <div class="chtext-tit">
+
+                <div class="bgline"></div>
+                <div class="bgcolor"></div>
+                <div class="tit">更正说明</div>
+            </div>
+            <div class="chdetail-cont" ms-for="el in vm.jsondata.changes">
+                {{el.correctdescription}}
+            </div>
+        </div>
+        <div class="chdetail-textbox" style="padding-top:15px;" ms-if="vm.jsondata.customerrequest!=''&&vm.jsondata.customerrequest!=null">
+            <div class="chtext-tit">
+                <div class="bgline1"></div> <div class="bgcolor1"></div>
+                <div class="tit">门店要求</div>
+            </div>
+            <div class="chdetail-cont1"> {{vm.jsondata.customerrequest}} </div>
+
+        </div>
+        <div class="chdetail-textbox" style="padding-top:15px;">
+            <div class="chtext-tit">
+                <div class="bgline1"></div>
+                <div class="bgcolor1"></div>
+                <div class="tit">超惠券</div>
+            </div>
+        </div>
+        <!--ms-for: el in vm.jsondata.items-->
+        <div ms-class="['div-list',(el.activitykind=='降价'?'jiangjia':el.activitykind=='有礼'?'youli':el.activitykind=='买赠'||el.activitykind=='赠品'?'maizeng':'taocan')]">
+            <div class="div-top" style="position:relative">
+                <div class="li-img">
+                    <img alt="" ms-attr="{src: el.itempic}">
+                    <p>{{vm.jsondata.time_to_end_text}}</p>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='降价'">
+                    <p>{{el.activitytitle}}</p>
+                    <!--<ul class="jiangjia_price">
+                        <li>￥{{el.discountprice}}</li>
+                        <li>
+                            <span>{{el.discount}}折</span>
+                            <p>￥{{el.originalprice}}</p>
+                        </li>
+                    </ul>-->
+                    <table class="tbl_tc">
+                        <tr>
+                            <td rowspan="2" class="tbl_td_left">￥{{el.discountprice}}</td>
+                            <td class="tbl_td_right"> <p>{{el.discount}}折</p></td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:line-through;padding-left:8px;">￥{{el.originalprice}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='有礼'">
+                    <p>{{el.activitytitle}}</p>
+                    <div class="pre">
+                        <font>赠</font>
+                        <div class="txt-r" style="">
+                            {{el.giftname}}
+                        </div>
+                    </div>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='买赠'||el.activitykind=='赠品'">
+                    <p>{{el.activitytitle}}</p>
+                    <ul class="jiangjia_price">
+                        <li style="width:100%">￥{{el.unitprice}} <span style="font-size:15px">买{{el.buycount}}赠{{el.giftcount}}</span></li>
+                    </ul>
+                </div>
+                <div class="li-text" ms-if="el.activitykind=='套餐'">
+                    <p>{{el.activitytitle}}</p>
+                    <!--<ul class="jiangjia_price">
+                        <li>￥{{el.discountprice}}</li>
+                        <li>
+                            <span>已节省{{el.sparevalue}}元</span>
+                            <p>￥{{el.originalprice}}</p>
+                        </li>
+                    </ul>-->
+                    <table class="tbl_tc">
+                        <tr>
+                            <td rowspan="2" class="tbl_td_left">￥{{el.discountprice}}</td>
+                            <td class="tbl_td_right"> <p>已节省{{el.sparevalue}}元</p></td>
+                        </tr>
+                        <tr>
+                            <td style="text-decoration:line-through;padding-left:8px; color:#fff">￥{{el.originalprice}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="img_tag"></div>
+                <div class="stamp stamp2" ms-if="el.stop==1">已停用</div>
+                <div class="clear"></div>
+            </div>
+            <div class="remarks" ms-if="el.ruledesc!=null||el.ruledesc!=''">
+                <span></span>
+                {{el.ruledesc}}
+            </div>
+            <div class="whiteblock" ms-if="el.topiclist==undefined||el.topiclist.length==0"></div>
+            <div class="assetinfo" ms-if="el.topiclist!=undefined&&el.topiclist.length>0">
+                <a href="javascript:;" class="assetcontent" ms-click="vm.topicClick(el)">
+                    <!-- <div class="asset_left">
+                        <nobr>{{el.topiclist[0].topictitle}}<span ms-if="el.topiclist.length>1">等活动</span></nobr>
+                    </div> -->
+                    <!-- <div class="asset_left">
+                        <p style="max-width:calc(100% - 55px);float:left;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;margin-right:5px;font-size:1.1em;">{{el.topiclist[0].topictitle}}</p>
+                        <span ms-if="el.topiclist.length>1" style="width:50px;display:inline-block;font-size:0.7em;">等活动</span>
+                    </div> -->
+                    <div class="asset_left">
+                        <div class="topictitle"><nobr style="font-size:1.1rem;">{{el.topiclist[0].topictitle}}</nobr></div>
+                        <div class="topictitle_1" ms-if="el.topiclist.length>1" ><small>等活动</small></div>
+                    </div>
+                    <div class="asset_right">
+                        <small>已参加</small>{{vm.getheadcount(el.topiclist)}}<small>人</small>
+                    </div>
+                </a>
+            </div>
+            <ul class="div-down">
+                <li>
+                    {{el.itemtotalnum==null?'0':el.itemtotalnum|html}}
+                    <p>总投放</p>
+                </li>
+                <li style="border-right:none; ">
+                    {{el.totalverifynum==null?'0':el.totalverifynum}}
+                    <p>总核销</p>
+                </li>
+                <li style="border-right:none; display:block; ">
+                    &nbsp;
+                    <!--<div class="btnxq">详情</div>-->
+                </li>
+                <li ms-class="['percentage',(vm.jsondata.activitystate != '已生效'?'color2':'color1')]" style="border-right:none; ">{{el.verifyrate==null?'0%':el.verifyrate}}</li>
+
+                <div class="clear"></div>
+            </ul>
+        </div>
+
+        <!--ms-for-end:-->
+        <div class="chdetail-textbox" ms-if="vm.jsondata.description!=''&&vm.jsondata.description!=null">
+            <div class="chtext-tit">
+                <div class="bgline1"></div>
+                <div class="bgcolor1"></div>
+                <div class="tit">补充信息</div>
+            </div>
+            <div class="chdetail-cont1">
+                {{vm.jsondata.description}}
+            </div>
+        </div>
+        <div style="width:100%; height:80px;"></div>
+    </div>
+
+    <footer>
+        <div class="bottom-btn">
+            <div class="bottom-btnl">邀请惠粉</div>
+            <div class="bottom-btnr">推荐给朋友</div>
+        </div>
+        <div class="bottom-nav">
+        </div>
+    </footer>
+
+    <script src="//cdn.bootcss.com/avalon.js/2.0.1/avalon.min.js"></script>
+    <script src="/distributor/js/suppercouponitems-main.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

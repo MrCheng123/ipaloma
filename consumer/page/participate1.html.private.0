@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Supercoupon</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<meta name="applicable-device" content="mobile">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="format-detection" content="telephone=no">
+    <link href="../../js/rem/reset.css" rel="stylesheet" />
+    <script src="/js/rem/rem.js"></script>
+    <link href="/js/swiper/swiper.css" rel="stylesheet" />
+    <link href="../css/participate1.css" rel="stylesheet" />
+</head>
+<body>
+	<!-- 活动页 1 s -->
+	 <!-- <header class="hidden_page_b">
+	 		<h1 class="head_font">您促销凌云给您补贴盛大开启等您</h1>
+	 		<img class="closepage" src="../image/1.png" alt="">
+	 		<input class="oid_ipt" type="hidden" value="">
+	 		<input class="guid_ipt" type="hidden" value="">
+	 	</header>
+	 	<article class="hidden_page_b">
+	 		<section class="Topbanner">
+	 			<div class="Topbanner_cont">
+	 				<div class="Topbanner_contimg" href="javascript:void(0);">
+	 					<img src="../image/1.gif" alt="">
+	 					<p class="Topbanner_contimgbox"><a href="javascript:;">主题主题主题主题主题主题主题主题主题主题主题主题主题</a></p>
+	 				</div>
+	 				<div id="pl_1" class="Bottombanner_cont">
+	 					<a class="Bottombanner_contfont" href="javascript:void(0)">宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案宣传文案</a>
+	 				</div>
+	 			</div>
+	 		</section>
+	 		<section class="Activity">
+	 			
+	 			<div class="Activitytoppic">
+	 				<a class="subsidies" href="javascript:void(0)">平台最高补贴</a>
+	 				<a class="yellow_money" href="javascript:void(0)">￥<span>100,000</span></a>
+	 				<p class="issued">
+	 					<a href="javascript:void(0)">已发放￥</a>
+	 					<a href="javascript:void(0)">100,000</a>
+	 				</p>
+	 				<p class="enjoy">
+	 					你已经享受补贴<a style="color: #ffff36;" href="javascript:;">50</a>天,获得<span>￥<span>1,000</span></span>
+	 				</p>
+	 			</div>
+	 		</section>
+	 		<section class="tablecont">  
+	 			<div class="tablecont_boton">
+	 				<p>活动规则说明</p>
+	 			</div>
+	 			<div class="tablecont_one">
+	 				<div class="xps_q">
+	 					<a href="javascript:;">分销商</a>
+	 				</div>
+	 				<div class="Focus_box">
+	 					<div class="Focus_box_left">
+	 						<ul>
+	 							<li style="background: #fff2f2; "><a href="javascript:;">补贴条件(次)</a></li>
+	 							<li style="background: #ffe5e5;"><a href="javascript:;">补贴形式</a></li>
+	 							<li style="background: #fff2f2;"><a href="javascript:;">补贴规则</a></li>
+	 						</ul>
+	 					</div>
+	 					滑动 s
+	 					<div class="Focus_box_right">
+	 						<div class="swiper-container swiper1">
+	 							<ul class="swiper-wrapper FenX">
+	 								
+	 							</ul>
+	 						</div>  
+	 					</div>
+	 					滑动 e
+	 				</div>
+	 			</div>
+	 		</section>
+	 		<footer>
+	 			<div class="Bu_time">
+	 				<p><span>补贴时间:&nbsp;</span><a href="javascript:;">2016.12.03&nbsp;&nbsp;00:00 — 2016.12.19  23:59</a></p>
+	 			</div>
+	 			
+	 			<section class="qualification">
+	 				<div class="qualification_top">
+	 					<h2>参与资格</h2>
+	 				</div>
+	 				
+	 				<div class="xsp_x">
+	 					<div class="xsp_x_left">
+	 						<a href="javascript:;">使用超惠卷</a>
+	 					</div>
+	 					<div class="xsp_x_right">
+	 						<a href="javascript:;">活动开始前23天,大于等于100次</a>
+	 					</div>
+	 				</div>
+	 				
+	 			</section>
+	 			<div class="T_time">
+	 				<p>
+	 					<img src="../image/4.png" alt="">
+	 					<a href="javascript:void(0)">服务电话&nbsp;&nbsp;&nbsp;<span>13645967893、13213213332</span></a>
+	 				</p>
+	 			</div>
+	 			<p class="ownership">本次活动最终解释权归超惠买所有</p>
+	 		</footer>
+	 		
+	 	</article> -->
+	<!-- 活动页 1 e -->
+	<div class="swiper-container swiper2">
+		<div class="swiper-wrapper">
+		</div>
+	</div>
+	
+	<div class="more_active hidden_page_b">
+		<img class="more_active_left" src="../image/6-1.png" alt="">
+		<p class="more_active_cen">
+			更多活动
+		</p>
+		<div class="more_active_right">
+			<p>向左滑</p>
+		</div>
+	</div>
+	
+	
+	<div class="Popup"></div> 
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/swiper/swiper.min.js"></script>
+	<script type="text/javascript" src="../js/participate1_night.js"></script>
+</body>
+</html>

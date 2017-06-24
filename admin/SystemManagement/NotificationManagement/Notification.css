@@ -1,0 +1,616 @@
+
+.wrapBig{
+  min-width: 1080px;
+}
+.on
+.search-area
+{
+    width: 80%;
+    position: relative;
+}
+.loaded{
+  position: absolute;
+  top: 540px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 200px;
+  height: 20px;
+  display: none; 
+  z-index: 99999;
+}
+
+.loaded .loading{
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    margin-top: -5px;
+    border: 2px solid #666;
+    border-bottom-color: transparent;
+    vertical-align: middle;
+    -webkit-animation: rotate 0.75s linear infinite;
+    animation: rotate 0.75s linear infinite;
+}
+.table_wrap{
+  width:100%;
+  /*height: 700px;*/
+  background: #ffffff;
+  position: relative; 
+}
+
+.templateList {
+  background: #f3f1f1;
+  width: 99.1%; 
+  margin: 0 auto;
+}
+.templateList tbody .last img {
+  cursor: pointer; }
+
+.templateList th {
+  font-weight: bold;
+  font-size: 12px;
+  color: #333;
+  border-top: 1px solid #e4e4e4;
+  border-left: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  height: 40px;
+  text-align: center;
+  background-color: #f3f1f1;
+  }
+
+.templateList th.last {
+  border-right: 1px solid #e4e4e4; }
+
+.templateList td {
+  font-size: 12px;
+  color: #333;
+  height: 55px;
+  line-height: 22px;
+  border-left: 1px solid #e4e4e4;
+  border-bottom: 1px solid #e4e4e4;
+  text-align: center;
+  /*background-color: #FFFFFF;*/
+  /*display:block;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*/
+  /*word-wrap: break-word;*/
+      white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+.ac_tip{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  position: relative;
+}
+
+
+.templateList tbody{
+  width: 100%;
+  background: #ffffff;
+  /*overflow-y:scroll;*/
+  height: 500px;
+  float: left;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/*-------单元格样式--------*/
+
+.templateList thead,.templateList tbody tr {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+}
+
+.templateList thead {
+    width: calc( 99.9% - 0.95em )
+}
+
+
+/*---------------*/
+td .templatecontent{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 94%;
+}
+
+
+
+.templateList tbody tr:hover {
+  background: #f1f1f1}
+
+.templateList td.last {
+  border-right: 1px solid #e4e4e4; }
+
+.templateList .checkBox {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto;
+  background: url("../img/check.png") 100% 100% no-repeat; }
+
+.templateList .checkBox {
+  background: url("../img/checked.png") 100% 100% no-repeat; }
+
+.templateList .edit {
+  position: relative;
+  font-size: 0px; }
+
+.edit img {
+  width: 25px; 
+  line-height: 42px;
+  }
+
+.edit .menu {
+  position: absolute;
+  z-index: 2;
+  right: 98px;
+  top: 44px;
+  background: #C4E4EF;
+  height: 34px;
+  line-height: 34px;
+  display: inline-block;
+  word-wrap: normal;
+  word-break: keep-all;
+  padding: 0px 5px; }
+
+.menu .menuArrow {
+  position: absolute;
+  top: -8px;
+  right: 9px;
+  border-top: 0px;
+  border-bottom: 8px solid #C4E4EF;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent; }
+
+.menu i {
+  font-size: 12px; }
+
+.menu .menuElement {
+  padding: 0px 5px;
+  border-right: 1px solid #8abdcf;
+  font-size: 12px;
+  display: inline;
+  cursor: pointer; }
+.menu .menuElement:hover{
+  color: #f60;
+}
+
+
+/*可能是日期图片*/
+/*loading图*/
+.loadingDiv {
+  width: 100%;
+  height: 100%;
+  background: rgba(100, 100, 100, 0.8);
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0; }
+
+.loadingImg {
+  width: 25%;
+  /*margin:0px auto;*/
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+/*# sourceMappingURL=activity%20list.css.map */
+
+
+
+
+
+/*\\------------------------------------*/
+.finished{
+  position: absolute;
+  top: 580px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 200px;
+  height: 30px;
+  display: none;
+  z-index: 99999;
+}
+
+.loaded{
+  position: absolute;
+  top: 540px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 200px;
+  height: 20px;
+  display: none;
+  z-index: 99999;
+}
+
+.loaded .loading{
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    margin-top: 15px;
+    border: 2px solid #666;
+    border-bottom-color: transparent;
+    vertical-align: middle;
+    -webkit-animation: rotate 0.75s linear infinite;
+    animation: rotate 0.75s linear infinite;
+}
+.light
+{
+    background-color: burlywood;
+}
+
+.bread-crumb
+{
+    margin-bottom: 10px;
+}
+
+    .bread-crumb span
+    {
+        font-family: simsun;
+    }
+
+.search-wrap
+{
+    position: relative;
+}
+
+.float_right
+{
+    float: right;
+}
+
+   /*
+    .notify tbody {
+
+        display:block;
+
+        height:570px;
+
+        overflow-y:scroll;
+
+    }
+    .notify thead, .notify tbody tr {
+
+        display:table;
+
+        width:100%;
+
+        table-layout:fixed;
+
+    }
+    .notify tbody tr td{
+        padding:10px;
+        border-right: 1px solid #e4e4e4;
+        border-bottom: 1px solid #e4e4e4;
+    }
+    .notify thead {
+
+        width: calc( 99.9% - 1em )
+
+    }
+    */
+
+
+/*table.notify tr td,
+table.notify > tr > td > span,
+table.modulePeople tr td,
+table.modulePeople > tr > td > span
+{
+    max-width: 300px; 
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}*/
+
+.text-c{width: 100%;display: flex;}
+table.notify tr td:nth-child(1){width: 150px;}
+table.notify tr td:nth-child(2){width: 8%;}
+table.notify tr td:nth-child(3){width: 6%;}
+table.notify tr td:nth-child(4){width: 6%;}
+table.notify tr td:nth-child(5){width: 3%;}
+table.notify tr td:nth-child(6){width: 12%;}
+table.notify tr td:nth-child(7){width: 18%;}
+table.notify tr td:nth-child(8){width: 14%;}
+table.notify tr td:nth-child(9){width: 6%;}
+table.notify tr td:nth-child(10){width: 6%;}
+table.notify tr td:nth-child(11){width: 3%;}
+/*.ResponseManagement tr td:nth-child(1){width: 15%!important;}
+.ResponseManagement tr td:nth-child(2){width: 70%!important;max-width: 70%!important;}
+.ResponseManagement tr td:nth-child(3){width: 13.95%!important;}*/
+/*.loading{
+    display: block;
+}*/
+/*.tbody-c{
+    opacity: 0.3
+}*/
+.input-contorl
+{
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+
+    .input-contorl input,
+    .input-contorl select,
+    .bk-gray select
+    {
+        width: 200px;
+        height: 30px;
+        white-space: nowrap;
+    }
+
+    .input-contorl label
+    {
+        width: 90px;
+        display: inline-block;
+    }
+
+    .input-contorl .date
+    {
+        width: 90px;
+        margin-right: 0;
+    }
+
+
+
+.add-btn,
+.submit-btn,
+.reset-btn,
+.search-btn
+{
+    background-color: rgba(0, 157, 217, 1);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 10px;
+    position: absolute;
+    border: 0;
+    right: 0;
+    bottom: 17px;
+    cursor: pointer;
+}
+
+.reset-btn
+{
+    right: 100px;
+}
+
+
+.add-btn
+{
+    margin-right: 52px;
+    bottom: 10px;
+}
+
+
+
+.handle
+{
+    position: relative;
+}
+
+.handle-icon
+{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #bbb;
+}
+.Hui-iconfont img{
+  cursor: pointer;
+}
+    .handle-icon.on + .handle-btns-wrap
+    {
+        display: block;
+    }
+
+.Hui-iconfont.on + .handle-btns-wrap
+{
+    display: block;
+}
+
+.handle-btns-wrap
+{
+    position: absolute;
+    z-index: 2;
+    right: 36%;
+    top: 36px;
+    background: #C4E4EF;
+    height: 34px;
+    line-height: 34px;
+    display: inline-block;
+    word-wrap: normal;
+    word-break: keep-all;
+    padding: 0px 5px; 
+    display: none;
+    cursor: pointer;
+}
+.handle-btns-wrap_fuzeren{
+  right: 46%;
+  top: 36px;
+}
+
+.btn1:hover{
+    color: #f60;
+  }
+.btn1{
+  width: 35px;
+  border-right: 1px solid #8abdcf;
+  display: inline-block;
+  height: 12px;
+  line-height: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+.btn2{
+  width: 60px;
+}
+.modify{
+  border-right: none;
+}
+
+
+.handle-btns
+{
+    text-align: left;
+}
+
+.handle-btns a
+{
+    display: inline-block;
+    vertical-align: -5px; /*    background: red;
+width: 20px;
+height: 20px;*/
+}
+
+.handle-btns .arrow-right
+{
+  position: absolute;
+  top: -8px;
+  right: 9px;
+  border-top: 0px;
+  border-bottom: 8px solid #C4E4EF;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+
+.w72
+{
+    width: 72px;
+}
+
+
+.sec
+{
+    display: none;
+}
+
+nav
+{
+    height: 40px;
+    background: antiquewhite;
+    margin-bottom: 20px;
+}
+
+nav span
+{
+    border: 1px solid #eee;
+    background: #ccc;
+    padding: 10px 20px;
+    line-height: 40px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.addForm
+{
+    width: 500px; /*height: 300px;*/ /*background-color: #eee;*/
+    display: none;
+    padding: 20px 0 50px 50px;
+    box-sizing: border-box;
+}
+
+.submit-btn
+{
+    position: static;
+    display: block;
+    margin-left: 210px;
+}
+
+.input-contorl textarea
+{
+    height: 100px;
+    width: 300px;
+    vertical-align: top; /*transition: .6s;*/
+}
+
+.json-wrap
+{
+    display: none;
+    height: 100%;
+}
+
+.saveBtn
+{
+    float: right;
+    margin-right: 40px;
+    background-color: rgba(0, 157, 217, 1);
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+body > i
+{
+    display: none;
+}
+
+td .content
+{
+/*    width: 200px;*/
+    font-size: 12px;
+    display: block;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+textarea.content
+{
+    font-size: 14px;
+}
+
+.border-warn
+{
+    border: 1px solid #dd514c;
+}
+
+table.notify tbody tr
+{ /*display: none;*/
+}
+
+textarea.content,
+td span.content,
+.jsoneditor
+{
+    font-family: Monaco, 'Lucida Console', monospace, Consolas, Courier, 'Microsoft YaHei' !important;
+}
+
+/* .pager-wrap .text-l{
+    display: none;
+} */
+
+pre
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.addForm .input-contorl
+{
+    margin-bottom: 10px;
+}
+
+
+
+.specialTd{
+    white-space: pre;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

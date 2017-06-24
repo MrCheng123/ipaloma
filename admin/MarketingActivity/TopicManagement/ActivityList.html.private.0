@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>活动列表</title>
+		<link rel="stylesheet" type="text/css" href="/admin/lib/Hui-iconfont/1.0.7/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="/admin/lib/district/css/cityLink.css"/>		
+		<link rel="stylesheet" href="/admin/MarketingActivity/TopicManagement/css/ActivityList.css"/>
+		<style type="text/css">
+
+		</style>
+	</head>
+	<body>		
+		<div class="wrap">
+			<div class="Title_Index">
+                <a href="">营销活动></a>
+                <!-- <i>></i> -->
+                <a href="javascript:;">活动管理</a>
+            </div>
+
+			<!--查询条件区域-->
+			<div class="queryCondition">
+				<div class="queryCondition_son">
+					<div class="queryConditionLeft">
+						<div class="qC_aitivityTopic"><span>活动主题</span><input type="text" /></div>
+						<div class="qC_number"><span>活动编号</span><input type="text" /></div>
+						<div class="qC_principal">
+							<span>负责人</span>						
+							<div class="selectLWrapL">
+								<i></i>
+								<em class="selectLedL">请选择</em>
+								<ul class="selectL">
+									<!--<li class="optionL">谢谢参与</li>
+									<li class="optionL">微信手气红包</li>
+									<li class="optionL">随机金额返现券</li>
+									<li class="optionL">固定积分</li>
+									<li class="optionL">特定超惠券</li>-->
+								</ul>
+							</div>
+						</div>					
+					</div>
+					<div class="queryConditionMiddle">
+						<div class="qC_activityTime"><span>活动时间</span><input class="laydate-icon" id="dataStart" /><i class="i">至</i><input class="laydate-icon" id="dataEnd" /></div>
+						<div class="qC_subsidyReleased"><span>已发放补贴金额</span><input type="text" disabled="disabled"/><i class="i">-</i><input type="text" disabled="disabled"/></div>
+						<div class="qC_joinVipNumber"><span>参加会员数量</span><input type="text" /><i class="i">-</i><input type="text" /></div>
+					</div>
+					<div class="queryConditionRight">
+						<div class="qC_activityArea">
+							<span class="title">活动区域</span>
+							<div class="activityAreaSelect">							
+								<!--
+								<div class="selectLWrapL gf-select">
+									<i></i>
+									<em class="selectLedL">省</em>
+									<ul class="selectL">
+										<li class="optionL">黑龙江省</li>
+										<li class="optionL">麻辣省</li>	
+									</ul>
+								</div>							
+								<div class="selectLWrapL gf-select">
+									<i></i>
+									<em class="selectLedL">市</em>
+									<ul class="selectL">
+										<li class="optionL">谢谢参与1</li>
+										<li class="optionL">谢谢参与2</li>
+									</ul>
+								</div>							
+								<div class="selectLWrapL gf-select">
+									<i></i>
+									<em class="selectLedL">区</em>
+									<ul class="selectL">
+										<li class="optionL">谢谢参与4</li>
+										<li class="optionL">微信手气红包5</li>				
+									</ul>
+								</div>
+								-->
+								<div class="gf-select" id="gf-province">
+									<span><em class="gl-selectLedL">省</em><i class="icon-jt"><input type="hidden" name="province" value=""></i></span>
+									<ul>
+										<li data-value="">s省份</li>
+									</ul>
+								</div>
+								<div class="gf-select" id="gf-city">
+									<span><em class="gl-selectLedL">市</em><i class="icon-jt"><input type="hidden" name="city" value=""></i></span>
+									<ul>
+										<li data-value="">城市</li>
+									</ul>
+								</div>	
+								<div class="gf-select" id="gf-area">
+									<span><em class="gl-selectLedL">区</em><i class="icon-jt"><input type="hidden" name="area" value=""></i></span>
+									<ul>
+										<li data-value="">区县</li>
+									</ul>
+								</div>	
+							</div>
+						</div>
+						<div class="qC_activityBudget"><span class="title">活动预算</span><input type="text" disabled="disabled"/><i class="i">-</i><input type="text" disabled="disabled"/></div>
+						<div class="qC_status">
+							<span class="title">状态</span>
+							<div class="selectLWrapL">
+								<i></i>
+								<em class="selectLedL">请选择</em>
+								<ul class="selectL">
+									<!--<li class="optionL">谢谢参与</li>
+									<li class="optionL">微信手气红包</li>
+									<li class="optionL">随机金额返现券</li>
+									<li class="optionL">固定积分</li>
+									<li class="optionL">特定超惠券</li>-->
+								</ul>
+							</div>
+						</div>					
+					</div>	
+				</div>
+				
+
+				<div class="queryConditionButton">
+					<button class="query">查 询</button>
+				</div>				
+			</div>
+			<!--功能按钮区functionButtons-->
+			<div class="functionButtons">
+				<button class="addButton">新增</button>
+				<button class="printButton displayNone">打印</button>
+			</div>
+			<!--活动列表-->
+			<div class="table_wrap">
+				<table height="543px" border="1" cellspacing="0" cellpadding="2" bordercolor="#e4e4e4" class="activityList">
+					<thead>
+						<tr>
+							<!-- <th><p class="checkBox"></p></th> -->
+							<th>活动编号</th>
+							<th>活动主题</th>
+							<th>活动时间</th>
+							<th>活动区域及负责人</th>
+							<th>预计可参与活动的会员数量</th>
+							<th>已参加会员数量</th>
+							<th>申报预算</th>
+							<th>审批预算/状态</th>
+							<th>已发放补贴</th>
+							<th>状态</th>
+							<th>操作</th>
+						</tr>					
+					</thead>
+
+					<input type="hidden" name="" id='guid'>
+					
+					<tbody>
+						<!-- <tr>
+											<td><p class="checkBox"></p></td>
+											<td class="activityCode"></td>
+											<td class="activitytitle">activitytitle</td>
+											<td class="activityTime">activityTime</td>
+											<td class="activityAreaAndCharge"></td>
+											<td class="estimateJoinVipQuantity">Data</td>
+											<td class="JoinedVipQuantity">Data</td>
+											<td class="declareBudget"></td>
+											<td><p class="approvalBudget">1</p><p class="status">2</p>Data</td>
+											<td class="provideSubsidy">Data</td>
+											<td class="state">Data</td>
+											<td class="edit">
+												<img src="img/iconss1.png" alt="" />
+												<div class="menu visibilityHidden">
+													<div class="menuArrow"></div>
+													<div class="menuContent">
+														<span class="menuElement">内容</span><span class="menuElement">经商</span><span class="menuElement">内容</span>
+													
+															<p class="menuElement"><i class="Hui-iconfont">&#xe684;</i><span>内容1</span></p><p class="menuElement"><i class="Hui-iconfont">&#xe684;</i><span>内容2</span></p>
+													</div>								
+												</div>
+											</td>
+										</tr>	 -->	
+								
+					</tbody>
+
+				</table>
+				<div class="loaded"><span class='loading'></span> 正在加载...</div>
+			</div>
+			
+		</div>
+		
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/linq.js/2.2.0.2/jquery.linq.min.js"></script>
+	<script src="/admin/lib/laydate/laydate.js" charset="utf-8"></script>
+	<script src="/admin/lib/layer-v2.4/layer/layer.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/admin/lib/district/js/cityLink.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/admin/MarketingActivity/TopicManagement/js/ActivityList.js" type="text/javascript" charset="utf-8"></script>	
+	<script>
+		//城市联动插件
+		$(function(){
+			comSelect();
+			selectCity();
+		});		
+	</script>
+</html>

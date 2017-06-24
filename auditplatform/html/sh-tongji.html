@@ -1,0 +1,582 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>审核统计</title>
+    <link type="text/css" href="../web_style/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../web_style/jquery.datetimepicker.css" />
+    <script type="text/javascript" src="../web_js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../web_js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../web_js/common.js"></script>
+    <script type="text/javascript" src="../web_js/shenhe_stat.js"></script>
+    <script src="../web_js/jquery.datetimepicker.js"></script>
+
+</head>
+<body>
+<!-- 加载状态LOGO -->
+ <div class="showMes">
+        <img src="../web_images/load.gif" alt="加载中···" title="加载中···请稍等">
+</div>
+    <script type="text/javascript">
+            var currUrl = "";
+            $(function () {
+                $('.search select:eq(5)').change(function () {
+                    var txt = $('.search input:first').val();
+                    if ($(this).find("option:selected").text() == '活动编码')
+                    {
+                        var ytxt = txt.replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                        if (txt != ytxt)
+                            $('.search input:first').val(ytxt);
+                    }
+                });
+                $('.search input:first').keyup(function () {
+                    var txt = $(this).val();
+                    if ($('.search select:first').next().find("option:selected").text() == '活动编码')
+                    {
+                        var ytxt = txt.replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                        if (txt != ytxt)
+                            $(this).val(ytxt);
+                    }
+                });
+                currUrl = window.location.href;
+            })
+
+        </script>
+    <script type="text/javascript">
+
+            $(function () {
+                var now = new Date();
+                var santian = new Date((now.getTime() - 3 * 86400000));
+                $('#datetimepicker7').val(santian.getFullYear() + '/' + ((santian.getMonth() + 1).toString().length > 1 ? (santian.getMonth() + 1).toString() : '0' + (santian.getMonth() + 1).toString()) + '/' + ((santian.getDate()).toString().length > 1 ? (santian.getDate()).toString() : '0' + (santian.getDate()).toString()));
+
+                $('#datetimepicker8').val(now.getFullYear() + '/' + ((now.getMonth() + 1).toString().length > 1 ? (now.getMonth() + 1).toString() : '0' + (now.getMonth() + 1).toString()) + '/' + ((now.getDate()).toString().length > 1 ? (now.getDate()).toString() : '0' + (now.getDate()).toString()));
+
+                $('.tabcont-cont').each(function (index, element) {
+                    var $divWidth = $(this).height();
+                    $(this).children().css({'height': $divWidth});
+                });
+                    if(isLogin()) {
+                    assembleProvinceSelector();
+                    getcheckactivityshistory();
+                }
+                $('.show1').click(function () {
+                    $('.show-yibaocun').slideDown(300)
+                })
+                $('.close1').click(function () {
+                    $('.show-yibaocun').slideUp(300)
+                })
+                $('.hd-sh').click(function () {
+                    $('.hd-guizebox').show();
+                    $('.hd-guizebox').animate({'right': '0'}, 300);
+                    $('.hd-guize-top').animate({'right': '0'}, 300);
+                    $('.zbtn-box-w1').animate({'right': '0'}, 300);
+
+                });
+                $('.close2').click(function () {
+                    $('.hd-guizebox').animate({'right': '-800px'}, 300)
+                    $('.hd-guize-top').animate({'right': '-800px'}, 300)
+                    $('.zbtn-box-w1').animate({'right': '-800px'}, 300)
+                })
+
+
+
+
+
+                $('.alladdress').click(function () {
+                    $('.address-n').slideToggle(500)
+                })
+                $('.chongzhibtn').click(function () {
+                    $('.search select').each(function (index, element) {
+                        $(this).val($(this).children('option:eq(0)').val())
+                    })
+                    $('.search input.cz').val('');
+                    //重置地区
+                    //区域
+                    $('.address-d').css('background', '#fff').css('color', '#2c4a93');
+                    $('.address-d').attr('dad', 'a');
+                    $('.address-d').attr('xad', 'a');
+                    //省份
+                    $('.address-x').css('background', '#fff').css('color', '#2c4a93');
+                    $('.address-x').attr('dad', 'a');
+                    $('.address-x').attr('xad', 'a');
+                    //地区取值框
+                    $(".alladdress").text("全部地区");
+                })
+                $('.tabcont-cont').mouseenter(function () {
+                    $(this).addClass('bgcolor1')
+                })
+                $('.tabcont-cont').mouseleave(function () {
+                    $(this).removeClass('bgcolor1')
+                })
+
+                $('.address-d').click(function () {
+                    var type = $(this).data('type');
+                    if ($(this).attr('dad') == 'a') {
+                        $('div[data-type=' + type + ']').css('background', '#1e90ff').css('color', '#fff')
+                        //$(this).css('background','#1e90ff').css('color','#fff')
+                        //$(this).next('.address-x-w').css('background','#1e90ff').css('color','#fff')
+                        $('div[data-type=' + type + ']').attr('dad', 'b')
+                        $('div[data-type=' + type + ']').attr('xad', 'b')
+                        //$(this).next('.address-x-w').children('.address-x').attr('xad','b')
+                    } else {
+                        $('div[data-type=' + type + ']').css('background', '#fff').css('color', '#2c4a93')
+                        //$(this).next('.address-x-w').css('background','#fff').css('color','#2c4a93')
+                        $('div[data-type=' + type + ']').attr('dad', 'a')
+                        $('div[data-type=' + type + ']').attr('xad', 'a')
+                        //$(this).next('.address-x-w').children('.address-x').attr('xad','a')
+                    }
+                    lf();
+                    addaddress();
+                    // getcheckactivityshistory();
+                })
+                $('.address-x').click(function () {
+                    //alert(123)
+                    if ($(this).attr('xad') == 'a') {
+                        $(this).css('background', '#1e90ff').css('color', '#fff')
+                        $(this).attr('xad', 'b')
+                    } else {
+                        $(this).css('background', '#fff').css('color', '#2c4a93')
+                        $(this).attr('xad', 'a')
+                    }
+                    lf()
+                    addaddress()
+                })
+
+                function lf() {
+                    $('.address-x').each(function () {
+                        var type = $(this).data('type');
+                        var cls = $(this).attr('xad');
+                        if (cls == 'a') {
+                            $('.address-d[data-type=' + type + ']').attr('dad', 'a')
+                            $('.address-d[data-type=' + type + ']').css('background', '#fff').css('color', '#2c4a93')
+                        }
+                    })
+                }
+
+            })
+            function addaddress() {
+
+                var html = '';
+                var i = 1;
+                $('.address-x').each(function () {
+                    var cls = $(this).attr('xad')
+                    //  console.log(cls)
+                    if (cls == 'b') {
+                        html = html + $(this).text() + ' '
+                    }
+                })
+                console.log(html)
+                if (html == '') {
+
+//                    html = '--全部地区-'
+                    html = '全部地区'
+
+                }
+                $('.alladdress').html(html + '<img src="../web_images/icon17.png" />')
+            }
+
+        </script>
+    <!--活动规则浮层-->
+    <div class="hd-guizebox">
+        <div class="hd-guizebox-n">
+            <div class="hd-guize-top" style="text-align:center;"><span id="activitytitle"></span><img class="close2" style="margin:20px 40px 0 0" src="../web_images/icon05.png"
+                /></div>
+            <div class="space1"></div>
+            <div class="container-n1" style="width:100%; overflow:hidden; padding:10px; box-sizing:border-box;">
+                <div class="top" style="display:none;">
+                    <div class="arrow-left" style="display:none;"><img src="../web_images/arrow-left.png" /></div>
+                    <div class="arrow-right" style="display:none;"><img src="../web_images/arrow-right.png" /></div>
+                </div>
+                <div class="title">活动基本信息</div>
+                <div class="box-w">
+                    <div class="box-info1"><span>活动主题: </span> <span id="activitytitle2"></span></div>
+                    <div class="box-info1" style="width:50%; float:left;"><span>活动时间: </span> <span id="begintime"></span> 至 <span id="endtime"></span></div>
+                    <div class="box-info1" style="width:50%; float:left;"><span>服务电话: </span> <span id="servicephone"></span></div>
+                </div>
+                <div class="btn-box" style="border-top:0;">
+                    <button style="display:none;" class="bg-red btg" btg-color="a" type="1"><img src="../web_images/icon16.png" /> 不通过</button>
+                    <button style="display:none;" class="bg-green tg" tg-color="a" type="1"><img src="../web_images/icon15.png" />通过</button>
+                </div>
+                <div class="opinion-box2" type="1">
+                    <div class="opinion2-top">
+                        审核意见
+                    </div>
+                    <div class="shu-opinion2">
+                    </div>
+                </div>
+
+                <div class="opinion-box">
+                    <div class="opinion-top">
+                        <div class="opinion-top-l" style="line-height:30px;">请输入审核意见</div>
+                    </div>
+                    <div class="shu-opinion" style="padding-bottom:20px; margin-top:0;">
+                        <textarea rows="3" placeholder="请输入审核意见！"></textarea>
+                    </div>
+                </div>
+                <div class="title titsupplement">门店要求</div>
+                <div class="box-cont" id="customerrequest">
+                </div>
+                <div class="btn-box btn-box-close" style="border-top:0;">
+                    <button style="display:none;" class="bg-red btg" btg-color="a" type="4"><img src="../web_images/icon16.png"/> 不通过</button>
+                    <button style="display:none;" class="bg-green tg" tg-color="a" type="4"><img src="../web_images/icon15.png" /> 通过</button>
+                </div>
+                <div class="opinion-box2" type="4">
+                    <div class="opinion2-top">
+                        审核意见
+                    </div>
+                    <div class="shu-opinion2">
+                    </div>
+                </div>
+                <div class="opinion-box">
+                    <div class="opinion-top">
+                        <div class="opinion-top-l" style="line-height:30px;">请输入审核意见</div>
+                    </div>
+                    <div class="shu-opinion" style="padding-bottom:20px; margin-top:0;">
+                        <textarea rows="3" placeholder="请输入审核意见！"></textarea>
+                    </div>
+                </div>
+
+                <div class="title">优惠详情</div>
+                <div class="prolistbox">
+                    <div id="yoouli"></div>
+           
+                    <div id ="taocan"></div>
+                   
+                    <div id="maizeng"></div>
+                  
+                    <div id="jiangjia"></div>
+                    <div id="linqi"></div>
+                </div>
+                <div class="btn-box" style="border-top:0;">
+                    <button style="display:none;" class="bg-red btg" btg-color="a" type="5"><img src="../web_images/icon16.png"/> 不通过</button>
+                    <button style="display:none;" class="bg-green tg" tg-color="a" type="5"><img src="../web_images/icon15.png" /> 通过</button>
+                </div>
+                <div class="opinion-box2" type="5">
+                    <div class="opinion2-top">
+                        审核意见
+                    </div>
+                    <div class="shu-opinion2">
+                    </div>
+                </div>
+
+
+                <div class="title titsupplement1">活动海报</div>
+                <div class="hd-ad" id="posterpic">
+                    <a href="../web_images/cs03.jpg" target="_blank"><img src="../web_images/cs03.jpg" /></a>
+                </div>
+                <div class="opinion-box">
+                    <div class="opinion-top">
+                        <div class="opinion-top-l" style="line-height:30px;">请输入审核意见</div>
+                    </div>
+                    <div class="shu-opinion" style="padding-bottom:20px; margin-top:0;">
+                        <textarea rows="3" placeholder="请输入审核意见！"></textarea>
+                    </div>
+                </div>
+                <div class="btn-box btn-box-close1" style="border-top:0;">
+                    <button style="display:none;" class="bg-red btg" btg-color="a" type="2"><img src="../web_images/icon16.png"/> 不通过</button>
+                    <button style="display:none;" class="bg-green tg" tg-color="a" type="2"><img src="../web_images/icon15.png" /> 通过</button>
+                </div>
+                <div class="opinion-box2" type="2">
+                    <div class="opinion2-top">
+                        审核意见
+                    </div>
+                    <div class="shu-opinion2">
+                    </div>
+                </div>
+           
+                <div class="title titsupplement6">补充信息</div>
+                <div class="box-cont" id="description"></div>
+
+                <div class="opinion-box">
+                    <div class="opinion-top">
+                        <div class="opinion-top-l" style="line-height:30px;">请输入审核意见</div>
+                    </div>
+                    <div class="shu-opinion" style="padding-bottom:20px; margin-top:0;">
+                        <textarea rows="3" placeholder="请输入审核意见！"></textarea>
+                    </div>
+                </div>
+                <div class="btn-box btn-box-close6" style="border-top:0;">
+                    <button style="display:none;" class="bg-red btg" btg-color="a" type="6"><img src="../web_images/icon16.png"/> 不通过</button>
+                    <button style="display:none;" class="bg-green tg" tg-color="a" type="6"><img src="../web_images/icon15.png" /> 通过</button>
+                </div>
+                <div class="opinion-box2" type="6">
+                    <div class="opinion2-top">
+                        审核意见
+                    </div>
+                    <div class="shu-opinion2">
+                    </div>
+                </div>
+                      <div class="title titsupplementCorrections">活动更正说明</div>
+                <div class="box-cont" id="changedexplain">
+                </div>
+                <div class="btn-box btn-box-close_Corrections" style="border-top:0;">
+                    <button style="display:none;" class="bg-red btg" btg-color="a" type="3"><img src="../web_images/icon16.png"/> 不通过</button>
+                    <button style="display:none;" class="bg-green tg" tg-color="a" type="3"><img src="../web_images/icon15.png" />通过</button>
+                </div>
+                <div class="opinion-box2" type="3">
+                    <div class="opinion2-top">
+                        审核意见
+                    </div>
+                    <div class="shu-opinion2">
+                    </div>
+                </div>
+                <div class="space2" style="display:none;"></div>
+                <div class="zbtn-box-w1" style="display:none;">
+                    <div class="zbtn-box">
+                        <button class="bg-blue">通过</button>
+                        <button class="bg-white">不通过</button>
+                        <button class="bg-white">暂不提交</button>
+                        <button class="bg-white">提交并到下一个</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!---------------------------------------------->
+
+    <div class="container-n">
+        <div class="topnav">
+            <div class="logo">会员管理后台系统</div>
+            <ul class="nav">
+                <a href="hd-shenhe.html">
+                    <li>活动审核</li>
+                </a>
+                <a href="sh-tongji.html">
+                    <li class="navbg">审核统计</li>
+                </a>
+                <a href="xt-guanli.html">
+                    <li>系统管理</li>
+                </a>
+            </ul>
+            <div class="userinfo">
+                <a href="javascript:;">
+                    <div class="loginout">退出</div>
+                </a>
+                <div class="username">平台审核员</div>
+                <div class="userimg"><img src="../web_images/cs02.jpg" /></div>
+            </div>
+        </div>
+        <div class="search">
+            <div class="address"><span class="alladdress">全部地区<img src="../web_images/icon17.png" /></span>
+                <div class="address-n">
+                </div>
+            </div>
+            <select style="display:none;">
+                    <option>全部地区</option>
+                    <option>【华北】</option>
+                    <option>北京市</option>
+                    <option>天津市</option>
+                    <option>河北省</option>
+                    <option>山西省</option>
+                    <option>内蒙古自治区</option>
+                    <option>【东北】</option>
+                    <option>辽宁省</option>
+                    <option>吉林省</option>
+                    <option>黑龙江省</option>
+                    <option>【华东】</option>
+                    <option>江苏省</option>
+                    <option>浙江省</option>
+                    <option>安徽省</option>
+                    <option>福建省</option>
+                    <option>江西省</option>
+                    <option>山东省</option>
+
+                </select>
+            <select id="approveresult">
+                    <option value="all">全部状态</option>
+                    <option value="succeed">通过</option>
+                    <option value="failed">不通过</option>
+                    <option value="nosubmit">未提交</option>
+                </select>
+            <select id="checktype">
+                    <option value="">全部类型</option>
+                    <option value="2">更正</option>
+                    <option value="1">普通</option>
+                </select>
+
+                <!-- 齐枭飞修改——去掉（全部） 暂时没有这个需求 -->
+           <!--  <select id="checkby">
+                    <option value="">全部</option>
+                    <option value="1">zhangsan</option>
+                </select> -->
+
+
+
+
+       <select id="activitytype" name="activitytype" >
+                 <!--    <option value="">全部活动</option>
+                    <option value="1">超惠活动</option>
+                    <option value="2">店铺活动</option> -->
+                </select>
+
+            <select id="textQueryType" name="textQueryType">
+                   <!--  <option value="1">活动名称</option>
+                    <option value="2">活动编码</option>
+                    <option value="3">分销商名称</option> -->
+                </select> 
+
+
+            <input type="text" class="cz" id="queryText" />
+            <div style="width:10px; height:46px; overflow:hidden; margin-right:14px; border-right:1px solid #ccc; float:left;"></div>
+            <div class="input-w">
+                <input type="text" id="datetimepicker7" class="time1" />
+                <div class="text-zi">至</div>
+                <input type="text" class="time1" id="datetimepicker8" />
+            </div>
+
+            <script type="text/javascript">
+				$(function(){
+					// $('button').click(function(){
+					// 	var startTime=$("#datetimepicker7").val();
+					// 	var start=new Date(startTime.replace("-", "/").replace("-", "/"));
+					// 	var endTime=$("#datetimepicker8").val();
+					// 	var end=new Date(endTime.replace("-", "/").replace("-", "/"));
+					// 	if(end<start){
+					// 		alert('结束时间不得大于开始时间');  
+					// 	}
+					// });
+				});
+                    var logic = function (currentDateTime) {
+                        if (currentDateTime.getDay() == 6) {
+                            this.setOptions({
+                                minTime: '11:00'
+                            });
+                        } else
+                            this.setOptions({
+                                minTime: '8:00'
+                            });
+                    };
+                    $('#datetimepicker7').datetimepicker({
+                        onChangeDateTime: logic,
+                        onShow: logic
+                    });
+					function checkTime()
+					{
+						var startTime=$("#datetimepicker7").val(); 
+						var start=new Date(startTime.replace("-", "/").replace("-", "/"));
+						var endTime=$("#datetimepicker8").val();  
+						var end=new Date(endTime.replace("-", "/").replace("-", "/"));
+						if(end<start)
+							alert('结束时间不得大于开始时间');
+
+					}
+                    $('#datetimepicker8').datetimepicker({
+                        onChangeDateTime: checkTime,
+                        onShow: logic 
+                    });
+					
+					function checkEndTime(){ 
+						var startTime=$("#datetimepicker7").val();  
+						var start=new Date(startTime.replace("-", "/").replace("-", "/"));
+						var endTime=$("#datetimepicker8").val();  
+						var end=new Date(endTime.replace("-", "/").replace("-", "/"));  
+						if(end<start){
+							alert('当时时间不得提前于开始时间')
+							 return false;  
+							}
+							 return true;  
+					}
+                </script>
+            <div class="chongzhi" style=" display:none;">重置</div>
+            <button id="searchBtn" action="dataCheck">查询</button>
+            <button class="chongzhibtn">重置</button>
+        </div>
+        <div class="statebox" style="   ">
+            <div class="currenthdnum">当前共有<span>0</span>条已审核活动</div>
+            <!--
+                <div class="baocun">保存搜索条件</div>
+                <div class="yibaocun"><show class="show1">已保存(<span>1</span>)</show> <img src="../web_images/icon02.png" />
+                    <div class="show-yibaocun">更正置顶+北京+北京百鸿翔悦科技发展有限公司 <img class="close1" src="../web_images/icon03.png" /></div>
+                </div>
+                <div class="hd-guize">审核产品规则》</div>
+                -->
+        </div>
+        <div class="tabcont-z">
+            <div class="tabcont-n">
+                <div class="tabcont-tit">
+                    <div class="tabcont-tit-one per1">活动名称/活动编码</div>
+                    <div class="tabcont-tit-one per2">活动时间</div>
+                    <div class="tabcont-tit-one per3">活动类型</div>
+                    <div class="tabcont-tit-one per4">分销商名称</div>
+                    <div class="tabcont-tit-one per5">联系人/联系电话</div>
+                    <div class="tabcont-tit-one per6">沙盒域名</div>
+                    <div class="tabcont-tit-one per7">地市</div>
+                    <div class="tabcont-tit-one per8">审核时间↓</div>
+                    <div class="tabcont-tit-one per9">审核人</div>
+                    <div class="tabcont-tit-one per10">审核状况</div>
+                </div>
+                <div id="activity_list_data">
+                </div>
+            </div>
+            <div class="allpage-w">
+                <div class="page-w">
+                    <div class="s-page"><span>&lt;</span> <a href="#">上一页</a></div>
+                    <ul class="pagenum">
+                    </ul>
+                    <div class="x-page"><a href="#">下一页 </a><span>&gt;</span></div>
+                    <input type="hidden" id="currentPage" value="1" />
+                    <div class="pagetext">共<span id="totalPage"></span>页，到第<input type="text" id="designatedPage" />页<button id="goDesignatedPageBtn">确定</button></div>
+                </div>
+            </div>
+            <!--<script>
+                    $(function () {
+                        $('.front').hide();
+                        $('.back').hide();
+                        var lis = $('.pagenum li'),
+                                //当面页数
+                                page = getUrlParam('page'),
+                                //总页数
+                                total_page = lis.size() - 2;
+                        if (page == null) {
+                            page = 1;
+                        }
+                        if (total_page > 5) {
+                            lis.hide();
+                            $('.pagenum').children().eq(page).show();
+                            //前面省略号
+                            if (page > 3) {
+                                $('.front').show();
+                            }
+                            if (page > 2) {
+                                $('.pagenum').children().eq(parseInt(page) - 2).show();
+                            }
+                            if (page > 1) {
+                                $('.pagenum').children().eq(parseInt(page) - 1).show();
+                            }
+                            //后面省略号
+                            if (parseInt(page) + 2 < total_page) {
+                                $('.back').show()
+                            }
+                            if (parseInt(page) + 1 <= total_page && parseInt(page) != total_page) {
+                                $('.pagenum').children().eq(parseInt(page) + 1).show();
+                            }
+                            if (parseInt(page) < total_page && parseInt(page) + 1 != total_page) {
+                                $('.pagenum').children().eq(parseInt(page) + 2).show();
+                            }
+                            if (page == 1) {
+                                $('.s-page').hide();
+                            }
+                            if (page == total_page) {
+                                $('.x-page').hide();
+                            }
+                        }
+                        lis.attr('class', '');
+                        $('.pagenum').children().eq(page).attr('class', 'pitchOn');
+                        function getUrlParam(name)
+                        {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null)
+                                return unescape(r[2]);
+                            return null; //返回参数值
+                        }
+                    })
+                </script>-->
+        </div>
+    </div>
+     <!-- 齐枭飞新加 全部活动 全部名称 -->
+    <script src='../web_js/option.js'></script>
+</body>
+</html>

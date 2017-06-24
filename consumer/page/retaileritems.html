@@ -1,0 +1,378 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,minimum-scale =1, maximum-scale =1, user-scalable = no" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>附近门店详情</title>
+    <link href="//res.wx.qq.com/open/libs/weui/0.4.2/weui.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/qrcode.css" rel="stylesheet" />
+    <link href="/consumer/css/suppercouponitems.css" rel="stylesheet" />
+    <link href="/consumer/css/menustyle.css" rel="stylesheet" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/consumer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixinshare-qrcode.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.qrcode.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/qrcodeInitialize.js"></script>
+    <style>
+        #avtive-fl {
+            width: 100%;
+            height: auto;
+        }
+
+            #avtive-fl li {
+                width: 50%;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                padding: 8px 0;
+                border-bottom: solid 2px #ccc;
+                float: left;
+                font-size: 17px;
+                background: #fff;
+            }
+
+            #avtive-fl .active {
+                color: #ff6600;
+                border-bottom-color: #ff6600;
+            }
+
+        #show_msg {
+            width: 100%;
+            height: auto;
+            text-align: center;
+        }
+
+            #show_msg img {
+                width: 20%;
+                margin: 40px auto 20px auto;
+            }
+
+            #show_msg p {
+                width: 80%;
+                margin: 0 auto;
+                font-size: 18px;
+            }
+
+        .div_ad {
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: solid 1px #fdc995;
+            white-space: nowrap;
+            overflow: hidden;
+            color: #ff6600;
+            background: #fdead6;
+            text-align: center;
+            filter: alpha(opacity=75);
+            opacity: 0.75;
+            position: absolute;
+            z-index: 1000;
+        }
+
+        .active-n {
+            border-bottom: solid 1px #ccc;
+        }
+
+        /*.div-down {
+            -moz-box-shadow: 0 4px 4px rgba(0,0,0,.20);
+            -webkit-box-shadow: 0 4px 4px rgba(0,0,0,.20);
+            box-shadow: 0 4px 4px rgba(0,0,0,.20);
+        }
+
+        .jiangjia .div-down {
+            border-bottom: solid 8px #e49867;
+        }
+
+        .youli .div-down {
+            border-bottom: solid 8px #7dab83;
+        }
+
+        .maizeng .div-down {
+            border-bottom: solid 8px #76a4c6;
+        }
+
+        .taocan .div-down {
+            border-bottom: solid 8px #dfb84c;
+        }*/
+    </style>
+</head>
+
+<body style="padding-bottom:90px; background:#fff" ms-controller="retaileritems" class="ms-controller">
+    <div class="tip-w">
+        <div class="tip">
+            <img src="/consumer/image/icon09.png" />
+        </div>
+    </div>
+    <div id="list" ms-if="vm.isShow">
+        <div class="storerimg1" style="height:225px;">
+            <div class="img">
+                <img ms-attr-src="vm.jsondata.picture_url">
+            </div>
+            <div class="storename1">
+                {{ vm.jsondata.retailername}}
+                <span>{{vm.jsondata.distance_text}}</span>
+            </div>
+        </div>
+        <div class="store2-w">
+            <div class="store1-left">
+                <div class="address">{{ vm.jsondata.address}}</div>
+            </div>
+            <a ms-attr-href="tel:{{vm.jsondata.mobilephone}}" ms-if="vm.jsondata.mobilephone!=''">
+                <div class="store1-right">
+                    <img src="/consumer/image/icon01.png">
+                    <br>联系购买
+                </div>
+            </a>
+            <div class="store1-right" ms-if="vm.jsondata.mobilephone==''" style="color:gray">
+                <img src="/consumer/image/icon01_gray.png">
+                <br>联系购买
+            </div>
+        </div>
+        <ul id="avtive-fl">
+            <li ms-attr-class="vm.showTicket?'':'active'" ms-click="fl_click('activity')">超惠活动（{{vm.activityNum}}）</li>
+            <li ms-attr-class="vm.showTicket?'active':''" ms-click="fl_click('ticket')">超惠券（{{vm.ticketNum}}）</li>
+        </ul>
+        <div class="active-w" ms-if="!vm.showTicket">
+            <div id="ad_1" class="div_ad">
+                无门槛，喜欢就来参加吧！
+            </div>
+            <div class="active-n bgwhite" ms-repeat="vm.activity">
+                <div class="active-label">
+                    <div class="labellist">{{el.activitykind}}</div>
+                </div>
+                <div class="activebox">
+                    <div class="activebox-left">
+                        <div class="proname fbold showinline">
+                            {{el.activitytitle}}
+                        </div>
+                        <div class="giftinfo" ms-if="el.activitykind=='有礼'">
+                            <div class="zeng">
+                                <img src="/consumer/image/icon05.png">
+                            </div>
+                            <div class="zproname">{{el.giftname}}</div>
+                        </div>
+                        <div class="giftinfo" ms-if="el.activitykind=='降价'||el.activitykind=='临期特卖'||el.activitykind=='临期'">
+                            <div class="nowprice">
+                                ￥
+                                <span>{{el.discountprice}}</span>
+                            </div>
+                            <div class="preprice">
+                                <div class="discount">{{el.discount}}折</div>
+                                <div class="price">￥{{el.originalprice}}</div>
+                            </div>
+                        </div>
+                        <div class="giftinfo" ms-if="el.activitykind=='买赠'">
+                            <div class="nowprice">
+                                ￥
+                                <span>{{el.unitprice}}</span>
+                            </div>
+                            <div class="preprice">
+                                <div class="gift">买{{el.buycount}}赠{{el.giftcount}}</div>
+                            </div>
+                        </div>
+                        <div class="giftinfo" ms-if="el.activitykind=='套餐'">
+                            <div class="nowprice">
+                                ￥
+                                <span>{{el.discountprice}}</span>
+                            </div>
+                            <div class="preprice">
+                                <div class="discount">已节省{{el.sparevalue}}元</div>
+                                <div class="price">￥{{el.originalprice}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="activebox-right">
+                        <div class="proimgbox">
+                            <div class="img">
+                                <img ms-attr-src="el.itempic">
+                            </div>
+                            <div ms-attr-class="el.activity_flag==1?'pname1':'pname2'">{{el.time_to_end_text}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="active-w" ms-if="vm.showTicket">
+            <div id="ad_2" class="div_ad">
+                即领即用，先用先得，用完为止，路过不要错过
+            </div>
+            <div ms-repeat="vm.ticket" ms-class="div-list {{el.activitykind=='降价'?'jiangjia':el.activitykind=='有礼'?'youli':el.activitykind=='买赠'?'maizeng':'taocan'}}" style="margin:15px 0 0 0">
+                <div class="div-top" style="padding-bottom:20px">
+                    <div class="li-img">
+                        <img ms-attr-src="el.itempic" alt="">
+                        <p ms-attr-class="el.activity_flag==1?'state_sx':'state_wsx'">
+                            {{el.time_to_end_text}}
+                        </p>
+                    </div>
+                    <div class="li-text" ms-if="el.activitykind=='降价'">
+                        <p>{{el.activitytitle}}</p>
+                        <!--<ul class="jiangjia_price">
+                            <li>￥{{el.discountprice}}</li>
+                            <li>
+                                <span>{{el.discount}}折</span>
+                                <p>￥{{el.originalprice}}</p>
+                            </li>
+                        </ul>-->
+                        <table class="tbl_tc">
+                            <tr>
+                                <td rowspan="2" class="tbl_td_left">￥{{el.discountprice}}</td>
+                                <td class="tbl_td_right"> <p>{{el.discount}}折</p></td>
+                            </tr>
+                            <tr>
+                                <td style="text-decoration:line-through;padding-left:8px;">￥{{el.originalprice}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="li-text" ms-if="el.activitykind=='有礼'">
+                        <p>{{el.activitytitle}}</p>
+                        <div class="pre">
+                            <font>赠</font>
+                            <div class="txt-r" style="">
+                                {{el.giftname}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li-text" ms-if="el.activitykind=='买赠'">
+                        <p>{{el.activitytitle}}</p>
+                        <ul class="jiangjia_price">
+                            <li style="width:100%">￥{{el.unitprice}}<span style="font-size:15px">买{{el.buycount}}赠{{el.giftcount}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="li-text" ms-if="el.activitykind=='套餐'">
+                        <p>{{el.activitytitle}}</p>
+                        <!--<ul class="jiangjia_price">
+                            <li>￥{{el.discountprice}}</li>
+                            <li>
+                                <span>已节省{{el.sparevalue}}元</span>
+                                <p>￥{{el.originalprice}}</p>
+                            </li>
+                        </ul>-->
+                        <table class="tbl_tc">
+                            <tr>
+                                <td rowspan="2" class="tbl_td_left">￥{{el.discountprice}}</td>
+                                <td class="tbl_td_right"> <p>已节省{{el.sparevalue}}元</p></td>
+                            </tr>
+                            <tr>
+                                <td style="text-decoration:line-through;padding-left:8px; color:#fff">￥{{el.originalprice}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="img_tag">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="assetinfo" ms-if="el.topiclist.length>0">
+                    <a href="javascript:;" class="assetcontent" ms-click="topicClick(el)">
+                        <div class="asset_left">
+                            <div class="topictitle"><nobr>{{el.topiclist[0].topictitle}}</nobr></div>
+                            <div class="topictitle_1"><small>{{el.topiclist.length>1?'等活动':''}}</small></div>
+                        </div>
+                        <div class="asset_right">
+                            <small>已参加</small>{{getheadcount(el.topiclist)}}<small>人</small>
+                        </div>
+                    </a>
+                </div>
+                <div class="whiteblock" ms-if="el.topiclist==null"></div>
+
+                <ul class="div-down tfsl" style="border-bottom:none">
+                    <li>
+                        {{el.itemtotalnum==null?'0':el.itemtotalnum}}
+                        <p>投放</p>
+                    </li>
+                    <li style="border:none">
+                        {{el.totalverifynum==null?'0':el.totalverifynum}}
+                        <p>已用</p>
+                    </li>
+                    <!--<li ms-attr-style="color:{{el.verifylimit>0?'#ff6600':'#ccc'}};border:none">
+                        {{el.verifylimit==null?'0':el.verifylimit}}
+                        <p>今日可用</p>
+                    </li>-->
+
+                    <li style="color:#ff6600;border:none" ms-if="el.verifylimit>0">
+                        {{el.verifylimit==null?'0':el.verifylimit}}
+                        <p>今日可用</p>
+                    </li>
+                    <li style="color:#d6d6d6;border:none" ms-if="el.verifylimit<=0">
+                        {{el.verifylimit==null?'0':el.verifylimit}}
+                        <p>今日可用</p>
+                    </li>
+
+                    <li style="width:40%;border:none">
+                        <div ms-attr-class="btn_css {{el.verifylimit>0?'btn_css1':' btn_css2'}}" ms-click="useticket(el)">
+                            {{el.verifylimit>0?'码上用':el.state==0?'还未生效':el.state==1?'来晚了,已抢光':el.state==2?'明日再来':el.state==3?'您已用完':'码上用'}}
+                        </div>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+           
+                <hr />
+            </div>
+
+        </div>
+        <div id="show_msg" ms-if="!vm.showTicket?vm.activityNum==0:vm.ticketNum==0">
+            <img ms-attr-src="vm.noDateMsg[vm.showTicket?1:0].imgurl" />
+            <p>
+                {{vm.noDateMsg[vm.showTicket?1:0].title}}
+            </p>
+        </div>
+    </div>
+    <!--<footer>
+        <div class="space2"></div>
+        <div class="share">
+            推荐给朋友
+            <img src="/consumer/image/icon04.png" />
+        </div>
+        <div class="bottomnav">
+            <div class="logo">
+                <a data-original="/consumer/page/index.html">
+                    <img src="/consumer/image/logo.png" />
+                </a>
+            </div>
+            <a data-original="/consumer/page/retailerlist.html">
+                <div class="nav" style="background:#ff6600;">
+                    <img src="/consumer/image/icon02.png" />
+                    <br />附近门店
+                </div>
+            </a>
+            <a data-original="/consumer/page/activitylist.html">
+                <div class="nav">
+                    <img src="/consumer/image/icon03.png" />
+                    <br />附近超惠
+                </div>
+            </a>
+            <a data-original="/consumer/page/supercouponslist.html">
+                <div class="nav" style="border-right:none">
+                    <img src="/consumer/image/icon11.png" style="margin:10px 0px 4px 0;" />
+                    <br />超惠券
+                </div>
+            </a>
+        </div>
+    </footer>-->
+
+    <footer>
+        <div class="space2"></div>
+        <div class="share">推荐给朋友 <img src="/consumer/image/icon04.png" /></div>
+        <div id="bottom-nav"></div>
+    </footer>
+    <div id="activityrule"></div>
+    <script type="text/javascript" src="/consumer/js/common-buttom-nav.js"></script>
+    <script src="/consumer/js/retaileritems.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+
+</html>

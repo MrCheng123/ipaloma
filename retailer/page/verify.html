@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>核销</title>
+
+    <link type="text/css" href="/consumer/css/style.css" rel="stylesheet" />
+    <link type="text/css" href="/consumer/css/style1.css" rel="stylesheet" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/retailerstyle.css" rel="stylesheet" />
+
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link type="text/css" href="https://res.wx.qq.com/open/libs/weui/1.1.0/weui.min.css" rel="stylesheet" />
+    <link href="/js/shelter/shelter.css" rel="stylesheet" />
+    <link href="/retailer/css/verify.css" rel="stylesheet" />
+</head>
+<body ms-controller="verify" class="ms-controller">
+    <div id="shelter">
+        <div id="mask"></div>
+        <div id="shelterInfo">
+            <div id="shelterheader">
+                <h3>重新绑定将会与原先的核销码<font color="#ffb27f">解除</font></h3>
+                <p>温馨提示：原码丢失时可与新的核销码重新绑定</p>
+            </div>
+
+            <div id="shelterContent">
+                <p>您真的要全部确认么？</p>  <div id="btnGroup"><div id="clearBtn" class="btnVerify">回去看看</div> <div id="confirmBtn" class="btnVerify active" style="float:right">确认</div></div><div></div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-panel weui-panel_access">
+        <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img src="/retailer/image/verify/ico_1.png" class="weui-media-box__thumb" />
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title" style="font-size:13px">您有<font class="titlecolor" style="font-size:20px">{{authrecordcount}}</font> 次核销待确认</h4>
+                <p class="weui-media-box__desc">
+                    <div ms-attr-class="btnVerify {{authrecordcount==0?'disable1':''}}" ms-click="verifyRecord">查看记录</div>
+                    <div ms-attr-class="btnVerify active {{authrecordcount==0?'disable2':''}}" ms-click="allVerify" style="float:right">全部确认</div>
+                </p>
+            </div>
+        </div>
+        <div class="verifyTicket" ms-if="authrecordcount>0">
+            <div class="leftImg">
+                <img ms-attr-src="{{authrecord.itempic}}" />
+                <p class="verifyNum">X {{authrecord.verifynum}}&nbsp;</p>
+                <p class="verifyTimeTitle">核销时间</p>
+                <p class="verifyTime">{{authrecord.issuetime|date('MM/dd HH:mm:ss')}}</p>
+            </div>
+            <div class="rightCount">
+                <div class="ticket_title" style="padding-right:20px">{{authrecord.activitytitle}}</div>
+                <div class="ticket" ms-if="authrecord.activitykind!='有礼'">
+                    <span class="price1">￥{{authrecord.discountprice}}</span>
+                    <span class="price2" ms-if="authrecord.originalprice!=undefined">￥{{authrecord.originalprice}}</span>
+                </div>
+                <div class="ticket">
+                    <span class="ticket_zk" ms-if="authrecord.activitykind!='有礼'">{{getzktitle(authrecord)}}</span>
+                    <ul ms-if="authrecord.activitykind=='有礼'">
+                        <li style="width:25px"><font>赠</font></li>
+                        <li class="ztitle">{{authrecord.giftname}}</li>
+                        <li class="arrows_up" style="width:6px" ms-click="showTitle"></li>
+                    </ul>
+                </div>
+                <div class="verifyBtnGroup">
+                    <div class="btnVerify" ms-click="singleVerify('failure')">拒绝确认</div>
+                    <div class="btnVerify active" style="float:right" ms-click="singleVerify('complete')">确认</div>
+                </div>
+            </div>
+            <div class="ticket_type">
+                <img ms-attr-src="{{getactivitykindimg(authrecord)}}" />
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="weui-panel weui-panel_access" onclick="location.href = '/retailer/page/invite_fans.html'">
+        <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img src="/retailer/image/verify/ico_2.png" class="weui-media-box__thumb" />
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title titlecolor">邀请惠粉</h4>
+                <p class="weui-media-box__desc">邀请到点顾客关注超惠买，一个都不要放过哦~</p>
+            </div>
+        </div>
+    </div>
+    <div class="weui-panel weui-panel_access" onclick="location.href = '/retailer/page/richscan_hx.html'">
+        <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img src="/retailer/image/verify/ico_3.png" class="weui-media-box__thumb" />
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title titlecolor">扫一扫</h4>
+                <p class="weui-media-box__desc">店员扫描消费者手机上的超惠券二维码核销</p>
+            </div>
+        </div>
+    </div>
+    <div class="weui-panel weui-panel_access" ms-click="verifycodedown">
+        <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img src="/retailer/image/verify/ico_4.png" class="weui-media-box__thumb" />
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title titlecolor">
+                    {{isbinding?"下载":"申请"}}核销码
+                    <img src="../image/verify/recommend.png" />
+                </h4>
+                <p class="weui-media-box__desc">{{isbinding?"恭喜您已经拥有核销码，丢失时可在此重新下载！":"直接申请，无需绑定！让消费者扫码核销，节省您的时间！"}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="weui-panel weui-panel_access" ms-click="scanBindVerifycode">
+        <div class="weui-media-box weui-media-box_appmsg">
+            <div class="weui-media-box__hd">
+                <img src="/retailer/image/verify/ico_5.png" class="weui-media-box__thumb" />
+            </div>
+            <div class="weui-media-box__bd">
+                <h4 class="weui-media-box__title titlecolor">{{isbinding?"重新绑定核销码":"绑定核销码"}}</h4>
+                <p class="weui-media-box__desc">将分销商提供的核销码与您的门店绑定</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="bottom-nav"></div>
+    </footer>
+    <script type="text/javascript" src="/js/wx/md5.min.js"></script>
+    <script type="text/javascript">document.writeln("<script type=\"text\/javascript\""); document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">"); document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript"></script>
+    <script src="http://apps.bdimg.com/libs/jquery-lazyload/1.9.5/jquery.lazyload.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.1.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/share.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>
+
+    <script type="text/javascript" src="/consumer/js/lib/common.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/weixintips.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/respond.min.js"></script>
+    <script type="text/javascript" src="/consumer/js/lib/jquery-common.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+
+    <script src="/js/shelter/shelter.js"></script>
+    <script src="//cdn.bootcss.com/avalon.js/1.5.6/avalon.min.js"></script>
+    <script src="/retailer/js/verify/varifyCommon.js"></script>
+    <script src="/retailer/js/verify/verify.js"></script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

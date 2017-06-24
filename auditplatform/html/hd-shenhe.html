@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>活动审核</title>
+    <link type="text/css" href="../web_style/style.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="../web_style/jquery.datetimepicker.css" />
+    <link rel="stylesheet" href="">
+    <script type="text/javascript" src="../web_js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../web_js/jquery.cookie.js"></script>
+    <script src="../web_js/jquery.datetimepicker.js"></script>
+    <!-- <script src="../ueditor/ueditor.config.js"></script> -->
+    <!-- <script src="../ueditor/ueditor.all.min.js"></script> -->
+    <!-- <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script> -->
+    <script type="text/javascript" src="../web_js/common.js"></script>
+           <!-- 齐枭飞新加 全部活动 全部名称 -->
+
+    <script src='../web_js/option.js'></script>
+    <script type="text/javascript" src="../web_js/shenhe_list.js"></script>
+</head>
+
+<body>
+<!-- 加载状态LOGO -->
+ <div class="showMes">
+        <img src="../web_images/load.gif" alt="加载中···" title="加载中···请稍等">
+</div>
+    <script type="text/javascript">
+            var setInter = null;
+            var currUrl = "";
+            $(function () {
+                $('.search select:eq(3)').change(function () {
+                    var txt = $('.search input:first').val();
+                    if ($(this).find("option:selected").text() == '活动编码')
+                    {
+                        // var ytxt = txt.replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                        // if (txt != ytxt)
+                        //     $('.search input:first').val(ytxt);
+                    }
+                });
+                $('.search input:first').keyup(function () {
+                    var txt = $(this).val();
+                    if ($('.search select:first').next().find("option:selected").text() == '活动编码')
+                    {
+                        var ytxt = txt.replace(/[^\d]/g, '').replace(/(\d{4})(?=\d)/g, "$1 ");
+                        if (txt != ytxt)
+                            $(this).val(ytxt);
+                    }
+                });
+                currUrl = window.location.href;
+            })
+
+        </script>
+
+    <script type="text/javascript">
+
+            function stopInterval()
+            {
+                if (setInter != null)
+                {
+                    clearInterval(setInter);
+                }
+            }
+
+            $(function () {
+                if($("#datetimepicker7").val()==""){
+                      var now = new Date();
+                        $('#datetimepicker7').val(now.getFullYear() + '/' + ((now.getMonth() + 1).toString().length > 1 ? (now.getMonth() + 1).toString() : '0' + (now.getMonth() + 1).toString()) + '/' + ((now.getDate()).toString().length > 1 ? (now.getDate()).toString() : '0' + (now.getDate()).toString()));
+                    }
+                $('.tabcont-cont').each(function (index, element) {
+                    var $divWidth = $(this).height();
+                    $(this).children().css({'height': $divWidth});
+                });
+
+                $('.show1').click(function () {
+                    if ($(this).children('span').text() == '0') {
+                        $('.show-yibaocun').hide();
+						return;
+                    }
+					 $('.show-yibaocun').slideToggle(300);
+                })
+                $('.hd-guize').click(function () {
+                    $('.hd-guizebox').show()
+                    $('.hd-guizebox').animate({'right': '0'}, 300)
+                    $('.hd-guize-top').animate({'right': '0'}, 300)
+                    $('.zbtn-box-w1').animate({'right': '0'}, 300)
+
+                })
+                $('.close2').click(function () {
+                    $('.hd-guizebox').animate({'right': '-800px'}, 300)
+                    $('.hd-guize-top').animate({'right': '-800px'}, 300)
+                    $('.zbtn-box-w1').animate({'right': '-800px'}, 300)
+                })
+
+                $('.close3').click(function () {
+                    $('.hd-guizebox-xg').animate({'right': '-800px'}, 300)
+                    $('.hd-guize-xg-top').animate({'right': '-800px'}, 300)
+                    $('.zbtn-box-xg-w1').animate({'right': '-800px'}, 300)
+                })
+                $('#quxiao').click(function () {
+                    //$('.hd-guizebox-xg').animate({'right': '-800px'}, 300)
+                    //$('.hd-guize-xg-top').animate({'right': '-800px'}, 300)
+                    //$('.zbtn-box-xg-w1').animate({'right': '-800px'}, 300)
+                    $('.close3').click();
+                    stopInterval();
+                })
+
+                $('#hdboacun').click(function () {
+                    if ($(this).attr('sta') == 'a') {
+                        $('.savecesuccess-w').fadeIn(1000).delay(1000).fadeOut(1000)
+                        $(this).text('修改')
+                        $(this).next('#quxiao').hide()
+                        $(this).css('margin-left', '80px').css('background', '#ff0000')
+                        $(this).attr('sta', 'b')
+                    } else {
+
+                        $(this).text('保存')
+                        $(this).next('#quxiao').show()
+                        $(this).css('margin-left', '0').css('background', '#159968')
+                        $(this).attr('sta', 'a')
+                    }
+                    stopInterval();
+                })
+
+
+
+                $('ul.pagenum li a').click(function () {
+                    $(this).css('color', '#fff')
+                })
+
+                $('#close-tishi').click(function () {
+                    $('.tishi-w').fadeOut(500)
+                })
+                $('#close-tishi1').click(function () {
+                    $('.tishi-w').fadeOut(500)
+                })
+
+                $('.chongzhibtn').click(function () {
+                    $('.search select').each(function (index, element) {
+                        $(this).val($(this).children('option:eq(0)').val())
+                    })
+                    
+                    $('.search input.cz').val('')
+					
+                    //重置地区
+                    //区域
+                    $('.address-d').css('background', '#fff').css('color', '#2c4a93');
+                    $('.address-d').attr('dad', 'a');
+                    $('.address-d').attr('xad', 'a');
+                    //省份
+                    $('.address-x').css('background', '#fff').css('color', '#2c4a93');
+                    $('.address-x').attr('dad', 'a');
+                    $('.address-x').attr('xad', 'a');
+                    //地区取值框
+                    $(".alladdress").text("全部地区");
+                })
+
+                $('.tabcont-cont').mouseenter(function () {
+                    $(this).addClass('bgcolor1')
+                })
+                $('.tabcont-cont').mouseleave(function () {
+                    $(this).removeClass('bgcolor1')
+                })
+
+
+                $('.show-baocunlist').click(function () {
+                    if ($(this).attr('baocun') == 'a') {
+                        $('.show-baocunlist').attr('baocun', 'a')
+                        $('.show-baocunlist').css('background', '#fff').css('color', '#2c4a93')
+                        $(this).css('background', '#249cfa').css('color', '#fff')
+                        $(this).attr('baocun', 'b');
+                    } else {
+                        $(this).css('background', 'white').css('color', '#2c4a93')
+                        $(this).attr('baocun', 'a')
+                    }
+                })
+
+                $('.show-baocunlist img').click(function () {
+                    $(this).parent('.show-baocunlist').remove();
+                    var flag = false;
+                    $('div[hgfd="jj"]').each(function () {
+                        flag = true;
+                    })
+                    if (!flag) {
+                        $('div[djgfdhjsg="hhdbgf"]').hide();
+                    }
+					
+					var i=parseInt($('.show1').children('span').text())-1;
+					$('.show1').children('span').text(i);
+
+                })
+                if ($('.show-yibaocun').html() == '') {
+                    $(this).hide()
+                }
+
+                $('.baocun').click(function () {
+                    $('.savecesuccess-w').fadeIn(1000).delay(1000).fadeOut(1000);
+                })
+
+
+
+
+                $('.alladdress').click(function () {
+                    $('.address-n').slideToggle(500)
+                })
+                $('.address-d').click(function () {
+                    var type = $(this).data('type');
+                    if ($(this).attr('dad') == 'a') {
+                        $('div[data-type=' + type + ']').css('background', '#1e90ff').css('color', '#fff')
+                        //$(this).css('background','#1e90ff').css('color','#fff')
+                        //$(this).next('.address-x-w').css('background','#1e90ff').css('color','#fff')
+                        $('div[data-type=' + type + ']').attr('dad', 'b')
+                        $('div[data-type=' + type + ']').attr('xad', 'b')
+
+                        //$(this).next('.address-x-w').children('.address-x').attr('xad','b')
+                    } else {
+                        $('div[data-type=' + type + ']').css('background', '#fff').css('color', '#2c4a93')
+                        //$(this).next('.address-x-w').css('background','#fff').css('color','#2c4a93')
+                        $('div[data-type=' + type + ']').attr('dad', 'a')
+                        $('div[data-type=' + type + ']').attr('xad', 'a')
+
+                        //$(this).next('.address-x-w').children('.address-x').attr('xad','a')
+                    }
+                    lf();
+                    addaddress();
+                    // getcheckactivitys();
+
+                })
+                $('.address-x').click(function () {
+                    //alert(123)
+                    if ($(this).attr('xad') == 'a') {
+                        $(this).css('background', '#1e90ff').css('color', '#fff')
+                        $(this).attr('xad', 'b')
+
+                    } else {
+                        $(this).css('background', '#fff').css('color', '#2c4a93')
+                        $(this).attr('xad', 'a')
+
+                    }
+                    lf()
+                    addaddress()
+
+
+                })
+            })
+            function lf() {
+                $('.address-x').each(function () {
+                    var type = $(this).data('type');
+                    var cls = $(this).attr('xad');
+                    if (cls == 'a') {
+                        $('.address-d[data-type=' + type + ']').attr('dad', 'a')
+                        $('.address-d[data-type=' + type + ']').css('background', '#fff').css('color', '#2c4a93')
+                    }
+                })
+            }
+
+
+            function addaddress() {
+
+                var html = '';
+                var i = 1;
+                $('.address-x').each(function () {
+                    var cls = $(this).attr('xad')
+                    //  console.log(cls)
+                    if (cls == 'b') {
+                        html = html + $(this).text() + ' '
+                    }
+                })
+//                console.log(html)
+                if (html == '') {
+
+//                    html = '--全部地区-'
+                    html = '全部地区'
+
+                }
+                $('.alladdress').html(html + '<img src="../web_images/icon17.png" />')
+
+
+
+
+            }
+
+
+        </script>
+    <!--保存搜索条件成功提示-->
+    <div class="savecesuccess-w">
+        <div class="savecesuccess">已保存成功！</div>
+    </div>
+
+    <!--系统提示浮层-->
+    <div class="tishi-w" style="display:none;">
+        <div class="tishi">
+            <div class="create-lan-top">系统提示<span id="close-tishi"><img src="../web_images/icon05.png" /></span></div>
+            <div class="tishi-cont">
+
+                <div class="text" style="font-size:1.4em;">
+
+                    有活动已审核未提交请及时处理！
+                </div>
+
+            </div>
+            <div class="btn-box3">
+                <div class="btnbox3" style=" width:200px; margin-left:200px;">
+                    <button style="width:200px; height:60px; background:#249cfa; font-size:1.3em; color:#fff;" id="close-tishi1">我知道了</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--活动规则浮层-->
+    <div class="hd-guizebox">
+        <div class="hd-guizebox-n">
+            <div class="hd-guize-top">凌云平台会员超惠活动审核规则<img class="close2" src="../web_images/icon05.png" /></div>
+            <div class="space1"></div>
+            <div class="hd-guize-cont">
+                <div class="tit">活动审核规则详情</div>
+                <div class="nr">
+                    <h3>一、微信平台限制要求</h3>
+                           1、不能通过利益诱惑，诱导消费者分享、传播超惠活动，不能出现包括但不限于：现金奖励、实物奖品、虚拟奖品（红包、优惠券、代金券、积分、话费、流量、信息等）、集赞、拼团、分享可增加抽奖机会、中奖概率，以积分或金钱利益诱导用户分享、点击、点赞微信公众帐号文章。
+                    <br /> 2、不能用夸张言语来胁迫、引诱消费者，不能出现包括但不限于：“不转不是中国人”、“请好心人转发一下”、“转发后一生平安”、“转疯了”、“必转”、“转到你的朋友圈朋友都会感激你”等字样。
+                    <br /> 3、不能强制或诱导用户关注公众帐号，不能出现包括但不限于关注后查看答案、领取红包、关注后方可参与活动等字样。
+                    <br />
+                    <br/>
+                    <h3>二、内容规范性审核规则</h3>
+                         1、新活动上传后，其活动规则、商品命名、备注描述的意思要明确，如果有歧义或者让消费者理解困难的，则不能通过审核。
+                    <br /> 2、上传的活动海报图片大小不能超过1M，海报的推荐比例为16:9
+                    <br /> 3、上传的商品图像要清晰，不可遮挡或者模糊不清，并且图像内容要与活动方案一致，若图文不符则不能通过审核。
+                    <br /> 4、活动文案中禁止含有任何误导性的词汇，或者含有虚假用途。
+                    <br /> 5、不得在活动中进行任何形式的不正当竞争，贬低其他生产经营者的商品、服务。
+                    <br /> 6、参与活动的商品价格一定是在合理范围之内的，若出现价格虚高或者诱骗消费者等行为，则不能通过审核。
+                    <br /> 7、禁止销售假冒商品、或者未经授权的仿制品。
+                    <br /> 8、禁止销售过期产品，或任何有质量问题的产品。
+                    <br /> 9、禁止销售国家及国际性禁止或者限制销售的产品，成人用品用具、黄色刊物、性药及迷幻药等，不可出现成人暗示的图片或文字
+                    <br /> 10、遇到国际性，政治性的品牌，凌云平台有权不通过审核。
+                    <br /> 11、未经授权，所售商品不能含有任何国际知名产品的品牌、商标、标志或符号（譬如，印有苹果公司商标的mp3播放器等）。
+                    <br /> 12、活动一经上线，要严格按照活动规则执行，若会员在组织活动过程中，出现不诚信或违反国家法律法规行为，根据其具体情况，凌云平台拥有终身禁止该会员组织活动的权利。
+                    <br />
+                    <br/>
+                    <h3>三、其它违反国家法律法规的内容，包括但不限于：</h3>
+                           1、违反宪法确定的基本原则的；
+                    <br /> 2、使用或者变相使用中华人民共和国的国旗、国歌、国徽，军旗、军歌、军徽；
+                    <br /> 3、使用或者变相使用国家机关、国家机关工作人员的名义或者形象；
+                    <br /> 4、使用“国家级”、“最高级”、“最佳”等用语；
+                    <br /> 5、危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；
+                    <br /> 6、损害国家荣誉和利益的；
+                    <br /> 7、煽动民族仇恨、民族歧视，破坏民族团结的；
+                    <br /> 8、破坏国家宗教政策，宣扬邪教和封建迷信的；
+                    <br /> 9、散布谣言，扰乱社会秩序，破坏社会稳定的；
+                    <br /> 10、散布淫秽、色情、赌博、暴力、恐怖或者教唆犯罪的；
+                    <br /> 11、侮辱或者诽谤他人，侵害他人合法权益的；
+                    <br /> 12、煽动非法集会、结社、游行、示威、聚众扰乱社会秩序；
+                    <br /> 13、以非法民间组织名义活动的；
+                    <br /> 14、含有法律、行政法规禁止的其他内容的。
+                    
+                    <!-- <img src="../web_images/cs01.png" /> -->
+                </div>
+            </div>
+            <!-- 弃用的编辑文本-->
+            <!-- <div class="space1"></div> -->
+            <!-- <div class="zbtn-box-w1">
+                <div class="zbtn-box" style="width:160px; margin: 0 auto;">
+                    <button class="bg-red" id="hd-huize-change" style=" width:100%; margin:0 auto; float:none;">修改</button>
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+    <!--活动规则修改浮层-->
+    <div class="hd-guizebox-xg">
+        <div class="hd-guizebox-xg-n">
+            <div class="hd-guize-xg-top">活动审核规则详情<img class="close3" src="../web_images/icon05.png" /></div>
+            <div class="space1"></div>
+            <div class="hd-guize-cont" style=" overflow:hidden; overflow-Y:hidden; padding:0;width:785px; ">
+                <div class="tit">活动审核规则详情</div>
+                <script id="editor" type="text/plain" style="width:100%;"></script>
+            </div>
+            <div class="space2"></div>
+            <div class="zbtn-box-xg-w1">
+                <div class="zbtn-box" style="width:330px; margin: 0 auto; ">
+                    <button class="bg-green" id="hdboacun" sta="a" style=" width:160px; margin-right:10px;; float:left;">保存</button>
+                    <button class="bg-red" id="quxiao" style=" width:160px; margin:0 auto; float:left;">取消</button>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-n">
+        <div class="topnav">
+            <div class="logo">会员管理后台系统</div>
+            <ul class="nav">
+                <a href="hd-shenhe.html">
+                    <li class="navbg">活动审核</li>
+                </a>
+                <a href="sh-tongji.html">
+                    <li>审核统计</li>
+                </a>
+                <a href="xt-guanli.html">
+                    <li>系统管理</li>
+                </a>
+            </ul>
+            <span id ="Edition" class="right"></span>
+            <div class="userinfo">
+                <a href="javascript:;">
+                    <div class="loginout">退出</div>
+                </a>
+                <div class="username">平台审核员</div>
+                <div class="userimg"><img src="../web_images/cs02.jpg" /></div>
+            </div>
+        </div>
+        <div class="search">
+
+            <div class="address">
+                <span class="alladdress">全部地区<img src="../web_images/icon17.png" /></span>
+                <div class="address-n">
+                    <!--<div class="address-d" dad="a" data-type="1">【华北】</div>
+                        <div class="address-x-w">
+                            <div class="address-x" xad="a" data-type="1">北京市</div>
+                            <div class="address-x" xad="a" data-type="1">天津市</div>
+                            <div class="address-x" xad="a" data-type="1">河北省</div>
+                            <div class="address-x" xad="a" data-type="1">山西省</div>
+                            <div class="address-x" xad="a" data-type="1">内蒙古自治区</div>
+                        </div>
+
+                        <div class="address-d" dad="a"  data-type="2">【东北】</div>
+                        <div class="address-x-w">
+                            <div class="address-x" xad="a"  data-type="2">辽宁省</div>
+                            <div class="address-x" xad="a"  data-type="2">吉林省</div>
+                            <div class="address-x" xad="a"  data-type="2">黑龙江省</div>
+
+                        </div>
+
+                        <div class="address-d" dad="a" data-type="3">【华东】</div>
+                        <div class="address-x-w">
+                            <div class="address-x" xad="a" data-type="3">江苏省</div>
+                            <div class="address-x" xad="a" data-type="3">浙江省</div>
+                            <div class="address-x" xad="a" data-type="3">安徽省</div>
+                            <div class="address-x" xad="a" data-type="3">福建省</div>
+                            <div class="address-x" xad="a" data-type="3">江西省</div>
+                            <div class="address-x" xad="a" data-type="3">山东省</div>
+                        </div>-->
+                </div>
+            </div>
+            <select style="display:none;">
+                    <option>全部地区</option>
+                    <option>【华北】</option>
+                    <option>北京市</option>
+                    <option>天津市</option>
+                    <option>河北省</option>
+                    <option>山西省</option>
+                    <option>内蒙古自治区</option>
+                    <option>【东北】</option>
+                    <option>辽宁省</option>
+                    <option>吉林省</option>
+                    <option>黑龙江省</option>
+                    <option>【华东】</option>
+                    <option>江苏省</option>
+                    <option>浙江省</option>
+                    <option>安徽省</option>
+                    <option>福建省</option>
+                    <option>江西省</option>
+                    <option>山东省</option>
+
+                </select>
+            <select id="checktype">
+                    <option value="">全部类型</option>
+                    <option value="2">更正</option>
+                    <option value="1">普通</option>
+                </select>
+
+
+           <select id="activitytype" name="activitytype" >
+                 <!--<option value="">全部活动</option>
+                    <option value="1">超惠活动</option>
+                    <option value="2">店铺活动</option> -->
+                </select>
+
+            <select id="textQueryType" name="textQueryType">
+                   <!--  <option value="1">活动名称</option>
+                    <option value="2">活动编码</option>
+                    <option value="3">分销商名称</option> -->
+                </select> 
+                <!-- 齐枭飞添加的 全部活动，全部名称-->
+
+<!-- END -->
+
+            <input type="text" class="cz" id="queryText" />
+            <input type="text" class="time" id="datetimepicker7" />
+            <script type="text/javascript">
+                    var logic = function (currentDateTime) {
+                        if (currentDateTime.getDay() == 6) {
+                            this.setOptions({
+                                minTime: '11:00'
+                            });
+                        } else
+                            this.setOptions({
+                                minTime: '8:00'
+                            });
+                    };
+                    $('#datetimepicker7').datetimepicker({
+                        onChangeDateTime: logic,
+                        onShow: logic
+                    });
+                </script>
+
+            <button id="searchBtn">查询</button>
+            <button class="chongzhibtn">重置</button>
+            <div class="chongzhi" style="display:none;">重置</div>
+        </div>
+        <div class="statebox">
+            <div class="currenthdnum">当前共有<span>0</span>条待审核活动</div>
+            <div class="baocun">保存搜索条件</div>
+            <div class="yibaocun">
+                <show class="show1">已保存(<span>0</span>)<img src="../web_images/icon02.png" /></show>
+                <div class="show-yibaocun" djgfdhjsg="hhdbgf">
+                    <div class="show-baocunlist" baocun="a" hgfd="jj">华北+更正置顶+商铺活动商铺活动商铺活动商铺活动商铺活动商铺活动商铺活动商铺活动 <img src="../web_images/icon03.png" /></div>
+                    <div class="show-baocunlist" baocun="a" hgfd="jj">华北+更正置顶+商铺活动<img src="../web_images/icon03.png" /></div>
+                    <div class="show-baocunlist" baocun="a" hgfd="jj">华北+更正置顶+商铺活动<img src="../web_images/icon03.png" /></div>
+                </div>
+            </div>
+            <div class="hd-guize">活动审核规则》</div>
+        </div>
+        <div class="tabcont-z">
+            <div class="tabcont-n">
+                <div class="tabcont-tit">
+                    <div class="tabcont-tit-one percent1">活动名称/活动编码</div>
+                    <div class="tabcont-tit-one percent2">活动时间</div>
+                    <div class="tabcont-tit-one percent3">活动类型</div>
+                    <div class="tabcont-tit-one percent4">分销商名称</div>
+                    <div class="tabcont-tit-one percent5">联系人/联系电话</div>
+                    <div class="tabcont-tit-one percent6">沙盒域名</div>
+                    <div class="tabcont-tit-one percent7">地市</div>
+                    <div class="tabcont-tit-one percent8">活动提交时间↓</div>
+                    <div class="tabcont-tit-one percent9">操作</div>
+
+                </div>
+                <div id="activity_list_data"></div>
+                
+                <div class="allpage-w">
+                    <div class="page-w">
+                        <div class="s-page"><span>&lt;</span> <a href="#">上一页</a></div>
+                        <ul class="pagenum"></ul>
+                        <div class="x-page"><a href="#">下一页 </a><span>&gt;</span></div>
+                        <input type="hidden" id="currentPage" value="1" />
+                        <div class="pagetext">共<span id="totalPage"></span>页，到第<input type="text" id="designatedPage" />页<button id="goDesignatedPageBtn">确定</button></div>
+                    </div>
+                </div>
+                <!--<script>
+                    $(function () {
+                        $('.front').hide();
+                        $('.back').hide();
+                        var lis = $('.pagenum li'),
+                            page = getUrlParam('page'),//当面页数
+                            total_page = lis.size() - 2;//总页数
+                        if (page == null) {
+                            page = 1;
+                        }
+                        if (total_page > 5) {
+                            lis.hide();
+                            $('.pagenum').children().eq(page).show();
+                            //前面省略号
+                            if (page > 3) {
+                                $('.front').show();
+                            }
+                            if (page > 2) {
+                                $('.pagenum').children().eq(parseInt(page) - 2).show();
+                            }
+                            if (page > 1) {
+                                $('.pagenum').children().eq(parseInt(page) - 1).show();
+                            }
+                            //后面省略号
+                            if (parseInt(page) + 2 < total_page) {
+                                $('.back').show()
+                            }
+                            if (parseInt(page) + 1 <= total_page && parseInt(page) != total_page) {
+                                $('.pagenum').children().eq(parseInt(page) + 1).show();
+                            }
+                            if (parseInt(page) < total_page && parseInt(page) + 1 != total_page) {
+                                $('.pagenum').children().eq(parseInt(page) + 2).show();
+                            }
+                            if (page == 1) {
+                                $('.s-page').hide();
+                            }
+                            if (page == total_page) {
+                                $('.x-page').hide();
+                            }
+                        }
+                        lis.attr('class', '');
+                        $('.pagenum').children().eq(page).attr('class', 'pitchOn');
+                        function getUrlParam(name)
+                        {
+                            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                            if (r != null)
+                                return unescape(r[2]);
+                            return null; //返回参数值
+                        }
+                    })
+                </script>-->
+
+            </div>
+
+            <script type="text/javascript">
+
+//实例化编辑器--  已弃用
+//建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+               /* var ue = UE.getEditor('editor');
+
+                function isFocus(e) {
+                    alert(UE.getEditor('editor').isFocus());
+                    UE.dom.domUtils.preventDefault(e)
+                }
+                function setblur(e) {
+                    UE.getEditor('editor').blur();
+                    UE.dom.domUtils.preventDefault(e)
+                }
+                function insertHtml() {
+                    var value = prompt('插入html代码', '');
+                    UE.getEditor('editor').execCommand('insertHtml', value)
+                }
+                function createEditor() {
+                    enableBtn();
+                    UE.getEditor('editor');
+                }
+                function getAllHtml() {
+                    alert(UE.getEditor('editor').getAllHtml())
+                }
+                function getContent() {
+                    var arr = [];
+                    arr.push("使用editor.getContent()方法可以获得编辑器的内容");
+                    arr.push("内容为：");
+                    arr.push(UE.getEditor('editor').getContent());
+                    alert(arr.join("\n"));
+                }
+                function getPlainTxt() {
+                    var arr = [];
+                    arr.push("使用editor.getPlainTxt()方法可以获得编辑器的带格式的纯文本内容");
+                    arr.push("内容为：");
+                    arr.push(UE.getEditor('editor').getPlainTxt());
+                    alert(arr.join('\n'))
+                }
+                function setContent(isAppendTo) {
+                    var arr = [];
+                    arr.push("使用editor.setContent('欢迎使用ueditor')方法可以设置编辑器的内容");
+                    UE.getEditor('editor').setContent('欢迎使用ueditor', isAppendTo);
+                    alert(arr.join("\n"));
+                }
+                function setDisabled() {
+                    UE.getEditor('editor').setDisabled('fullscreen');
+                    disableBtn("enable");
+                }
+
+                function setEnabled() {
+                    UE.getEditor('editor').setEnabled();
+                    enableBtn();
+                }
+
+                function getText() {
+//当你点击按钮时编辑区域已经失去了焦点，如果直接用getText将不会得到内容，所以要在选回来，然后取得内容
+                    var range = UE.getEditor('editor').selection.getRange();
+                    range.select();
+                    var txt = UE.getEditor('editor').selection.getText();
+                    alert(txt)
+                }
+
+                function getContentTxt() {
+                    var arr = [];
+                    arr.push("使用editor.getContentTxt()方法可以获得编辑器的纯文本内容");
+                    arr.push("编辑器的纯文本内容为：");
+                    arr.push(UE.getEditor('editor').getContentTxt());
+                    alert(arr.join("\n"));
+                }
+                function hasContent() {
+                    var arr = [];
+                    arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
+                    arr.push("判断结果为：");
+                    arr.push(UE.getEditor('editor').hasContents());
+                    alert(arr.join("\n"));
+                }
+                function setFocus() {
+                    UE.getEditor('editor').focus();
+                }
+                function deleteEditor() {
+                    disableBtn();
+                    UE.getEditor('editor').destroy();
+                }
+                function disableBtn(str) {
+                    var div = document.getElementById('btns');
+                    var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+                    for (var i = 0, btn; btn = btns[i++]; ) {
+                        if (btn.id == str) {
+                            UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+                        } else {
+                            btn.setAttribute("disabled", "true");
+                        }
+                    }
+                }
+                function enableBtn() {
+                    var div = document.getElementById('btns');
+                    var btns = UE.dom.domUtils.getElementsByTagName(div, "button");
+                    for (var i = 0, btn; btn = btns[i++]; ) {
+                        UE.dom.domUtils.removeAttributes(btn, ["disabled"]);
+                    }
+                }
+
+                function getLocalData() {
+                    alert(UE.getEditor('editor').execCommand("getlocaldata"));
+                }
+
+                function clearLocalData() {
+                    UE.getEditor('editor').execCommand("clearlocaldata");
+                    alert("已清空草稿箱")
+                }
+                function setTextBoxHeight() {
+                    var bodye = $('body[contenteditable="true"]');
+                    bodye.attr('height', '300');
+                    UE.getEditor('editor').setHeight(500);
+                }
+                $('#hd-huize-change').click(function () {
+                    //var bodye = $('body[contenteditable="true"]');
+                    //bodye.attr('height', '300');
+                    //alert(bodye);
+                    setInter = setInterval("setTextBoxHeight()", 20);
+
+                    $('.hd-guizebox').hide()
+                    $('.hd-guizebox-xg').show()
+                    $('.hd-guizebox-xg').animate({'right': '0'}, 300)
+                    $('.hd-guize-xg-top').animate({'right': '0'}, 300)
+                    $('.zbtn-box-xg-w1').animate({'right': '0'}, 300)
+                })*/
+            </script>
+        </div>
+ 
+
+
+
+            
+</body>
+
+</html>

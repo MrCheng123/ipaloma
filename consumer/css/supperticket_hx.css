@@ -1,0 +1,248 @@
+﻿html, body {
+    height: calc(100% - 60px);
+     height: -moz-calc(100% - 60px);
+    height: -webkit-calc(100% - 60px);
+}
+
+.div-list {
+    width: 100%;
+    height: auto;
+    background: url(/consumer/image/blx.png) repeat-x top;
+    background-size: auto 5px;
+    margin-top: 20px;
+    border-bottom: solid 2px #ccc;
+}
+
+#page2 > .div-list {
+    background: url(/consumer/image/blx.png) repeat-x bottom;
+    background-size: auto 5px;
+    border-bottom: none;
+    margin-top: 10px;
+}
+
+.div-list .div-top {
+    width: calc(100% - 20px);
+    width: -moz-calc(100% - 20px);
+    width: -webkit-calc(100% - 20px);
+    height: auto;
+    margin: 0 auto;
+    padding-top: 15px;
+    margin-bottom: 10px;
+}
+
+    .div-list .div-top .div-img {
+        width: 80px;
+        height: 80px;
+        float: left;
+    }
+
+        .div-list .div-top .div-img img {
+            width: 80px;
+            height: 80px;
+            border-radius: 2px;
+        }
+
+    .div-list .div-top .div-text {
+        width: calc(100% - 95px);
+        width: -moz-calc(100% - 95px);
+        width: -webkit-calc(100% - 95px);
+        height: auto;
+        float: right;margin-bottom:10px;
+    }
+
+        .div-list .div-top .div-text span {
+            color: #fff;
+            padding: 0px 5px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+.font-jiangjia {
+    background: #18b326;
+}
+
+.font-youli {
+    background: #f77d2e;
+}
+
+.font-maizeng {
+    background: #ffba00;
+}
+
+.font-taocan {
+    background: #5b90b8;
+}
+
+.div-list .div-top .div-text ul li {
+    float: left;
+}
+
+    .div-list .div-top .div-text ul li:first-child {
+    }
+
+        .div-list .div-top .div-text ul li:first-child p {
+            color: red;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+            .div-list .div-top .div-text ul li:first-child p small {
+                font-size: 13px;
+                color: #ccc;
+                text-decoration: line-through;
+            }
+
+    .div-list .div-top .div-text ul li:last-child {
+        text-align: right;
+        white-space: nowrap;
+        color: #ff6600; max-width:124px;
+    }
+
+    .div-list .div-top .div-text ul li span {
+        color: #fff;
+        background: #ff6600;
+        padding: 0px 5px;
+        border-radius: 10px;
+    }
+
+.jiajian {
+    width: 122px;
+    border: solid 1px #ff6600;
+    border-radius: 5px;
+    height: 35px; float:right; margin-top:7px
+}
+
+    .jiajian > li {
+        width:40px; height:35px;
+        float: left;
+        line-height: 35px;
+        text-align: center;
+        color: #ff6600;
+        margin-top: 0px;
+    }
+        .jiajian .shuzi input {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            border: none;
+            text-align: center;
+            font-size: 20px;
+            height: 35px;
+            line-height: 35px;
+        }
+
+#subtractions {
+    background: url(/consumer/image/supercoupons/subtractions.png) no-repeat center center;
+    background-size: 70% auto;
+}
+
+#subtractions_gray {
+    background: url(/consumer/image/supercoupons/subtractions_gray.png) no-repeat center center;
+    background-size: 70% auto;
+}
+
+#additions {
+    background: url(/consumer/image/supercoupons/additions.png) no-repeat center center;
+    background-size: 70% auto;
+}
+
+#additions_gray {
+    background: url(/consumer/image/supercoupons/additions_gray.png) no-repeat center center;
+    background-size: 70% auto;
+}
+
+.div-remark {
+    border-top: solid 1px #ccc;
+    width: calc(100% - 20px);
+    width: -moz-calc(100% - 20px);
+    width: -webkit-calc(100% - 20px);
+    height: auto;
+    margin: 0 auto;
+    padding: 12px 0px;
+    color: #a7a7a7;
+    font-size: 13px;
+    word-break: break-all; /*支持IE，chrome，FF不支持*/
+    word-wrap: break-word; /*支持IE，chrome，FF*/
+}
+
+.btn_css1 {
+    width: 165px;
+    height: 50px;
+    background: url(/consumer/image/supercoupons/btn_1.png) no-repeat;
+    text-align: center;
+    line-height: 50px;
+    color: #ff6600;
+    background-size: 165px 50px;
+    font-size: 22px;
+}
+
+.btn_css2 {
+    width: 118px;
+    height: 36px;
+    background: url(/consumer/image/supercoupons/btn_1.png) no-repeat;
+    text-align: center;
+    line-height: 36px;
+    color: #ff6600;
+    background-size: 118px 36px;
+    font-size: 19px;
+}
+
+.btn_css3 {
+    width: 118px;
+    height: 36px;
+    background: url(/consumer/image/supercoupons/btn_2.png) no-repeat;
+    text-align: center;
+    line-height: 36px;
+    color: red;
+    background-size: 118px 36px;
+    font-size: 19px;
+}
+/*---------------------page2----------------------*/
+
+
+#page_top {
+    width: 100%;
+    min-height: 55%;
+}
+
+#page_middle {
+    width: 100%;
+    height: 50px;
+}
+
+    #page_middle > li {
+        width:initial;
+        float: left;
+        height: 50px;
+    }
+
+        #page_middle > li #p_yxchj {
+            height: 30px;
+            line-height: 30px;
+            border: solid 1px #ff6600;
+            border-radius: 0 20px 20px 0;
+            border-left: none;
+            margin-top: 10px;
+            padding:0 10px;
+        }
+
+        #page_middle > li > ul {
+            width: 100%;
+            float: right;
+            height: 40px;
+            padding: 5px 10px 0 0;
+        }
+
+            #page_middle > li > ul > li {
+                float: right;
+				margin-left: 3px;
+            }
+				#page_middle > li > ul > li >p{
+					margin-top: 8px;
+				}
+/*新增*/
+.main_content h1{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+.main_content dl dt img{height: 1rem;}
+.main_content dl dd{height: 1rem;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;line-height: .33rem!important;word-break:break-all;}
+.content_box{height: 2rem!important;margin-bottom: 0.05rem;}
+.share_main .main_content{max-height: 5rem;}

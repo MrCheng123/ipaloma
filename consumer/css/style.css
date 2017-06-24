@@ -1,0 +1,1380 @@
+﻿@charset "utf-8";
+.ms-controller {
+    visibility: hidden;
+}
+
+/* CSS Document */
+body{
+    list-style:none !important;
+    line-height:inherit;
+    margin:0; 
+    padding:0;  
+    max-width:800px;
+    margin:0 auto;
+    font-size:15px; 
+    font-family:微软雅黑; 
+    background:#cccccc; 
+}
+ul,li,ol,li,p,h1,h2,h3,h4,h5,h6{
+    list-style:none; 
+    margin:0; 
+    padding:0;
+}
+a{
+    color:#FFF; 
+    text-decoration:none;
+}
+a:hover{
+    color:#fff; 
+    text-decoration:none;
+}
+a img{
+    border:0;
+}
+
+
+.container-w{
+    width:100%;
+    overflow:hidden;
+}
+.container-white{
+    width:100%; 
+    overflow:hidden;
+}
+
+.container-n{
+    width:96%; 
+    overflow:hidden; 
+    margin:0 auto;
+}
+
+
+.clear { clear:both
+}
+
+/*附近门店样式*/
+.store1-w{
+    width:100%; 
+    overflow:hidden;
+    padding:10px 0;
+    margin-bottom:1px; 
+    background:#fff; 
+
+}
+.store1-w1{
+    width:100%; 
+    overflow:hidden; 
+    padding:10px 0;
+    background:#fff; 
+}
+.store2-w{
+    width:100%; 
+    overflow:hidden; 
+    padding:8px 0;
+    margin-bottom:1px; 
+    background:#f3f3f3;
+}
+
+.store1-left .storerimg{
+    float:left;
+    width:60px; 
+    height:60px;
+    margin-right:2%;
+}
+.store1-left .storerimg img{
+    width:100%; 
+    height:100%;
+}
+
+.storename{
+    width:100%; 
+    overflow:hidden;
+    line-height:30px;
+    font-size:1.1em; 
+
+    color:#000; 
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
+.textinfo .active-num{
+    width:100%; 
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size:1em; 
+    color:#666666;
+}
+.textinfo .active-num font{
+    color:#ff6600;
+}
+.textinfo .active-num span{
+    float:right; 
+    color:#cccccc; 
+}
+
+
+.store1-right img{
+    width:25px; 
+    height:25px; 
+    padding-top:5px;
+}
+
+.store1-right1 img{
+    width:16px; 
+    height:16px; 
+}
+.active-w{
+    width:100%;
+    overflow:hidden;
+}
+.active-n{
+    width:96%;
+    overflow:hidden;
+    padding:0 2%;
+
+    margin:0 auto 1px;
+    background:#f3f3f3;
+}
+.active-n1{
+    width:96%;
+    padding:0 2%;
+    overflow:hidden;
+
+    margin:0 auto;
+    background:#f3f3f3;  
+}
+.bgwhite{
+    background:#fff;
+}
+.fbold{
+    font-weight:normal;
+}
+.showinline{
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.active-label{padding:10px 0 0 0;}
+.active-label .labellist{
+    width:30px; 
+    height:20px;
+    box-sizing:border-box;
+    line-height:20px;
+    font-size:0.7em;
+
+    color:#eb043e; 
+    text-align:center;
+    border-radius:5px;
+    border:1px solid #eb043e;
+
+}
+.proname{
+    width:100%; 
+    overflow:hidden; 
+    font-size:1.1em; 
+    color:#000; 
+    line-height:20px;
+    word-wrap:break-word;
+    word-break:all;
+}
+.proinfo{
+    width:100%; 
+    overflow:hidden; 
+    margin-top:5px;
+}
+.nowprice{
+    float:left; 
+    width:auto; 
+    margin-right:10px;
+    line-height:30px; 
+    color:#ff6600; 
+    font-size:0.8em;
+}
+.nowprice span{
+    font-size:1.5em; 
+}
+.preprice{
+    float:left;
+    width:auto;
+    line-height:16px;
+    font-size:0.8em;
+}
+.preprice .discount{
+    widht:auto;
+    overflow:hidden;
+    padding:0 5px; 
+    color:#fff;
+    text-align:center;
+    background:#fa9e61;
+    border-radius:8px;
+}
+.preprice .price{
+    width:auto; 
+    color:#cccccc;
+    text-decoration:line-through;
+}
+.preprice .gift{
+    width:auto; 
+    overflow:hidden;
+    padding:0 5px;
+    margin:8px 0;
+    color:#fff;
+    text-align:center;
+    background:#fa9e61;
+    border-radius:8px;  
+}
+
+.giftinfo{
+    width:100%;
+    overflow:hidden;
+    margin-top:5px;
+}
+
+.zeng img{
+    width:22px;
+    height:22px;
+}
+
+
+.activebox-right .proimgbox{
+    position:relative;
+    float:right;
+    width:80px;
+    height:80px;
+    margin-right:0px;
+
+
+}
+.activebox-right .proimgbox .img{
+    position:absolute;
+    left:0;
+    top:0; 
+    z-index:901;
+    width:100%;
+    height:100%;
+}
+.activebox-right .proimgbox .img img{
+    width:100%;
+    height:100%;
+}
+.pname1{
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index:902;
+    width:100%;
+    height:16px;
+    line-height:16px;
+    font-size:0.7em;
+    text-align:center;
+    color:#fff;
+    background:rgba(252,53,58,0.8);  
+}
+.pname1 span{
+    font-size:1.4em;
+}
+.pname2{
+    position:absolute;
+    left:0;
+    bottom:0;
+    z-index:902;
+    width:100%;
+    height:16px;
+    line-height:16px;
+    font-size:0.7em;
+    color:#fff;
+    text-align:center;
+    background:rgba(108,108,108,0.8);  
+}
+.pname2 span{
+    font-size:1.4em;
+}
+
+.activebox-right .proimgbox .biaoqian{
+    position:absolute;
+    right:0; top:0;
+    z-index:999;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:rgba(255,0,51,0.8);
+    color:#fff;
+    font-size:0.5em;
+    line-height:22px;
+    text-align:center;}
+.space{
+    width:100%;
+    height:84px;
+    clear:both;
+}
+
+
+.logo{
+    float:left;
+    width:19%;
+    height:100%;
+    text-align:center;
+    background:#fff; 
+}
+.logo img{
+    width:40px;
+    height:40px;
+    margin-top:5px;
+}
+.nav{
+    float:left;
+    width:27%;
+    height:100%;
+    overflow:hidden;
+    text-align:center;
+    font-size:0.8em;
+    color:#fff;
+    background:#d6d6d6; border-right:solid 1px #ccc; box-sizing:border-box
+}
+ 
+.nav img{
+    width:20px;
+    margin-top:8px;
+}
+
+
+.share img{
+    width:20px;
+    vertical-align:middle;
+}
+
+/*附近门店内页样式*/
+.storerimg1{
+    position:relative;
+    width:100%;
+    overflow:hidden; 
+}
+.storerimg1 .img{
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:901;
+    width:100%; height:100%; overflow:hidden;
+}
+.storerimg1 .img img{
+    width:100%;
+    height:85%;
+}
+.storerimg1 .storename1{
+    position:absolute;
+    left:0;
+    bottom:0; 
+    z-index:902;
+    width:96%;
+    height:36px;
+    padding:0 2%; 
+    line-height:36px;
+    font-size:1.2em;
+    color:#fff;
+    background:rgba(0,0,0,0.8); 
+}
+.storerimg1 .storename1 span{
+    float:right;
+    font-size:0.8em;
+}
+.address{
+    width:100%;
+    overflow:hidden;
+    line-height:16px;
+    color:#000;
+    font-size:0.9em;
+}
+.title{
+    width:96%;
+    overflow:hidden;
+    padding:0 2%;
+    margin-top:4px; margin-bottom:1px;
+    line-height:40px;
+    color:#ff6600;
+    font-size:1.2em;
+    font-weight:bold;
+    background:#fff;
+}
+.title span{ color:#999999;}
+
+.tip-w{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:9999; 
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.8);
+}
+.tip{
+    width:100%;
+    overflow:hidden;
+    text-align:center;
+}
+.tip img{
+    width:100%;
+}
+
+/*附近超惠页面样式*/
+.remark{
+    position:relative; 
+    width:96%;
+    overflow:hidden;
+    padding:10px 2%;
+    color:#666666;
+    font-size:0.8em;
+    line-height:20px;
+    background:#f3f3f3; 
+}
+.remark:before{
+    position:absolute;
+    left:10%;
+    top:-8px;
+    width:15px;
+    height:15px;
+    content:"";
+    background:#fff;
+    -webkit-transform:rotate(45deg);
+}
+.remark span{
+    color:#000;
+}
+.storeintro{
+    width:96%;
+    height:30px;
+    overflow:hidden;
+    padding:5px 2%;
+    margin:0 auto;
+    line-height:30px;
+    border-top:1px solid #f3f3f3;
+    background:#fff; 
+}
+
+.storeintro-left span{
+    float:right;
+    margin-right:8px;
+    color:#cccccc;
+    font-size:0.8em; 
+}
+.storeintro-left img{
+    height:20px;
+    margin-right:5px;
+    vertical-align:middle;
+}
+
+.morestore{
+    position:relative;
+    float:right;
+    width:30px;
+    height:30px;
+    margin:0 5px 0 0;
+    border:1px solid #cccccc;
+    border-radius:50%; 
+    box-sizing:border-box; 
+}
+.morestore .img{
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:98;
+    width:100%;
+    height:100%;
+    overflow:hidden; 
+    border-radius:50%; 
+}
+.morestore .img img{
+    width:100%;
+    height:100%;
+}
+.morestore .storenum{
+    position: absolute;
+top: -5px;
+right: -5px;
+z-index: 99;
+width: 20px;
+height: 20px;
+overflow: hidden;
+line-height: 20px;
+color: #fff;
+font-size: 0.6em;
+text-align: center;
+background: #ff6600;
+border-radius: 50%;
+}
+.prolist{
+    width:100%;
+    overflow:hidden;
+    margin-bottom:3px;
+}
+.storelist{
+    width:100%;
+    overflow:hidden;
+    margin-bottom:3px;
+}
+.address-single{
+    width:96%;
+    height:35px;
+    overflow:hidden;
+    padding:0 2%;
+    margin:0 auto;
+    line-height:35px;
+    color:#333;
+    font-size:0.8em;
+    background:#fff;
+    border-top:1px solid #e5e5e5; 
+}
+.address-single span{
+    float:right; color:#ccc;
+}
+
+
+/*竖屏样式*/
+@media screen and (min-width: 800px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:87%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:86%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:11%;
+        text-align:center; 
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5; 
+        box-sizing:border-box;
+    }
+    .store1-right1{
+        float:right; 
+        width:11%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:5%;
+        overflow:hidden;
+    }
+    .activebox{
+        float:left; 
+        width:95%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:88%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:12%; 
+    }
+
+    .storeintro-left{
+        float:left;
+        width:93%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:7%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box;
+    }
+    .zeng{
+        float:left;
+        width:4%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:95%;
+        font-size:1em;
+        color:#333;
+        line-height:20px;
+    }
+
+    .bottomnav{
+        position:fixed;
+        left:50%;
+        margin-left:-400px;
+        bottom:0;
+        z-index:999;
+        width:800px;
+        height:50px;
+    }
+    .share{
+        position:fixed;
+        left:50%;
+        margin-left:-400px;
+        bottom:50px;
+        z-index:999;
+        width:800px;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+
+}
+@media screen and (min-width: 600px) and (max-width:799px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:85%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:84%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:13%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .store1-right1{
+        float:right; 
+        width:13%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+    .active-label{
+
+        float:left;
+        width:6%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:94%;
+        overflow:hidden;
+        padding:10px .0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:84%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:16%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:92%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:8%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .zeng{
+        float:left;
+        width:6%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:93%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media screen and (min-width: 480px) and (max-width:599px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:83%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:80%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right; 
+        width:15%;
+        text-align:center;
+        box-sizing:border-box;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5; 
+    }
+    .store1-right1{
+        float:right; 
+        width:15%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:8%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:92%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+
+    }
+    .activebox-left{
+        float:left;
+        width:80%;
+        overflow:hidden;
+    }
+    .activebox-right{
+        float:right;
+        width:20%;
+    }
+
+    .storeintro-left{
+        float:left; 
+        width:90%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:10%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:7%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:92%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+
+    }
+
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media screen and (min-width: 414px) and (max-width:479px) and (orientation:portrait){
+    .store1-left{
+        width:83%;
+        float:left;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:78%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:15%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5; 
+        box-sizing:border-box;  
+    }
+
+
+    .store1-right1{
+        float:right; 
+        width:15%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+    .active-label{
+
+        float:left;
+        width:9%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:91%;
+        padding:10px 0;
+        box-sizing:border-box;
+        overflow:hidden;  
+    }
+    .activebox-left{
+        float:left;
+        width:77%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:23%; 
+    }
+    .storeintro-left{
+        float:left;
+        width:88%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:12%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box;
+    }
+    .zeng{
+        float:left;
+        width:8%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:91%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media screen and (min-width: 360px) and (max-width:413px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:80%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:74%;
+        overflow: hidden;}
+    .store1-right{
+        float:right;
+        width:18%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        border-left:1px solid #e5e5e5; 
+        line-height:20px;box-sizing:border-box;
+    }
+    .store1-right1{
+        float:right; 
+        width:18%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+
+    .active-label{
+
+        float:left;
+        width:10%;
+        overflow:hidden;
+    }
+    .activebox{
+        float:left; 
+        width:90%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:74%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        float:right;
+        width:26%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:87%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:13%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:10%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:89%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media screen and (min-width: 320px) and (max-width:359px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:81%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:72%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:17%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5; 
+        box-sizing:border-box;  
+    }
+    .store1-right1{
+        float:right; 
+        width:17%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:11%;
+        overflow:hidden; 
+    }
+    .activebox{
+        float:left;
+        width:89%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:70%;
+        overflow:hidden; 
+    }
+    .activebox-right{
+        width:30%;
+        float:right;
+    }
+
+    .storeintro-left{
+        float:left; 
+        width:86%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:14%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box; 
+    }
+    .zeng{
+        float:left;
+        width:12%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:87%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media screen and (min-width: 240px) and (max-width:319px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:83%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:66%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:15%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;  
+    }
+    .store1-right1{
+        float:right; 
+        width:15%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:14%;
+        overflow:hidden;
+    }
+    .activebox{
+        float:left;
+        width:86%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:58%;
+        overflow:hidden;
+    }
+    .activebox-right{
+        float:right;
+        width:35%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:84%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:16%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box;
+    }
+    .zeng{
+        float:left;
+        width:16%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:83%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+@media screen and (max-width:239px) and (orientation:portrait){
+    .store1-left{
+        float:left;
+        width:81%;
+        padding-left:2%;
+    }
+    .store1-left .textinfo{
+        float:left;
+        width:66%;
+        overflow: hidden;
+    }
+    .store1-right{
+        float:right;
+        width:17%;
+        text-align:center;
+        color:#ff6600;
+        font-size:0.7em;
+        line-height:20px;
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;  
+    }
+    .store1-right1{
+        float:right; 
+        width:17%; 
+        font-size:0.6em; 
+        color:#ff6600;
+        text-align:center; 
+        line-height:14px; 
+        border-left:1px solid #e5e5e5;
+        box-sizing:border-box;
+    }
+
+    .active-label{
+
+        float:left;
+        width:14%;
+        overflow:hidden;
+    }
+    .activebox{
+        float:left;
+        width:86%;
+        overflow:hidden;
+        padding:10px 0;
+        box-sizing:border-box;
+    }
+    .activebox-left{
+        float:left;
+        width:59%;
+        overflow:hidden;
+    }
+    .activebox-right{
+        float:right;
+        width:34%;
+    }
+
+    .storeintro-left{
+        float:left;
+        width:84%;
+        overflow:hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        color:#666666;
+        font-size:1em;
+    }
+    .storeintro-right{
+        float:right;
+        width:16%;
+        border-left:1px solid #f3f3f3;
+        box-sizing:border-box;
+    }
+    .zeng{
+        float:left;
+        width:16%;
+        overflow:hidden;
+        margin-right:1%;
+    }
+    .zproname{
+        float:left;
+        width:83%;
+        color:#333;
+        font-size:1em;
+        line-height:20px;
+    }
+    .bottomnav{
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:999;
+        width:100%;
+        height:50px;
+
+    }
+    .share{
+        position:fixed;
+        left:0;
+        bottom:50px;
+        z-index:999;
+        width:100%;
+        height:34px;
+        line-height:34px;
+        color:#fff;
+        text-align:center;
+        background:rgba(0,0,0,0.6);
+    }
+}
+
+
+

@@ -1,0 +1,697 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <title>店铺信息</title>
+
+    <link rel="stylesheet" href="../css/weui.min.css" />
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link rel="stylesheet" href="/retailer/css/weixintips.css" />
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/jquery/utitlity.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script type="text/javascript" src="/js/wx/location.js"></script>    
+    <script src="/retailer/js/lib/common.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <style>
+        .curr-addr {
+            background: #f1efef;
+            box-sizing: border-box;
+            padding: 5px 12px;
+            min-height: 90px;
+            line-height: 22px;
+            overflow: hidden;
+            width: 100%;
+            color: #b3b2b2;
+            font-size: 15px; /*border-bottom: 1px solid #d9d9d9;*/
+        }
+
+        .btn {
+            font-size: 14px;
+            background: #2bc9be;
+            color: #fff;
+            border: 0;
+            padding: 7px 10px;
+            border-radius: 20px;
+            float: right;
+            -webkit-appearance: none;
+            font-family: "微软雅黑";
+            outline: none;
+        }
+
+        .btn-d2 {
+            font-size: 14px;
+            background: #d2d2d2;
+            color: #fff;
+            border: 0;
+            padding: 7px 10px;
+            border-radius: 20px;
+            float: right;
+            -webkit-appearance: none;
+            font-family: "微软雅黑";
+            outline: none;
+        }
+
+        .btn-know {
+            font-size: 14px;
+            background: #ffffff;
+            color: #ffa162;
+            border: 0;
+            padding: 7px 10px;
+            border-radius: 20px;
+            -webkit-appearance: none;
+            font-family: "微软雅黑";
+            outline: none;
+            margin: 8px auto;
+            text-align: center;
+        }
+
+        button.weui_btn, input.weui_btn {
+            width: 100%;
+            border-width: 0;
+            outline: 0;
+            -webkit-appearance: none;
+            font-family: "微软雅黑";
+        }
+
+        body {
+            line-height: 1.6;
+            font-family: "微软雅黑";
+        }
+
+        .weui_input {
+            width: 100%;
+            border: 0;
+            outline: 0;
+            -webkit-appearance: none;
+            background-color: transparent;
+            font-size: inherit;
+            color: inherit;
+            height: 1.41176471em;
+            line-height: 1.41176471;
+            font-family: "微软雅黑";
+        }
+
+        .weui_Kong {
+            width: 100%;
+            height: auto;
+        }
+
+        .weui_top3em {
+            margin-top: 0;
+        }
+
+        @font-face {
+            font-family: 'HeydingsCommonIconsRegular';
+            src: url('font/heydings_icons-webfont.eot');
+            src: url('font/heydings_icons-webfont.eot?#iefix') format('embedded-opentype'), url('font/heydings_icons-webfont.woff') format('woff'), url('font/heydings_icons-webfont.ttf') format('truetype'), url('font/heydings_icons-webfont.svg#HeydingsCommonIconsRegular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        #container {
+            width: 100%;
+        }
+
+        .tooltip p {
+            font-size: 14px;
+            padding-left: 16px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .tooltip {
+            width: 100%;
+            height: 140px;
+            border-radius: 3px;
+            position:absolute;
+            left:0px;
+            top:140px;
+            background: #fcc39c;
+            color: #ffffff;
+            -webkit-transition: margin .5s ease-in-out;
+            -moz-transition: margin .5s ease-in-out;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .arrow {
+            position: absolute;
+            margin: -1px 201px 0;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #fcc39c;
+        }
+
+        .tan-header {
+            height: 33px;
+            line-height: 33px;
+            background: url(../image/tan3.png) 3px center no-repeat #ffa467;
+        }
+    </style>
+    <style>
+        .bd-bg {
+            padding-left: 40px;
+            box-sizing: border-box;
+            background: url(../image/a.png) no-repeat left center;
+            background-size: 40px;
+        }
+
+        .shop,
+        .store,
+        .addr {
+            padding-left: 25px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .shop {
+            background: url(../image/g.png) no-repeat left center;
+            background-size: 20px;
+            text-overflow: ellipsis;
+            height: 25px;
+            line-height: 25px;
+            white-space: nowrap;
+        }
+
+        .store {
+            background: url(../image/s.png) no-repeat left center;
+            background-size: 20px;
+            text-overflow: ellipsis;
+            height: 25px;
+            line-height: 28px;
+            white-space: nowrap;
+            margin-top: 5px;
+        }
+
+        .addr {
+            background: url(../image/addr.png) no-repeat left 3px;
+            background-size: 20px;
+            height: 45px;
+            overflow: hidden;
+            line-height: 22px;
+            margin-top: 2px;
+        }
+
+        .s-box {
+            border-radius: 3px;
+            width: 94%;
+            left: 3%;
+            top: 200px;
+            position: absolute;
+            z-index: 101;
+            box-sizing: border-box;
+            overflow: inherit;
+            text-align: center;
+        }
+
+            .s-box:last-child {
+                border: 0;
+            }
+
+            .s-box .cont {
+                background: #17a297;
+                padding: 10px 30px;
+                line-height: 25px;
+                color: #fff;
+                text-align: center;
+            }
+
+                .s-box .cont a {
+                    background: #17a297;
+                    padding: 10px 30px;
+                    line-height: 25px;
+                    color: #fff;
+                    text-align: center;
+                }
+
+        .s-close {
+            background: url(../image/close.png) no-repeat center center;
+            width: 35px;
+            height: 35px;
+            background-size: 35px;
+            position: absolute;
+            right: -8px;
+            top: -13px;
+            z-index: 102;
+        }
+
+        .lazyout {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            z-index: 100;
+            position: absolute;
+        }
+
+        body {
+            line-height: 1.6;
+            font-family: "微软雅黑";
+        }
+
+        .btn-know2 {
+            font-size: 14px;
+            background: #2bc9be;
+            color: #fff;
+            border: 0;
+            padding: 7px 10px;
+            border-radius: 20px;
+            -webkit-appearance: none;
+            font-family: "微软雅黑";
+            outline: none;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .weui_btn_area {
+            margin: 1.17647059em 15px .3em;
+            margin-top: 20%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bd">
+
+            <div class="clear"></div>
+            <form id="fm" name="fm">
+                <input id="picture_url" name="picture_url" type="hidden" />
+                <!--图片上传-->
+                <div class="weui_cells weui_cells_form weui_top3em">
+                    <div class="weui_cell">
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <div class="weui_uploader">
+                                <div class="weui_uploader_bd">
+                                    <div class="weui_uploader_title_left">店铺图片</div>
+                                    <div class="weui_uploader_input_wrp">
+                                        <input name="picture_url_file" id="picture_url_file" class="weui_uploader_input" type="file" accept="image/jpg,image/jpeg,image/png,image/gif" multiple=multiple />
+                                    </div>
+                                    <ul class="weui_uploader_files">
+                                        <li class="weui_uploader_file"> <img id="upload_img" style="width: 100%;height:79px; display: none;border:0"> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--信息修改或提交-->
+                <div class="weui_cells weui_cells_form">
+                    <div class="weui_cell">
+                        <div class="weui_cell_hd">
+                            <label class="weui_label">店铺：</label>
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input id="updatename" name="retailername" maxlength="50" class="weui_input" type="text" placeholder="请输入店铺名称" />
+                        </div>
+                    </div>
+                    <div class="weui_cell">
+                        <div class="weui_cell_hd">
+                            <label class="weui_label">地址：</label>
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input id="address" name="address" class="weui_input" style="width:98%;" maxlength="100" type="text" placeholder="请输入详细地址" />
+                        </div>
+                    </div>
+                    <div class="curr-addr" id="curr-addr">
+                        <div class="adress1" id="addressmsgdiv">
+                            <img src="../image/tan2.png" style="vertical-align:middle; margin-right:2px;" />
+                            <label id="information"></label><label id="addressinformation"></label>
+                        </div>
+                        <label id="addre"></label>
+                        <div style="margin-top:20px;">
+                            <table width="80%" border="0" style="float:right;">
+                                <tr>
+                                    <td>
+                                        <input type="button" class="btn" id="useCurrentAddr" value="重新定位" onclick="getAddrAgain()" />                                        
+                                    </td>
+                                    <td>
+                                        <div id="container">
+                                            <div class="item">
+                                                <h1>
+                                                    <input type="button" class="btn-d2" id="setaddress" value="使用当前位置"/>
+                                                </h1>                                                
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><img id="imgId" src="../image/i.png" style="vertical-align:middle; margin-left:3px;" /></td>
+                                </tr>
+                            </table>                           
+                        </div>
+                    </div>
+                    <div class="weui_cell" style=" border-bottom:solid #d9d9d9 1px;">
+                        <div class="weui_cell_hd">
+                            <label class="weui_label">电话：</label>
+                        </div>
+                        <div class="weui_cell_bd weui_cell_primary">
+                            <input id="mobilephone" name="mobilephone" class="weui_input" type="number" onKeyUp="dealmobilephone()" pattern="[0-9]*" placeholder="请输入电话号码" />
+                            <input type="hidden" id="retailerid" name="retailerid" type="text" />
+                        </div>
+                    </div>
+                </div>
+                <div class="weui_btn_area" id="button1">
+                    <input type="button" value="确 定" id="sumbtVal" onclick="javascript: saveData();" class="weui_btn weui_btn_exit" style="height:36px;line-height:25px; padding-top:4px;font-size:16px;margin-bottom: 30px;" />
+                    </br>
+                </div>
+            </form>
+        </div>
+        <div class="tooltip" id="tooltipId">
+            <div class="tan-header">还没有您店铺的位置，无法为您服务！</div>
+            <p>请到店后，点击使用当前位置确定您的店铺位置，以便附近消费者可以看到您的活动。</p>
+            <input type="button" class="btn-know" id="closeId" value="我知道了" onclick="closeDown()" />
+            <div class="arrow"></div>
+        </div>
+        <div class="weui_Kong"></div>
+    </div>
+
+    <script type="text/javascript">
+        var flag = "android"; //  android ， iphone
+        var successFlag = false;
+        var antiaddress, districthash, province, city, district, xlatitude, xlongitude, picture_url, useflag = false;               
+       
+        $(function () {
+            $("#tooltipId").hide();            
+            $("#addressmsgdiv").hide();
+            waitloadaddress(function () {
+                loactionshowmessage("start");
+                getLoaction(wxlocation.latitude, wxlocation.longitude);
+                //加载位置
+            });
+
+            document.querySelector('#picture_url_file').addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    $("#upload_img").attr("src", window.URL.createObjectURL(this.files[0]));
+                    $("#upload_img").show();
+                }
+
+            });
+
+        });
+        function dealmobilephone() {
+            var value = $.trim($("#mobilephone").val());
+            console.log(value);
+            var reg = /^[0-9]\d*$/;
+            if (!reg.test(value)) {
+                $("#mobilephone").val("");
+                toasterextend.showtips("只能填写数字", "error");
+                return false;
+            }
+            return true;
+        }
+        function setaddress() {
+            $("#address").val($("#addressinformation").text());
+            useflag = true;
+        }
+        function getAddrAgain() {            
+            //$("#curr-addr label").text("");
+            resetaddress(function () {
+                //加载位置
+                loactionshowmessage("start");
+                getLoaction(wxlocation.latitude, wxlocation.longitude);	 //加载位置                
+            });
+        }
+        function closeDown() {
+            $("#tooltipId").hide();
+        }
+        // 验证手机类型
+        function dealphonetype() {
+            var ua = navigator.userAgent.toLowerCase();
+            if (/iphone|ipad|ipod/.test(ua)) {
+                flag = 'ios';
+            } else if (/android/.test(ua)) {
+                flag = 'android';
+            }
+        }
+        function loactionshowmessage(type) {
+            $("#addressinformation").html("");
+            switch (type) {
+                case "ios":
+                    if ($("#tooltipId").css("display") == "none")
+                        $("#tooltipId").show();
+                    $("#addressmsgdiv img").attr("src", "/retailer/image/tan2.png").show();
+                    $("#setaddress").css("background", "#d2d2d2").unbind();
+                    $("#information").html("定位失败！请确保您的手机已开启定位服务并授权微信使用位置服务!");
+                    $("#useCurrentAddr").val("重新定位");
+                    break;
+                case "android":
+                    if ($("#tooltipId").css("display") == "none")
+                        $("#tooltipId").show();
+                    $("#addressmsgdiv img").attr("src", "/retailer/image/tan2.png").show();
+                    $("#setaddress").css("background", "#d2d2d2").unbind();
+                    $("#information").html("定位失败！请确保您的手机已开启定位服务！");
+                    $("#useCurrentAddr").val("重新定位");
+                    break;
+                case "start":
+                    $("#addressmsgdiv img").attr("src", "/retailer/image/loading.gif")
+                    $("#information").html("定位中，请稍后...");
+                    break;
+                case "succeed":
+                    $("#addressmsgdiv img").hide();
+                    $("#information").html("定位成功，正在获取详细信息...");
+                    break;
+                case "failure":
+                    if ($("#tooltipId").css("display") == "none")
+                        $("#tooltipId").show();
+                    $("#addressmsgdiv img").attr("src", "/retailer/image/tan2.png").show();
+                    $("#setaddress").css("background", "#d2d2d2").unbind();
+                    $("#information").html("未获取到详细地址，请检查网络。");
+                    $("#useCurrentAddr").val("重试");
+                    break;
+                default:
+                    break;
+            }
+            $("#addressmsgdiv img").show();
+            $("#addressmsgdiv").show();
+        }
+        // 获取当前地理位置
+        function getLoaction(latitude, longitude) {
+            dealphonetype();
+            if (latitude == null || latitude == undefined || latitude.length == 0) {
+                if ($.trim(flag) == 'android') {
+                    loactionshowmessage("android");
+                    return;
+                }
+                if ($.trim(flag) == 'ios') {
+                    loactionshowmessage("ios");
+                    return;
+                }
+            }            
+            loactionshowmessage("succeed");            
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: "/webapi/retailer/weixin/antiaddress?longitude=" + longitude + "&latitude=" + latitude,              
+                success: function (json) {
+                    common.loading.hide();//隐藏转圈动画
+                    json = json || {};   /* 统一加这句话 */
+                    if (json.error) {
+                        toasterextend.showtips(json.error, "error");
+                        loactionshowmessage("failure");
+                        return;
+                    }
+                    if (json.user_notification != undefined) {
+                        loactionshowmessage("failure");
+                        toasterextend.showtips(json.user_notification, "info");
+                        return;
+                    }
+                    antiaddress = json.antiaddress;
+                    districthash = json.districthash;
+                    province = json.province;
+                    city = json.city;
+                    district = json.district;
+                    xlongitude = longitude;
+                    xlatitude = latitude;
+                    if (antiaddress == null || $.trim(antiaddress) == '') {
+                        loactionshowmessage("failure");
+                        return;
+                    }
+                    $("#setaddress").css("background", "#2bc9be").bind("click", function () { setaddress() });
+                    $("#information").html("当前位置：");
+                    $("#useCurrentAddr").val("不准，重新定位");
+                    $("#addressinformation").html(antiaddress);
+                    $("#addressmsgdiv img").hide();
+                    $("#addressmsgdiv").show();
+                    $("#imgId").attr('src', "../image/i2.png");
+                    $("#imgId").attr("onclick", "getWin('this,0');");
+                    var successFlag = true;
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    common.loading.hide();//隐藏转圈动画                    
+                    loactionshowmessage("failure");
+                    var errormsg = "访问异常";
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;                       
+                        errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+                    
+                    toasterextend.showtips(errormsg, "error");
+
+                }
+            });
+        }
+        function saveData() {
+            common.loading.show();
+            $("#sumbtVal").css("background", "#d2d2d2").attr("disabled", true);
+            var formData = new FormData($("#fm")[0]);
+          
+            var pictureimgfile = document.getElementById("picture_url_file").files[0];               
+            var updatename = $("#updatename").val();
+            var updatedadress = $("#address").val();
+            var mobilephone = $("#mobilephone").val();
+            var updaimgFile = $("#upload_img")[0].src;
+            
+            if (pictureimgfile == undefined || updatename.trim() == '' || updatedadress.trim() == '' || mobilephone.trim() == '') {
+                saveshowerrmsg();
+                common.loading.hide();
+                $("#sumbtVal").removeAttr("disabled").css("background", "#2bc9be");
+                return;
+            }
+            if (!common.verifyMobile(mobilephone)) {                
+                saveshowerrmsg();
+                common.loading.hide();
+                $("#sumbtVal").removeAttr("disabled").css("background", "#2bc9be");
+                return false;
+            }
+            formData.append("retailername", updatename);
+            formData.append("address", updatedadress);
+            formData.append("mobilephone", mobilephone);
+            formData.append("guid", retailerid);
+            formData.append("picture_url", updaimgFile);
+
+            if (xlatitude != undefined && xlatitude != null && xlongitude != undefined && xlongitude != null && useflag) {
+
+                formData.append("antiaddress", antiaddress);
+                formData.append("districthash", districthash);
+                formData.append("province", province);
+                formData.append("city", city);
+                formData.append("district", district);
+                formData.append("longitude", xlongitude);
+                formData.append("latitude", xlatitude);
+                useflag = false;
+            }
+            $.ajax({
+                type: 'post',
+                url: "/webapi/retailer/weixin/updateretailer",
+                dataType: 'json',
+                data: formData,                
+                cache: false,
+                contentType: false,
+                processData: false,
+                complete: function () { useflag = false; common.loading.hide(); },
+                success: function (json) {
+                    json = json || {};    /* 统一加这句话 */
+                    if (json.error) {
+                        toasterextend.showtips(json.error, "error");
+                        $("#sumbtVal").removeAttr("disabled").css("background", "#2bc9be");
+                        return;
+                    }
+                    if (json.user_notification != undefined) {
+                        toasterextend.showtips(json.user_notification, "info");
+                        $("#sumbtVal").removeAttr("disabled").css("background", "#2bc9be");
+                        return;
+                    }
+                    var pictureimgfile = document.getElementById("picture_url_file").files[0];
+                    var msg_notification = "新增成功！";
+                    if (pictureimgfile != undefined)
+                        msg_notification += "图片正在更新中...";
+                    toasterextend.showtips(msg_notification, "info");
+                    setCookie('username', "1", 1);                    
+                    setTimeout(function () { window.location.href = "/retailer/page/index.html"; }, 2000);
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    var errormsg = "访问异常";
+
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;
+                        if (errormsg == undefined || errormsg == '')
+                            errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+                    toasterextend.showtips(errormsg, "error");
+                    $("#sumbtVal").removeAttr("disabled").css("background", "#2bc9be");
+
+                }
+            });
+
+        }
+
+
+        function setCookie(c_name, value, expiredays) {
+            var exdate = new Date()
+            exdate.setDate(exdate.getDate() + expiredays)
+            document.cookie = c_name + "=" + escape(value) +
+            ((expiredays == null) ? "" : "; expires=" + exdate.toGMTString())
+        }
+      
+        //弹出垂直菜单
+        $(".menu").click(function () {
+            if ($(this).hasClass("cura")) {
+                $(this).children(".new-sub").hide();    //当前菜单下的二级菜单隐藏
+                $(".menu").removeClass("cura");         //同一级的菜单项
+            } else {
+                $(".menu").removeClass("cura");         //移除所有的样式
+                $(this).addClass("cura");               //给当前菜单添加特定样式
+                $(".menu").children(".new-sub").slideUp("fast"); //隐藏所有的二级菜单
+                $(this).children(".new-sub").slideDown("fast"); //展示当前的二级菜单
+            }
+        });
+
+    </script>
+    <script type="text/javascript">
+        function saveshowerrmsg() {
+            var html = '<div id="win">'
+              + '<div class="lazyout"></div>'
+              + '<div class="weui_cells s-box" >'
+
+              + '    <div class="weui_cell"> '
+			  + ' <table width="100%" border="0" style=" text-align: center;">'
+               + '     <tr>'
+               + '      <td> <img src="/retailer/image/text.png" width="45" style=" margin:0 auto;" alt="" /></td>'
+                + '    </tr>'
+                 + '   <tr>'
+                 + '    <td>资料填写不完整</td>'
+                 + '   </tr>'
+                + ' </table>'
+              + '     </div>'
+              + '    <div class="cont" onclick="closeWin()"><a href="javascript:void(0);">继续填写</a>'
+              + '     </div></div></div>';
+            $("body").addClass("body");
+            $("body").prepend(html);
+            var h = $(window).height() > $(document.body).height() ? $(window).height() : $(document.body).height();
+            $(".lazyout").height(h);
+            common.loading.hide();
+        }
+        function getWin(obj, t) {
+            var html = '<div id="win">'
+              + '<div class="lazyout"></div>'
+              + '<div class="weui_cells s-box" >'
+              + '<div style=" font-size:15px; line-height: 25px; padding:10px; text-align: left;">无店铺位置信息或店铺搬迁时，请到店，成功定位后，点击使用当前位置，系统将更新您的店铺位置，以便店铺附近惠粉看到您的店铺信息和活动。</div>'
+
+              + '    <input type="button" class="btn-know2" sid="useCurrentAddr" value="我知道了" onclick="closeWin()" />'
+              + '     </div></div></div>';
+            $("body").addClass("body");
+            $("body").prepend(html);
+
+            var h = $(window).height() > $(document.body).height() ? $(window).height() : $(document.body).height();
+            $(".lazyout").height(h);
+        }
+        function closeWin() {
+            $("#win").remove();
+            $("body").css("overflow", "inherit")
+        }
+    </script>
+    <script src="/js/sdk/sdk.js"></script>
+
+</body>
+</html>

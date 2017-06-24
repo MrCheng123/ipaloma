@@ -1,0 +1,361 @@
+//20170221
+//通用样式
+html,body{
+    width:100%;
+    height:100%;
+}
+*{
+    padding:0;
+    font-family: "微软雅黑";
+}
+.fr{
+    float:right;
+}
+.fl{
+    float:left;
+}
+.cl{//清除浮动
+    overflow: hidden;
+}
+.dib{
+    display: inline-block;
+    vertical-align: top;
+}
+.por{
+    position: relative;
+}
+.poa{
+    position:absolute;
+}
+.ver{
+    vertical-align: bottom;
+}
+.hi{
+    display: none;
+}
+.initialHi{//用于js中，仅仅用于复制html中dom结构，不让加载ajax返回数据时显示这些dom结构，在success的最后溢出此类名
+    display: none;
+}
+.vis{
+    visibility:hidden
+}
+//html,body{
+//  height:656px;background: beige;
+//}
+//.Cwrap{
+//  height:9999px;
+//}
+//非通用样式
+.Cwrap{
+    width: 260px;////////////////rem(260);//;
+    height: 718px;////////////////rem(654);//;
+//  background:greenyellow;
+    position:relative;
+//  overflow-y: scroll;//原生不好用，还是模拟滚动吧，因为要考虑滚动条尺寸，所以可能要改好多尺寸
+//  overflow-x: hidden;//原生不好用，还是模拟滚动吧
+//  overflow-y: auto;//滚动条更好
+//  overflow-x: hidden;
+//  scrollbar-3d-light-color：red;
+}
+.Cbd{
+//  position:fixed;
+    width: 260px;////////////////rem(260);//;
+    height: 190px;////////////////rem(190);//;
+    background-image:url("../img/c1.png");
+    background-size:100% 100%;
+//  left:0;
+//  top:0;
+//  border:1px solid red;
+    box-sizing: border-box;
+//  padding-top: 10px;
+    z-index: 99;
+    position: relative;
+    z-index: 2;
+}
+.CbdD{
+    width:100;////////////////rem(260);//%;
+    height:67px;////////////////rem(67);//;//ts
+//  background: yellow;//qv
+    display: table;
+//  text-align: center;
+}
+.CbdD1{
+    display:table-cell ;
+    vertical-align: middle;
+}
+.CbdD1 img{
+    width: 35px;////////////////rem(35);//;//来自图
+    height: 35px;////////////////rem(35);//;//来自图
+    margin-left:10px;////////////////rem(10);//;
+    margin-right:10px;////////////////rem(10);//;     
+}
+.CbdD2{
+    display:table-cell ;
+    vertical-align: middle;
+//  background:blue;//qv
+    width: 200px;////////////////rem(200);//;
+    margin-left:-8px;
+}
+.CbdD2 p{
+    font-family: "微软雅黑";
+    font-size:  16px;////////////////rem(16);//;
+    font-weight: bold;
+    line-height:  20px;////////////////rem(20);//;//目测
+    color:white;
+}
+.Ccontent{
+    width: 260px;////////////////rem(260);//;
+    height:595px ;////////////////rem(534);//;
+//  margin-top:69px;//躲开固定定位占位
+//  background:beige;
+//  box-sizing: border-box;
+//  padding:10px 0px;//还是给CcSmallTitle设置吧
+    position: absolute;
+    top: 70px;////////////////rem(70);//;
+    overflow-y: auto;//滚动条更好
+    overflow-x: hidden;
+}
+.CcBigTitle{
+    font-family: "微软雅黑";
+    font-weight: bold;
+    font-size:14px;////////////////rem(14); //;
+    color: #333333;   
+//  box-sizing: border-box;
+    padding: 10px;////////////////rem(10);//;   
+//  text-align:center;
+}
+.CcSmallTitle{
+    font-family: "微软雅黑";
+    font-weight: bold;
+    font-size:14px;////////////////rem(14); //;
+    color: #999999;
+    padding: 0px 10px ;////////////////rem(10);//0px 10px;    
+//  text-align:center;    
+}
+//补贴图
+.CcButie{
+    background-image: url(../img/c2.png);
+    width:260px ;////////////////rem(260);//;
+    height:190px ;////////////////rem(190);//;
+    background-size:145px 167px;////////////////rem(145) ;////////////////rem(167);//;
+    background-repeat: no-repeat;
+    background-position: center;
+//  background:red;
+    position:relative;
+}
+.CcButieMax{
+    font-family: "微软雅黑";
+    position:absolute;
+    top:104px ;////////////////rem(104);//;
+    left:81px ;////////////////rem(81);//;
+//  background:red;
+//  font-family: arial;
+    font-weight: bold;
+    font-size: 20px ;////////////////rem(20);//;
+    color:#ffff36;
+    width: 100px;////////////////rem(100);//;
+    height:20px ;////////////////rem(20);//;
+    text-align: center;   
+}
+.CcButieAlready{
+    font-family: "微软雅黑";
+    position:absolute;
+    width:73px ;////////////////rem(73);//;
+    top: 145px;////////////////rem(145);//;
+    left: 117px;////////////////rem(117);//;
+//  background:red;
+//  font-family: arial;
+    font-weight: bold;
+    font-size: 18px;////////////////rem(20);//;
+    color:#fff;   
+    text-align: center;
+    transform-origin: left;
+    -webkit-transform-origin:left;   
+//  transform: rotate(-15deg);//稍后补充
+}
+.CcButieLeft{
+    width: 30px;
+    height: 30px;
+    background-image: url(../img/c9.png);
+    position: absolute;
+    top: 118px;
+    left: 17px;
+    cursor: pointer;
+}
+.CcButieRight{
+    @extend .CcButieLeft;
+    background-image: url(../img/c10.png);
+    top: 118px;
+    left:213px ;
+}
+//参与活动条件
+.CcconditionImg{
+    background-image: url(../img/c4.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 260px;////////////////rem(260);//;
+    height: 23px;////////////////rem(23);//;
+    font-family: "微软雅黑";
+    font-size:12px  ;////////////////rem(12);//;
+    color:#ffffff;
+    line-height:23px  ;////////////////rem(23);//;
+    padding-left: 10px;////////////////rem(10); //;
+    box-sizing: border-box;
+//  background: red;
+}
+.CcconditionContent{
+    width:260px ;////////////////rem(260);//;
+    padding: 10px 10px 0px 10px;
+    height:auto;//由内容撑起。
+    box-sizing: border-box;    
+}
+.CcconditionContent p{
+    margin-bottom: 10px;////////////////rem(10);//;
+    font-size:14px ;////////////////rem(14);//;
+}
+.CcconditionContent img{
+    margin-right:2px ;////////////////rem(2);//;
+    vertical-align: middle;
+    width: 18px;////////////////rem(18);//;
+}
+.CcconditionContent i{
+    vertical-align: middle;
+    line-height: 18px ;////////////////rem(18);//;
+    height:  18px;////////////////rem(18);//;
+    font-style: normal;
+}
+//参与活动具体内容老布局的样式，暂留，不影响ajax数据格式，ajax类名全换，开始
+//img.CcconditionContentImg2{//问号
+//  width:16px;
+//  cursor: pointer;
+//}
+.CcconditionContent span{
+    margin-right:2px;
+    vertical-align: top;
+    font-family: "微软雅黑";
+    font-size:12px  ;////////////////rem(12);//;
+    color:black;
+    font-weight: bold;
+    line-height:18px  ;////////////////rem(18);//;
+//  height: 18px;
+    font-style: normal;
+}
+.核销次数 .Cccspan{
+    width:152px ;////////////////rem(152);//164px;//后有问号，暂不指定宽度，如有需要，改变布局
+//  background:red;
+}
+.核销人数 .Cccspan{
+    width:152px ;////////////////rem(152);//164px;
+//  background:red;
+}
+.惠粉数 .Cccspan{
+    width: 165px;////////////////rem(165);//176px;
+//  background:green;
+}
+.粉丝留存率 .Cccspan{
+    width:139px ;////////////////rem(139);//152px;
+//  background:red;
+}
+.会员等级 .Cccspan{
+//  background: red;
+    width: 152px ;////////////////rem(152);//164px;
+}
+.信誉等级 .Cccspan{
+//  background: red;
+    width: 152px ;////////////////rem(152);//164px;
+}
+.会员时长 .Cccspan{
+//  background: red;
+    width: 152px ;////////////////rem(152);//164px;
+}
+.粉丝人数 .Cccspan{
+//  background: red;
+    width: 152px ;////////////////rem(152);//164px;
+}
+.活动类型 .Cccspan{
+//  background: red;
+    width: 152px ;////////////////rem(152);//164px;
+}
+.找后台要 .Cccspan{
+//  background: red;
+    width: 152px ;////////////////rem(152);//164px;
+}
+.地区 .Cccspan{
+    width: 177px;////////////////rem(177);//188px;
+//  background:red;
+}
+
+
+
+//参与活动具体内容老布局的样式，暂留，不影响ajax数据格式，结束
+
+//活动补贴说明
+.CccDescriptionImg{
+    background-image: url(../img/c4.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width:260px ;////////////////rem(260);//;
+    height:23px ;////////////////rem(23);//;
+    font-family: "微软雅黑";
+    font-size: 12px ;////////////////rem(12);//;
+    color:#ffffff;
+    line-height: 23px ;////////////////rem(23);//;
+    padding-left:10px  ;////////////////rem(10);//;
+    box-sizing: border-box;
+//  background: red;    
+}
+.CccDescriptionCon{
+    width: 260px;////////////////rem(260);//;
+//  height:23px;
+    padding:10px ;////////////////rem(10);//;//右侧是否需要
+    padding-right: 20px;
+    box-sizing: border-box;
+    font-family: "微软雅黑";
+    font-size: 12px ;////////////////rem(12);//;
+    line-height:20px ;////////////////rem(20);//;
+//  padding-bottom:5px;
+//  color:#ffffff;    
+}
+//页脚
+.footer{
+    width:260px ;////////////////rem(260);//;
+    height:52px ;////////////////rem(52);//;
+    border-top:1px solid #CCCCCC;
+//  position: fixed;
+//  bottom:0px;
+//  left:0px;
+    position: absolute;
+    bottom:0px;
+//  background: red;//改为白色
+    padding-top:12px ;////////////////rem(12);//;
+    box-sizing: border-box;
+}
+.footerCkxq{
+    font-family: "微软雅黑";
+    font-size:14px ;////////////////rem(14);;
+    color:#4E9FEE;
+    border:1px solid #4E9FEE;
+    width: 115px;////////////////rem(115);//;
+    height: 28px;////////////////rem(28);//;
+    line-height: 28px;////////////////rem(28);
+    text-align: center;
+    margin-left: 10px;////////////////rem(10);
+    cursor: pointer;
+}
+.footerCkgd{
+    font-family: "微软雅黑";
+    font-size:14px;////////////////rem(14); //;
+    color:#4E9FEE;
+    border:1px solid #4E9FEE;
+    width: 115px;////////////////rem(115);//;
+    height:28px ;////////////////rem(28);//;
+    line-height: 28px ;////////////////rem(28);//;
+    text-align: center;    
+    margin-left:  10px;////////////////rem(10);//;
+    cursor: pointer;
+}
+
+
+.loadingImg{
+    width:20%;
+} 

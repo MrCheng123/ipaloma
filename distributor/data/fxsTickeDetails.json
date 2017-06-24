@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "activity_id": "dwqeqweqweqeq46546413215",
+      "activitytype": "ticket",
+      "activitytitle": "活动主题",
+      "description": "",
+      "posterpic": "https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=4012707797,3157108865&fm=23&gp=0.jpg",
+      "begintime": "2016-07-26",
+      "endtime": "2016-09-10 18:00:00",
+      "state": "上架",
+      "changes": [
+        "参考原有页面实现逻辑"
+      ],
+      "activitycode": "201606091111",
+      "customerrequest": "门店要求",
+      "items": [
+        {
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "单品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距结束3天",
+          "ticketcontent": "商品名称100kg*4箱",
+          "unitcost": 20,
+          "itemtotalnum": 10000,
+          "totalverifynum": 2000,
+          "homeverify": "30%",
+          "cashback": {
+            "distributor": 1,
+            "ipaloma": 0,
+            "content": "首次核销返手气红包1-3元首次核销返手气红包1-3元",
+            "more": 1
+          },
+          "activity_flag": 1,
+          "description": "备注备注备注备注"
+        },
+        {
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "单品",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距结束3天",
+          "ticketcontent": "商品名称100kg*4箱",
+          "unitcost": 20,
+          "itemtotalnum": 10000,
+          "totalverifynum": 2000,
+          "homeverify": "50%",
+          "cashback": {
+            "distributor": 0,
+            "ipaloma": 1,
+            "content": "首次核销返手气红包1-3元首次核销返手气红包1-3元",
+            "more": 1
+          },
+          "activity_flag": 1,
+          "description": "备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注备注"
+        },
+        {
+          "activity_id": "f7ec5ef5611d47228d07e1648f8f7dbd",
+          "itempic": "http://ipa-oss-hz-01.oss-cn-hangzhou.aliyuncs.com/jxb/test/notification/2016-03-22/4d750ee0ba7a43b08f3f75a8b5ededeb",
+          "activitykind": "套餐",
+          "guid": "2ebb8095944f4a44b6dafd0a70fb50c7",
+          "time_order_in_minute": 12399,
+          "time_to_end_text": "距开始3天",
+          "ticketcontent": "商品名称100kg*4箱商品名称100kg*4箱商品名称100kg*4箱",
+          "unitcost": 20,
+          "itemtotalnum": 10000,
+          "totalverifynum": 2000,
+          "homeverify": "90%",
+          "cashback": {
+            "distributor": 1,
+            "ipaloma": 1,
+            "content": "首次核销返手气红包1-3元首次核销返手气红包1-3元",
+            "more": 0
+          },
+          "activity_flag": 1,
+          "description": "备注备注备注备注"
+        }
+      ]
+    }
+  ],
+  "error": "",
+  "user_notification": ""
+}

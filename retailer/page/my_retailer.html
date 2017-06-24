@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0" />
+    <title>我的-店铺</title>
+    <link rel="stylesheet" href="/retailer/css/weui.min.css" />
+    <link rel="stylesheet" href="/retailer/css/retailerstyle.css" />
+    <link href="/retailer/css/weixintips.css" rel="stylesheet" />
+    <link href="/retailer/css/my_info.css" rel="stylesheet" />
+    <link href="/retailer/css/my_retailer.css" rel="stylesheet" />
+    <script src="/retailer/js/lib/common.js"></script>
+    <script  type="text/javascript" src="/js/wx/md5.min.js"></script><script type="text/javascript">document.writeln("<script type=\"text\/javascript\"");document.writeln("src=\"\/webapi\/retailer\/weixin\/jssdk/" + md5(window.location.href) + ".js\">");	document.writeln("<\/script>");</script>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/js/jquery/toastr.min.js"></script>
+    <script type="text/javascript" src="/js/wx/configinit.js"></script>
+    <script src="/retailer/js/common-buttom-nav.js"></script>
+    <script type="text/javascript">
+        function getWin(obj, t) {
+            $(window).bind("touchmove", function (e) {
+                e.preventDefault();
+            });
+            var html = '<div id="win"><div class="lazyout"></div>';
+            if (t == 2) {
+                html += '<div class="s-box" style="background:#fff;width: 90%;left: 5%;"><div class="s-title">如何免审核？</div><div class="s-cont">邀请您的分销商使用凌云科技经销宝和“凌云+”会员系统，并使用经销宝POS机邀请您，此后您的会员资格将免审核<p><input type="button"  onclick="closeWin();" value="我知道了"></p></div></div>';
+            } else {
+                html += '<div class="weui_cells s-box" ><div class="s-close" onclick="closeWin();"></div><div class="weui_cell">';
+                if (t == 1)
+                    html += '<div class="weui_cell_bd weui_cell_primary"><img src="/retailer/image/we.jpg"  width="100%"/></div>';
+                else
+                    html += '<div class="weui_cell_bd weui_cell_primary  bd-bg">' + $(obj).html() + '        </div>';
+                html += '</div><div class="cont">请您核对签约门店是否是您的真实门店，如不正确，请您尽快解除。</div></div></div>';
+            }
+            $("body").prepend(html);
+
+            var h = $(window).height() > $(document.body).height() ? $(window).height() : ($(document.body).height() + 60);
+            $("#win .s-box").css("top", ($(window).height() - $("#win .s-box").outerHeight()) / 2 + $(document).scrollTop() - 50);
+            $("#win .lazyout").height(h);
+        }
+        function closeWin() {
+            $(window).unbind("touchmove");
+            $("#win").remove();
+        }
+    </script>
+    <style>
+                .limit-l {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+</head>
+<body style="padding-bottom: 60px;">
+    <div class="page" id="page">
+    </div>
+    <div id="bottom-nav"></div>
+    <script type="text/javascript">
+        var flag = true, n = 1;
+        var y = 0;;
+        $(function () {
+            var notification = common.getUrlParam("notification");
+            if (notification != "") {
+                toasterextend.showtips(notification, "info");
+            }
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '/webapi/retailer/weixin/getretailer',
+                beforeSend: function () { common.loading.show(); },
+                complete: function () { common.loading.hide(); },
+                success: function (json) {
+                    json = json || {};   /* 统一加这句话 */
+                    if (json.error) {
+                        toasterextend.showtips(json.error, "error");
+                        return;
+                    }
+                    if (json.user_notification != undefined) {
+                        toasterextend.showtips(json.user_notification, "info");
+                        return;
+                    }
+                    var data = json.data[0];
+                    var html = '';
+                    //头部
+                    html += '<div class="bd"><div class="weui_cells weui_height6em" ><div class="weui_cell weui_bg_img" onclick="javascript:location.href=&apos;my_retailer_edit.html?retailer_id=' + data.retailer.guid + '&apos;">'
+                            + ' <div class="weui_photo150x150">'
+                            + '<img src="' + data.retailer.picture_url + '" alt="" /></div>'
+                            + ' <div class="weui_cell_bd weui_cell_primary">'
+                            + '     <p class="Name16 limit-l">' + getParamValue(data.retailer.retailername) + '&nbsp;<img src="/retailer/image/edit.png" width="20" style="vertical-align:middle;" /></p>'
+                            + '    <p class="Store14 limit-l">' + getParamValue(data.retailer.address) + '</p>'
+                            + '    <p class="Store14">' + getParamValue(data.retailer.mobilephone) + '</p>'
+                            + ' </div>'
+                            + '  <div class="weui_cell_ft">'
+                            + '      <a href="invite_staff.html?retailer_id=' + getParamValue(data.retailer.guid) + '" class="Derwei">'
+                            + '<img src="/retailer/image/ewm_new.png" style="width:70px;height:auto;" alt="" /></a> </div></div></div></div>';
+                    if (data.distributor != undefined && data.distributor.length > 0) {
+                        $("#page").html(html + getDistributorList(data.contribute, data.distributor));
+                        if(data.contribute.fansinhistorycount){
+                            getPre(data.contribute.activefanscount / data.contribute.fansinhistorycount * 100);
+                        }else{
+                            getPre(0);                           
+                        }                        
+                    }
+                    else {
+                        $("#page").html(html + getList(data.retailer.membershipqualification, data.contribute.retailer));
+                        if (data.retailer.membershipqualification.myfanscount <= data.retailer.membershipqualification.middlefanscount) {
+                            var left = $("#page .tab-num-orange .curr").position().left;
+                            if (left == 0) {
+                                $("#page .tab-num-orange .curr").css({ "left": " -6.5px", "margin-bottom": "2.5px" });
+                                $("#page .tab-num-orange .o-line").css("width", 0);
+                            }
+                            else
+                                $("#page .tab-num-orange .o-line").css("width", (left + $("#page .tab-num-orange .curr label").outerWidth() / 2) + "px");
+                        }                        
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    common.loading.hide();//隐藏转圈动画
+                    var errormsg = "访问异常";
+                    if (XMLHttpRequest.status != null && XMLHttpRequest.status != 200) {
+                        var json = JSON.parse(XMLHttpRequest.responseText);
+                        errormsg = JSON.parse(json.Message).error;
+                        if (errormsg == undefined || errormsg == '')
+                            errormsg = "Http error: " + XMLHttpRequest.statusText;
+                    }
+                    toasterextend.showtips(errormsg, "error");
+                }
+            });
+        });
+        //无签约分销商
+        function getList(membership, retailer) {
+            var html = '<p class="tab-font">会员资格</p>'
+            + ' <div class="head-st"><div class="h-bg"></div><div class="h-cont">资格受审</div></div>'
+            + ' <div class="tab-audit">您已加入超惠卖 <b>' + membership.joinindays + '</b> 天<br /><input onclick="getWin(null,2)" type="button" value="如何免审核？" /></div>'
+            + ' <div class="clear"></div>';
+            var myfan = membership.myfanscount;
+            var pre = 0;
+            if (myfan <= membership.limitfanscount) {
+                pre = ((myfan / membership.limitfanscount) * 49);
+                html += '<div class="tab-per">'
+                + '<div class="tab-date"><div class="d-line" style="left:10%"></div><div class="d-line" style="left:90%"></div>倒计时<label>' + membership.daystobeaudit + '</label>天</div>'
+                + ' <div class="clear"></div>'
+                + ' <div class="tab-num-orange">'
+                + '      <div class="cir cir-left1"><label></label></div>';
+                if (myfan == membership.limitfanscount) {
+                    var pdMyfan=0;
+                    if(myfan>=0&&myfan<10){
+                        pdMyfan=9;
+                    }else if(myfan>=10&&myfan<100){
+                        pdMyfan=4.5;
+                    }else if(myfan>=100&&myfan<100){
+                        pdMyfan=0;
+                    }
+                    html += '   <div class="cir cir-left2"><label></label></div>'
+                         + '    <div class="curr" style="left:' + pre + '%;margin-bottom: 2.5px;"><label  style="padding:0px '+pdMyfan+'px">' + myfan + '</label><span class="fw13">我的惠粉</span></div>'
+                         + '    <div class="o-line" ></div></div>'
+                         + '<div class="tab-num-blue">'
+                         + '    <div class="cir cir-left2">' + membership.limitfanscount;
+                } else {
+                    html += '<div class="curr" style="left:' + pre + '%;"><label>' + myfan + '</label><span class="fw13">我的惠粉</span></div>'
+                        + '<div class="o-line" ></div></div>'
+                        + '<div class="tab-num-blue">'
+                        + ' <div class="cir cir-left2">'
+                        + ' <div class="cir-word"><label></label>' + membership.limitfanscount + '</div>';
+                }
+                html += '<span style="font-size: 13px;">会员资格要求惠粉数</span></div>'
+                    + '<div class="cir cir-left3"><label></label></div></div></div>';
+            } else if (myfan > membership.limitfanscount && myfan <= membership.middlefanscount) {
+                //32为limitfanscount百分比像素，27为middlefanscount-limitfanscount百分比像素
+                var pre = 32 + (myfan - membership.limitfanscount) / (membership.middlefanscount - membership.limitfanscount) * 27;
+                html += '<div class="tab-per" style="min-height:125px">'
+                + '<div class="tab-date"><div class="d-line" style="left:10%"></div><div class="d-line" style="left:90%"></div>倒计时<label>' + membership.daystobeaudit + '</label>天</div>'
+                + '<div class="clear"></div>'
+                + '<div class="tab-num-orange">'
+               + '    <div class="cir cir-left1"><label></label></div>'
+               + '<div class="cir cir-left4"><label></label></div>';
+                if (myfan == membership.middlefanscount) {
+                    var pdMyfan = 0;
+                    if (myfan >= 0 && myfan < 10) {
+                        pdMyfan = 9;
+                    } else if (myfan >= 10 && myfan < 100) {
+                        pdMyfan = 4.5;
+                    } else if (myfan >= 100 && myfan < 100) {
+                        pdMyfan = 0;
+                    }
+                    html += '<div class="cir cir-left6"><label></label></div><div class="curr" style="left:' + pre + '%;margin-bottom: 2.5px;"><label  style="padding:0px ' + pdMyfan + 'px">' + myfan + '</label><span class="fw13">我的惠粉</span></div>'
+                   + '    <div class="o-line"></div>'
+                   + '</div>'
+                   + '<div class="tab-num-blue">'
+                   + '    <div class="cir cir-left4 pdt6">' + membership.limitfanscount + '</div>'
+                   + '    <div class="cir cir-left5">会员资格要求惠粉数</div>'
+                   + '    <div class="cir cir-left6 pdt6">' + membership.middlefanscount + '</div>'
+                   + '    <div class="cir cir-left3"><label></label></div>'
+                   + '</div></div>';
+                } else {
+                    html += '<div class="curr" style="left:' + pre + '%;"><label>' + myfan + '</label><span class="fw13">我的惠粉</span></div>'
+                    + '    <div class="o-line"></div>'
+                    + '</div>'
+                    + '<div class="tab-num-blue">'
+                    + '    <div class="cir cir-left4 pdt6">' + membership.limitfanscount + '</div>'
+                    + '    <div class="cir cir-left5">会员资格要求惠粉数</div>'
+                    + '    <div class="cir cir-left6"><div class="cir-word"><label></label>' + membership.middlefanscount + '</div></div>'
+                    + '    <div class="cir cir-left3"><label></label></div>'
+                    + '</div></div>';
+                }
+            } else if (myfan > membership.middlefanscount) {
+                html += '<div class="tab-per" style="min-height:125px">'
+                    + '<div class="tab-date"><div class="d-line" style="left:10%"></div><div class="d-line" style="left:90%"></div>倒计时<label>' + membership.daystobeaudit + '</label>天</div>'
+                    + '<div class="clear"></div>'
+                    + ' <div class="tab-num-orange">'
+                    + '       <div class="cir cir-left1"><label></label></div>'
+                    + '        <div class="cir cir-left4"><label></label></div>'
+                    + '        <div class="cir cir-left6"><label></label></div>'
+                    + '        <div class="curr cir-left7"><span class="fw13">我的惠粉</span><label>' + myfan + '</label><ul><li></li><li></li><li></li></ul></div>'
+                    + '        <div class="o-line" style="width:75%;"></div>'
+                    + '     </div>'
+                    + '      <div class="tab-num-blue">'
+                    + '          <div class="cir cir-left4 pdt6">' + membership.limitfanscount + '</div>'
+                    + '          <div class="cir cir-left5">会员资格要求惠粉数</div>'
+                    + '          <div class="cir cir-left6 pdt6">' + membership.middlefanscount + '</div>'
+                    + '         <div class="cir cir-left3"><label></label></div>'
+                    + '</div></div>';
+            }
+            html += '<table cellpadding="0" cellspacing="0" class="desc-tbl"><tr><td class="desc-title">会员资格说明</td><td class="desc-cont">关注超惠卖后，默认具备会员资格，可享受超惠卖提供的发布门店活动到区域内惠粉的服务。<br />会员资格要求最低惠粉数<b>' + membership.limitfanscount + '</b>人，自关注超惠卖之日起，每<b>' + membership.auditperiod + '个月</b>系统进行一次资格审核，审核时门店留存惠粉数量如<b>低于' + membership.limitfanscount + '</b>人，将自动关闭超惠卖会员服务功能。</td></tr></table><div class="clear"></div><p class="tab-font">我的超惠</p>';
+            html += '<div class="rel-box">'
+            + '<div class="c1"><b>' + retailer.releasingactivitycount + '</b><br />发布中</div>'
+            + '<div class="c2"><b>' + getParamValue(retailer.releasedcount) + '</b><br />累计发布<label></label></div>'
+            + '<div class="c3"><b>' + getNumeric(retailer.sharecount) + '</b><br />累计分享</div></div>'
+            + '<div class="weui_cells weui_top3em">'
+            + '<div class="weui_cell">'
+            + '  <div class="weui_cell_bd weui_cell_primary">'
+            + '       <p id="retailerdistributorcolunt"><strong>签约分销商（0）</strong><img src="/retailer/image/w.png" onclick="getWin(null,1)" width="25" style="float:right;marign-top:-3px;" /></p>'
+             + '   </div></div></div><div class="cell-box"><div class="cell-title">暂无签约分销商，<label>如何签约？</label></div>邀请您的分销商使用凌云科技经销宝和“凌云+”会员系统，并使用经销宝POS机邀请您，此后您的会员资格将免审核。</div>';
+            return html;
+        }
+        //签约分销商
+        function getDistributorList(contribute, distributors) {
+            var lostfanscount = getNumeric(contribute.fansinhistorycount - contribute.activefanscount);
+            var html = ' <div class="retailer-box">'
+            + '<p class="tab-font">我的惠粉</p>'
+            + ' <div class="rmy-box">'
+            + '    <ul>'
+            + '        <li style="width:36%;"><div class="circle"><div class="pie_left"></div><div class="pie_right"></div></div></li>'
+            + '        <li><div class="b-green"><div class="b-title"><span></span>惠粉</div><div class="b-cont">' + getNumeric(contribute.activefanscount) + '</div></div></li>'
+            + '        <li><div class="b-gray"><div class="b-title"><span></span>流失</div><div class="b-cont">' + lostfanscount + '</div></div></li>'
+            + '    </ul>'
+            + '    <div class="g-item"><div class="g-title">累计拉粉</div><div id="fanscount"><b>' + getNumeric(contribute.fansinhistorycount) + '</b></div></div>'
+            + '    <div class="g-item" style="margin-left:2%"><div class="g-title">留存率</div><div id="fansremaincount"><b>' + contribute.percentageretained + '</b></div></div>'
+            + '</div>'
+            + '<p class="tab-font" style="border-top: 1px solid #e5e5e5">我的超惠</p>'
+            + ' <div class="rel-box">'
+            + '    <div class="c1"><b>' + getParamValue(contribute.retailer.releasingactivitycount) + '</b><br />发布中</div>'
+            + '    <div class="c2"><b>' + getParamValue(contribute.retailer.releasedcount) + '</b><br />累计发布<label></label></div>'
+            + '    <div class="c3"><b>' + getNumeric(contribute.retailer.sharecount) + '</b><br />累计分享</div>'
+            + '</div>'
+            + '<p class="tab-font" style="border-top: 1px solid #e5e5e5">商家的超惠</p>'
+            + '<div class="rel-box">'
+            + '    <div class="c4">超惠<br />活动<label></label></div>'
+            + '    <div class="c5"><b>' + getParamValue(contribute.distributor.activity.releasingactivitycount) + '</b><br />发布中<label></label></div>'
+            + '    <div class="c6"><b>' + getParamValue(contribute.distributor.activity.distributorcount) + '</b><br />发布商家</div>'
+            + '    <div class="c7"><b>' + getNumeric(contribute.distributor.activity.sharecount) + '</b><br />累计分享</div>'
+            + '</div>'
+            + '<div class="rel-box">'
+            + '    <div class="c8" style="line-height:50px;">超惠券<label></label></div>'
+            + '   <div class="c9"><b>' + getParamValue(contribute.distributor.ticket.releasingactivitycount) + '</b><br />发布中<label></label></div>'
+            + '    <div class="c10"><b>' + getParamValue(contribute.distributor.ticket.distributorcount) + '</b><br />发布商家</div>'
+            + '   <div class="c11"><b>' + getNumeric(contribute.distributor.ticket.sharecount) + '</b><br />累计分享</div>'
+            + '</div> </div><div class="clear"></div>'
+            + '<div class="weui_cells weui_top3em">'
+            + '<div class="weui_cell">'
+            + '  <div class="weui_cell_bd weui_cell_primary">'
+            + '       <p id="retailerdistributorcolunt"><strong>签约分销商（' + distributors.length + '）</strong><img src="/retailer/image/w.png" onclick="getWin(null,1)" width="25" style="float:right;marign-top:-3px;" /></p>'
+             + '   </div></div></div>';
+            $.each(distributors, function (i, item) {
+                html += "<div id=\"" + item.guid + item.retailerguid + "\" class=\"weui_cells\" ><div class=\"weui_cell\"> <div class=\"weui_cell_bd weui_cell_primary  bd-bg\"  onclick=\"getWin(this,0)\"><p class=\"shop\">" + getParamValue(item.name) + "</p><p class=\"Store14 addr\">" + item.address + "</p><p class=\"store\">" + item.retailername + "</p></div><div class=\"weui_cell_ft\"><a href=\"javascript:firm('" + item.guid + "&" + item.domain + "&" + item.retailerguid + "');\" class=\"weui_btn weui_btn_exit\">解除</a></div></div></div>";
+            });
+            return html;
+        }
+        function getParamValue(param) {
+            if (typeof (param) !== 'undefined' && param != null)
+                return param;
+            return '';
+        }
+        function getNumeric(param) {
+            if (typeof (param) !== 'undefined' && $.isNumeric(param)) {
+                param = parseInt(param);
+                if (param >= 100000 && param < 100000000)
+                    param = param / 10000 + '万';
+                if (param >= 100000000)
+                    param = param / 100000000 + '亿';
+                return param;
+            }
+            return '';
+        }
+        function firm(id) {
+            //利用对话框返回的值 （true 或者 false）
+            if (confirm("您确定要解除绑定吗？")) {
+                var canshu = id.split('&');
+                $.ajax({
+                    type: 'GET',
+                    dataType: 'json',
+                    beforeSend: function () { common.loading.show() },
+                    complete: function () { common.loading.hide(); },
+                    url: '/webapi/retailer/weixin/cancelsigndistributor?distributor_id=' + canshu[0] + '&distributor_domain=' + canshu[1] + '&retailer_id=' + canshu[2],
+                    success: function (json) {
+                        if (json.error) {
+                            toasterextend.showtips("解除失败", "info");
+                        }
+                        else {
+                            toasterextend.showtips("解除成功", "info");
+                            setTimeout(function () { window.location.reload(); }, 2000);
+                            $("#" + canshu[0] + canshu[2]).remove();
+                            var emcount = $("#" + canshu[2] + "cnt").text();
+                            var kuohaoqian = emcount.split("（");
+                            var kuohaohou = kuohaoqian[1].split("）");
+                            var count = parseInt(kuohaohou[0]) - 1;
+                            $("#" + canshu[2] + "cnt").text(kuohaoqian[0] + "（" + count + "）");
+                        }
+                    }
+                });
+            }
+        }
+        function getPre(pre) {
+            if (pre <= 50) {
+                $('.pie_left').css({
+                    transform:'rotate(' + 180 + 'deg)',
+                    background:'#4bcb81',  
+                });
+                $('.pie_right').css({
+                    transform:'rotate(' + (pre * 3.6) + 'deg)',
+                    background:'#e8e7e6',
+                });
+            }else{
+                 $('.pie_left').css({
+                    transform:'rotate(' + 180 + 'deg)',
+                    background:'#4bcb81',  
+                });
+                $('.pie_right').css({
+                    transform:'rotate(' + ((pre-50) * 3.6) + 'deg)',
+                    background:'#4bcb81',
+                });
+            }  
+        }
+        //弹出垂直菜单
+        $(".menu").click(function () {
+            if ($(this).hasClass("cura")) {
+                $(this).children(".new-sub").hide(); //当前菜单下的二级菜单隐藏
+                $(".menu").removeClass("cura"); //同一级的菜单项
+            } else {
+                $(".menu").removeClass("cura"); //移除所有的样式
+                $(this).addClass("cura"); //给当前菜单添加特定样式
+                $(".menu").children(".new-sub").slideUp("fast"); //隐藏所有的二级菜单
+                $(this).children(".new-sub").slideDown("fast"); //展示当前的二级菜单
+            }
+        });
+    </script>
+    <script src="/js/sdk/sdk.js"></script>
+</body>
+</html>

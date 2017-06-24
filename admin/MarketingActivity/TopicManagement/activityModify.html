@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>修改 </title>
+	<link rel="stylesheet" href="css/CreateActivity.css">
+	<link rel="stylesheet" type="text/css" href="css/add.css">
+	<link rel="stylesheet" type="text/css" href="css/area.css">
+	<link rel="stylesheet" type="text/css" href="css/probability.css">
+	<style>
+
+		.mangeStyle{
+			background:#eeeeee;
+			cursor:default;
+		}
+
+		.activityManger_addsub1State,
+		.activityManger_addsub2State,
+		.activityManger_addsub3State,
+		.activityManger_addsub4State {
+			background: url(img/tingyong-big.png) no-repeat;
+			width: 30px;
+			height: 30px;
+		}
+
+		.activityManger_addsub1State.on,
+		.activityManger_addsub2State.on,
+		.activityManger_addsub3State.on,
+		.activityManger_addsub4State.on{
+			background: url(img/kaiqi-big.png); 
+		}
+
+		.activityManger_addsub4State {
+			vertical-align: top; 
+		}
+
+	</style>
+</head>
+<body class="create modify xiugai">
+
+	<div class="bread-crumb">
+		<span class="path-text">营销活动</span>
+		<i> &gt; </i>
+		<span class="path-text">活动主题</span>
+		<i> &gt; </i>
+		<span class="this-text">修改</span>
+	</div>
+
+	<div class="wrapper">
+
+		<nav>
+			<span class='on'><i>1</i>活动基础信息</span>
+			<span><i>2</i>参与活动条件</span>
+			<span><i>3</i>活动补贴规则</span>
+			<span><i>4</i>宣传图文资料</span>
+		</nav>
+		<!-- <div class="scroll"> -->
+
+		<!-- 1.活动基础信息 -->
+		<section class='section1 on'>
+		<div class="sec form basic-msg">
+
+			<div class="input-contorl">
+				<label for="">活动主题</label>
+				<span class="edit-area re hdzt bor pb10">
+					<textarea name="" id="" maxlength='30' class="activityTitle"></textarea>
+					<span class='tip ab'><em>0</em>/30</span>
+				</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">服务电话</label>
+				<span class="edit-area dianhua">
+					<input type="text" class="quhao" placeholder='区号'> - 
+					<input type="text" class="tel">
+				</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">活动时间</label>
+				<span class="edit-area">
+					<input type="text" id="actBegin" class="time actBegin begintime" readonly> - 
+					<input type="text" id="actEnd" class="time actEnd endtime" readonly>
+					<em class='tip forTime'> <i class='pre'>*</i> 活动账户余额不足时活动会自动停止</em>
+				</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">会员参与时间</label>
+				<span class="edit-area">
+					<input type="text" id="joinBegin" class="time involBegin earliestjointime" readonly> - 
+					<input type="text" id="joinEnd" class="time involEnd latestjointime" readonly>
+				</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">申报说明</label>
+				<em class='tip'> <i class='pre'>*</i> 该段文字仅供凌云人员可见，用于活动申报说明</em>
+				<span class="edit-area re shenbao bor pb10">
+					<textarea name="" id="shenbao" maxlength='500' class="description"></textarea>
+					<span class="tip ab"><em>0</em>/500</span>
+				</span>
+			</div>
+			
+			<div class="input-contorl">
+				<span class='xs'>此活动是否与其他活动同时享受</span>
+				<!-- <span class='check on'>
+					<i><i></i></i>是
+				</span>
+				<span class='check'>
+					<i><i></i></i>否
+				</span> -->
+				<span class="radio">是</span>
+				<span class="radio on">否</span>
+			</div>
+
+			<div class="input-contorl fuzeren">
+				<label class="fzr">活动负责人</label>
+				<span class="edit-area">
+					<span class="select-wrap fzr fzr1">
+						<i></i>
+						<em class="selected">选择第一负责人</em>
+						<ul class="select">
+						</ul>
+					</span>
+					<span class="select-wrap fzr fzr2">
+						<i></i>
+						<em class="selected">选择第二负责人</em>
+						<ul class="select">
+						</ul>
+					</span>
+				</span>
+			</div>
+			
+		</div>
+		</section>
+
+
+		<!-- 2.参与活动条件 -->
+		<section class='section2'>
+		<div class="sec form condition">
+
+			<div class="input-contorl">
+				<label for="">活动地区</label>
+
+				<!-- <span class="setBtn setAreaBtn">设置</span> -->
+				<input type="hidden" id='area-data'>
+				<div class="region-wrap">
+					<div class="handle">
+						<span class="btn areaPlus">添加</span>
+						<span class="btn areaSave">保存</span>
+					</div>
+				</div>
+
+				<div class="area-list wrapper hide">
+					
+					<div class="zhidingWrap">
+						<span class="radio zhiding">已选置顶</span>
+					</div>
+
+					<div class="area-list-item Select_the_province"> 
+						<div class="region-text">省</div> 
+						<div class="b"> 
+							<div class="qt"><input type="checkBox" title="选择全国" class="quanguo" />全国</div> 
+							<ul name="check" class="selectable Select_province area_list_js"> 
+							</ul>
+						</div> 
+						<div class='layer-wait'></div>
+					</div>
+
+					<div class="area-list-item select Select_the_province1"> 
+						<div class="region-text">市</div>
+						<div class="b"> 
+							<div class="qt"><input class="qb quanbusheng" title="选择全部省" type="checkbox" />全省</div> 
+							<ul name="check" class="selectable shi Select_province1 area_list_js"> 
+							</ul> 
+						</div>
+						<div class='layer-wait'></div>
+					</div>
+
+					<div class="area-list-item area-list-item1 Select_the_procince2"> 
+						<div class="region-text">县、区</div>
+						<div class="b"> 
+							<div class="qf"><input class="qx quanbushi" title="选择全部市" type="checkbox"/>全市</div> 
+							<ul name="check" class="selectable county Select_province2 area_list_js"> 
+							</ul>
+						</div>
+					</div>
+
+					<div class="btn-wrap fl">
+						<span class="btn clear">清除勾选</span>
+						<span class="btn save">确定</span>
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="input-contorl">
+				<label for="">商品类目</label>
+				<span class="setBtn disabled">设置</span>
+				<span class="tip warn">* 暂不支持</span>
+			</div>
+
+			<div class="input-contorl">
+				<label for="">会员超惠券<br>活动要求</label>
+
+				<div class="edit-area chenlong01">
+					<div class="addSub1P68">
+						<p class="p68 deleP dib">活动类型</p><p class="p68 deleP dib">优惠力度条件</p><p class="p68 deleP dib">投放门店数</p>				
+					</div>
+					<!-- <div class="addSub1" style="display:none"></div> -->
+					<div class="addSub1 created_l">
+
+						<!--活动类型activity type-->
+						<div class="dib acTy ver re">
+							<!-- <p class="p68 deleP">活动类型</p>				 -->
+							<div class="select-wrap  acSe1 ba activity">
+								<i></i>
+								<em class="selected"></em>
+								<ul class="select">
+									<!-- <li class="option" name="buycount">买赠</li>
+									<li class="option" name="package">套餐</li>
+									<li class="option" name="discount">降价</li> -->
+									<!-- <li class="option">有礼</li> -->
+								</ul>
+							</div>
+						</div>
+						
+						<!--优惠力度条件activity condition-->
+						<div class="dib acCo ver">
+							<!-- <p class="p68 deleP">优惠力度条件</p> -->
+							<!--此div稍后由js控制显示隐藏-->
+							<!--scale-->
+							<div class="dib acCoSc re ver">
+								<p class="bor -hi selectWrap1"></p>
+								<p class="bor hi selectWrap1">赠品比例</p>
+								<p class="bor hi selectWrap1">套餐价优惠幅度</p>
+								<p class="bor hi selectWrap1">降价幅度</p>
+								<!-- <div class="select-wrap  hi selectWrap1 acSe2">
+									<i></i>
+									<em class="selected">赠品价值</em>
+									<ul class="select">
+										<li class="option">赠品价值</li>
+										<li class="option">赠品价值比例</li>			
+									</ul>
+								</div> -->
+								
+							</div><div class="select-wrap  acCoRe ver re dib acSe3">
+								<i></i>
+								<em class="selected"></em>
+								<ul class="select">
+									<li class="option" name=">=">不低于</li>
+									<li class="option" name=">">高于</li>
+									<li class="option" name="==">等于</li>							
+								</ul>
+
+							</div><div class="dib acCoRa ver">
+								<div class="bor selectWrap2">
+									<span class="diSpan">空</span>
+								</div>
+
+								<div class="bor hi selectWrap2">
+
+									<!-- <span class="diSpan">
+										<label for="acLabel1" class="acCoRaMzla">买</label>
+									</span>
+									<input id="acLabel1" class="acCoRaMzip" type="text" value="3"/>
+
+									<span class="diSpansa">:</span>
+
+									<span>
+										<label class="acCoRaMzla" for="acLabel2">赠</label>
+									</span>
+
+									<input id="acLabel2" class="acCoRaMzip" type="text" value="2"/>
+
+									<input type="text" value="3"><input type="text" value="2"> -->
+
+								</div>
+
+								<div class="bor hi selectWrap2">
+									<input class="bor diInput" type="text" value=""/><span class="diSpan por">%</span>
+								</div>
+								<div class="bor hi selectWrap2">
+									<input class="bor diInput" type="text" value=""/><span class="diSpan por">%</span>
+								</div>
+								<div class="bor hi selectWrap2">
+									<input class="bor diInput" type="text" value=""/><span class="diSpan por">元</span>
+								</div>
+							</div>
+
+						</div>
+
+						<!--投放门店数-->
+						<div class="dib acPu mds">
+							<!-- <p class="p68 deleP">投放门店数</p> -->
+							<input class="bor acPuI1" type="text" value="10"/><span class='to'></span><input class="bor acPuI2" type="text"  value="20"/><span class='tip'>不输入代表不限</span>
+						</div>
+
+						<!--添加删除按钮-->
+						<div class="acAd dib">
+							<span class='minus acAd1'></span>
+							<span class='plus acAd2'></span>				
+						</div>
+					</div>		
+
+				</div>
+
+			</div>
+
+			<div class="input-contorl">
+				<label for="">超惠券活动<br>提供方</label>
+				<span class="edit-area condition">
+					<span class='radio' name="supplier">厂商</span>
+					<span class='radio on' name="distributor">分销商</span>
+					<span class='radio' name="retailer" >门店</span>
+					<span class='radio' name="consumer" >无</span>
+				</span>
+			</div>
+
+			<div class="input-contorl ">
+				<label for="">参与会员</label>
+				<div class="edit-area chenlong02 member">
+					<div class="addSub2P68">
+						<p class="p68 deleP dib">会员类型</p><p class="p68 deleP dib">参加名额</p>			
+					</div>
+					<!--控件2参与会员,含控件3参与资格-->
+					<div class="addSub2 created_l">
+						<div class="member">
+							<!--会员类型acLy-->
+							<div class="dib acLy ver">
+								<!-- <p class="p68 deleP deleP1">会员类型</p>	 -->
+								<div class="select-wrap acSe4 member-type">
+									<i></i>
+									<em class="selected"></em>
+									<ul class="select">
+										<!-- <li class="option">厂商</li>
+										<li class="option">分销商</li>
+										<li class="option">门店</li>
+										<li class="option">第三方服务商</li>
+										<li class="option">消费者</li>	 -->					
+									</ul>
+								</div>				
+							</div>
+							<div class="dib red">*主办方</div>
+							<!--参加名额acMe-->
+							<div class="dib acMe">
+								<!-- <p class="p68 deleP deleP1">参加g名额</p> -->
+								<div class="selectWrap1 -hi">
+
+									<span>
+										<input class="bor acMeI1" type="text" value="10" maxlength="5" /><span class="acMeS1">家</span>
+									</span><span class='to'></span><span>
+										<input class="bor acMeI2" type="text" value="30" maxlength="5" />
+										<span class="acMeS2">家</span>
+									</span>
+
+								</div>
+								<div class="selectWrap1 hi">
+									<input class="bor acMeI1" type="text" value="" maxlength="5"/><span class="acMeS1">家</span><span class='to'></span><input class="bor acMeI2" type="text"  value="" maxlength="5"/><span class="acMeS2">家</span>
+								</div>
+								<div class="selectWrap1 hi">
+									<input class="bor acMeI1" type="text" value="" maxlength="5"/><span class="acMeS1">家</span><span class='to'></span><input class="bor acMeI2" type="text"  value="" maxlength="5"/><span class="acMeS2">家</span>
+								</div>
+								<div class="selectWrap1 hi">
+									<input class="bor acMeI1" type="text" value="" maxlength="5"/><span class="acMeS1">家</span><span class='to'></span><input class="bor acMeI2" type="text"  value="" maxlength="5"/><span class="acMeS2">家</span>
+								</div>
+								<!-- <div class="selectWrap1 hi">
+									<input class="bor acMeI1" type="text" value=""/><span class="acMeS1">家</span><span >-</span><input class="bor acMeI2" type="text"  value=""/><span class="acMeS2">家</span>
+								</div> -->
+								<div class="selectWrap1 hi">
+									<input class="bor acMeI1" type="text" value=""/><span class="acMeS1">人</span><span class='to'></span><input class="bor acMeI2" type="text"  value=""/><span class="acMeS2">人</span>
+								</div>
+									
+							</div>
+							<div class="dib acMeD1 dib">不输入代表不限，未达到最低名额，活动不予开始</div>
+							<div class="dib acMeD2 dib">设置参与资格</div>
+							<div class="dib acMeD3 dib">不设置代表不限</div>
+							<!--添加删除按钮-->
+
+							<div class="acAdB dib">
+								<!-- <img src="03xinjian-huijianhao.png" alt="" class="acAd1 acAd3"/>
+								<img src="03xinjian-huijiahao.png" alt="" class="acAd2 acAd4" /> -->
+								<span class='minus acAd1 acAd3'></span>
+								<span class='plus acAd2 '></span>
+							</div>
+						</div>
+
+						<!--设置参与资格默认隐藏acZige-->
+						<div class="acZige hi">
+							<div class="addSub3P68">
+								<p class="p68 deleP dib">条件类型</p><p class="p68 deleP dib">统计范围</p><p class="p68 deleP dib">条件</p>
+							</div>
+							<div class="addSub3 created_l">
+								<!--等待更换类名-->
+								<div class="dib acZige1 ver">
+									<!-- <p class="p68 deleP">条件类型</p>		 -->
+									<div class="select-wrap acSe5 ba condition-type">
+										<i></i>
+										<em class="selected condition"></em>
+										<ul class="select">
+											<!-- <li class="option">核销次数</li>
+											<li class="option">核销人数</li>							
+											<li class="option">惠粉数</li>	
+											<li class="option">粉丝留存率</li>
+											<li class="option">会员等级</li>
+											<li class="option">信誉等级</li>
+											<li class="option">会员时长</li> -->	
+										</ul>
+									</div>				
+								</div>
+
+								<div class="range-wrap">				
+								<div class="dib acZige2 ver">
+									<!-- <p class="p68 deleP">统计范围</p>				 -->
+									<div class="select-wrap  acSe6">
+										<i></i>
+										<em class="selected"></em>
+										<ul class="select">
+											<li class="option">活动开始前</li>
+											<li class="option">活动开始时</li>
+											<li class="option">至今</li>
+										</ul>
+									</div>
+								</div>
+								<div class="dib acZige3 ver">
+									<div class="acZige3z -hi acZige2tab">
+										<p></p>
+									</div>
+									<div class="acZige3a hi acZige2tab">
+										<input type="text" class="date" />
+										<div class="select-wrap  acSe7 dib">
+											<i></i>
+											<span class="selected">天</span>
+											<ul class="select">
+												<li class="option">天</li>
+												<li class="option">月</li>		
+											</ul>
+										</div>							
+									</div>
+									<div class="acZige3a hi acZige2tab" style="visibility: hidden;">
+										<input type="text" class="date" />
+										<div class="select-wrap  acSe7 dib">
+											<i></i>
+											<span class="selected">天</span>
+											<ul class="select">
+												<li class="option">天</li>
+												<li class="option">月</li>
+											</ul>
+										</div>
+									</div>
+									<div class="acZige3b hi acZige2tab">
+										<input type="text" class="time time_y dib" id="time_y" value="不限" />		
+										<p class="dib">- 至今</p>
+									</div>
+								</div>
+								</div>
+
+								<!--条件-->
+								<div class="dib acZige4 ver">
+									<!-- <p class="p68 deleP">条件</p>				 -->
+									<div class="select-wrap acSe8 operator-wrap">
+										<i></i>
+										<em class="selected"></em>
+										<ul class="select">
+											<li class="option">>=</li>
+											<li class="option">介于</li>
+											<li class="option">==</li>
+										</ul>
+									</div>
+								</div>
+
+								<div class="dib acZige5 ver">
+
+									<div class="hi acZige5a acZige1Tab acZige4tab">
+										<!--最后一个p标签内容随时变-->
+										<input type="text" class="min dayudengyu" /><p class="dib">次</p>
+									</div>				
+
+									<div class="-hi acZige5c acZige1Tab acZige4tab">
+										<!--最后一个p标签内容随时变-->
+										<input type="text" class="min jieyu1" value=""/><p>-</p><input type="text" class="jieyu2" value=""/><p class="dib"></p>
+									</div>
+
+									<div class="select-wrap acZige4tab teyao hi">
+										<i></i>
+										<em class="selected"></em>
+										<ul class="select">
+											<li class="option">特邀联盟</li>
+										</ul>
+									</div>
+
+								</div>
+
+								<!--添加删除按钮-->
+								<div class="acAdC dib">
+									<!-- <img src="10shezhitiaojian-chengjianhao.png" alt="" class="acAd3"/>
+									<img src="10shezhitiaojian-chengjiahao.png" alt="" class="acAd4" />	 -->
+									<span class="minus-o acAd3 "></span>
+									<span class="plus-o acAd4 "></span>
+								</div>
+
+							</div>
+						</div>
+					
+					</div>
+
+				</div>
+			</div>
+			
+		</div>
+		</section>
+
+
+		<!-- 3.活动补贴规则 -->
+		<section class="section3">
+		<div class="sec rule">
+			<div class="chenlong04 butieSec">
+				<div class="addSub4P68">
+					<p class="p68 deleP dib">补贴对象</p><p class="p68 deleP dib">补贴条件</p><p class="p68 deleP dib">补贴形式</p><p class="p68 deleP dib">范围/值<i class="i" title="指补贴形式发放额度值或发放额度范围值，例如微信红包金额或金额范围，返现金额或返现金额范围值等。">i</i></p><p class="p68 deleP dib">发放上限次数</p><p class="p68 deleP dib">补贴峰值<i class="i" title="根据补贴发放次数上限、补贴的范围/值以及概率设置计算得出的补贴发放总额，即为理论计算的各次发放额度累加值，直到发放次数上限达到为止。">i</i></p><p class="p68 deleP dib">申报预算</p>
+				</div>
+				<!-- *********************************** -->
+				<!--控件4，活动补贴规则页面hd-->
+				<div class="addSub4 created_l">
+					<!--等待更改下面的类名acTy-->
+					<div class="dib hdc1 ver re">
+						<!-- <p class="p68 deleP">补贴对象</p>				 -->
+						<div class="select-wrap acSe9 ba butie-select-wrap">
+							<i></i>
+							<em class="selected"></em>
+							<ul class="select">
+								<!-- <li class="option" name="supplier" typeL="Btcs1">厂商</li>
+								<li class="option" name="distributor" typeL="Btcs2">分销商</li>
+								<li class="option" name="retailer" typeL="Btcs3">门店</li>
+								<li class="option" name="retaileremployee" typeL="Btcs4">门店店员</li>	
+								<li class="option" name="consumer" typeL="Btcs5">消费者</li>
+								<li class="option" name="distributoremployee" typeL="Btcs6">分销商人员</li> -->	
+								<!-- <li class="option" name="thp" typeL="Btcs7">第三方服务商</li> -->
+							</ul>
+						</div>
+					</div>
+					<!--等待更改下面的类名acTy-->
+					<div class="dib hdc2 ver re">
+						<!-- <p class="p68 deleP">补贴条件</p>				 -->
+						<div class="select-wrap acSe10 ba butieCond">
+							<i></i>
+							<em class="selected"></em>
+
+							<ul class="select">
+								<!-- <li name="register" class="option Btcs1 Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">关注公众号(注册)</li>
+
+								<li name="invitefan" class="option Btcs1 Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">拉粉</li>
+
+								<li name="verify_first" class="option Btcs1 Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">核销(消费者首次)</li>
+
+								<li name="verify_normal" class="option Btcs1 Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">核销(消费者非首次)</li>
+
+								<li name="shareverify" class="option Btcs1 Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">分享核销结果</li>
+
+								<li name="shareticket" class="option Btcs1 Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">分享超惠券</li>
+								<li name="shareretailer" class="option Btcs2 Btcs3 Btcs4 Btcs5 Btcs6 Btcs7">分享门店</li>
+								<li name="distributorinviteretailer" class="option Btcs2 Btcs6">门店签约分销商</li>	
+								<li name="openmemsys" class="option Btcs2 Btcs6">开通会员系统</li>
+
+								<li name="openretailer" class="option  Btcs3">自主开店</li>	 -->
+							</ul>
+						</div>
+						<div class="dib subsidyCondition link">
+							<a href="javascript:;" class="dib ver btCond">请选择补贴条件</a>
+					</div>
+					</div>
+					<!--等待更改下面的类名acTy-->
+					<div class="dib hdc3 ver re">
+						<!-- <p class="p68 deleP">补贴形式</p>				 -->
+						<div class="select-wrap  acSe11 ba">
+							<i></i>
+							<em class="selected"></em>
+
+							<ul class="select">
+								<!-- <li class="option" name="randompoints">送随机积分</li>
+								<li class="option" name="fixedpoints">送固定积分</li>
+								<li class="option" name="fixedmoney">固定金额返现</li>
+								<li class="option" name="randommoney">随机金额返现</li>
+								<li class="option" name="randomredpacket">随机微信红包</li>
+								<li class="option" name="fixedredpacket">固定微信红包</li>
+								<li class="option" name="fixedmoneyticket">固定金额返现券</li>
+								<li class="option" name="randommoneyticket">随机金额返现券</li>
+								<li class="option" name="shake">摇一摇</li> -->
+								<!-- <li class="option" name="wheel">轮盘抽奖</li> -->
+							</ul>
+						</div>
+					</div>
+
+					<div class="dib hdc4 ver re">
+						<div class="acSe12 ba">						
+							<div class="dib -hi hdc4d1">
+								<input type="text" placeholder="" class="hdc4In1 dib" /><span class="dib  ba hdc4P1">-</span><input type="text" placeholder="" class="hdc4In2 dib" /><p class="dib hdc4dA ba hdc4P2"></p>
+							</div>
+							<div class="dib hi hdc4d2 link">
+								<a href="javascript:;" class="dib hdc4dB ver set"></a>
+							</div>
+						</div>
+					</div>
+
+					<div class="dib hdc5 ver re">
+						<div class="acSe13 ba">						
+							<input type="text" />
+						</div>
+					</div>
+
+					<div class="dib hdc6 ver re fz">
+						<div class="acSe14 ba btfz">						
+							<input type="text" disabled class="sbys " value="" />
+							<p class="dib"></p>
+						</div>
+					</div>
+
+					<div class="dib hdc6 hdc6-1 ver re">
+						<div class="acSe14 ba btfz">						
+							<input type="text" class="sbys"/>
+							<p class="dib">元</p>
+						</div>
+					</div>
+					
+					<div class="dib hdc6-2 ver re" style="display: none;">
+						<input type="text" class="sbys"/>
+						<span class="dib">元</span>
+					</div>
+
+					<div class="dib hdc7 setgailv">设置<br>概率</div>
+					<div class="dib hdc8 setRules">设置<br>规则</div>
+
+					<!--添加删除按钮-->
+					<div class="hdc9 acAd dib">
+						<img src="img/minus.png" alt="" class="acAd1"/>
+						<img src="img/plus.png" alt="" class="acAd2" />				
+					</div>
+
+				</div>
+
+			</div>
+
+			<input type="hidden" name="" id="addSub4Index">
+			<div class="value-area clr ysfz">
+
+				<div class="fl clr">
+					<dfn class='fl'>活动预算峰值：</dfn>
+					<ul class='fl'>
+						<li>直发现金<span class='cash'>0</span><i class='dw'>元</i></li>
+						<!-- <li>返现券<span class='quan'>10</span><i class='dw'>张</i>，价值<span>1,000.00</span><i class='dw yuan'>元</i></li> -->
+						<!-- <li>积分<span class='score'>0</span><i class='dw'>分</i></li> -->
+					</ul>
+				</div>
+
+				<div class='fr'>
+					<div class="item">
+						<label>活动申报预算</label>
+						<span class='hdsbys_text yuan'>0</span><i>元</i>
+					</div>
+					<!-- <div class="item">
+						<label>活动申报预算</label>
+						<span class='hdsbys_text fen'>0</span><i>分</i>
+					</div> -->
+				</div>
+
+			</div>
+
+			<div class="layer yao re hide">
+
+				<div class="yaoWrap">
+					<span class='tip'><i class='pre'>*</i> 摇一摇概率相加等于100%</span>
+					<div class="addSub5P68">
+						<p class="p68 deleP dib">奖品类型</p><p class="p68 deleP dib">范围/值</p><p class="p68 deleP dib">摇一摇概率</p><p class="p68 deleP dib">奖品次数</p><p class="p68 deleP dib">补贴峰值</p><!-- <p class="p68 deleP dib">申报预算</p> -->				
+					</div>
+					<div class="yaoyiyao addSub5 created_l"><!--合并的时候，请修改此名-->
+
+						<div class="dib Yyy1 ver re">
+							<!-- <p class="p68 deleP">奖品类型</p>				 -->
+							<div class="select-wrap acSe15 ba">
+								<i></i>
+								<em class="selected"></em>
+								<ul class="select">
+									<li class="option">谢谢参与</li>
+									<li class="option">微信手气红包</li>
+									<li class="option">随机金额返现券</li>
+									<li class="option">固定积分</li>
+									<!-- <li class="option">特定超惠券</li>	-->
+								</ul>
+							</div>
+						</div>
+
+						<div class="dib Yyy2 ver re">
+							<!-- <p class="p68 deleP">范围/值</p>				 -->
+							<div class="acSe16 ba">		
+								<div class="dib -hi Yyy2d1 ver">
+									<input type="text" placeholder="请输入" class="dib min" maxlength="5" />
+									<span>-</span>
+									<input type="text" placeholder="请输入" class="dib max" maxlength="5" />
+									<p class="dib hdc4dA ba fr"></p><!--即将被替代为别的单位-->
+								</div>
+								<div class="dib hi Yyy2d2">
+									<a href="#" class="dib hdc4dB ver"></a>
+								</div>
+								<div class="dib hi Yyy2d3">
+								</div>
+							</div>
+						</div>
+
+						<div class="dib Yyy3 ver re">
+							<!-- <p class="deleP">摇一摇概率</p>				 -->
+							<div class="dib Yyy3d1 ver">
+								<input type="text" value=""/>
+								<span>%</span>
+							</div>
+						</div>	
+
+						<div class="dib Yyy4 ver re">
+							<!-- <p class="p68 deleP">奖品次数</p>				 -->
+							<div class="dib Yyy4d1 ver">
+								<input type="text" disabled />
+								<span>次</span>
+							</div>
+						</div>
+
+						<div class="dib Yyy5 ver re">
+							<!-- <p class="p68 deleP">补贴峰值</p>				 -->
+							<div class="dib -hi Yyy5d1 ver fz">
+								<input type="text" value="" class="dib" readonly />						
+								<span class="dib ba"></span>
+							</div>
+							<div class="dib hi Yyy5d2">	
+								
+							</div>
+						</div>
+
+						<div class="dib Yyy5-1 ver re" style="display: none">
+								<p class="p68 deleP">申报预算</p>
+								<div class="dib -hi Yyy5d1 ver">
+									<input type="text" value="" class="dib"/>						
+									<span class="dib ba">元</span>
+								</div>
+								<div class="dib hi Yyy5d2">	
+									
+								</div>
+						</div>
+
+						<div class="dib Yyy6 setgailv">设置概率</div>
+						<!--添加删除按钮-->
+						<div class="dib acAdE Yyy7 ver">
+							<img src="img/minus.png" height="32" width="32" alt="" class="acAd1"/>
+							<img src="img/plus.png" height="32" width="32" alt="" class="acAd2" />				
+						</div>
+					</div>
+
+				</div>
+
+				<div class="value-area clr">
+
+					<div class="fl clr">
+						<dfn class='fl'>补贴峰值：</dfn>
+						<ul class="fl">
+							<li>现金<span class='cash'>0</span><i class='dw'>元</i></li>
+							<!-- <li>返现券<span class='quan'>10</span><i class='dw'>张</i>，价值<span class='yuan'>20</span><i class='dw'>元</i></li> -->
+							<!-- <li>积分<span class='score'>0</span><i class='dw'>分</i></li> -->
+						</ul>
+					</div>
+
+				</div>
+
+				<div class="btn save center yaook">确定</div>
+
+			</div>
+
+			<!-- <div class="layer lun hide">
+			
+			 	直接用控件5的css（简单修改），html（简单修改），js（简单修改），请修改此名		
+			 	<div class="用于存放控件6轮盘抽奖">
+			
+			 		<span class='zgs'>轮盘总格数</span><span class='tip'><span class='geshu'> 5 </span> * 轮盘抽奖概率相加等于100%</span>
+					<div class="yaoyiyao addSub6">合并的时候，请修改此名
+						<div class="dib Yyy2 ver re">
+							<p class="p68 deleP">奖品类型</p>		
+							<div class="select-wrap acSe15 ba">
+								<i></i>
+								<em class="selected"></em>
+								<ul class="select">
+									<li class="option">谢谢参与</li>
+									<li class="option">微信手气红包</li>
+									<li class="option">随机金额返现券</li>
+									<li class="option">固定积分</li>
+									<li class="option">特定超惠券</li>						
+								</ul>
+							</div>
+						</div>
+						<div class="dib Yyy2 ver re">
+							<p class="p68 deleP">范围/值</p>				
+							<div class="acSe16 ba">						
+								<div class="dib -hi Yyy2d1 ver">
+									<input type="text" placeholder="请输入" class="dib"/>						
+									<p class="dib hdc4dA ba">分/次</p>即将被替代为别的单位
+								</div>
+								<div class="dib hi Yyy2d2">
+									<a href="#" class="dib hdc4dB ver"></a>
+								</div>
+								<div class="dib hi Yyy2d3">						
+								</div>
+							</div>
+						</div>
+						<div class="dib lpc3 ver re">
+							<p class="deleP">轮盘格数</p>				
+							<div class="dib lpc3d1 ver">
+								<input type="text" value="15"/>					
+							</div>
+						</div>			
+						<div class="dib Yyy3 ver re">
+							<p class="deleP">摇一摇概率</p>				
+							<div class="dib Yyy3d1 ver">
+								<input type="text" value="15"/>
+								<span>%</span>
+							</div>
+						</div>				
+						<div class="dib Yyy4 ver re">
+							<p class="p68 deleP">奖品次数</p>				
+							<div class="dib Yyy4d1 ver">
+								<input type="text" />
+								<span>次</span>
+							</div>
+						</div>				
+						<div class="dib Yyy5 ver re">
+							<p class="p68 deleP">补贴峰值</p>				
+								<div class="dib -hi Yyy5d1 ver">
+									<input type="text" value="" class="dib"/>						
+									<span class="dib ba">元</span>
+								</div>
+								<div class="dib hi Yyy5d2">	
+									
+								</div>
+						</div>	
+						<div class="dib Yyy6">设置概率</div>
+						添加删除按钮
+						<div class="dib acAdE Yyy7 ver">
+							<img src="minus.png" alt="" class="acAd1"/>
+							<img src="plus.png" alt="" class="acAd2" />				
+						</div>
+					</div>
+				</div>
+			
+				<div class="value-area clr">
+			
+					<div class="fl clr">
+						<dfn class='fl'>补贴峰值：</dfn>
+						<ul class="fl">
+							<li>现金<span>130</span><i class='dw'>元</i></li>
+							<li>返现券<span>10</span><i class='dw'>张</i>，价值<span>20</span><i class='dw'>元</i></li>
+							<li>积分<span>10,000</span><i class='dw'>分</i></li>
+						</ul>
+					</div>
+			
+				</div>
+			
+				<div class="btn save center lunok">确定</div>
+			
+			</div> -->
+
+			<div class="layer set-rules hide">
+
+				<div class="left">
+					
+					<img src="img/set-rules.png"alt="">
+					
+					<br><span>范围示意图</span><br>
+
+					<span class='path'>平台活动 > 主办方 > 分销商 > 门店 > 超惠券主题 > 超惠券</span>
+
+				</div>
+
+				<div class="right">
+
+					<span class="input-control">
+						<label for="">选择限制范围: </label>
+						<span class="select-wrap xzfw">
+							<i></i>
+							<em class="selected">按超惠券主题</em>
+							<ul class="select">
+								<li class="option" name="ticket">按超惠券主题</li>				
+							</ul>
+						</span>
+					</span>
+
+					<div class="butie">
+
+						<div class="butie-item">
+
+							<div class="butie_type">
+								<span class="check buTie">按补贴金额</span>
+							</div>
+
+							<div class="butie-inner-item money clr">
+								<span class="check buTie budgetSum">总补贴金额上限</span>
+								<span class="re fr">
+									<input type="text" value="" class="budgetSum"> 
+									<span class='danwei sum'>元</span>
+								</span>
+							</div>
+
+							<div class="butie-inner-item clr">
+								<span class="check buTie perdaySum">每日补贴金额上限</span>
+								<span class="re fr">
+									<input type="text" value="" class="perdaySum"> 
+									<span class='danwei sum'>元</span>
+								</span>
+							</div>
+
+						</div>
+
+
+						<div class="butie-item">
+						
+							<div class="butie_type">
+								<span class="check buTie">按补贴次数</span>
+							</div>
+
+							<div class="butie-inner-item clr">
+								<span class="check buTie budgetTime">总补贴次数上限</span>
+								<span class="re fr">
+									<input type="text" value="" class="budgetTime"> 
+									<span class='danwei'>次</span>
+								</span>
+							</div>
+
+							<div class="butie-inner-item clr">
+								<span class="check buTie perdayTime">每日补贴次数上限</span>
+								<span class="re fr">
+									<input type="text" value="" class="perdayTime"> 
+									<span class='danwei'>次</span>
+								</span>
+							</div>
+
+						</div>
+
+						<!--有button的界面-->
+						<!--<div class="guizerules">
+							<dfn>规则说明： </dfn>
+							<span>1个微信号在一个超惠券主题活动中<br>最多可享受补贴一百元；<br>每日补贴次数最多5次</span>
+						</div>-->
+						<!--无button的修改界面-->
+						<div class="guizerules-wrap">
+							<dfn>规则说明： </dfn>
+							<ul class="rules">
+								<li>1个<i class='butieduixiang'>微信号</i>在一个 <i class='forXzfw'></i> 中</li>
+								<li>最多可享受补贴 <i class='forBudgetSum'></i> 元；</li>
+								<li>每日补贴次数最多 <i class='forPerdayTime'></i> 次</li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+
+				<div class="queding">
+					<span class="btn save rulesok">确定</span>
+				</div>
+
+			</div>
+
+
+			<div class="layer content setProbability hide">
+                <div class="Platform_activity">
+                    <span>概率适用范围</span>
+                    <div class="select-wrap">
+                        <i></i>
+                        <em class="selected">按平台活动</em>
+                        <ul class="select">
+                            <li class="option">按平台活动</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="value_curve">
+	                <div class="dollor">
+	                    <span>金额概率<dev>*概率值总和应为100%</dev></span>
+	                </div>
+	                <div class="coordinate">
+	                    <div class="coordinate_images">
+
+	                        <!-- <ul class="number_doller">
+	                            <li><b>0</b><i>元</i></li>
+	                            <li><b>1</b><i>元</i></li>
+	                            <li><b>2</b><i>元</i></li>
+	                            <li><b>3</b><i>元</i></li>
+	                            <li><b>4</b><i>元</i></li>
+	                            <li><b>5</b><i>元</i></li>
+	                            <li><b>6</b><i>元</i></li>
+	                            <li><b>7</b><i>元</i></li>
+	                            <li><b>8</b><i>元</i></li>
+	                            <li><b>9</b><i>元</i></li>
+	                            <li><b>10</b><i>元</i></li>
+	                        </ul>
+	                        <img src="img/coordinate.png">
+	                        <div class="Probability_value">
+	                                <div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div>
+	                        </div> -->
+							
+							<ul class="number_doller">
+	                            <li><b>0</b><em>元</em><i></i></li>
+	                            <li><b>1</b><em>元</em><i></i></li>
+	                            <li><b>2</b><em>元</em><i></i></li>
+	                            <li><b>3</b><em>元</em><i></i></li>
+	                            <li><b>4</b><em>元</em><i></i></li>
+	                            <li><b>5</b><em>元</em><i></i></li>
+	                            <li><b>6</b><em>元</em><i></i></li>
+	                            <li><b>7</b><em>元</em><i></i></li>
+	                            <li><b>8</b><em>元</em><i></i></li>
+	                            <li><b>9</b><em>元</em><i></i></li>
+	                            <li class="last"><b>10</b><em>元</em><i></i></li>
+	                        </ul>
+							 <div class="Probability_value">
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                                <div class="input_a">
+	                                    <input type="text" value="10" maxlength='3'><i>%</i>
+	                                    <span>概率值</span>
+	                                </div>
+
+	                        </div>
+	                    </div>
+	                </div>
+	                <!-- <div class="Notes">
+	                    <span>注释</span>
+	                    <div class="Notes_text">
+	                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p> 
+	                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p> 
+	                    </div>
+	                </div> -->
+	                <div class="border_bot"></div>
+				</div>
+
+
+                <!-- 按时间 -->
+				<!-- <div class="time_curve">
+	                <div class="dollor">
+	                    <span>按时间<dev>*概率值总和应为100%</dev></span>
+	                </div>
+	                <div class="coordinate">
+	                    <div class="coordinate_images">
+	                        <div class="number_doller1">
+	                            <span name=''>第一阶段</span>
+	                            <span name=''>第二阶段</span>
+	                            <span name=''>第三阶段</span>
+	                            <span name=''>第四阶段</span>
+	                            <span name=''>第五阶段</span>
+	                            <span name=''>第六阶段</span>
+	                            <span name=''>第七阶段</span>
+	                            <span name=''>第八阶段</span>
+	                            <span name=''>第九阶段</span>
+	                            <span name=''>第十阶段</span>
+	                        </div>
+	                        <img src="img/coordinate_two.png"> 
+	                        <div class="Time_slot">
+	                            <span>2016-11-16</span>
+	                            <span class='two'>11-17</span>
+	                            <span class='three'>11-23(共计：12天)</span>
+	                        </div>
+	                        <div class="Probability_value_two">
+	                                <div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div><div class="input_a">
+	                                    <input type="text" value="10%" id="">
+	                                    <span>概率值</span>
+	                                </div>
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="Notes">
+	                    <span>注释</span>
+	                    <div class="Notes_text">
+	                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p> 
+	                    <p>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</p> 
+	                    </div>
+	                </div>
+	                <div class="border_bot"></div>
+				</div> -->
+				<div class="tc">
+                	<span id="" class="btn save gailvok">确定</span>
+				</div>
+            </div>
+
+            <!--0213补贴政策subsidyPolicy-->
+			<div class="layer subsidyPolicy setCond hide">
+				<h5 class="subsidyConditionWarn">*仅限选择一种补贴条件</h5>
+				<ul class="subsidyConditionContent">
+					<!--所有项目加上类名Items，选中则加上on-->
+					<!-- <li class="subsidyConditionItem">达到统计指标</li>
+					<li class="subsidyConditionItem on">门店签约分销商</li>
+					<li class="subsidyConditionItem">222</li>
+					<li class="subsidyConditionItem">222</li> -->
+				</ul>
+				<!--控件addSubSubsidyPolicy-->
+				<div class="addSubSubsidyPolicy">
+					<div class="title">
+						<span class="t1">统计周期</span><span class="t2">统计对象</span><span class="t3">统计范围</span><span class="t4">统计指标与要求</span>
+		</div>
+					<div class="content">
+						<!--下面类名s1，s2等稍后换-->
+						<div class="selectWrapL s1">
+							<span class="arrowL"></span>
+							<span class="selectedL">请选择</span>
+							<ul class="selectL">
+								<li class="optionL">周期内前</li>
+							</ul>
+						</div>	
+						<div class="days s1-1 fl">					
+							<input type="text" id="days"/><label for="days"><span>天</span></label>
+						</div>	
+						<div class="selectWrapL s2">
+							<span class="arrowL"></span>
+							<span class="selectedL"   >请选择</span>
+							<ul class="selectL">
+								<li class="optionL">门店</li>
+							</ul>
+						</div>	
+						<div class="selectWrapL s3">
+							<span class="arrowL"></span>
+							<span class="selectedL"   >请选择</span>
+							<ul class="selectL">
+								<li class="optionL">各分销商分别统计</li>
+							</ul>
+						</div>	
+						<div class="selectWrapL s4">
+							<span class="arrowL"></span>
+							<span class="selectedL"   >请选择</span>
+							<ul class="selectL">
+								<li class="optionL">累计核销次数</li>
+							</ul>
+						</div>	
+						<div class="selectWrapL s5">
+							<span class="arrowL"></span>
+							<span class="selectedL"   >请选择</span>
+							<ul class="selectL">
+								<li class="optionL">地区排名</li>
+							</ul>
+						</div>	
+						<div class="unitContent fl s5-5">
+							<label for="unitNumber"><span class="unitBefore">前</span></label><input type="text" id="unitNumber"/><label for="unitNumber"><span class="unit">名</span></label>
+							<!--<span class="unitBefore">前</span><input type="text" /><span class="unit">名</span>-->
+						</div>						
+					</div>
+				</div>
+				
+				<div class="buttons">
+					<span class="cancel">取消</span>
+					<span class="ok">确定</span>
+				</div>
+
+			</div>
+		</div>
+		</section>
+
+
+		<!-- 4.宣传图文资料 -->
+		<section class="section4">
+		<div class="sec tuWen">
+
+			<!-- 分销商 -->
+			<div class="area fenxiaoshang">
+				<div class="heading re">
+					<span class='heading-title' name='distributor'>分销商</span>
+					<span class="heading-line"></span>
+					<span class="heading-toggle"></span>
+					<span class="btn edit ab">编辑</span>
+				</div>
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class='activitytitle'></span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class='wechattitle'></span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<!-- <div>dsadsa</div> -->
+							<div class='haibao'>
+								<img src="http://img6.bdstatic.com/img/image/smallpic/xingkong1201.jpg" alt="" class='posterurl'>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<span class='warn tip'><i class="pre">*</i>此部分内容会员可见</span>
+
+						<div class="detail">
+						
+							<div class="wenan-text propagation"></div>
+
+							<!-- <div class="view-panel">
+
+								<div class="item">
+									<label for="">服务电话</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">活动时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">会员参与时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item tiaojian">
+
+									<label for="" class="condition">参与活动条件</label>
+
+									<div class="sec region-view">
+
+										<label>活动地区</label>
+
+										<div class="province-wrap">
+										<div class="province-item">
+											<label class="sheng">江苏省</label>
+											<span class='region-info'>
+												<span>负责人: XXXX</span><br>
+												<span class='city'>
+													<i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i>
+												</span>
+											</span>
+										</div>
+
+										<div class="province-item">
+											<label class="sheng">江苏省</label>
+											<span class='region-info'>
+												<span>负责人: XXXX</span><br>
+												<span class='city'>
+													<i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i>
+												</span>
+											</span>
+										</div>
+
+										<div class="province-item">
+											<label class="sheng">江苏省</label>
+											<span class='region-info'>
+												<span>负责人: XXXX</span><br>
+												<span class='city'>
+													<i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i><i>县县县</i>
+												</span>
+											</span>
+										</div>
+										</div>
+
+
+									</div>
+									
+									<div class="sec">
+										<label for="" class="mr5">商品类目</label>
+										<span class="vm">无</span>
+									</div>
+
+									<div class="sec">
+										<label for="">会员活动条件</label>
+										<div class="condition-wrap huiyuan">
+											<span class="condition-item">买赠<i>（赠品比例不低于买3赠2 投放门店数量：10-30）</i></span>
+											<span class="condition-item">买赠<i>（买3赠2 投放门店数量：10-30）</i></span>
+											<span class="condition-item">买赠<i>（赠品赠2 投放门店数量：10-30）</i></span>
+											<span class="condition-item">买赠<i>（3赠2 投放门店数量：10-30）</i></span>
+										</div>
+
+									</div>
+
+									<div class="sec">
+										<label for="" class="mr5">主办方</label>
+										<span class="vm">分销商</span>
+									</div>
+
+									<div class="sec">
+										<label for="">参与会员</label>
+										<div class="condition-wrap">
+											<span class="condition-item">消费者<i>（活动开始前23天，核销次数>=100次）</i></span>
+											<span class="condition-item">消费者<i>（活动开始前23天，核销次数>=100次）</i></span>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="item butie">
+
+									<label for="" class="condition">活动补贴</label>
+
+									<div class="sec">
+										<label for="">设置补贴</label>
+										<div class="condition-wrap">
+
+											<span class="condition-item">分销商<i>（补贴条件：门店签约分销商</i><i>补贴形式：送固定积分</i><i>范围：10分/次）</i></span>
+
+											<span class="condition-item">分销商业务员<i>（补贴条件：负责的门店活跃（大于5次核销）</i><i>补贴形式：固定金额返现</i><i>范围：200元/门店）</i></span>
+										</div>
+									</div>
+
+									<div class="sec">
+										<label for="" class="w70">平台总补贴</label>
+										<div class="zongbutie">
+											<p>
+												<dfn>直发现金</dfn>
+												<var class="value">4000.00</var>
+											</p>
+											<p>
+												<dfn>积分</dfn>
+												<var class="value">10000分</var>
+											</p>
+										</div>
+									</div>
+
+								</div>
+
+							</div> -->
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			
+			<!-- 门店 -->
+			<div class="area mendian">
+				<div class="heading re">
+					<span class='heading-title' name='retailer'>门店</span>
+					<span class="heading-line"></span>
+					<span class="heading-toggle"></span>
+					<span class="btn edit ab">编辑</span>
+				</div>
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class='activitytitle'></span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class='wechattitle'></span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<!-- <div>dsadsa</div> -->
+							<div class='haibao'>
+								<img src="http://img6.bdstatic.com/img/image/smallpic/xingkong1201.jpg" alt="" class='posterurl'>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<span class='warn tip'>* 此部分内容会员可见</span>
+						<div class="detail">
+						
+							<div class="wenan-text propagation"></div>
+
+							<!-- <div class="view-panel">
+
+								<div class="item">
+									<label for="">服务电话</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">活动时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">会员参与时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+
+									<label for="" class="condition">参与活动条件</label>
+
+									<div class="region sec">
+										<label for="">活动地区</label>
+										<span class=''>
+
+											<span class="province">
+												<label for="">江苏省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+											<span class="province">
+												<label for="">ds省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+											<span class="province">
+												<label for="">ds省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+										</span>
+									</div>
+
+
+									<div class="sec">
+										<label for="">会员活动条件</label>
+										<table>
+											<thead>
+												<tr>
+													<th>活动类型</th>
+													<th>优惠力度条件</th>
+													<th>投放门店数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td width="80">买赠</td>
+													<td width="180" class="mz">
+														赠品比例 不低于 <i>买</i> 3 <i>赠</i> 2
+													</td>
+													<td>10-30</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="sec">
+										<label for="" class="zbf">主办方</label>
+										<span>分销商</span>
+									</div>
+
+
+									<div class="sec">
+										<label for="">参与会员</label>
+										<table class="canyu">
+											<thead>
+												<tr>
+													<th>会员类型</th>
+													<th>参加名额</th>
+													<th>参与资格</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td width="80">分销商</td>
+													<td width="80">10-30</td>
+													<td>核销次数 活动开始前23天 >= 100次</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+
+
+								<div class="item">
+									<label for="">活动补贴规则</label>
+									<table class="butie">
+										<thead>
+											<tr>
+												<th>补贴对象</th>
+												<th>补贴条件</th>
+												<th>补贴形式</th>
+												<th>范围/值</th>
+												<th>发放上限<br>次数</th>
+												<th>补贴峰值</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>分销商</td>
+												<td>
+													<span class='ell fxs' title="门店签约分销商">门店签约分销商</span>
+												</td>
+												<td>送固定积分</td>
+												<td>
+													<span class='clr jifen'>
+														<span class='fl'>10</span>
+														<span class='fr dw'>分/次</span>
+													</span>
+												</td>
+												<td class="orange">1000</td>
+												<td class="orange">10000 分</td>
+											</tr>
+											<tr>
+												<td>分销商<br>业务员</td>
+												<td>
+													<span class='ell fxs' title='负责的门店活跃（大于5次活销）'>负责的门店活跃（大于5次活销）
+													</span>
+												</td>
+												<td>固定金额返现</td>
+												<td>
+													<span class='clr jifen'>
+														<span class='fl'>200</span>
+														<span class='fr dw'>元/门店</span>
+													</span>
+												</td>
+												<td class="orange">200</td>
+												<td class="orange">4000.00 元</td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<div class="yusuan ml98 bt">
+										<label>活动预算峰值</label>
+											
+										<div class="fz">
+											<p>
+												<dfn>直发现金</dfn>
+												<span class="value">4000.00</span>
+											</p>
+											<p>
+												<dfn>积分</dfn>
+												<span class="value">10000分</span>
+											</p>
+										</div>
+
+									</div>
+									
+									<div class="yusuan ml98 bt">
+										<label>活动申报预算</label>
+										<span>85000.00元</span>
+									</div>
+
+								</div>
+							</div> -->
+							
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			
+			<!-- 消费者 -->
+			<div class="area xiaofeizhe">
+				<div class="heading re">
+					<span class='heading-title' name='consumer'>消费者</span>
+					<span class="heading-line"></span>
+					<span class="heading-toggle"></span>
+					<span class="btn edit ab">编辑</span>
+				</div>
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class='activitytitle'></span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class='wechattitle'></span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<!-- <div>dsadsa</div> -->
+							<div class='haibao'>
+								<img src="http://img6.bdstatic.com/img/image/smallpic/xingkong1201.jpg" alt="" class='posterurl'>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<span class='warn tip'>* 此部分内容会员可见</span>
+						<div class="detail">
+						
+							<div class="wenan-text propagation"></div>
+							<!-- <div class="view-panel">
+
+								<div class="item">
+									<label for="">服务电话</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">活动时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">会员参与时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+
+									<label for="" class="condition">参与活动条件</label>
+
+									<div class="region sec">
+										<label for="">活动地区</label>
+										<span class=''>
+
+											<span class="province">
+												<label for="">江苏省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+											<span class="province">
+												<label for="">ds省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+											<span class="province">
+												<label for="">ds省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+										</span>
+									</div>
+
+
+									<div class="sec">
+										<label for="">会员活动条件</label>
+										<table>
+											<thead>
+												<tr>
+													<th>活动类型</th>
+													<th>优惠力度条件</th>
+													<th>投放门店数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td width="80">买赠</td>
+													<td width="180" class="mz">
+														赠品比例 不低于 <i>买</i> 3 <i>赠</i> 2
+													</td>
+													<td>10-30</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="sec">
+										<label for="" class="zbf">主办方</label>
+										<span>分销商</span>
+									</div>
+
+
+									<div class="sec">
+										<label for="">参与会员</label>
+										<table class="canyu">
+											<thead>
+												<tr>
+													<th>会员类型</th>
+													<th>参加名额</th>
+													<th>参与资格</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td width="80">分销商</td>
+													<td width="80">10-30</td>
+													<td>核销次数 活动开始前23天 >= 100次</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+
+
+								<div class="item">
+									<label for="">活动补贴规则</label>
+									<table class="butie">
+										<thead>
+											<tr>
+												<th>补贴对象</th>
+												<th>补贴条件</th>
+												<th>补贴形式</th>
+												<th>范围/值</th>
+												<th>发放上限<br>次数</th>
+												<th>补贴峰值</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>分销商</td>
+												<td>
+													<span class='ell fxs' title="门店签约分销商">门店签约分销商</span>
+												</td>
+												<td>送固定积分</td>
+												<td>
+													<span class='clr jifen'>
+														<span class='fl'>10</span>
+														<span class='fr dw'>分/次</span>
+													</span>
+												</td>
+												<td class="orange">1000</td>
+												<td class="orange">10000 分</td>
+											</tr>
+											<tr>
+												<td>分销商<br>业务员</td>
+												<td>
+													<span class='ell fxs' title='负责的门店活跃（大于5次活销）'>负责的门店活跃（大于5次活销）
+													</span>
+												</td>
+												<td>固定金额返现</td>
+												<td>
+													<span class='clr jifen'>
+														<span class='fl'>200</span>
+														<span class='fr dw'>元/门店</span>
+													</span>
+												</td>
+												<td class="orange">200</td>
+												<td class="orange">4000.00 元</td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<div class="yusuan ml98 bt">
+										<label>活动预算峰值</label>
+											
+										<div class="fz">
+											<p>
+												<dfn>直发现金</dfn>
+												<span class="value">4000.00</span>
+											</p>
+											<p>
+												<dfn>积分</dfn>
+												<span class="value">10000分</span>
+											</p>
+										</div>
+
+									</div>
+									
+									<div class="yusuan ml98 bt">
+										<label>活动申报预算</label>
+										<span>85000.00元</span>
+									</div>
+
+								</div>
+							</div> -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- <div class="radio-area wx">
+				<span>微信图文<br>消息推送设置</span>
+				
+				<div class="radio-wrap">
+					<p>*注释注释注释注释注释</p>
+					<p class='radio'><i><i></i></i><em>仅推送一次</em></p>
+					<p class='radio'><i><i></i></i><em>活动期间每周五</em></p>
+				</div>
+			
+			</div>
+			
+			<div class="radio-area releaseSet">
+				<span class='fbsz'>活动发布设置</span>
+				
+				<div class="radio-wrap">
+					<p class='radio' name='immediately'><i><i></i></i><em>审核通过后立即发布</em></p>
+					<p class='radio'><i><i></i></i><em>审核通过后暂不发布</em></p>
+					<p class='radio'><i><i></i></i><em>审核通过后定时发布</em>
+						<input type="text" class="time dingshi">
+					</p>
+				</div>
+			
+			</div> -->
+
+
+
+
+			<!-- 编辑 -->
+			<div class="area edit hide">
+				<input type="hidden" name="" class="index">
+
+				<div class="content">
+
+					<div class="item">
+						<label for="">活动标语</label>
+						<span class="edit-area re">
+							<span class='tip warn mb2'>* 将显示在会员PC端活动列表、活动详情页、超惠券列表以及公众号超惠券主题活动、超惠券上</span><br>
+							<!-- <input type="text"  maxlength="15"> -->
+							<textarea name="" id="hdBiaoyu" maxlength="15"></textarea>
+							<span class="tip ab biaoyu"><em>0</em>/15</span>
+						</span>
+					</div>
+
+					<div class="item">
+						<label for="">微信图文消息标题</label>
+						<span class="edit-area re">
+							<span class='tip warn mb2 wx'>* 用于微信图文消息标题</span><br>
+							<textarea name="" class="wxtw" maxlength="64"></textarea>
+							<span class="tip ab wx"><em>0</em>/64</span>
+						</span>
+					</div>
+
+					<div class="item">
+						<label for="">宣传海报</label>
+						
+						<div class="haibao-wrap">
+							<!-- <div>dsadsa</div> -->
+							<div id="preview" class='haibao upload_img xchb'>
+								<img id="imghead" src="http://img6.bdstatic.com/img/image/smallpic/fengjing1201.jpg" alt="" class="up_img xchb">
+							</div>
+
+							<div class="haibao-edit">
+
+								<ul>
+									<li><i></i>活动海报推荐比例16:9</li>
+									<li><i></i>活动海报不能上传大于1M的图片</li>
+								</ul>
+
+								<form enctype="multipart/form-data">
+								<div class="ml16">
+									<span class="btn up warn file">上传
+										<input type="file" name="file" id="file" onchange="previewImage(this)" />    
+									</span>
+									<!-- <span class="btn up warn">上 传</span><br> -->
+									<i class="check">同时上传至系统海报库</i>
+								</div>
+								</form>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<!-- <div class="item">
+						<label style="width:70px">系统海报库</label>
+						
+						<div class="pic-area">
+							<a class="prev" href="javascript:void(0)"><</a>
+							<ul class="pic-list clr">
+								<li>
+									<a href="javascript:;">
+										<img src="img/1.png">1
+									</a>	
+								</li>		
+								<li>
+									<a href="javascript:;">
+										<img src="img/2.png">2
+									</a>	
+								</li>	
+								<li>
+									<a href="javascript:;">
+										<img src="img/3.jpg">3
+									</a>	
+								</li>
+								<li>
+									<a href="javascript:;">
+										<img src="img/4.png">4
+									</a>	
+								</li>
+								<li>
+									<a href="javascript:;">
+										<img src="img/4.png">5
+									</a>	
+								</li>
+								<li>
+									<a href="javascript:;">
+										<img src="img/4.png">6
+									</a>	
+								</li>					
+							</ul>
+							<a class="next" href="javascript:void(0)">></a>
+						</div>
+					
+					</div> -->
+
+					<div class="item">
+						<label for="">宣传文案</label>
+						<span class="tip warn">* 此部分内容会员可见</span>
+						<div class="detail">
+							
+							<div class="wenan-text re bor">
+								<textarea maxlength='500' placeholder='建议填写宣传性文字' class="xcwa"></textarea>
+								<span class="tip ab"><em>0</em>/500</span>
+							</div>
+
+							<!-- <div class="quick">快速选择</div> -->
+
+							<!-- <div class="view-panel"> -->
+
+								<!-- <div class="item">
+									<span class="tip warn mb2 chkTip">* 建议勾选以下选项，自动生成相应内容</span><br>
+									<div class="check-area">
+										<i class="check">活动时间</i>
+										<i class="check">会员参与时间</i>
+										<i class="check">服务电话</i>
+										<i class="check">参与活动条件</i>
+										<i class="check">活动补贴规则</i>
+									</div>
+								</div> -->
+
+								<!-- <div class="item">
+									<label for="">服务电话</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">活动时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+									<label for="">会员参与时间</label>
+									<span class></span>
+								</div>
+
+								<div class="item">
+
+									<label for="" class="condition">参与活动条件</label>
+
+									<div class="region sec">
+										<label for="">活动地区</label>
+										<span class=''>
+
+											<span class="province">
+												<label for="">江苏省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+											<span class="province">
+												<label for="">ds省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+											<span class="province">
+												<label for="">ds省</label>
+												<span class='region-info'>
+													<span>负责人XXXX</span>
+													<span>已选择全部城市</span>
+												</span>
+											</span>
+
+										</span>
+									</div>
+
+
+									<div class="sec">
+										<label for="">会员活动条件</label>
+										<table>
+											<thead>
+												<tr>
+													<th>活动类型</th>
+													<th>优惠力度条件</th>
+													<th>投放门店数</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td width="80">买赠</td>
+													<td width="180" class="mz">
+														赠品比例 不低于 <i>买</i> 3 <i>赠</i> 2
+													</td>
+													<td>10-30</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="sec">
+										<label for="" class="zbf">主办方</label>
+										<span>分销商</span>
+									</div>
+
+
+									<div class="sec">
+										<label for="">参与会员</label>
+										<table class="canyu">
+											<thead>
+												<tr>
+													<th>会员类型</th>
+													<th>参加名额</th>
+													<th>参与资格</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td width="80">分销商</td>
+													<td width="80">10-30</td>
+													<td>核销次数 活动开始前23天 >= 100次</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+								</div>
+
+
+								<div class="item">
+									<label for="">活动补贴规则</label>
+									<table class="butie">
+										<thead>
+											<tr>
+												<th>补贴对象</th>
+												<th>补贴条件</th>
+												<th>补贴形式</th>
+												<th>范围/值</th>
+												<th>发放上限<br>次数</th>
+												<th>补贴峰值</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>分销商</td>
+												<td>
+													<span class='ell fxs' title="门店签约分销商">门店签约分销商</span>
+												</td>
+												<td>送固定积分</td>
+												<td>
+													<span class='clr jifen'>
+														<span class='fl'>10</span>
+														<span class='fr dw'>分/次</span>
+													</span>
+												</td>
+												<td class="orange">1000</td>
+												<td class="orange">10000 分</td>
+											</tr>
+											<tr>
+												<td>分销商业务员</td>
+												<td>
+													<span class='ell fxs' title='负责的门店活跃（大于5次活销）'>负责的门店活跃（大于5次活销）
+													</span>
+												</td>
+												<td>固定金额返现</td>
+												<td>
+													<span class='clr jifen'>
+														<span class='fl'>200</span>
+														<span class='fr dw'>元/门店</span>
+													</span>
+												</td>
+												<td class="orange">200</td>
+												<td class="orange">4000.00 元</td>
+											</tr>
+										</tbody>
+									</table>
+									
+									<div class="yusuan ml98 bt">
+										<label>活动预算峰值</label>
+											
+										<div class="fz">
+											<p>
+												<dfn>直发现金</dfn>
+												<span class="value">4000.00</span>
+											</p>
+											<p>
+												<dfn>积分</dfn>
+												<span class="value">10000分</span>
+											</p>
+										</div>
+
+									</div>
+									
+									<div class="yusuan ml98 bt">
+										<label>活动申报预算</label>
+										<span>85000.00元</span>
+									</div>
+
+								</div> -->
+								
+							<!-- </div> -->
+
+
+						</div>
+
+					</div>
+
+					<div class="btn-wrap bt">
+						<span class="btn warn editok">确定</span>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+		</section>
+
+
+
+		<!-- </div> -->
+
+		<div class="footer btn-group">
+			<span class="btn step prev">上一步</span><span class="btn save saveToDb">保存</span><span class="btn step next">下一步</span><span class="btn step shenhe">提交审核</span>
+		</div>
+
+
+	</div>
+
+	<div class="copyright">
+		凌云科技版权所有 京ICP号10211557.
+	</div>
+
+</body>
+</html>
+
+<script type="text/javascript" src="../../lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="../../lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="../../lib/district/js/area_select.js"></script>
+<script type="text/javascript" src="laydate/laydate.js"></script>
+<script type="text/javascript" src="js/plugin/slimscroll.js"></script>
+<!-- <script type="text/javascript" src="js/plugin/superslide.js"></script> -->
+
+<script type="text/javascript" src="js/CreateActivity.js"></script>
+<script type="text/javascript" src="js/activityModify.js"></script>
+
+<script type="text/javascript" src="js/area.js"></script>
+<script type="text/javascript" src="js/add.js"></script>

@@ -1,0 +1,465 @@
+﻿html, body, div, ul, li {
+    margin: 0;
+    padding: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    font-family: \5FAE\8F6F\96C5\9ED1;
+    font-size: 16px;
+}
+
+a img {
+    border: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+img {
+    border: 0;
+}
+th {
+    font-weight:normal;
+}
+body {
+    background:#e9e9e9;
+    padding-bottom:60px;
+}
+table {
+    width:100%;
+}
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1080px;
+    height: auto;
+    background:#fff;
+}
+.ft17 {
+    font-size:17px;
+}
+.a-title {
+    color:#00a297;
+    font-size:18px;
+}
+.add,
+.create,
+.release,
+.no-release {
+    box-sizing:border-box;
+    border-bottom:1px solid #cacaca;
+}
+.add {
+    text-align:right;
+}
+.add i{
+    color:#999;
+    width:100%;
+    font-size:13px;
+}
+.add .a-title {
+    background:url(/retailer/image/activities/add.png) no-repeat left center;
+    background-size:18px;
+    padding-left:20px;
+    float:right;
+    line-height:25px;
+}
+.no-release,
+ .release {
+   border-top:1px solid #cacaca;
+   margin-top:8px;
+   padding:15px 0px 3px 0px;
+}
+.create .a-title,
+.no-release .a-title,
+ .release .a-title {
+    line-height:26px;
+}
+.create,
+.add{
+     padding:15px 10px 3px 10px;
+}
+.create .a-title {
+    background:url(/retailer/image/activities/create.png) no-repeat left top;
+    background-size:26px;
+    padding-left:28px;
+}
+.no-release .a-title{
+    background:url(/retailer/image/activities/wfb-activity.png) no-repeat 10px  top;
+    background-size:26px;
+    padding-left:38px;
+    padding-right:10px;
+}
+.release .a-title {
+    background:url(/retailer/image/activities/yfb-activity.png) no-repeat 10px  top;
+    background-size:26px;
+    padding-left:38px;
+    padding-right:10px;
+}
+.a-type a{
+    border:1px solid #9c9a9a;
+    padding:5px 14px;
+    font-size:16px;
+    color:#333;
+    border-radius:4px;
+}
+.a-type a:hover,
+.a-type .curr{
+    background-color:#bcfcf8;
+    color:#05605a;
+    border-color:#00a297;
+}
+.create th,
+.create td
+{
+    padding-top:8px;
+}
+.create th {
+   color:#333;
+}
+.create td {
+    position:relative;
+}
+.g-name {
+    width:100%;
+    padding:5px;
+}
+.g-name-limit {
+    color:#9c9a9a;
+    position:absolute;
+    right:5px;
+    top:60px;
+}
+.dis-box,
+.create input[type=text],
+.create input[type=number],
+.g-name {
+    box-sizing:border-box;
+    font-size:16px;
+    border-radius:4px;
+    border:1px solid #9c9a9a;
+}
+.money-ico,
+.date-ico,
+.dis-box{
+    position:absolute;
+}
+.dis-box {
+    top:8px;
+    right:0px;
+    width:80px;
+}
+.dis-box .d-title{
+    width:100%;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    background:#9c9a9a;
+    color:#fff;
+}
+.dis-box .d-cont{
+    text-align:center;
+    color:#00a297;
+    font-size:18px;
+    height:45px;
+    line-height:45px;
+}
+
+.money-ico {
+    top:16px;
+    left:5px;
+}
+.create input[type=text],
+.create input[type=number] {
+    height:35px;
+    line-height:35px;
+    border-radius:4px;
+    width:100%;
+}
+.price-box {
+    padding-right:90px;
+    box-sizing:border-box;
+}
+.save-btn,
+.rel-btn {
+    border-radius: 16px;
+    color: #fff;
+    font-size: 17px;
+    border: 0;
+    width: 124px;
+    line-height: 30px;
+}
+.save-btn {
+    background:#ff9933;
+}
+.rel-btn {
+    background:#00a297;
+}
+.create td .date {
+    width:36%;
+    min-width:94px;
+    background:url(/retailer/image/activities/date.png) no-repeat 98% center;
+    background-size: 13px;
+}
+.create td .date,
+.create td .date-hour {
+    font-size:13px;
+    padding-right:2%;
+    box-sizing:border-box;
+    padding-left:1%;
+}
+.create td .date-hour {
+    width:14%;
+    background:url(/retailer/image/activities/font.png) no-repeat 98% 10px;
+    background-size: 15px;
+    min-width:40px;
+}
+
+.cut {
+    font-size:12px;
+    background:#c5293b;
+    padding:2px 5px;
+    color:#fff;
+    float:left;
+    margin-right:5px;
+}
+.no-release th,
+.release th {
+    color:#666;
+    height:30px;
+}
+.no-release td,
+.release td {
+    color:#333;
+    height:30px;
+}
+.relitem {
+    position:relative;
+    width:100%;
+    padding:10px 10px 50px 10px;
+    box-sizing:border-box;
+    border-bottom:1px solid #d7d7d7;
+}
+.relitem:last-of-type{
+   border-bottom:0;
+}
+.op-pnl {
+    border-top:1px solid #d7d7d7;
+    padding:3px 0;
+    width:100%;
+    height:30px;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+.op-pnl li {
+    float:left;
+    width:33%;
+    border-right:1px solid #d7d7d7;
+    box-sizing:border-box;
+    text-align:center;
+    line-height:30px;
+}
+.op-pnl li:last-child{
+    border-right:0;
+}
+.no-release ul:last-child,
+.release ul:last-child{
+    border-bottom:0;
+}
+.op-pnl .op-del,
+.op-pnl .op-update,
+.op-pnl .op-release {
+    padding-left:20px;
+}
+.op-pnl .op-del{
+    background:url(/retailer/image/activities/del.png) no-repeat left center;
+    background-size:16px;
+}
+.op-pnl .op-update{
+    background:url(/retailer/image/activities/edit.png) no-repeat left center;
+    background-size:17px;
+}
+.op-pnl .op-release{
+    background:url(/retailer/image/activities/fb.png) no-repeat left center;
+    background-size:17px;
+}
+.auit,
+.released {
+    color:#fff;
+    float:right;
+    border-top-left-radius:14px;
+    border-bottom-left-radius:14px;
+    line-height:28px;
+    min-width:80px;
+    text-align:center;
+    margin-right:-10px;
+}
+.auit {
+    background:#ff9933;
+
+}
+.released {
+    background:#00a297;
+}
+.ots-btn {
+    color:#00a297;
+    border:1px solid #00a297;
+    border-radius:14px;
+    background:#fff;
+    width:110px;
+    line-height:28px;
+}
+
+.no-audit b{
+    position:absolute;
+}
+.no-audit {
+    background:#fce7d2;
+    border:1px solid #fdc995;
+    border-radius:3px;
+    width:80%;
+    margin-left: 38px;
+    margin-top: 6px;
+    padding:0 10px;
+    box-sizing:border-box;
+    position:relative;
+
+}
+.no-audit b{
+    background:url(/retailer/image/activities/tl-1.png) no-repeat center center;
+    background-size:12px;
+    height:10px;
+    width:12px;
+    display:block;
+    top:-7px;
+    left:20px;
+}
+.no-audit .n-title{
+    color:#ff0000;
+    background:url(/retailer/image/activities/tl-2.png) no-repeat left center;
+    background-size:16px;
+    padding-left:20px;
+    height:35px;
+    line-height:35px;
+}
+.no-audit .n-title a{
+    color:#ff9933;
+    margin-left:10px;
+    text-decoration:underline;
+    font-size:15px;
+}
+.no-audit .n-cont{
+    padding:5px;
+    line-height:20px;
+    width:100%;
+    display:none;
+    border-top:1px solid #fdc995;
+}
+.no-audit .n-close {
+    background:url(/retailer/image/activities/tl-3.png) no-repeat center center;
+    background-size:18px;
+    height:10px;
+    width:18px;
+    margin:5px auto;
+}
+
+/**弹出层样式**/
+.lazyout {
+    position:absolute;
+    left:0;
+    top:0;
+    z-index:99998;
+    background:#000;
+    opacity:0.7;
+    width:100%;
+    height:100%;
+}
+.win-box {
+    position:absolute;
+    left:5%;
+    top:200px;
+    width:90%;
+    box-sizing:border-box;
+    z-index:99999;
+    padding-top:25px;
+    text-align:center;
+    background:#fff;
+    border-radius:6px;
+    font-size:17px;
+}
+.win-box input[type=button]{
+    width:50%;
+    height:40px;
+    border:0;
+    color:#fff;
+    font-size:17px;
+}
+.win-box .w-save{
+    background:#b5b5b5;
+    border-bottom-left-radius:6px;
+}
+.win-box .w-cancel{
+    background:#009f96;
+    border-bottom-right-radius:6px;
+}
+.win-close {
+    position:absolute;
+    width:100%;
+    z-index:99999;
+    text-align:center;
+    background:url(/retailer/image/activities/tl-7.png) no-repeat center center;
+    background-size:40px;
+    height:40px;
+}
+.win-box img {
+    margin-bottom:10px;
+}
+.win-6 {
+    padding-bottom:25px;
+}
+.win-6 img{
+    width:32px;
+}
+.date-box{
+    text-align:center;
+    width:80%;
+    padding-bottom:10px;
+    height:260px;
+    left: 10%;
+}
+.date-box ul{
+    height:160px;
+    width:100%;
+    overflow-x:hidden;
+    overflow-y:scroll;
+}
+.date-box li{
+    width: 130px;
+    border-bottom: 2px solid #00a297;
+    color: #e0e0e0;
+    font-family: Arial;
+    line-height: 50px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    font-size:20px;
+}
+.date-box li:last-child{
+    margin-bottom:50px;
+}
+.date-box .curr{
+     color:#333;
+     font-size:22px;
+}
+.win-box input.date-btn{
+    border-radius:20px;
+    border:1px solid #d7d7d7;
+    color:#333;
+    background:#f2f2f2;
+    width:100px;
+    height: 35px;
+    font-size:16px;
+}
